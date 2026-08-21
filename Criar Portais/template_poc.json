@@ -1,0 +1,298 @@
+{
+  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
+  "empresa": "EMPRESA",
+  "descricao_empresa": "Descricao curta da empresa.",
+  "gerado_em": "YYYY-MM-DD",
+  "setor": "Setor — Subsetor",
+  "portal_name": "EMPRESA POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca EMPRESA",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "EMPRESA", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Categoria 1", "active": true, "images": [] }
+        },
+        {
+          "label": "Categoria 2",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Categoria 2", "active": true, "images": [] }
+        },
+        {
+          "label": "Categoria 3",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Categoria 3", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "SKU-001 — Produto Exemplo Destaque",
+          "temp_image_url": "https://exemplo.com/imagem-do-site-da-marca.jpg",
+          "payload": {
+            "name": "Produto Exemplo Destaque",
+            "description": "Descricao comercial do produto.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 350.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SKU-002 — Produto Exemplo Caixa",
+          "temp_image_url": "https://exemplo.com/imagem-obrigatoria-todo-produto.jpg",
+          "payload": {
+            "name": "Produto Exemplo Caixa",
+            "description": "Produto vendido em caixas — min/mult coerentes com a embalagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 120.00,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - EMPRESA",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "EMPRESA — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - EMPRESA",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "EMPRESA — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Categoria 1",
+          "salvar_id_como": "criteria_cat_1_id",
+          "payload": {
+            "name": "EMPRESA — Categoria 1 (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_0}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Categoria 2",
+          "salvar_id_como": "criteria_cat_2_id",
+          "payload": {
+            "name": "EMPRESA — Categoria 2 (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_1}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | EMPRESA",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | EMPRESA",
+            "start_date": "YYYY-MM-DD",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | EMPRESA",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | EMPRESA",
+            "start_date": "YYYY-MM-DD",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | EMPRESA",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | EMPRESA",
+            "start_date": "YYYY-MM-DD",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume EMPRESA",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | EMPRESA",
+            "start_date": "YYYY-MM-DD",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume EMPRESA",
+                "criteria_id": "{{criteria_cat_1_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 10, "type": "PERCENTAGE", "value": 5, "is_product_value": false },
+                  { "minimum_quantity": 20, "type": "PERCENTAGE", "value": 8, "is_product_value": false },
+                  { "minimum_quantity": 50, "type": "PERCENTAGE", "value": 12, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Categoria 2 | EMPRESA",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF EMPRESA — Categoria 2",
+            "start_date": "YYYY-MM-DD",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF EMPRESA",
+                "criteria_id": "{{criteria_cat_2_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 7, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

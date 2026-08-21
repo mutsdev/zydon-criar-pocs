@@ -1,0 +1,943 @@
+{
+  "empresa": "Studio das Festas",
+  "descricao_empresa": "Fabricante de artigos de decoracao para festas, eventos, cenografia e ambientacao natalina. Producao propria em metalizados, vacuum form, sopro e fibra, atendendo shoppings, prefeituras, produtoras de eventos e TV desde 2000.",
+  "gerado_em": "2026-08-17",
+  "setor": "Decoracao e Eventos — Artigos de festa e cenografia",
+  "portal_name": "Studio das Festas POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Studio das Festas",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Studio das Festas",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Esferas e Pendentes Metalizados",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Decoracao Natalina",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Pecas Cenograficas e Ambientacao",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Cor",
+          "salvar_id_como": "variation_cor_id",
+          "payload": {
+            "name": "Cor",
+            "active": true,
+            "is_searchable": false,
+            "display_type": "COLOR",
+            "values": [
+              "Branco",
+              "Azul Claro",
+              "Preto",
+              "Marrom",
+              "Azul Marinho",
+              "Verde Militar",
+              "Off White",
+              "Bege",
+              "Areia",
+              "Caqui",
+              "Cinza Claro",
+              "Cinza",
+              "Grafite",
+              "Chumbo",
+              "Prata",
+              "Azul Royal",
+              "Azul Jeans",
+              "Verde",
+              "Verde Oliva",
+              "Vermelho",
+              "Vinho",
+              "Terracota",
+              "Laranja",
+              "Amarelo",
+              "Dourado",
+              "Rosa",
+              "Roxo"
+            ],
+            "variant_options": [
+              {
+                "name": "Branco",
+                "display_value": "#FFFFFF"
+              },
+              {
+                "name": "Azul Claro",
+                "display_value": "#A8C8E8"
+              },
+              {
+                "name": "Preto",
+                "display_value": "#000000"
+              },
+              {
+                "name": "Marrom",
+                "display_value": "#6B4A2F"
+              },
+              {
+                "name": "Azul Marinho",
+                "display_value": "#1B2A4A"
+              },
+              {
+                "name": "Verde Militar",
+                "display_value": "#4B5320"
+              },
+              {
+                "name": "Off White",
+                "display_value": "#F2EFE6"
+              },
+              {
+                "name": "Bege",
+                "display_value": "#D9C6A5"
+              },
+              {
+                "name": "Areia",
+                "display_value": "#E0D5C0"
+              },
+              {
+                "name": "Caqui",
+                "display_value": "#9C8A5F"
+              },
+              {
+                "name": "Cinza Claro",
+                "display_value": "#C0C0C0"
+              },
+              {
+                "name": "Cinza",
+                "display_value": "#808080"
+              },
+              {
+                "name": "Grafite",
+                "display_value": "#4A4A4A"
+              },
+              {
+                "name": "Chumbo",
+                "display_value": "#3A3F44"
+              },
+              {
+                "name": "Prata",
+                "display_value": "#BFC1C2"
+              },
+              {
+                "name": "Azul Royal",
+                "display_value": "#1F4FA3"
+              },
+              {
+                "name": "Azul Jeans",
+                "display_value": "#4A6D8C"
+              },
+              {
+                "name": "Verde",
+                "display_value": "#2E7D48"
+              },
+              {
+                "name": "Verde Oliva",
+                "display_value": "#6B7A3A"
+              },
+              {
+                "name": "Vermelho",
+                "display_value": "#C0272D"
+              },
+              {
+                "name": "Vinho",
+                "display_value": "#6E1423"
+              },
+              {
+                "name": "Terracota",
+                "display_value": "#B5533C"
+              },
+              {
+                "name": "Laranja",
+                "display_value": "#E8701A"
+              },
+              {
+                "name": "Amarelo",
+                "display_value": "#F2C230"
+              },
+              {
+                "name": "Dourado",
+                "display_value": "#C9A227"
+              },
+              {
+                "name": "Rosa",
+                "display_value": "#E8A0B4"
+              },
+              {
+                "name": "Roxo",
+                "display_value": "#5B3A8E"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "SDF-ESF-001 — Esfera Metalizada 20cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_689393-MLB114662030245_072026-E.webp",
+          "payload": {
+            "name": "Esfera Metalizada 20cm",
+            "sku": "SDF-ESF-001",
+            "description": "Bola decorativa em plastico soprado com acabamento metalizado de alto brilho, 20cm de diametro. Alca reforcada para pendurar em arvores, marquises e vitrines. Leve e resistente a uso externo coberto.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 34.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "SDF-ESF-001-DOU",
+                "price": 34.9,
+                "stock": 100,
+                "variation_weight": 0.12,
+                "variation_width": 20.0,
+                "variation_height": 20.0,
+                "variation_depth": 20.0,
+                "packaging_weight": 0.17,
+                "packaging_width": 24.0,
+                "packaging_height": 24.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Dourado"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-ESF-001-PRA",
+                "price": 34.9,
+                "stock": 100,
+                "variation_weight": 0.12,
+                "variation_width": 20.0,
+                "variation_height": 20.0,
+                "variation_depth": 20.0,
+                "packaging_weight": 0.17,
+                "packaging_width": 24.0,
+                "packaging_height": 24.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Prata"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-ESF-001-VER",
+                "price": 34.9,
+                "stock": 100,
+                "variation_weight": 0.12,
+                "variation_width": 20.0,
+                "variation_height": 20.0,
+                "variation_depth": 20.0,
+                "packaging_weight": 0.17,
+                "packaging_width": 24.0,
+                "packaging_height": 24.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Vermelho"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-ESF-001-ROS",
+                "price": 34.9,
+                "stock": 100,
+                "variation_weight": 0.12,
+                "variation_width": 20.0,
+                "variation_height": 20.0,
+                "variation_depth": 20.0,
+                "packaging_weight": 0.17,
+                "packaging_width": 24.0,
+                "packaging_height": 24.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "SDF-ESF-002 — Esfera Metalizada 40cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_739286-MLB114297418141_072026-E.webp",
+          "payload": {
+            "name": "Esfera Metalizada 40cm",
+            "sku": "SDF-ESF-002",
+            "description": "Bola soprada de grande porte com pintura metalizada uniforme, 40cm de diametro. Indicada para composicoes suspensas em shoppings e halls de grande pe-direito.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 89.5,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "SDF-PEN-003 — Pendente Gota Metalizado 35cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_978180-MLB113694367238_072026-E.webp",
+          "payload": {
+            "name": "Pendente Gota Metalizado 35cm",
+            "sku": "SDF-PEN-003",
+            "description": "Pendente em formato de gota produzido em vacuum form com acabamento espelhado. Estrutura oca e leve, com ilhos de fixacao no topo para montagem em cabo de aco.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 62.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "SDF-PEN-003-PRA",
+                "price": 62.0,
+                "stock": 100,
+                "variation_weight": 0.18,
+                "variation_width": 18.0,
+                "variation_height": 18.0,
+                "variation_depth": 18.0,
+                "packaging_weight": 0.23,
+                "packaging_width": 22.0,
+                "packaging_height": 22.0,
+                "packaging_depth": 22.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Prata"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-PEN-003-DOU",
+                "price": 62.0,
+                "stock": 100,
+                "variation_weight": 0.18,
+                "variation_width": 18.0,
+                "variation_height": 18.0,
+                "variation_depth": 18.0,
+                "packaging_weight": 0.23,
+                "packaging_width": 22.0,
+                "packaging_height": 22.0,
+                "packaging_depth": 22.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Dourado"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-PEN-003-AZR",
+                "price": 62.0,
+                "stock": 100,
+                "variation_weight": 0.18,
+                "variation_width": 18.0,
+                "variation_height": 18.0,
+                "variation_depth": 18.0,
+                "packaging_weight": 0.23,
+                "packaging_width": 22.0,
+                "packaging_height": 22.0,
+                "packaging_depth": 22.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Royal"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "SDF-PEN-004 — Kit Pendentes Geometricos Sortidos",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_847161-MLB31098379759_062019-E.webp",
+          "payload": {
+            "name": "Kit Pendentes Geometricos Sortidos",
+            "sku": "SDF-PEN-004",
+            "description": "Conjunto com 12 pecas geometricas metalizadas em tres formatos e tamanhos variados. Solucao pronta para composicao de teto decorado em eventos corporativos e lojas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 248.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "SDF-NAT-005 — Laco Decorativo Natalino 60cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_805929-MLB111520901200_062026-E.webp",
+          "payload": {
+            "name": "Laco Decorativo Natalino 60cm",
+            "sku": "SDF-NAT-005",
+            "description": "Laco em fita metalizada montado sobre base rigida, 60cm de largura. Amarracao reforcada para aplicacao em postes, colunas e fachadas durante a campanha de fim de ano.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 47.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "variations": [
+              {
+                "sku": "SDF-NAT-005-VER",
+                "price": 47.9,
+                "stock": 100,
+                "variation_weight": 0.25,
+                "variation_width": 60.0,
+                "variation_height": 60.0,
+                "variation_depth": 60.0,
+                "packaging_weight": 0.3,
+                "packaging_width": 64.0,
+                "packaging_height": 64.0,
+                "packaging_depth": 64.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Vermelho"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-NAT-005-DOU",
+                "price": 47.9,
+                "stock": 100,
+                "variation_weight": 0.25,
+                "variation_width": 60.0,
+                "variation_height": 60.0,
+                "variation_depth": 60.0,
+                "packaging_weight": 0.3,
+                "packaging_width": 64.0,
+                "packaging_height": 64.0,
+                "packaging_depth": 64.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Dourado"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-NAT-005-PRA",
+                "price": 47.9,
+                "stock": 100,
+                "variation_weight": 0.25,
+                "variation_width": 60.0,
+                "variation_height": 60.0,
+                "variation_depth": 60.0,
+                "packaging_weight": 0.3,
+                "packaging_width": 64.0,
+                "packaging_height": 64.0,
+                "packaging_depth": 64.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Prata"
+                  }
+                ]
+              },
+              {
+                "sku": "SDF-NAT-005-VDE",
+                "price": 47.9,
+                "stock": 100,
+                "variation_weight": 0.25,
+                "variation_width": 60.0,
+                "variation_height": 60.0,
+                "variation_depth": 60.0,
+                "packaging_weight": 0.3,
+                "packaging_width": 64.0,
+                "packaging_height": 64.0,
+                "packaging_depth": 64.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Verde"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "SDF-NAT-006 — Presente Cenografico 50x50cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_630037-MLB115028759797_072026-E.webp",
+          "payload": {
+            "name": "Presente Cenografico 50x50cm",
+            "sku": "SDF-NAT-006",
+            "description": "Caixa de presente decorativa em fibra de vidro com laco aplicado, 50x50x50cm. Acabamento automotivo resistente a intemperie, para uso em pracas e areas externas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 390.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SDF-NAT-007 — Bengala Doce Decorativa 1,2m",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_959019-MLB92144824443_092025-E.webp",
+          "payload": {
+            "name": "Bengala Doce Decorativa 1,2m",
+            "sku": "SDF-NAT-007",
+            "description": "Bengala natalina em sopro rotacional, 1,2m de altura, com base para fixacao no solo. Listras em vermelho e branco com pintura UV de longa duracao.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 275.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "SDF-CEN-008 — Totem Cenografico em Fibra 1,8m",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_715137-MLB90985815172_082025-E.webp",
+          "payload": {
+            "name": "Totem Cenografico em Fibra 1,8m",
+            "sku": "SDF-CEN-008",
+            "description": "Peca escultorica em fibra de vidro laminada, 1,8m de altura, com estrutura interna metalica e base contrapesada. Pintura personalizavel conforme identidade visual do evento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 1890.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SDF-CEN-009 — Painel Modular Vacuum Form 1x1m",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_940026-MLB49591812114_042022-E.webp",
+          "payload": {
+            "name": "Painel Modular Vacuum Form 1x1m",
+            "sku": "SDF-CEN-009",
+            "description": "Placa texturizada em vacuum form de 1x1m para revestimento de paredes cenograficas. Encaixe modular entre placas e fixacao por parafuso ou fita dupla face estrutural.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 168.0,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "SDF-CEN-010 — Fita Metalizada para Acabamento 50m",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_760489-MLA99607327968_122025-E.webp",
+          "payload": {
+            "name": "Fita Metalizada para Acabamento 50m",
+            "sku": "SDF-CEN-010",
+            "description": "Rolo de fita metalizada com 50m para arremate de guirlandas, lacos e composicoes suspensas. Insumo de consumo continuo em montagens de grande escala.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 22.5,
+            "minimum_for_sale": 20,
+            "multiple_for_sale": 50
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Studio das Festas",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Studio das Festas — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Studio das Festas",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Studio das Festas — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Esferas e Pendentes Metalizados",
+          "salvar_id_como": "criteria_cat_metalizados_id",
+          "payload": {
+            "name": "Studio das Festas — Esferas e Pendentes Metalizados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Decoracao Natalina",
+          "salvar_id_como": "criteria_cat_natal_id",
+          "payload": {
+            "name": "Studio das Festas — Decoração Natalina (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Studio das Festas",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Studio das Festas",
+            "start_date": "2026-08-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Studio das Festas",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Studio das Festas",
+            "start_date": "2026-08-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 32
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Studio das Festas",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Studio das Festas",
+            "start_date": "2026-08-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 17
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Metalizados",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Studio das Festas",
+            "start_date": "2026-08-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Metalizados",
+                "criteria_id": "{{criteria_cat_metalizados_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 12,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 36,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 96,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Decoracao Natalina",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF Studio das Festas — Decoração Natalina",
+            "start_date": "2026-08-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Decoração Natalina",
+                "criteria_id": "{{criteria_cat_natal_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

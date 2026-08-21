@@ -1,0 +1,274 @@
+{
+  "_instrucoes": "BLOCO OPCIONAL DE VARIACOES. Colar a etapa 'variations' no {empresa}_poc.json ANTES da etapa 'products' (renumerar os 'nome' das etapas seguintes) e colar o array 'variations' DENTRO do payload dos produtos que tem grade. Usar em 2-4 produtos por POC, no maximo 2 eixos, grade completa (produto cartesiano). COR: copiar 'variacao_cor' INTEIRA — a paleta com hex e padrao da casa, nao inventar outra; usar nos produtos so os nomes necessarios (sobra de cor no eixo nao atrapalha). Cor nova: acrescentar aqui (nome + hex). Eixos que nao sao cor vao SEM display_type e SEM variant_options. Validar com: python validar_poc.py arquivo.json",
+  "_quando_usar": "Site do cliente tem seletor de cor/tamanho/voltagem/sabor/volume na pagina de produto = usar grade. Se o 'eixo' na verdade e outro produto (peca por aplicacao, medida com codigo proprio), NAO usar.",
+  "etapa_variations": {
+    "nome": "3. VARIACOES",
+    "endpoint": "variations",
+    "requests": [
+      {
+        "label": "Criar Variacao: Cor",
+        "salvar_id_como": "variation_cor_id",
+        "payload": {
+          "name": "Cor",
+          "active": true,
+          "is_searchable": false,
+          "display_type": "COLOR",
+          "values": [
+            "Branco",
+            "Azul Claro",
+            "Preto",
+            "Marrom",
+            "Azul Marinho",
+            "Verde Militar",
+            "Off White",
+            "Bege",
+            "Areia",
+            "Caqui",
+            "Cinza Claro",
+            "Cinza",
+            "Grafite",
+            "Chumbo",
+            "Prata",
+            "Azul Royal",
+            "Azul Jeans",
+            "Verde",
+            "Verde Oliva",
+            "Vermelho",
+            "Vinho",
+            "Terracota",
+            "Laranja",
+            "Amarelo",
+            "Dourado",
+            "Rosa",
+            "Roxo"
+          ],
+          "variant_options": [
+            {
+              "name": "Branco",
+              "display_value": "#FFFFFF"
+            },
+            {
+              "name": "Azul Claro",
+              "display_value": "#A8C8E8"
+            },
+            {
+              "name": "Preto",
+              "display_value": "#000000"
+            },
+            {
+              "name": "Marrom",
+              "display_value": "#6B4A2F"
+            },
+            {
+              "name": "Azul Marinho",
+              "display_value": "#1B2A4A"
+            },
+            {
+              "name": "Verde Militar",
+              "display_value": "#4B5320"
+            },
+            {
+              "name": "Off White",
+              "display_value": "#F2EFE6"
+            },
+            {
+              "name": "Bege",
+              "display_value": "#D9C6A5"
+            },
+            {
+              "name": "Areia",
+              "display_value": "#E0D5C0"
+            },
+            {
+              "name": "Caqui",
+              "display_value": "#9C8A5F"
+            },
+            {
+              "name": "Cinza Claro",
+              "display_value": "#C0C0C0"
+            },
+            {
+              "name": "Cinza",
+              "display_value": "#808080"
+            },
+            {
+              "name": "Grafite",
+              "display_value": "#4A4A4A"
+            },
+            {
+              "name": "Chumbo",
+              "display_value": "#3A3F44"
+            },
+            {
+              "name": "Prata",
+              "display_value": "#BFC1C2"
+            },
+            {
+              "name": "Azul Royal",
+              "display_value": "#1F4FA3"
+            },
+            {
+              "name": "Azul Jeans",
+              "display_value": "#4A6D8C"
+            },
+            {
+              "name": "Verde",
+              "display_value": "#2E7D48"
+            },
+            {
+              "name": "Verde Oliva",
+              "display_value": "#6B7A3A"
+            },
+            {
+              "name": "Vermelho",
+              "display_value": "#C0272D"
+            },
+            {
+              "name": "Vinho",
+              "display_value": "#6E1423"
+            },
+            {
+              "name": "Terracota",
+              "display_value": "#B5533C"
+            },
+            {
+              "name": "Laranja",
+              "display_value": "#E8701A"
+            },
+            {
+              "name": "Amarelo",
+              "display_value": "#F2C230"
+            },
+            {
+              "name": "Dourado",
+              "display_value": "#C9A227"
+            },
+            {
+              "name": "Rosa",
+              "display_value": "#E8A0B4"
+            },
+            {
+              "name": "Roxo",
+              "display_value": "#5B3A8E"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Criar Variacao: Tamanho",
+        "salvar_id_como": "variation_tamanho_id",
+        "payload": {
+          "name": "Tamanho",
+          "active": true,
+          "values": [
+            "PP",
+            "P",
+            "M",
+            "G",
+            "GG",
+            "XGG"
+          ]
+        }
+      }
+    ]
+  },
+  "_eixos_alternativos": {
+    "Voltagem": [
+      "110V",
+      "220V",
+      "Bivolt"
+    ],
+    "Volume": [
+      "900ml",
+      "3,6L",
+      "18L"
+    ],
+    "Peso": [
+      "300g",
+      "500g",
+      "1kg",
+      "5kg"
+    ],
+    "Numeracao (alfaiataria)": [
+      "46",
+      "48",
+      "50",
+      "52",
+      "54",
+      "56"
+    ],
+    "Numeracao (calca)": [
+      "36",
+      "38",
+      "40",
+      "42",
+      "44",
+      "46",
+      "48"
+    ],
+    "Numeracao (calcado)": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ]
+  },
+  "exemplo_variations_no_payload_do_produto": [
+    {
+      "sku": "SKU-001-BRA-P",
+      "price": 219.9,
+      "stock": 100,
+      "variation_weight": 0.3,
+      "variation_width": 30.0,
+      "variation_height": 4.0,
+      "variation_depth": 22.0,
+      "packaging_weight": 0.35,
+      "packaging_width": 32.0,
+      "packaging_height": 5.0,
+      "packaging_depth": 24.0,
+      "images": [],
+      "values": [
+        {
+          "variation_id": "{{variation_cor_id}}",
+          "name": "Cor",
+          "value": "Branco"
+        },
+        {
+          "variation_id": "{{variation_tamanho_id}}",
+          "name": "Tamanho",
+          "value": "P"
+        }
+      ]
+    },
+    {
+      "sku": "SKU-001-BRA-M",
+      "price": 219.9,
+      "stock": 100,
+      "variation_weight": 0.3,
+      "variation_width": 30.0,
+      "variation_height": 4.0,
+      "variation_depth": 22.0,
+      "packaging_weight": 0.35,
+      "packaging_width": 32.0,
+      "packaging_height": 5.0,
+      "packaging_depth": 24.0,
+      "images": [],
+      "values": [
+        {
+          "variation_id": "{{variation_cor_id}}",
+          "name": "Cor",
+          "value": "Branco"
+        },
+        {
+          "variation_id": "{{variation_tamanho_id}}",
+          "name": "Tamanho",
+          "value": "M"
+        }
+      ]
+    }
+  ]
+}

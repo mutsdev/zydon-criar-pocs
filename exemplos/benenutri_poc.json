@@ -1,0 +1,604 @@
+{
+  "empresa": "Benenutri",
+  "descricao_empresa": "Distribuidora de nutrição clínica e produtos para saúde sediada em Brasília (DF) com unidade em Palmas (TO), atendendo hospitais, clínicas, home care e farmácias nos 27 estados com linhas de nutrição enteral e parenteral, suplementação oral, dispositivos de ostomia e cateterismo, curativos avançados e medicamentos.",
+  "gerado_em": "2026-08-19",
+  "setor": "Saúde — Distribuição de Nutrição Clínica e Produtos Hospitalares",
+  "portal_name": "BENENUTRI POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Benenutri",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Benenutri",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Nutrição Enteral e Oral",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Nutrição Enteral e Oral",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Ostomia e Cateterismo",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Ostomia e Cateterismo",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Curativos Avançados",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Curativos Avançados",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "BEN-NUT-001 — Dieta Enteral Hiperproteica 1.5 kcal/ml 1000ml",
+          "temp_image_url": "https://benenutri.com/wp-content/uploads/2025/10/diben_1_5_hp_1000ml_23_1_b5b48deb26fffcbc9b295774a2bd336d.webp",
+          "payload": {
+            "name": "Dieta Enteral Hiperproteica 1.5 kcal/ml 1000ml",
+            "sku": "BEN-NUT-001",
+            "description": "Dieta enteral líquida pronta para uso, hipercalórica e hiperproteica, indicada para pacientes com necessidade proteica elevada e restrição de volume. Frasco de 1000ml em sistema fechado, para administração por sonda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 96.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "BEN-NUT-002 — Suplemento Cremoso Hipercalórico Baunilha 125g",
+          "temp_image_url": "https://benenutri.com/wp-content/uploads/2025/10/fresubin_creme_baunilha_125g.webp",
+          "payload": {
+            "name": "Suplemento Cremoso Hipercalórico Baunilha 125g",
+            "sku": "BEN-NUT-002",
+            "description": "Suplemento oral em consistência de creme, hipercalórico e hiperproteico, indicado para pacientes com disfagia. Copo de 125g sabor baunilha, pronto para consumo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.8,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "BEN-NUT-003 — Dieta Enteral Hiperproteica em Bag 500ml",
+          "temp_image_url": "https://benenutri.com/wp-content/uploads/2025/10/fresubin_hp_energy_500ml.webp",
+          "payload": {
+            "name": "Dieta Enteral Hiperproteica em Bag 500ml",
+            "sku": "BEN-NUT-003",
+            "description": "Dieta enteral líquida hiperproteica e hipercalórica em sistema fechado (bag de 500ml), pronta para uso em bomba de infusão ou gravitacional.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 52.4,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "BEN-NUT-004 — Suplemento Nutricional em Pó Sabor Neutro 400g",
+          "temp_image_url": "https://benenutri.com/wp-content/uploads/2026/07/trophic-basic.webp",
+          "payload": {
+            "name": "Suplemento Nutricional em Pó Sabor Neutro 400g",
+            "sku": "BEN-NUT-004",
+            "description": "Suplemento nutricional completo em pó, sabor neutro, para diluição em água ou enriquecimento de preparações. Lata de 400g com medidor.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 88.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "BEN-NUT-005 — Bebida Nutricional Clear Sabor Maçã 200ml",
+          "temp_image_url": "https://benenutri.com/wp-content/uploads/2026/04/Fresubin_Jucy_Maca_2.png",
+          "payload": {
+            "name": "Bebida Nutricional Clear Sabor Maçã 200ml",
+            "sku": "BEN-NUT-005",
+            "description": "Suplemento oral líquido translúcido sabor maçã, isento de lactose e gordura, com alta aceitação em pré e pós-operatório. Frasco de 200ml.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 21.5,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "BEN-OST-006 — Cateter Urinário Intermitente Hidrofílico CH12",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_908828-MLB101456765235_122025-E--speedicath-standard-fem-ch-12-coloplast-cx-30un.webp",
+          "payload": {
+            "name": "Cateter Urinário Intermitente Hidrofílico CH12",
+            "sku": "BEN-OST-006",
+            "description": "Cateter de cateterismo intermitente com revestimento hidrofílico e bolsa de ativação, pronto para uso. Calibre CH12, 40cm — uso único, estéril.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 23.9,
+            "minimum_for_sale": 30,
+            "multiple_for_sale": 30
+          }
+        },
+        {
+          "label": "BEN-OST-007 — Bolsa de Colostomia Duas Peças 60mm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_752199-MLU78155824068_082024-E.webp",
+          "payload": {
+            "name": "Bolsa de Colostomia Duas Peças 60mm",
+            "sku": "BEN-OST-007",
+            "description": "Bolsa coletora fechada de sistema duas peças com filtro de carvão ativado e acoplamento mecânico de 60mm. Caixa com 30 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 268.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "BEN-OST-008 — Base Adesiva Plana Recortável 60mm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_845147-MLA112314569500_062026-E.webp",
+          "payload": {
+            "name": "Base Adesiva Plana Recortável 60mm",
+            "sku": "BEN-OST-008",
+            "description": "Base adesiva plana com barreira protetora de pele, recortável de 10 a 55mm, para sistemas de ostomia de duas peças com acoplamento de 60mm. Caixa com 5 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 142.5,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "BEN-CUR-009 — Cobertura de Espuma com Silicone 10x10cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_690373-MLB104111468189_012026-E--curativo-molnlycke-mepilex-espuma-e-silicone-10x10cm--1un.webp",
+          "payload": {
+            "name": "Cobertura de Espuma com Silicone 10x10cm",
+            "sku": "BEN-CUR-009",
+            "description": "Cobertura de espuma de poliuretano com adesivo de silicone suave, para feridas com exsudato moderado a intenso. Unidade estéril de 10x10cm.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 29.8,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "BEN-CUR-010 — Curativo Hidrocoloide Extrafino 15x15cm",
+          "temp_image_url": "https://http2.mlstatic.com/D_Q_NP_2X_903705-MLB78249543160_082024-E.webp",
+          "payload": {
+            "name": "Curativo Hidrocoloide Extrafino 15x15cm",
+            "sku": "BEN-CUR-010",
+            "description": "Curativo hidrocoloide extrafino para feridas superficiais e prevenção de lesão por pressão, com bordas afiladas. Unidade estéril de 15x15cm.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 36.7,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Benenutri",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Benenutri — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Benenutri",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Benenutri — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Nutricao Enteral e Oral",
+          "salvar_id_como": "criteria_cat_nutricao_id",
+          "payload": {
+            "name": "Benenutri — Nutrição Enteral e Oral (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Ostomia e Cateterismo",
+          "salvar_id_como": "criteria_cat_ostomia_id",
+          "payload": {
+            "name": "Benenutri — Ostomia e Cateterismo (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Curativos Avancados",
+          "salvar_id_como": "criteria_cat_curativos_id",
+          "payload": {
+            "name": "Benenutri — Curativos Avançados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Benenutri",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Benenutri",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 4
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Benenutri",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Benenutri",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 17
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Benenutri",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Benenutri",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 32
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Nutricao Enteral e Oral",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Benenutri — Nutrição Enteral e Oral",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Nutricao Enteral e Oral",
+                "criteria_id": "{{criteria_cat_nutricao_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 12,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 36,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 72,
+                    "type": "PERCENTAGE",
+                    "value": 15,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Ostomia e Cateterismo | Benenutri",
+          "salvar_id_como": "desconto_fixo_ostomia_id",
+          "payload": {
+            "name": "7% OFF Benenutri — Ostomia e Cateterismo",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Ostomia e Cateterismo",
+                "criteria_id": "{{criteria_cat_ostomia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 11% — Curativos Avancados | Benenutri",
+          "salvar_id_como": "desconto_fixo_curativos_id",
+          "payload": {
+            "name": "11% OFF Benenutri — Curativos Avançados",
+            "start_date": "2026-08-19",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "11% OFF Curativos Avancados",
+                "criteria_id": "{{criteria_cat_curativos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 11,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
