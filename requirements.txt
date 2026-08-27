@@ -1,2 +1,6 @@
 requests
 python-dotenv
+
+# Gerador de banners (Identidade Visual/): composicao e checagens do degrau 1.
+Pillow
+numpy

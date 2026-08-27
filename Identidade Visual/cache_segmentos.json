@@ -1,0 +1,24 @@
+{
+  "autopecas-e-filtros-automotivos": {
+    "objetos": [
+      "Filtro de ar automotivo plissado",
+      "Filtro de óleo metálico cilíndrico",
+      "Disco de freio ventilado de aço",
+      "Amortecedor automotivo com mola helicoidal",
+      "Vela de ignição com detalhe cerâmico",
+      "Correia dentada de borracha preta"
+    ],
+    "ambiente": "Prateleiras industriais altas de um centro de distribuição logístico de autopeças bem iluminado."
+  },
+  "distribuidora-de-autopecas": {
+    "objetos": [
+      "Discos de freio metálicos",
+      "Velas de ignição",
+      "Amortecedores automotivos",
+      "Correia dentada de borracha",
+      "Filtro de óleo metálico liso sem marca",
+      "Conjunto de pastilhas de freio"
+    ],
+    "ambiente": "Corredores de um amplo galpão logístico com prateleiras industriais altas e caixas organizadas."
+  }
+}

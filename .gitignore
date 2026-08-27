@@ -6,3 +6,7 @@ Arquivos Json/saidas/*
 !Arquivos Json/saidas/.gitkeep
 
 __pycache__/
+
+# Saidas do gerador de banners: logo do cliente, cenas e pecas prontas.
+# E dado de cliente, e segue a mesma regra de "Arquivos Json/saidas".
+Identidade Visual/saidas/

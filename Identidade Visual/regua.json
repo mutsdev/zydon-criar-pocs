@@ -1,0 +1,46 @@
+{
+  "_leia": "Limiares da régua. Ajustar AQUI, não no código. Ver contato.html para decidir. Valores iniciais são chute calibrável (plano, §5).",
+  "logo": {
+    "lado_minimo_px": 200,
+    "aspecto_maximo": 6.0,
+    "razao_opaca_minima": 0.05,
+    "tolerancia_fundo_chapado": 18,
+    "contraste_logo_minimo": 2.0,
+    "fracao_logo_visivel_minima": 0.35
+  },
+  "mecanico": {
+    "peso_maximo_kb": 700,
+    "desvio_luminancia_minimo": 12.0,
+    "borda_uniforme_maxima": 0.03,
+    "energia_borda_minima": 3.0,
+    "cobertura_paleta_minima": 0.25,
+    "delta_e_paleta": 45.0,
+    "matiz_intruso_maximo": 0.3,
+    "respiro_minimo": 0.1,
+    "variancia_respiro": 14.0,
+    "costura_variancia_maxima": 62.0,
+    "contraste_wcag_minimo": 4.5,
+    "folga_arredondamento_logo_px": 1.0,
+    "contraste_wcag_minimo_grande": 3.0,
+    "corpo_considerado_grande": 24,
+    "_calibracao": "energia_borda_minima e delta_e_paleta foram medidos contra 6 fotos reais em 26/08/2026, nao chutados. Ver README."
+  },
+  "juiz": {
+    "modelo": "gemini-3.6-flash",
+    "nota_minima": 4,
+    "fatais": [
+      "tem_texto_ou_letras",
+      "tem_logotipo_ou_marca",
+      "tem_deformacao_anatomica",
+      "tem_objeto_duplicado",
+      "tem_artefato",
+      "tem_elemento_cortado",
+      "composicao_entulhada",
+      "cor_destoa_da_paleta",
+      "parece_banco_de_imagens_generico"
+    ],
+    "exigidos_verdadeiros": [
+      "cena_condiz_com_o_segmento"
+    ]
+  }
+}
