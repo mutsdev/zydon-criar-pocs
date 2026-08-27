@@ -1,0 +1,585 @@
+{
+  "empresa": "Aroca Mercearia",
+  "descricao_empresa": "Mercearia fina sediada em Belo Horizonte (MG) especializada em queijos artesanais brasileiros — cabra, búfala e leite cru de vaca da Serra da Mantiqueira e da Chapada Diamantina — complementada por charcutaria artesanal, geleias, doces de tacho, cafés especiais e congelados de padaria, atendendo restaurantes, empórios, adegas e food service.",
+  "gerado_em": "2026-08-27",
+  "setor": "Alimentos — Mercearia Fina e Queijos Artesanais",
+  "portal_name": "Aroca Mercearia POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Aroca Mercearia",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "Aroca Mercearia", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Queijos de Cabra",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Queijos de Cabra", "active": true, "images": [] }
+        },
+        {
+          "label": "Queijos de Vaca e Búfala",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Queijos de Vaca e Búfala", "active": true, "images": [] }
+        },
+        {
+          "label": "Mercearia e Charcutaria",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Mercearia e Charcutaria", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "ARO-CAB-001 — Queijo de Cabra Boursin",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Queijo-de-Cabra-boursin-scaled.jpg",
+          "payload": {
+            "name": "Queijo de Cabra Boursin",
+            "sku": "ARO-CAB-001",
+            "description": "Queijo de leite de cabra tipo Boursin, massa cremosa e untável com sabor lácteo suave e final levemente ácido. Peça individual, ideal para tábuas de frios e couvert.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 25.00,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "ARO-CAB-002 — Queijo de Cabra Buchette Tradicional",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Queijo-Buchete-Tradicional-scaled.jpg",
+          "payload": {
+            "name": "Queijo de Cabra Buchette Tradicional",
+            "sku": "ARO-CAB-002",
+            "description": "Buchette de leite de cabra no formato de tronco, casca fina e massa branca de textura macia. Versão tradicional, sem condimentos, para consumo fresco.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 25.00,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "ARO-CAB-003 — Queijo de Cabra Meia Cura Capribée",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Queijo-Cabra-Meia-Cura-scaled.jpg",
+          "payload": {
+            "name": "Queijo de Cabra Meia Cura Capribée",
+            "sku": "ARO-CAB-003",
+            "description": "Queijo de leite de cabra de maturação intermediária da cooperativa Capribée, massa semidura e sabor mais concentrado que o fresco. Boa performance em gratinados e tábuas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 35.00,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "ARO-CAB-004 — Queijo de Cabra Petit Formage Pote",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Queijo-Petit-Fromege.jpeg",
+          "payload": {
+            "name": "Queijo de Cabra Petit Formage Pote",
+            "sku": "ARO-CAB-004",
+            "description": "Bolinhas de queijo de cabra tipo Petit Fromage conservadas em azeite, em pote de porção individual. Textura que derrete na boca e sabor lácteo delicado.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.00,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "ARO-CAB-005 — Chevrotin Zero Lactose Redondo",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-21-at-11.28.24-1.jpeg",
+          "payload": {
+            "name": "Chevrotin Zero Lactose Redondo",
+            "sku": "ARO-CAB-005",
+            "description": "Queijo de leite de cabra maturado por 60 dias, zero lactose confirmado em laboratório, direto da cooperativa Capribée. Peça redonda de massa firme e sabor marcante.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 55.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "ARO-CAB-006 — Queijo de Cabra Petit Formage Balde 1,3 kg",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Queijo-de-Cabra-Tipo-Petit-Fromage-2.jpg",
+          "payload": {
+            "name": "Queijo de Cabra Petit Formage Balde 1,3 kg",
+            "sku": "ARO-CAB-006",
+            "description": "Formato food service do Petit Fromage de cabra: balde de 1,3 kg com bolinhas em azeite, para restaurantes e empórios que porcionam no balcão.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 246.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "ARO-BUF-001 — Manta de Mussarela de Búfala",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/06/MANTA-DE-BUFALA-e1749236064236.jpg",
+          "payload": {
+            "name": "Manta de Mussarela de Búfala",
+            "sku": "ARO-BUF-001",
+            "description": "Manta de mussarela produzida com leite de búfala fresco em processo artesanal, combinando textura macia e sabor suave. Formato em folha, para enrolados e finalizações.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 18.00,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "ARO-BUF-002 — Mussarela de Búfala Zero Lactose",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/06/IMG_3729-1-scaled.jpg",
+          "payload": {
+            "name": "Mussarela de Búfala Zero Lactose",
+            "sku": "ARO-BUF-002",
+            "description": "Mussarela de leite de búfala zero lactose, rica em proteínas e cálcio e com menos colesterol que o leite de vaca. Bolas em conserva, prontas para saladas e pizzas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 30.00,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "ARO-VAC-001 — Queijo Nobre Gabiru",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/06/IMG_3732-scaled.jpg",
+          "payload": {
+            "name": "Queijo Nobre Gabiru",
+            "sku": "ARO-VAC-001",
+            "description": "Queijo artesanal de leite de vaca da linha nobre Gabiru, maturado em peça inteira, com casca natural e massa de sabor pronunciado. Indicado para tábuas de degustação.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 55.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "ARO-VAC-002 — Queijo Lá de Madre",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/06/IMG_3733-scaled.jpg",
+          "payload": {
+            "name": "Queijo Lá de Madre",
+            "sku": "ARO-VAC-002",
+            "description": "Queijo de leite cru de vaca Jersey, massa semicozida, maturado em câmara fria com umidade e temperatura controladas. Perfis distintos conforme o tempo de cura.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 65.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "ARO-VAC-003 — Queijo Goa",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/06/IMG_3731-scaled.jpg",
+          "payload": {
+            "name": "Queijo Goa",
+            "sku": "ARO-VAC-003",
+            "description": "Queijo artesanal produzido na Serra da Mantiqueira (MG) com leite cru de vaca. Textura firme, sabor marcante e aroma adocicado que lembra queijos de longa maturação.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 96.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "ARO-MER-001 — Geleia Maranja de Pimenta",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/Maranja-de-Pimenta.jpeg",
+          "payload": {
+            "name": "Geleia Maranja de Pimenta",
+            "sku": "ARO-MER-001",
+            "description": "Geleia artesanal de maracujá com laranja e pimenta, equilibrando doce, acidez e ardência leve. Acompanhamento clássico para queijos de cabra e maturados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 35.00,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "ARO-MER-002 — Salame Nobre Defumado Vila Caipira",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/WhatsApp-Image-2025-05-30-at-13.27.40.jpeg",
+          "payload": {
+            "name": "Salame Nobre Defumado Vila Caipira",
+            "sku": "ARO-MER-002",
+            "description": "Salame artesanal defumado da Vila Caipira, cura lenta e defumação em lenha. Peça inteira para fatiar no balcão, complemento natural das tábuas de queijo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 35.00,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3
+          }
+        },
+        {
+          "label": "ARO-MER-003 — Café Torrado e Moído Diamante da Serra",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/09/IMAGEM-2-CAFE-DIAMANTE-DA-SERRA.jpg",
+          "payload": {
+            "name": "Café Torrado e Moído Diamante da Serra",
+            "sku": "ARO-MER-003",
+            "description": "Café especial de torra média vindo direto da Chapada Diamantina (BA), com corpo equilibrado, dulçor leve e aroma intenso. Torrado e moído para coador e prensa.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 38.00,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "ARO-MER-004 — Chipa Congelada Pacote 1,5 kg",
+          "temp_image_url": "https://arocamercearia.com.br/wp-content/uploads/2025/02/chipa.jpg",
+          "payload": {
+            "name": "Chipa Congelada Pacote 1,5 kg",
+            "sku": "ARO-MER-004",
+            "description": "Chipa paraguaia congelada em pacote de 1,5 kg, massa de polvilho com queijo pronta para assar. Formato food service para cafeterias e padarias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 120.00,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Aroca Mercearia",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Aroca Mercearia — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Aroca Mercearia",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Aroca Mercearia — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Queijos de Cabra",
+          "salvar_id_como": "criteria_cat_cabra_id",
+          "payload": {
+            "name": "Aroca Mercearia — Queijos de Cabra (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_0}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Mercearia e Charcutaria",
+          "salvar_id_como": "criteria_cat_mercearia_id",
+          "payload": {
+            "name": "Aroca Mercearia — Mercearia e Charcutaria (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_2}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Aroca Mercearia",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Aroca Mercearia",
+            "start_date": "2026-08-27",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Aroca Mercearia",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Aroca Mercearia",
+            "start_date": "2026-08-27",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 16
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Aroca Mercearia",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Aroca Mercearia",
+            "start_date": "2026-08-27",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 32
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Queijos de Cabra | Aroca Mercearia",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Aroca Mercearia",
+            "start_date": "2026-08-27",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Queijos de Cabra",
+                "criteria_id": "{{criteria_cat_cabra_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 12, "type": "PERCENTAGE", "value": 5, "is_product_value": false },
+                  { "minimum_quantity": 24, "type": "PERCENTAGE", "value": 9, "is_product_value": false },
+                  { "minimum_quantity": 60, "type": "PERCENTAGE", "value": 14, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Mercearia e Charcutaria | Aroca Mercearia",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF Aroca Mercearia — Mercearia e Charcutaria",
+            "start_date": "2026-08-27",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Mercearia e Charcutaria",
+                "criteria_id": "{{criteria_cat_mercearia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 8, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
