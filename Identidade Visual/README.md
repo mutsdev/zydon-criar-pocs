@@ -76,6 +76,17 @@ se ficou pesado, a resposta é gravar melhor (`salvar.py`).
 python "Identidade Visual/subir_identidade.py" --org pocs     --portal <uuid-do-portal> --logo caminho/logo.png --nome "Cliente"
 ```
 
+### A cor do portal
+
+Por padrão ele grava também a **cor primária `#000000`** — o preto do padrão
+Zydon. Isso existe porque o portal duplicado nascia com o azul `#4A90D9` da org
+e ninguém trocava: nos 109 JSONs de POC feitos até 27/08/2026, **nenhum** define
+`portal_color`. O padrão das orgs em `credenciais.py` passou a ser preto, então
+portal novo já nasce certo; o `--cor-portal` conserta os que existem.
+
+Para não mexer na cor, passe `--cor-portal ''`. O valor vai sem `#`, que é o
+formato que o GET da aparência devolve.
+
 **Simulação é o padrão.** Sem `--gravar` ele prepara tudo, mostra o que faria e
 não escreve. Isso grava num portal de produção que alguém pode estar
 apresentando — o padrão seguro é não escrever. A aparência anterior vai para

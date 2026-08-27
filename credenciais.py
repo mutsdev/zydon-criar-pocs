@@ -49,19 +49,19 @@ ORGANIZACOES = {
     "zydon": {
         "nome": "Apresentação Zydon",
         "portal_origem_id": None,
-        "portal_cor": "#4A90D9",
+        "portal_cor": "#000000",
         "standard_unit_id": 2,
     },
     "poc": {
         "nome": "Apresentação POC",
         "portal_origem_id": None,
-        "portal_cor": "#4A90D9",
+        "portal_cor": "#000000",
         "standard_unit_id": 2,
     },
     "pocs": {
         "nome": "Apresentação POCs",
         "portal_origem_id": "3b5403e6-de03-4ff5-a1d3-ad91f3875928",
-        "portal_cor": "#4A90D9",
+        "portal_cor": "#000000",
         "standard_unit_id": 2,
     },
     # Org 019ec802-8eb8-7f1e-9dfd-87440804b3e1 ("integracoes") — a que aparece no
@@ -73,7 +73,7 @@ ORGANIZACOES = {
         # A outra loja da org é "integracoes" = a4b3e043-1110-4921-922b-af409807e1be.
         # Deixe None se quiser rodar SÓ o catálogo, sem duplicar portal.
         "portal_origem_id": "8bc03a66-7415-47ab-a8fd-cc7dcd0086e1",
-        "portal_cor": "#4A90D9",
+        "portal_cor": "#000000",
         # Aqui o inteiro 2 EXISTE ("Unidade (UN) = 2"), então vale o padrão.
         # Outras: CX=a23e921e-03e2-4f3b-8082-fe6efb8048a6,
         #         KG=44609356-2d4d-4a10-89ab-368349d5ba11,

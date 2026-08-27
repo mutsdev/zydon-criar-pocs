@@ -73,6 +73,9 @@ def main(argv=None):
                         "inteira: encaixa a logo toda (some na aba a 16px se a "
                         "logo for larga). inicial: sempre a letra.")
     p.add_argument("--cor", help="cor primaria em hex; manda sobre a extraida")
+    p.add_argument("--cor-portal", default="#000000",
+                   help="cor primaria do portal. Padrao: #000000, o preto do "
+                        "padrao Zydon. Use --cor-portal '' para nao mexer nela.")
     p.add_argument("--gravar", action="store_true",
                    help="GRAVA de verdade. Sem isto, so simula.")
     p.add_argument("--regua", help="regua.json alternativa")
@@ -138,7 +141,8 @@ def main(argv=None):
         print("Faria, nesta ordem:")
         print(f"  POST /sales/resource-files      <- {caminho_logo.name}")
         print(f"  POST /sales/resource-files      <- {caminho_favicon.name}")
-        print("  PUT  /b2b/portals/appearance    brand_image + favicon_image")
+        print("  PUT  /b2b/portals/appearance    brand_image + favicon_image"
+              + (f" + color {args.cor_portal}" if args.cor_portal else ""))
         print("\nOlhe os dois arquivos acima. Para gravar, repita com --gravar.")
         return 0
 
@@ -156,8 +160,12 @@ def main(argv=None):
     # Passo 2: um PUT so, com os dois campos. Dois PUTs seriam duas chances de
     # deixar a aparencia pela metade se o segundo falhasse.
     print("Gravando a aparencia...")
-    mod_portal.atualizar_aparencia(jwt, antes, {"brand_image": id_logo,
-                                                "favicon_image": id_favicon})
+    mudancas = {"brand_image": id_logo, "favicon_image": id_favicon}
+    if args.cor_portal:
+        # O GET devolve a cor SEM "#" (ex.: "4A90D9"). Mandar com # gravaria um
+        # valor de formato diferente do que o portal ja usa.
+        mudancas["color"] = args.cor_portal.lstrip("#").upper()
+    mod_portal.atualizar_aparencia(jwt, antes, mudancas)
 
     # Passo 3: conferir o que ficou NO AR. O status da resposta nao basta — o
     # endpoint dedicado do spec respondia 200 sem trocar nada.
