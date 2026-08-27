@@ -25,7 +25,12 @@ DATABASE_IDS_CONHECIDOS = {
     "20ac282d-5a30-4f4d-aac4-1e625fd0e814": "org 019ec802 'integracoes' (Sankhya B2B - AGROMINAS/Portal Base)",
     "1c406da5-e74a-43c3-a80c-8ece65ba804f": "org 019e6f55 'integracoes' (chaves antigas - NAO usar)",
 }
-TP_PROFILES_PADRAO = ["2", "3", "4"]  # Tabela 1/2/3
+# Perfis sao TIPOS DE COMPRADOR, e sao POR ORGANIZACAO (como database_id e
+# portal_origem_id). Na org de POC: 2=Industria/Manufatura, 3=Distribuidor,
+# 4=Varejo — uma tabela de preco para cada. NAO sao faixas de preco nem o
+# segmento do cliente; ja confundiram com os dois. Listar numa org nova:
+#   GET https://api.zydon.com.br/api/sales/profiles?perPage=100
+TP_PROFILES_PADRAO = ["2", "3", "4"]
 
 erros, avisos = [], []
 

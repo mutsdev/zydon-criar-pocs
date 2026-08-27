@@ -34,9 +34,15 @@ POC_PORTAIS = RAIZ
 # Os scripts não moram em src/, então não entram pelo pythonpath do pytest.
 sys.path.insert(0, POC_PORTAIS)
 
-credenciais = pytest.importorskip(
-    "credenciais", reason="credenciais.py não encontrado na raiz"
-)
+try:
+    import credenciais
+except ImportError as _erro:
+    # `importorskip` dizia "credenciais.py não encontrado na raiz", mas o import
+    # falha também quando falta uma DEPENDÊNCIA dele — python-dotenv, na prática.
+    # A mensagem mandava procurar um arquivo que estava lá o tempo todo.
+    pytest.skip(f"credenciais não importável ({_erro}). Se for dependência "
+                f"faltando, instale o requirements.txt.",
+                allow_module_level=True)
 
 
 def _carregar_criar_poc():

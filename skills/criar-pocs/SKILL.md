@@ -47,6 +47,30 @@ e adaptar, NUNCA recriar do zero. Grade de variações: bloco pronto em
 `{empresa}_poc.json` (ex.: `florese_poc.json`). **Nunca** `poc_{empresa}.json`
 (padrão antigo, o validador bloqueia).
 
+## Coletar do site: procure a API antes de ler a página
+
+**Se o site for WordPress, teste a Store API do WooCommerce antes de raspar
+HTML:**
+
+```
+GET https://<site>/wp-json/wc/store/v1/products?per_page=100
+```
+
+Ela é pública e devolve o catálogo estruturado — nome, descrição, preço,
+categoria e imagem — sem depender de como a página foi marcada. Na Aroca
+Mercearia (27/08/2026) trouxe os 38 produtos de uma vez. Vale o teste sempre:
+muito cliente B2B roda WooCommerce.
+
+**A armadilha: a Store API devolve preço em CENTAVOS.** Confira
+`prices.currency_minor_unit` (vale `2`) e divida por 100 antes de escrever no
+JSON. O balde de Petit Fromage chega como `24600` e vale R$ 246,00. O validador
+tenta pegar isso pela mediana dos preços, mas **a mediana não dispara quando o
+catálogo tem muito item barato** — foi o caso ali. Converta na origem; não
+conte com a rede de proteção.
+
+Se o preço não for público — o caso mais comum em B2B — diga isso
+explicitamente na entrega, em vez de estimar em silêncio.
+
 ## Regras que o template não expressa sozinho
 
 ### Produtos (9–15, nunca mais de 15)
@@ -79,6 +103,15 @@ usa `is_profile`/`is_partner`/… (**sem** `_specific`), diferente de
 `price-tables`.
 
 ### Tabelas de preço
+
+**Os perfis são tipos de COMPRADOR, não segmentos do cliente.** Na org de POC:
+`2` = Indústria/Manufatura, `3` = Distribuidor, `4` = Varejo — uma tabela para
+cada, e é isso que o validador exige. Não procure um perfil "do ramo do
+cliente": ele não existe, e uma mercearia fina vende para varejo e distribuidor
+como qualquer outra empresa. Perfis são **por organização**, como `database_id`
+e `portal_origem_id`; listar numa org nova:
+`GET /api/sales/profiles?perPage=100`.
+
 Sempre **3 TPs, segmentos 2, 3 e 4**, nomeadas "Tabela 1/2/3 | Empresa" (sem
 nome de segmento). Desconto em `criteria[0].value` — **nunca**
 `discount_percentage` ou `minimum_order_value` (400). `profiles` sempre
