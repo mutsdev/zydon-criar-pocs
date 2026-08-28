@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-08-28-005",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/fornello_conservas_poc.json",
+  "logo_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/cropped-cropped-LOGO-NOVO-1-1-1.png",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "O pedido apontou para o Instagram (instagram.com/fornello_conservas/), que respondeu 302 para a tela de login e 429 — perfil de rede social nao e raspavel. O site oficial da empresa, www.fornello.com.br, linka esse mesmo @fornello_conservas no rodape, o que confirma a identidade; toda a coleta saiu de la. E WooCommerce: a Store API publica devolveu 99 produtos com preco (em centavos, ja convertidos para reais) e imagem propria. Foram escolhidos 12 itens cobrindo as 3 categorias, todos com foto do proprio site — 12/12 aprovadas no verificar_imagens.py, nenhuma substituida. min/mult seguem as caixas anunciadas no proprio catalogo (balde caixa com 4, pote com 10, vidro/pouch com 24); os quatro itens de menor valor ficaram em 1/1 para venda avulsa. Maior desconto no perfil Distribuidor (3), que e o canal principal de uma industria de conservas. Callback nao foi tentado: a rotina roda na nuvem, cujo egresso so aceita CONNECT na 443, e o callback_url do Mitra atende na 8080 (ver ENTREGA.md) — a entrega vem pelo repositorio. Branch: claude/zen-bohr-atllzh, a branch designada desta sessao, e nao claude/poc-fornello-conservas-mitra-2026-08-28-005; a correlacao e por este pedido_id."
+  },
+  "sessao_url": "https://claude.ai/code/session_01LZKarJF1rhckXn7rks89Qd"
+}
