@@ -1,0 +1,617 @@
+{
+  "empresa": "Tudo do Mar",
+  "descricao_empresa": "Indústria de pescados e frutos do mar que abastece restaurantes, hotéis, resorts, hipermercados e distribuidores em PE, PB, AL e RN, com mais de 40 anos de operação, produto padronizado e entrega regular.",
+  "gerado_em": "2026-08-28",
+  "setor": "Alimentos — Pescados e Frutos do Mar",
+  "portal_name": "Tudo do Mar POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Tudo do Mar",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Tudo do Mar",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Peixes",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Peixes",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Camarões",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Camarões",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Polvo e Moluscos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Polvo e Moluscos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "TDM-PXE-001 — Tilápia Inteira Eviscerada Congelada 800g a 1kg",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/inteiros.jpg",
+          "payload": {
+            "name": "Tilápia Inteira Eviscerada Congelada 800g a 1kg",
+            "sku": "TDM-PXE-001",
+            "description": "Tilápia inteira eviscerada, congelada em IQF e classificada por peso de 800 g a 1 kg. Padronização de peça garantida por lote, ideal para grelhados e assados de operação em alto volume. Caixa master com 10 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 209.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-PXE-002 — Filé de Tilápia Congelado sem Espinha",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/file.jpg",
+          "payload": {
+            "name": "Filé de Tilápia Congelado sem Espinha",
+            "sku": "TDM-PXE-002",
+            "description": "Filé de tilápia sem pele e sem espinha, congelado individualmente, com corte uniforme e alto rendimento de cozinha. Reduz perda no pré-preparo e padroniza a porção no prato. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 219.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "TDM-PXE-003 — Posta de Salmão Congelada 200g",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/posta.jpg",
+          "payload": {
+            "name": "Posta de Salmão Congelada 200g",
+            "sku": "TDM-PXE-003",
+            "description": "Posta de salmão cortada em porção de 200 g, congelada e embalada a vácuo. Corte pronto para grelha ou forno, com gramatura fixa para controle de ficha técnica. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 395.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "TDM-PXE-004 — Filé de Pescada Amarela Congelado",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3043734/VF4qT-qqCUAAAAAAAAF4QQ.jpg",
+          "payload": {
+            "name": "Filé de Pescada Amarela Congelado",
+            "sku": "TDM-PXE-004",
+            "description": "Filé de pescada amarela sem pele, congelado, de carne branca e firme. Peixe de captura regional, indicado para moquecas, ensopados e pratos de menu executivo. Caixa com 10 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 379.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "TDM-PXE-005 — Filé de Salmão Congelado sem Pele",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3665441/VF4qT-qqCUAAAAAAAAcCNQ.jpg",
+          "payload": {
+            "name": "Filé de Salmão Congelado sem Pele",
+            "sku": "TDM-PXE-005",
+            "description": "Lombo de salmão sem pele e sem espinha, congelado e embalado a vácuo. Peça inteira para corte na cozinha, com marmoreio uniforme e rendimento previsível. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 495.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "TDM-PXE-006 — Posta de Cação Congelada",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3042791/VF4qT-qqCUAAAAAAAAHtUw.jpg",
+          "payload": {
+            "name": "Posta de Cação Congelada",
+            "sku": "TDM-PXE-006",
+            "description": "Posta de cação limpa e congelada, sem pele e sem cartilagem. Carne branca de sabor suave e custo controlado, muito usada em ensopados e pratos de refeição coletiva. Caixa com 10 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 289.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-CAM-007 — Camarão Cinza Inteiro Congelado 40/50",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/camarao.jpg",
+          "payload": {
+            "name": "Camarão Cinza Inteiro Congelado 40/50",
+            "sku": "TDM-CAM-007",
+            "description": "Camarão cinza inteiro com casca e cabeça, classificação 40/50 peças por quilo, congelado em bloco. Base de caldos, risotos e pratos regionais. Caixa com 10 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 479.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-CAM-008 — Camarão Cinza Graúdo Congelado 20/30",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3530497/VF4qT-qqCUAAAAAAAAazIg.jpg",
+          "payload": {
+            "name": "Camarão Cinza Graúdo Congelado 20/30",
+            "sku": "TDM-CAM-008",
+            "description": "Camarão cinza graúdo inteiro, classificação 20/30 peças por quilo, congelado. Calibre de apresentação para pratos de alto ticket em hotelaria e restaurantes. Caixa com 10 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 719.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-CAM-009 — Camarão VG Limpo Descascado Congelado",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3097163/VF4qT-qqCUAAAAAAAATAcg.jpg",
+          "payload": {
+            "name": "Camarão VG Limpo Descascado Congelado",
+            "sku": "TDM-CAM-009",
+            "description": "Camarão VG descascado e eviscerado, congelado em IQF. Chega pronto para a chapa, elimina o pré-preparo e reduz mão de obra na cozinha. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 489.5,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "TDM-CAM-010 — Camarão Rosa Limpo Descascado Congelado",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3097161/VF4qT-qqCUAAAAAAAATAbg.jpg",
+          "payload": {
+            "name": "Camarão Rosa Limpo Descascado Congelado",
+            "sku": "TDM-CAM-010",
+            "description": "Camarão rosa descascado e eviscerado, congelado em IQF, com coloração e calibre uniformes. Indicado para saladas, massas e entradas frias de buffet. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 559.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "TDM-MOL-011 — Polvo Inteiro Limpo Congelado 1 a 1,5kg",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/Polvo.jpg",
+          "payload": {
+            "name": "Polvo Inteiro Limpo Congelado 1 a 1,5kg",
+            "sku": "TDM-MOL-011",
+            "description": "Polvo inteiro limpo e eviscerado, congelado, com peça de 1 a 1,5 kg. Já passa por amaciamento na indústria, o que encurta o tempo de cocção. Caixa com 6 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 569.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-MOL-012 — Lula Inteira Limpa Congelada",
+          "temp_image_url": "https://zonasul.vteximg.com.br/arquivos/ids/3048570/VF4qT-qqCUAAAAAAAAHtcw.jpg",
+          "payload": {
+            "name": "Lula Inteira Limpa Congelada",
+            "sku": "TDM-MOL-012",
+            "description": "Lula inteira limpa, sem pena e sem vísceras, congelada. Serve tanto para anéis empanados quanto para grelhados, com aproveitamento quase integral da peça. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 229.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "TDM-MOL-013 — Vôngole na Concha Congelado",
+          "temp_image_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/molusco.jpg",
+          "payload": {
+            "name": "Vôngole na Concha Congelado",
+            "sku": "TDM-MOL-013",
+            "description": "Vôngole na concha, lavado e congelado, pronto para uso em massas, caldeiradas e frutos do mar na casca. Item de giro alto em cardápio de frutos do mar. Caixa com 5 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 164.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Tudo do Mar",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Tudo do Mar — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Tudo do Mar",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Tudo do Mar — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Peixes",
+          "salvar_id_como": "criteria_cat_peixes_id",
+          "payload": {
+            "name": "Tudo do Mar — Peixes (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Camarões",
+          "salvar_id_como": "criteria_cat_camaroes_id",
+          "payload": {
+            "name": "Tudo do Mar — Camarões (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Tudo do Mar",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Tudo do Mar",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Tudo do Mar",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Tudo do Mar",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Tudo do Mar",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Tudo do Mar",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Tudo do Mar",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Tudo do Mar",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Tudo do Mar",
+                "criteria_id": "{{criteria_cat_peixes_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Camarões | Tudo do Mar",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Tudo do Mar — Camarões",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Tudo do Mar",
+                "criteria_id": "{{criteria_cat_camaroes_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
