@@ -30,6 +30,7 @@ for _fluxo in (sys.stdout, sys.stderr):
     except (AttributeError, ValueError):
         pass
 
+import cor as mod_cor  # noqa: E402
 import favicon as mod_favicon  # noqa: E402
 import logo as mod_logo  # noqa: E402
 import paleta as mod_paleta  # noqa: E402
@@ -76,6 +77,11 @@ def main(argv=None):
     p.add_argument("--cor-portal", default="#000000",
                    help="cor primaria do portal. Padrao: #000000, o preto do "
                         "padrao Zydon. Use --cor-portal '' para nao mexer nela.")
+    p.add_argument("--fundo-portal", default="#FFFFFF",
+                   help="cor do fundo do cabecalho, onde a logo aparece. "
+                        "Padrao: #FFFFFF. Nao e a --cor-portal: aquela e a cor "
+                        "primaria da marca no portal, esta e o fundo contra o "
+                        "qual a logo precisa ter contraste.")
     p.add_argument("--gravar", action="store_true",
                    help="GRAVA de verdade. Sem isto, so simula.")
     p.add_argument("--regua", help="regua.json alternativa")
@@ -98,8 +104,25 @@ def main(argv=None):
     rotulo = mod_segmento._chave(args.nome or args.portal[:8])
     trabalho = AQUI / "saidas" / rotulo / "identidade"
     trabalho.mkdir(parents=True, exist_ok=True)
+    # A logo do cabecalho tem que aparecer sobre o fundo do portal, que e
+    # branco. Marca de logo branca some por completo ali: a do Uze Nails mediu
+    # **0,000** de fracao visivel sobre branco, e o portal subiu com um
+    # cabecalho vazio que so da para notar olhando. Quando nao passa, vai o
+    # knockout — a silhueta pintada na cor legivel, que e a versao monocromatica
+    # que toda marca tem. Perde-se a policromia; ganha-se existir.
+    fundo_portal = mod_cor.de_hex(args.fundo_portal)
+    logo_portal, laudo_visivel = mod_logo.preparar_para_fundo(
+        logo_img, fundo_portal, limiares["logo"])
+    if laudo_visivel["modo"] == "original":
+        print(f"Cabecalho: logo visivel sobre {args.fundo_portal} "
+              f"({laudo_visivel['fracao_visivel']:.0%} dos pixels)")
+    else:
+        print(f"Cabecalho: [CORRIGIDO] so {laudo_visivel['fracao_visivel']:.0%} "
+              f"dos pixels apareciam sobre {args.fundo_portal}. Subindo em "
+              f"knockout {laudo_visivel['tinta']}.")
+
     caminho_logo = trabalho / "logo.png"
-    logo_img.save(caminho_logo)
+    logo_portal.save(caminho_logo)
 
     # 2. Favicon: derivado, salvo em disco para dar para olhar antes de subir.
     if args.favicon:
