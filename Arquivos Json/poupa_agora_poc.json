@@ -1,0 +1,617 @@
+{
+  "empresa": "Poupa Agora",
+  "descricao_empresa": "Atacadista de excedentes de indústria e varejo, especializada na intermediação de lotes de produtos próprios para consumo com validade curta. Reintegra ao mercado mercearia, molhos, limpeza e higiene em caixa fechada, com preço unitário e data de vencimento declarados por lote. Loja em loja.poupagora.com.br (OpenCart), atendimento (11) 4004-2671.",
+  "gerado_em": "2026-08-28",
+  "setor": "Alimentos e Bens de Consumo — Atacado de Excedentes e Lotes de Validade Curta",
+  "portal_name": "Poupa Agora POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Poupa Agora",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Poupa Agora",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1 — Mercearia Seca",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Mercearia Seca",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2 — Molhos e Condimentos",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Molhos e Condimentos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3 — Limpeza e Higiene",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Limpeza e Higiene",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "001194 — Fubá Mimoso 5x4 kg",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/001194-omietemplateprodutossite-poupaagora-2026-08-17t145559257conv-1000x1000.jpg",
+          "payload": {
+            "name": "Fubá Mimoso 5x4 kg",
+            "description": "Fubá de milho Mimoso em caixa com 5 pacotes de 4 kg (20 kg por caixa). Preço unitário de R$ 10,99 por pacote. Lote com vencimento em 10/10/2026 — giro rápido indicado para padaria, restaurante e mercado de bairro.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 54.95,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "001194"
+          }
+        },
+        {
+          "label": "005168 — Granola Natus Banana e Mel 12x250 g",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/005168-omietemplateprodutossite-poupaagora52conv-1000x1000.jpg",
+          "payload": {
+            "name": "Granola Natus Banana e Mel 12x250 g",
+            "description": "Granola Natus sabor banana e mel, caixa com 12 pacotes de 250 g. Preço unitário de R$ 3,69 por pacote. Lote com vencimento em 22/11/2026, disponibilidade de 615 caixas — volume suficiente para abastecer rede de lojas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 44.28,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "005168"
+          }
+        },
+        {
+          "label": "005169 — Granola Natus Banana e Mel 12x800 g",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/005169-omietemplateprodutossite-poupaagora51conv-1000x1000.jpg",
+          "payload": {
+            "name": "Granola Natus Banana e Mel 12x800 g",
+            "description": "Granola Natus banana e mel na embalagem família de 800 g, caixa com 12 unidades. Preço unitário de R$ 10,99. Lote com vencimento em 22/11/2026 e disponibilidade de 115 caixas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 131.88,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "005169"
+          }
+        },
+        {
+          "label": "64927752 — Ketchup Hellmann's Sachê 168x7 g",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/64927752-omietemplateprodutossite-poupaagora47conv-1000x1000.jpg",
+          "payload": {
+            "name": "Ketchup Hellmann's Sachê 168x7 g",
+            "description": "Ketchup Hellmann's em sachê individual de 7 g, caixa com 168 sachês. Preço unitário de R$ 0,06 por sachê. Lote com vencimento em 18/10/2026 e 1.620 caixas em estoque — formato de food service para lanchonete, delivery e refeição coletiva.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 10.08,
+            "minimum_for_sale": 20,
+            "multiple_for_sale": 20,
+            "sku": "64927752"
+          }
+        },
+        {
+          "label": "000431 — Maionese Alho e Ervas Kisabor 12x200 g",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/000431-omietemplateprodutossite-poupaagora-2026-08-17t141919440conv-1000x1000.jpg",
+          "payload": {
+            "name": "Maionese Alho e Ervas Kisabor 12x200 g",
+            "description": "Maionese Kisabor sabor alho e ervas, caixa com 12 potes de 200 g. Preço unitário de R$ 2,79 por pote. Lote com vencimento em 13/11/2026, disponibilidade de 243 caixas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 33.48,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "000431"
+          }
+        },
+        {
+          "label": "69999295 — Maionese Hellmann's Balde 6x3 kg",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/69999295-omietemplateprodutossite-poupaagora25conv-1000x1000.jpg",
+          "payload": {
+            "name": "Maionese Hellmann's Balde 6x3 kg",
+            "description": "Maionese Hellmann's em balde de 3 kg, caixa com 6 baldes. Preço unitário de R$ 32,89 por balde. Lote com vencimento em 16/10/2026 e 52 caixas disponíveis — linha profissional para cozinha industrial.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 197.34,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "69999295"
+          }
+        },
+        {
+          "label": "000447 — Molho 3 em 1 Kisabor 12x200 g",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/000447-omietemplateprodutossite-poupaagora-2026-08-17t143059267conv-1000x1000.jpg",
+          "payload": {
+            "name": "Molho 3 em 1 Kisabor 12x200 g",
+            "description": "Molho Kisabor 3 em 1, caixa com 12 potes de 200 g. Preço unitário de R$ 2,49 por pote. Lote com vencimento em 21/01/2027 — a validade mais longa do catálogo atual.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.88,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "000447"
+          }
+        },
+        {
+          "label": "62684857 — Mostarda Hellmann's Sachê 168x7 g — Lote Out/2026",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/62684857-omietemplateprodutossite-poupaagora19conv-1000x1000.jpg",
+          "payload": {
+            "name": "Mostarda Hellmann's Sachê 168x7 g — Lote Out/2026",
+            "description": "Mostarda Hellmann's em sachê de 7 g, caixa com 168 sachês. Preço unitário de R$ 0,06 por sachê. Lote com vencimento em 23/10/2026 e 3.268 caixas em estoque — o maior volume disponível no momento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 10.08,
+            "minimum_for_sale": 50,
+            "multiple_for_sale": 50,
+            "sku": "62684857"
+          }
+        },
+        {
+          "label": "65485729 — Mostarda Hellmann's Sachê 168x7 g — Lote Set/2026",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/65485729-omietemplateprodutossite-poupaagora23conv-1000x1000.jpg",
+          "payload": {
+            "name": "Mostarda Hellmann's Sachê 168x7 g — Lote Set/2026",
+            "description": "Mesmo sachê de mostarda Hellmann's de 7 g, caixa com 168 unidades, em lote de validade mais curta: vencimento em 23/09/2026. Preço unitário de R$ 0,02 por sachê, com 676 caixas disponíveis — indicado para consumo imediato em alto giro.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 3.36,
+            "minimum_for_sale": 50,
+            "multiple_for_sale": 100,
+            "sku": "65485729"
+          }
+        },
+        {
+          "label": "64919917 — Lava-Roupas Líquido Surf Perfume de Lavanda 6x1,8 L",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/64919917-omietemplateprodutossite-poupaagora3conv-1000x1000.jpg",
+          "payload": {
+            "name": "Lava-Roupas Líquido Surf Perfume de Lavanda 6x1,8 L",
+            "description": "Lava-roupas líquido Surf perfume de lavanda, caixa com 6 frascos de 1,8 L. Preço unitário de R$ 11,99 por frasco. Lote com vencimento em 30/11/2026 e 75 caixas disponíveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 71.94,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "64919917"
+          }
+        },
+        {
+          "label": "7569 — Lustra-Móveis Qbrilho Jasmim 12x200 ml",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/7569-omietemplateprodutossite-poupaagora-2026-08-19t142433775conv-1000x1000.jpg",
+          "payload": {
+            "name": "Lustra-Móveis Qbrilho Jasmim 12x200 ml",
+            "description": "Lustra-móveis Qbrilho perfume jasmim, caixa com 12 frascos de 200 ml. Preço unitário de R$ 3,99 por frasco. Lote com vencimento em 23/11/2026, disponibilidade de 241 caixas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 47.88,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4,
+            "sku": "7569"
+          }
+        },
+        {
+          "label": "650778 — Shampoo Cachos Hidratados Patrulha Canina Topz 12x200 ml",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/650778-omietemplateprodutossite-poupaagora13conv-1000x1000.jpg",
+          "payload": {
+            "name": "Shampoo Cachos Hidratados Patrulha Canina Topz 12x200 ml",
+            "description": "Shampoo infantil Topz linha Patrulha Canina, cachos hidratados, caixa com 12 frascos de 200 ml. Preço unitário de R$ 2,99 por frasco. Lote com vencimento em 30/11/2026 e 531 caixas em estoque.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 35.88,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "650778"
+          }
+        },
+        {
+          "label": "656503 — Fita Transparente Protetora para Pés 25mmx4,5m Basic+Care CX24",
+          "temp_image_url": "https://loja.poupagora.com.br/image/cache/catalog/produtos-integracao/656503-omietemplateprodutossite-poupaagora-2026-07-13t094054934conv-1000x1000.jpg",
+          "payload": {
+            "name": "Fita Transparente Protetora para Pés 25mmx4,5m Basic+Care CX24",
+            "description": "Fita transparente protetora para os pés Basic+Care, 25 mm x 4,5 m, caixa com 24 unidades. Preço unitário de R$ 1,29. Lote com vencimento em 27/12/2026 e 206 caixas disponíveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 30.96,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "656503"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PREÇO) - Poupa Agora",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Poupa Agora — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Poupa Agora",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Poupa Agora — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Mercearia Seca",
+          "salvar_id_como": "criteria_cat_mercearia_id",
+          "payload": {
+            "name": "Poupa Agora — Mercearia Seca (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Molhos e Condimentos",
+          "salvar_id_como": "criteria_cat_molhos_id",
+          "payload": {
+            "name": "Poupa Agora — Molhos e Condimentos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Poupa Agora",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Poupa Agora",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Poupa Agora",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Poupa Agora",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Poupa Agora",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Poupa Agora",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Molhos e Condimentos | Poupa Agora",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Poupa Agora — Molhos e Condimentos",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Poupa Agora — Molhos e Condimentos",
+                "criteria_id": "{{criteria_cat_molhos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 6,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 100,
+                    "type": "PERCENTAGE",
+                    "value": 20,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 10% — Mercearia Seca | Poupa Agora",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "10% OFF Poupa Agora — Mercearia Seca",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "10% OFF Poupa Agora — Mercearia Seca",
+                "criteria_id": "{{criteria_cat_mercearia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 10,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
