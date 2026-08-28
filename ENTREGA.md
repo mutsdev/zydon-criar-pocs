@@ -56,6 +56,7 @@ for olhar. Só não a deixe carregando o contrato sozinha.
 {"pedido_id": "mitra-2026-08-28-003",
  "status": "concluido",
  "arquivo": "Arquivos Json/<cliente>_poc.json",
+ "logo_url": "https://site-do-cliente/.../logo.png",
  "resumo": {
    "produtos": 13,
    "categorias": 3,
@@ -72,6 +73,11 @@ ou `ausente`** — é o campo mais importante do resumo, porque preço estimado 
 passa despercebido vira erro na frente do cliente. O Mitra confere `preco` contra
 os valores do catálogo e acusa contradição: não afirme `ausente` com produto
 precificado, nem o contrário.
+
+`logo_url` é o que o `achar_logo.py` escolheu (PASSO 3B), ou `null` quando
+nenhuma candidata passou. **O Mitra repassa esse campo no POST para o receptor**,
+e é assim que o portal nasce com a identidade certa. `null` não é falha: a POC é
+criada sem logo e isso vai em `observacoes`.
 
 `sessao_url` é o campo `claude_code_session_url` da resposta do disparo.
 

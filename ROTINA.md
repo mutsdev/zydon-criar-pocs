@@ -88,6 +88,16 @@ olhada; o segundo é o portão mecânico e sai com código 1 se alguma reprovar.
 Conferir uma imagem por vez foi a maior fatia dos 12 minutos do Tudo do Mar.
 Não entregue produto com imagem que você não verificou.
 
+PASSO 3B — ache a logo do cliente:
+  python "Identidade Visual/achar_logo.py" <site> --json
+Ele varre o HTML, baixa as candidatas e reprova pelas mesmas regras da
+identidade visual (menor lado 200px, proporção até 6:1, placeholder de tema).
+Ponha a `logo_url` que ele escolher no resumo da entrega. Não precisa de
+credencial: achar e validar é o mesmo trabalho das imagens de produto — quem
+precisa de credencial é subir, e isso acontece na máquina do João Pedro.
+Se nenhuma passar, diga isso no resumo e siga: a POC é criada sem identidade
+visual, e é melhor que uma logo ruim, que aparece em toda tela da demonstração.
+
 PASSO 4 — valide. Rode:
   python "Criar Portais/validar_poc.py" "Arquivos Json/<cliente>_poc.json"
 Corrija e repita até ZERO erros. O validador não usa rede nem credencial, então
