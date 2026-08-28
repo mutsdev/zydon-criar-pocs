@@ -1,0 +1,14 @@
+{
+  "pedido_id": "mitra-2026-08-28-003",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/uze_nails_poc.json",
+  "resumo": {
+    "produtos": 14,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Preco publico, extraido do JSON-LD do proprio site (Nuvemshop/Tiendanube) — 44 produtos disponiveis, 14 selecionados. Sem grade de variacoes: o site nao tem seletor de cor na pagina de produto, cada tom de esmalte e de gel e SKU proprio com foto propria, e os nomes autorais dos tons (Acai, Boto-Cor-Rosa, Vitoria Regia, Floresta Intensa) nao existem na paleta fixa do template_variacoes.json — usar grade exigiria inventar hex, que aparece errado na demo. SKUs sao os codigos reais do cliente (200001-200109). Maior desconto (30%) no perfil Distribuidor, que e o core B2B de uma industria de cosmeticos; Varejo 15%, Industria 5%. Imagens do CDN da loja (acdn-us.mitiendanube.com), todas verificadas com Content-Type image/webp. Logo e identidade visual nao entram aqui: rodam na maquina com credencial."
+  },
+  "sessao_url": "https://claude.ai/code/session_019CVrdXSVrkebCkTjVdgcWi"
+}
