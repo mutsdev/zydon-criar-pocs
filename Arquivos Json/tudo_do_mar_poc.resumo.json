@@ -1,0 +1,14 @@
+{
+  "pedido_id": "mitra-2026-08-28-004",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/tudo_do_mar_poc.json",
+  "resumo": {
+    "produtos": 13,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 6,
+    "observacoes": "O site tudodomar.com.br e uma landing page de captacao (Elementor/WordPress), sem catalogo e sem preco: a chamada e 'SOLICITAR TABELA E CATALOGO'. Nao ha Store API do WooCommerce (wp-json/wc/store/v1 devolve 404). Os 13 precos do catalogo sao ESTIMADOS a preco de atacado por caixa, a partir de calibre e rendimento de mercado — conferir com o cliente antes de mostrar. Imagens: 7 produtos usam foto do proprio site do cliente; 6 vieram de fora (catalogo VTEX do varejista Zona Sul) porque o site nao publica foto de produto — Mercado Livre estava fechado (403 na API publica e muro anti-bot na busca). As 6 sao fotos de estudio em fundo branco, sem embalagem, sem marca e sem marca d'agua; nenhuma das 13 reprovou na verificacao de Content-Type. Categorias entregues: Peixes, Camaroes, Polvo e Moluscos. A familia 'Especiarias', que o site lista, ficou de fora pelo limite de 3 categorias — a foto de especiarias do site esta disponivel se o time quiser trocar. Entrega na branch da sessao (claude/zen-bohr-bjjodv), nao na branch nomeada por pedido: a configuracao desta rotina fixa a branch de desenvolvimento. Correlacionar pelo pedido_id deste resumo."
+  },
+  "sessao_url": "https://claude.ai/code/session_01VoYZjC4bDaqYk1DqRNKQG8"
+}
