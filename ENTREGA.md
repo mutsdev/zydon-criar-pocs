@@ -29,6 +29,17 @@ Entregue quatro coisas, na branch `claude/poc-<cliente>-<pedido_id>`:
 4. **Um PR**, cujo corpo repete o resumo em português, para quem for ler com
    olhos humanos.
 
+### Aviso a quem for consumir: os caminhos têm espaço
+
+`Arquivos Json`, `Criar Portais`, `Identidade Visual`, `POC Completa` — todas as
+pastas deste repositório têm espaço no nome, e isso já custou tempo três vezes.
+Em 28/08/2026, na API do GitHub, o espaço codificado duas vezes
+(`Arquivos%2520Json`) devolvia `404` com a pasta existindo — e `404` de pasta
+lê como "ainda não tem entrega". Só o espaço cru responde `200`.
+
+O mesmo cuidado vale no shell (aspas) e no import de Python (a pasta com espaço
+não é pacote importável — ver `_carregar_criar_poc` nos testes).
+
 ### A correlação é pelo `resumo.json`, não pelo nome da branch
 
 **O `pedido_id` que vale é o de dentro do `resumo.json`.** O nome da branch é
