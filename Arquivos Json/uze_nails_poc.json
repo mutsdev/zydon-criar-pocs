@@ -1,0 +1,692 @@
+{
+  "empresa": "Uze Nails",
+  "descricao_empresa": "Industria brasileira de cosmeticos para unhas, com linha profissional de esmaltes, geis construtores, preparadores e finalizadores. Identidade ligada a Amazonia e a beleza com consciencia.",
+  "gerado_em": "2026-08-28",
+  "setor": "Cosmeticos — Produtos profissionais para unhas (nail care)",
+  "portal_name": "Uze Nails POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Uze Nails",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Uze Nails",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Esmaltes Cores da Amazônia",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Gel Construtor",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Preparadores e Finalizadores",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "200084 — Esmalte Açaí Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/acai-d8be36259d02f095c817658438267648-480-0.webp",
+          "payload": {
+            "sku": "200084",
+            "name": "Esmalte Açaí Uze Nails",
+            "description": "Descubra o Esmalte Açaí Uze Nails, cor intensa da Amazônia. Ideal para unhas modernas. Garanta já a sua e destaque seu visual!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 8.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "200088 — Esmalte Boto-Cor-Rosa Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/boto-cor-rosa-311bce31378f24c05217658444380542-480-0.webp",
+          "payload": {
+            "sku": "200088",
+            "name": "Esmalte Boto-Cor-Rosa Uze Nails",
+            "description": "Realce suas unhas com o Esmalte Boto-Cor-Rosa Uze Nails. Cor vibrante, duradoura e única. Experimente já e destaque-se!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "200080 — Esmalte Vitória Régia Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/vitoria-regia-cc4ed4956c239576e717658472110995-480-0.webp",
+          "payload": {
+            "sku": "200080",
+            "name": "Esmalte Vitória Régia Uze Nails",
+            "description": "Esmalte Vitória Régia com cor vibrante da Amazônia. Realce suas unhas com Uze Nails. Garanta já o seu!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "200094 — Esmalte Floresta Intensa Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/floresta-intensa-5832954d90de8c0d9a17658463502706-480-0.webp",
+          "payload": {
+            "sku": "200094",
+            "name": "Esmalte Floresta Intensa Uze Nails",
+            "description": "Esmalte Floresta Intensa traz a cor da Amazônia para suas unhas. Experimente já e destaque-se com Uze Nails!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "200109 — Combo Esmaltes Cores da Amazônia",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/produtos-uze-nails-site-1-c0f1162e03bb52924517659805901144-480-0.webp",
+          "payload": {
+            "sku": "200109",
+            "name": "Combo Esmaltes Cores da Amazônia",
+            "description": "Leve todos os Esmaltes Cores da Amazônia Uze Nails em um combo exclusivo. Garanta já a sua coleção e destaque suas unhas com cores únicas!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 178.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "200013 — Gel Construtor Natural Nude 25g Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/nn-f100935607c8e4eafa17592919169367-480-0.webp",
+          "payload": {
+            "sku": "200013",
+            "name": "Gel Construtor Natural Nude 25g Uze Nails",
+            "description": "Descubra o Gel Construtor Natural Nude da Uze Nails, ideal para construção e nail arts. Com tecnologia exclusiva, proporciona fácil aplicação e ótima aderência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 77.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "200018 — Gel Construtor Natural Clear 25g Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/clear-4e70bb176c5b32baa217592922280185-480-0.webp",
+          "payload": {
+            "sku": "200018",
+            "name": "Gel Construtor Natural Clear 25g Uze Nails",
+            "description": "Descubra o Gel Construtor Natural Clear 25g Uze Nails. Leve, fácil de aplicar e com tecnologia exclusiva. Experimente a diferença e compre já!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 77.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "200010 — Gel Construtor Luminous Star Pink",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/1-d6b2e2971b2b8e26c117500365093714-480-0.webp",
+          "payload": {
+            "sku": "200010",
+            "name": "Gel Construtor Luminous Star Pink",
+            "description": "Obtenha unhas sofisticadas com o Gel Construtor Luminous Star Pink. Brilho intenso, fácil aplicação e resistência. Experimente agora e destaque seu trabalho!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 87.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "200011 — Gel Construtor Luminous Star White",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/1-f024d6e678fc1baf0a17500368437548-480-0.webp",
+          "payload": {
+            "sku": "200011",
+            "name": "Gel Construtor Luminous Star White",
+            "description": "Gel Construtor Luminous Star White: brilho translúcido, alta resistência e aplicação precisa. Realce suas unhas com sofisticação. Experimente agora!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 87.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "200001 — Prep 120ml Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/4-b733377554877a5bf017570740496564-480-0.webp",
+          "payload": {
+            "sku": "200001",
+            "name": "Prep 120ml Uze Nails",
+            "description": "O Prep Uze Nails 120ml desinfeta com respeito ao pH da pele, evitando ressecamento e garantindo aderência perfeita. Adquira já o seu!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 27.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3
+          }
+        },
+        {
+          "label": "200004 — 1 Primer Ácido 12ml Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/1-76ae6327baef3dea4017570751790026-480-0.webp",
+          "payload": {
+            "sku": "200004",
+            "name": "1 Primer Ácido 12ml Uze Nails",
+            "description": "O Primer Ácido Uze Nails desidrata e protege suas unhas, garantindo ótima aderência a gel, acrílico e poligel. Adquira já o seu e experimente!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "200007 — Capa Base Clear 12ml Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/1-52413ba3d6f3369adb17570749193055-480-0.webp",
+          "payload": {
+            "sku": "200007",
+            "name": "Capa Base Clear 12ml Uze Nails",
+            "description": "Descubra a Capa Base Gel Clear 12ml Uze Nails! Com fórmula macia, evita descolamentos e adere a qualquer produto. Garanta a sua agora mesmo!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 59.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "200021 — Top Coat Clear Diamond 12ml Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/1-320ca857260c2341a517570754748421-480-0.webp",
+          "payload": {
+            "sku": "200021",
+            "name": "Top Coat Clear Diamond 12ml Uze Nails",
+            "description": "Descubra o Top Coat Clear Diamond Uze Nails, com alta durabilidade e proteção anti riscos. Brilho inigualável e resistência a acetonas. Experimente agora!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 53.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "200019 — Top Coat Glitter Fofíneo 12ml Uze Nails",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/005/081/561/products/5-cc95156fa91a1580cc17570758129085-480-0.webp",
+          "payload": {
+            "sku": "200019",
+            "name": "Top Coat Glitter Fofíneo 12ml Uze Nails",
+            "description": "Experimente o Top Coat Glitter Fofíneo Uze Nails com tecnologia crosslink. Brilho intenso, proteção anti riscos e resistência a acetonas. Compre já!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 57.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Uze Nails",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Uze Nails — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Uze Nails",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Uze Nails — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Esmaltes Cores da Amazonia",
+          "salvar_id_como": "criteria_cat_esmaltes_id",
+          "payload": {
+            "name": "Uze Nails — Esmaltes Cores da Amazônia (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Gel Construtor",
+          "salvar_id_como": "criteria_cat_gel_id",
+          "payload": {
+            "name": "Uze Nails — Gel Construtor (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Preparadores e Finalizadores",
+          "salvar_id_como": "criteria_cat_prepfin_id",
+          "payload": {
+            "name": "Uze Nails — Preparadores e Finalizadores (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Uze Nails",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Uze Nails",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Uze Nails",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Uze Nails",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Uze Nails",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Uze Nails",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Esmaltes Uze Nails",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Uze Nails",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Esmaltes Uze Nails",
+                "criteria_id": "{{criteria_cat_esmaltes_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 12,
+                    "type": "PERCENTAGE",
+                    "value": 6,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 36,
+                    "type": "PERCENTAGE",
+                    "value": 10,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 72,
+                    "type": "PERCENTAGE",
+                    "value": 15,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Gel Construtor | Uze Nails",
+          "salvar_id_como": "desconto_fixo_gel_id",
+          "payload": {
+            "name": "8% OFF Uze Nails — Gel Construtor",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Uze Nails Gel Construtor",
+                "criteria_id": "{{criteria_cat_gel_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 5% — Preparadores e Finalizadores | Uze Nails",
+          "salvar_id_como": "desconto_fixo_prepfin_id",
+          "payload": {
+            "name": "5% OFF Uze Nails — Preparadores e Finalizadores",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "5% OFF Uze Nails Preparadores e Finalizadores",
+                "criteria_id": "{{criteria_cat_prepfin_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
