@@ -118,17 +118,31 @@ def main(argv=None):
     if args.gravar:
         argv_identidade.append("--gravar")
 
-    codigo = mod_identidade.main(argv_identidade)
+    # A identidade roda DEPOIS de o portal existir. Se ela explodir, o traceback
+    # esconde o que mais importa saber nessa hora: o portal foi criado, o
+    # catalogo esta la, e so falta a identidade — que se conserta sozinha, sem
+    # recriar a POC. Um stack trace faz parecer que a execucao inteira falhou.
+    try:
+        codigo = mod_identidade.main(argv_identidade)
+        estado = "gravada" if args.gravar and codigo == 0 else (
+            "simulada" if not args.gravar else "FALHOU")
+    except Exception as e:
+        codigo = 1
+        estado = f"FALHOU — {type(e).__name__}: {e}"
 
     print("\n" + "=" * 62)
     print(f"  Portal     : {portal_id}")
     print(f"  Catalogo   : criado")
-    print(f"  Identidade : {'gravada' if args.gravar and codigo == 0 else 'simulada' if not args.gravar else 'FALHOU'}")
-    if not args.gravar:
-        print("\n  Para gravar a identidade neste portal, sem recriar a POC:")
+    print(f"  Identidade : {estado}")
+    if codigo != 0 or not args.gravar:
+        acao = ("Para gravar a identidade neste portal, sem recriar a POC:"
+                if codigo == 0 else
+                "O portal e o catalogo estao de pe. Resolva a logo e rode so isto,\n"
+                "  sem recriar a POC:")
+        print(f"\n  {acao}")
         print('    python "Identidade Visual/subir_identidade.py"'
               f' --org {args.org} --portal {portal_id}'
-              f' --logo {args.logo} --gravar')
+              f' --logo <logo> --gravar')
     return codigo
 
 
