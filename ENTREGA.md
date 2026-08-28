@@ -28,7 +28,18 @@ faça um POST no `callback_url` com este corpo:
 
 `fonte` é `site`, `pdf` ou `planilha`. **`preco` só assume `publico`, `estimado`
 ou `ausente`** — e é o campo mais importante do resumo: preço estimado que passa
-despercebido vira erro na frente do cliente.
+despercebido vira erro na frente do cliente. O Mitra confere `preco` contra os
+valores que vieram no catálogo e acusa contradição, então não afirme `ausente`
+com produto precificado, nem o contrário.
+
+**`catalogo` vai como está** — o JSON da POC inteiro, com `etapas[]`, do jeito
+que o `validar_poc.py` aprovou. Não reformate, não resuma, não mande só a lista
+de produtos: o Mitra lê `catalogo.etapas[]` procurando `endpoint === "products"`,
+e um formato diferente entra com **zero produtos e sem erro**. Confira
+`produtos_recebidos` na resposta: se vier `0`, o catálogo não foi lido, mesmo com
+`ok: true`.
+
+`sessao_url` é o campo `claude_code_session_url` da resposta do disparo.
 
 Falhou a extração? Mande `status: "falhou"`, com o motivo em `observacoes` e
 **sem** o campo `catalogo`.
