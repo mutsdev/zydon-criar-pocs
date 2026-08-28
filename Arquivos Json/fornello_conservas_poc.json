@@ -1,0 +1,595 @@
+{
+  "empresa": "Fornello Conservas",
+  "descricao_empresa": "Industria paulistana de conservas fundada em 1989, referencia em tomate seco e com linha completa de champignons, azeitonas, picles e antepastos. Fabrica de 2.900 m2 na Vila Maria (SP) e filial em Balneario Camboriu (SC), atendendo distribuidores, food service e varejo em todo o Brasil.",
+  "gerado_em": "2026-08-28",
+  "setor": "Alimentos — Conservas e Antepastos",
+  "portal_name": "Fornello Conservas POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Fornello Conservas",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Fornello",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Tomate Seco",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Tomate Seco",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Champignons",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Champignons",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Azeitonas e Antepastos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Azeitonas e Antepastos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "FOR-TOM-001 — Tomate Seco Balde 2 kg",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4668-Copy.jpg",
+          "payload": {
+            "sku": "FOR-TOM-001",
+            "name": "Tomate Seco Balde 2 kg",
+            "description": "Tomate seco em oleo, curado no processo tradicional Fornello desde 1989. Balde de 2 kg para food service, pizzarias e rotisserias. Caixa com 4 baldes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 79.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "FOR-TOM-002 — Tomate Seco Pote 700 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4673-Copy.jpg",
+          "payload": {
+            "sku": "FOR-TOM-002",
+            "name": "Tomate Seco Pote 700 g",
+            "description": "Tomate seco em conserva no pote de 700 g, formato de giro rapido para restaurantes, buffets e mercearias. Caixa com 10 potes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 33.1,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "FOR-TOM-003 — Tomate Seco Vidro 100 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4671-Copy.jpg",
+          "payload": {
+            "sku": "FOR-TOM-003",
+            "name": "Tomate Seco Vidro 100 g",
+            "description": "Tomate seco em conserva no vidro de 100 g, embalagem de gondola para varejo e lojas de conveniencia. Caixa com 24 vidros.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.9,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "FOR-TOM-004 — Tomate Seco Stand Pouch 100 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4651-Copy.jpg",
+          "payload": {
+            "sku": "FOR-TOM-004",
+            "name": "Tomate Seco Stand Pouch 100 g",
+            "description": "Tomate seco em conserva no stand pouch de 100 g: menos peso no frete e reposicao simples na prateleira. Venda avulsa liberada.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "FOR-CHA-001 — Champignon Inteiro Balde 2 kg",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4939-Copy.jpg",
+          "payload": {
+            "sku": "FOR-CHA-001",
+            "name": "Champignon Inteiro Balde 2 kg",
+            "description": "Cogumelo champignon inteiro em conserva, balde de 2 kg. Padrao de calibre uniforme para cozinha industrial e food service. Caixa com 4 baldes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 89.8,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "FOR-CHA-002 — Champignon Inteiro Balde 1,01 kg",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4931-Copy.jpg",
+          "payload": {
+            "sku": "FOR-CHA-002",
+            "name": "Champignon Inteiro Balde 1,01 kg",
+            "description": "Cogumelo champignon inteiro em conserva no balde de 1,01 kg, volume intermediario para restaurantes e pizzarias. Caixa com 4 baldes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 49.5,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "FOR-CHA-003 — Champignon Fatiado Stand Pouch 500 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4643-Copy.jpg",
+          "payload": {
+            "sku": "FOR-CHA-003",
+            "name": "Champignon Fatiado Stand Pouch 500 g",
+            "description": "Cogumelo champignon fatiado em conserva no stand pouch de 500 g, pronto para uso, sem perda de rendimento no preparo. Caixa com 10 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "FOR-CHA-004 — Champignon Fatiado Stand Pouch 100 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4619-Copy.jpg",
+          "payload": {
+            "sku": "FOR-CHA-004",
+            "name": "Champignon Fatiado Stand Pouch 100 g",
+            "description": "Cogumelo champignon fatiado em conserva no stand pouch de 100 g, porcao individual para varejo e delivery. Venda avulsa liberada.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "FOR-AZE-001 — Azeitona Verde Sem Caroco Balde 2 kg",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4956-Copy.jpg",
+          "payload": {
+            "sku": "FOR-AZE-001",
+            "name": "Azeitona Verde Sem Caroco Balde 2 kg",
+            "description": "Azeitona verde sem caroco em salmoura, balde de 2 kg. Item de alto giro em pizzarias, padarias e supermercados. Caixa com 4 baldes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 74.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "FOR-AZE-002 — Azeitona Preta Fatiada Balde 2 kg",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A8869-Copy.jpg",
+          "payload": {
+            "sku": "FOR-AZE-002",
+            "name": "Azeitona Preta Fatiada Balde 2 kg",
+            "description": "Azeitona preta fatiada em conserva, balde de 2 kg. Corte uniforme que dispensa manipulacao na cozinha.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 69.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "FOR-ANT-001 — Sardella 180 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4715-Copy.jpg",
+          "payload": {
+            "sku": "FOR-ANT-001",
+            "name": "Sardella 180 g",
+            "description": "Antepasto Sardella refrigerado de 180 g, a base de pimenta calabresa e aliche. Linha de antepastos para delicatessens e empórios. Caixa com 12 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 16.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "FOR-ANT-002 — Pate de Azeitonas 180 g",
+          "temp_image_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/FD9A4716-Copy.jpg",
+          "payload": {
+            "sku": "FOR-ANT-002",
+            "name": "Pate de Azeitonas 180 g",
+            "description": "Pate de azeitonas refrigerado de 180 g, pronto para consumo em couvert, sanduiches e tabuas de frios. Caixa com 12 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 16.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Fornello Conservas",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Fornello Conservas — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Fornello Conservas",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Fornello Conservas — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Tomate Seco",
+          "salvar_id_como": "criteria_cat_tomate_seco_id",
+          "payload": {
+            "name": "Fornello Conservas — Tomate Seco (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Champignons",
+          "salvar_id_como": "criteria_cat_champignons_id",
+          "payload": {
+            "name": "Fornello Conservas — Champignons (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Fornello Conservas",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Fornello Conservas",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Fornello Conservas",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Fornello Conservas",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Fornello Conservas",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Fornello Conservas",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Fornello Conservas",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Fornello Conservas",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Fornello Conservas",
+                "criteria_id": "{{criteria_cat_tomate_seco_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Champignons | Fornello Conservas",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Fornello Conservas — Champignons",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Fornello Conservas",
+                "criteria_id": "{{criteria_cat_champignons_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

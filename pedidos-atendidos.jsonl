@@ -2,3 +2,4 @@
 {"pedido_id": "mitra-2026-08-28-001", "cliente": "Danda Peças", "data": "2026-08-28", "arquivo": "Arquivos Json/danda_pecas_poc.json"}
 {"pedido_id": "mitra-2026-08-28-002", "cliente": "Poupa Agora", "data": "2026-08-28", "arquivo": "Arquivos Json/poupa_agora_poc.json", "entrega": "pr (plano B: callback 8080 indisponivel)"}
 {"pedido_id": "mitra-2026-08-28-003", "cliente": "Uze Nails", "data": "2026-08-28", "arquivo": "Arquivos Json/uze_nails_poc.json", "entrega": "pr (plano B: callback 8080 indisponivel — reset de TLS antes do certificado)"}
+{"pedido_id": "mitra-2026-08-28-005", "cliente": "Fornello Conservas", "data": "2026-08-28", "arquivo": "Arquivos Json/fornello_conservas_poc.json", "entrega": "pr (callback nao tentado: 8080 fora do egresso da nuvem)"}
