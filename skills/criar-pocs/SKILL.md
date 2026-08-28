@@ -71,6 +71,26 @@ conte com a rede de proteção.
 Se o preço não for público — o caso mais comum em B2B — diga isso
 explicitamente na entrega, em vez de estimar em silêncio.
 
+### Quando o site do cliente não tem foto nenhuma
+
+Medido em 28/08/2026, num distribuidor de autopeças com site one-page:
+
+- **O Mercado Livre pode estar fechado**, e por três vias ao mesmo tempo: muro
+  anti-bot na busca, `403` na API pública e `ERR_CONNECTION_RESET` no Chromium.
+  Não insista nas três; troque de fonte.
+- **Catálogo VTEX público de um varejista do setor funciona bem**, casando por
+  código de fabricante:
+  `GET https://<varejista>/api/catalog_system/pub/products/search?ft=<codigo>`.
+  Casamento por código é muito mais confiável que por nome.
+- **Cuidado com CDN que devolve `application/octet-stream`.** O do Canal da Peça
+  serve JPEG de verdade com MIME errado: os bytes prestam, mas reprova no passo
+  de verificação e tende a quebrar upload que valide MIME. Não force — troque de
+  fonte, como foi feito ali (seis imagens refeitas na VTEX).
+
+Foto vinda de varejista é o último recurso, e tem um custo que vale dizer na
+entrega: pode trazer marca d'água ou identidade de um concorrente do canal do
+cliente. Se notar isso na imagem, diga qual e por quê.
+
 ## Regras que o template não expressa sozinho
 
 ### Produtos (9–15, nunca mais de 15)
