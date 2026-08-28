@@ -1,2 +1,3 @@
 {"pedido_id": "teste-2026-08-27-001", "cliente": "Aroca Mercearia", "data": "2026-08-27", "arquivo": "Arquivos Json/aroca_mercearia_poc.json"}
 {"pedido_id": "mitra-2026-08-28-001", "cliente": "Danda Peças", "data": "2026-08-28", "arquivo": "Arquivos Json/danda_pecas_poc.json"}
+{"pedido_id": "mitra-2026-08-28-002", "cliente": "Poupa Agora", "data": "2026-08-28", "arquivo": "Arquivos Json/poupa_agora_poc.json", "entrega": "pr (plano B: callback 8080 indisponivel)"}
