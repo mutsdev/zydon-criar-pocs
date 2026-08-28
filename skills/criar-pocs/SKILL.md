@@ -47,6 +47,34 @@ e adaptar, NUNCA recriar do zero. Grade de variações: bloco pronto em
 `{empresa}_poc.json` (ex.: `florese_poc.json`). **Nunca** `poc_{empresa}.json`
 (padrão antigo, o validador bloqueia).
 
+## Tempo: menos idas, cada uma fazendo mais
+
+O alvo é **menos de 5 minutos por POC**. Medido em 28/08/2026: 11 minutos para
+13 produtos com imagem do próprio site, 20 para 14 com imagem caçada fora. O
+custo não está em pensar — está no número de comandos, porque cada um é uma ida
+e volta inteira. Quatro regras que atacam isso:
+
+**Verifique as imagens num comando só, nunca uma por uma:**
+
+```
+python "Criar Portais/verificar_imagens.py" "Arquivos Json/<cliente>_poc.json"
+```
+
+Ele confere todas em paralelo — 15 imagens em 1,4 segundo — e sai com código 1
+se alguma reprovar, dizendo qual e por quê. É o PASSO 3 inteiro num comando.
+
+**Não leia o `validar_poc.py` para descobrir as regras.** Ele tem centenas de
+linhas e as regras que importam já estão aqui e no `ESTRUTURA-JSON.md`. Rode o
+validador: ele diz exatamente o que está errado, em um segundo. Ler o validador
+para se preparar custa mais do que errar e corrigir.
+
+**Não inspecione POCs anteriores como referência.** O `template_poc.json` é a
+referência, e é o que a skill manda copiar. Abrir um `<cliente>_poc.json` antigo
+para "conferir a estrutura" é um arquivo grande lido à toa.
+
+**Junte as buscas de página.** Se precisar de N páginas de produto, busque-as num
+comando só (um laço no shell, ou `xargs -P`), não uma por comando.
+
 ## Coletar do site: procure a API antes de ler a página
 
 **Se o site for WordPress, teste a Store API do WooCommerce antes de raspar
