@@ -1,0 +1,639 @@
+{
+  "empresa": "Danda Auto Peças",
+  "descricao_empresa": "Distribuidora de autopeças de São Paulo (Butantã) especializada em linha elétrica automotiva, injeção eletrônica, químicos, óleo e freio. Catálogo 2025 com linhas Bosch, 3-RHO, MTE-Thomson, TSA, Gauss e RADNAQ.",
+  "gerado_em": "2026-08-28",
+  "setor": "Automotivo — Distribuição de Autopeças (Linha Elétrica e Injeção)",
+  "portal_name": "Danda Auto Peças POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Danda Auto Peças",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Danda Auto Peças",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Injeção Eletrônica",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Injeção Eletrônica",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Elétrica Automotiva",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Elétrica Automotiva",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Químicos e Lubrificantes",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Químicos e Lubrificantes",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "VP008 — Bomba de Combustível Completa Corsa/Celta 06> Bosch Flex",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/188079/Bomba-Eletrica-Corsa-1994-1995-1996-BOSCH-F000TE1054-comp-01.jpg?v=637922907521270000",
+          "payload": {
+            "name": "Bomba de Combustível Completa Corsa/Celta 06> Bosch Flex",
+            "description": "Módulo completo de bomba de combustível para Corsa e Celta a partir de 2006, sistema Bosch, motorização flex. Fornecido montado, pronto para instalação no tanque.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 289.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "VP008"
+          }
+        },
+        {
+          "label": "E-10128 — Refil da Bomba de Combustível Injeção Eletrônica Bosch 3,0 Bar Universal",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/184789/7897843832652-Delphi-FE10103-Kit-Refil-Bomba-Combustivel-Fiorino-Palio-Siena-Strada-COMP-01.jpg?v=637754391587030000",
+          "payload": {
+            "name": "Refil da Bomba de Combustível Injeção Eletrônica Bosch 3,0 Bar Universal",
+            "description": "Refil universal de bomba de combustível para injeção eletrônica, 3,0 bar, referência BF000TE0120. Aplicação: Palio, Strada, Uno, EcoSport, Fiesta, Celta, Corsa, Meriva, Montana, Clio, Scénic, Fox, Gol G3/G4/G5 e Polo — linha flex.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 68.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "E-10128"
+          }
+        },
+        {
+          "label": "TSA10225 — Sensor de Nível de Combustível Cobalt/Prisma/Onix 13>",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/195659/T010225-Boia-Tanque-Combustivel-Cobalt-Prisma-Onix-2012-2013-2014-2015-2016-2017-2018-TSA-T-comp-1.jpg?v=638907713983670000",
+          "payload": {
+            "name": "Sensor de Nível de Combustível Cobalt/Prisma/Onix 13>",
+            "description": "Sensor (boia) de nível de combustível TSA para Chevrolet Cobalt, Prisma e Onix a partir de 2013, todas as versões. Resistência calibrada de fábrica para o painel original.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 119.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "TSA10225"
+          }
+        },
+        {
+          "label": "MTE4051 — Sensor de Temperatura (Plug Eletrônico) Astra/Blazer/Celta/Corsa/Prisma/Uno",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/183630/7893989002010-Plug-eletronico-Astra-Blazer-C20-Celta-Classic-Corsa-Ipanema-Kadett-Meriva-comp-01.jpg?v=637738038237700000",
+          "payload": {
+            "name": "Sensor de Temperatura (Plug Eletrônico) Astra/Blazer/Celta/Corsa/Prisma/Uno",
+            "description": "Sensor de temperatura do líquido de arrefecimento MTE-Thomson 4051 (plug eletrônico) para Astra, Blazer, Celta, Corsa, Prisma e Uno. Referência Danda GMG5051.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 42.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "MTE4051"
+          }
+        },
+        {
+          "label": "MTE4067 — Sensor de Temperatura (Plug Eletrônico) Ford Fiesta/EcoSport/Ka",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/183644/7893989012156-Plug-eletronico-Courier-Ecosport-Escort-Fiesta-Ka-Focus-MTE-4067-2013-2012-comp-01.jpg?v=637738082631070000",
+          "payload": {
+            "name": "Sensor de Temperatura (Plug Eletrônico) Ford Fiesta/EcoSport/Ka",
+            "description": "Sensor de temperatura MTE-Thomson 4067 para Ford Fiesta, EcoSport, Ka, Courier, Escort e Focus. Referência Danda GMG5067.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 46.5,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "MTE4067"
+          }
+        },
+        {
+          "label": "MTE4147 — Sensor de Temperatura (Plug Eletrônico) Fiat 500/Grand Siena/Linea/Mobi/Palio/Punto",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/183658/7893989077551-Plug-eletronico-Uno-Palio-2010-2011-2012-2013-2014-2015-2016-MTE-4147-comp-01.jpg?v=637738134946700000",
+          "payload": {
+            "name": "Sensor de Temperatura (Plug Eletrônico) Fiat 500/Grand Siena/Linea/Mobi/Palio/Punto",
+            "description": "Sensor de temperatura MTE-Thomson 4147 para Fiat 500, Fiorino, Grand Siena, Linea, Mobi, Palio e Punto. Referência Danda GMG5147.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 51.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "MTE4147"
+          }
+        },
+        {
+          "label": "RH0323 — Interruptor de Luz de Freio Astra/Zafira/Prisma/Meriva/Celta/Corsa",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/193721/323-7898357592780-3-RHO-Interruptor-Luz-Freio-Astra-Agile-Celta-Corsa-Montana-Prisma-Zafira-comp-2.jpg?v=638781587312870000",
+          "payload": {
+            "name": "Interruptor de Luz de Freio Astra/Zafira/Prisma/Meriva/Celta/Corsa",
+            "description": "Interruptor (cebolinha) de luz de freio 3-RHO 323 para Astra, Zafira, Prisma, Meriva, Celta, Corsa, Agile e Montana. Vendido em pacotes fechados de 5 peças.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 24.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "RH0323"
+          }
+        },
+        {
+          "label": "RH9907 — Interruptor de Pressão da Direção Hidráulica Scénic/Clio/Kangoo/Logan/Mégane",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/193803/9907-7898357592872-Interruptor-Pressao-Direcao-Hidraulica-Clio-Sandero-Kangoo-Logan-Megane-comp-2.jpg?v=638785867937900000",
+          "payload": {
+            "name": "Interruptor de Pressão da Direção Hidráulica Scénic/Clio/Kangoo/Logan/Mégane",
+            "description": "Interruptor de pressão da direção hidráulica 3-RHO 9907 para Renault Scénic, Clio, Kangoo, Logan, Sandero e Mégane. Vendido em pacotes fechados de 5 peças.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 38.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "RH9907"
+          }
+        },
+        {
+          "label": "TG1015H3 — Lâmpada H3 Farol de Milha 55W 12V",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/164015/Lampada-H3-55W-8500k-Superbranca-Techone-comp-1.jpg?v=636664750424530000",
+          "payload": {
+            "name": "Lâmpada H3 Farol de Milha 55W 12V",
+            "description": "Lâmpada halógena H3 de 55W/12V para farol de milha e auxiliar. Embalagem de distribuição com 10 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 12.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "TG1015H3"
+          }
+        },
+        {
+          "label": "IK5225 — Regulador de Voltagem Gol/Parati/Saveiro/Golf Bosch USA",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/195323/GA211-7898252650431-Gauss-Regulador-Voltagem-Corrado-Passat-2019-2018-2017-2016-2015-2014-comp-2.jpg?v=638824818861700000",
+          "payload": {
+            "name": "Regulador de Voltagem Gol/Parati/Saveiro/Golf Bosch USA",
+            "description": "Regulador de voltagem do alternador para Gol, Parati, Saveiro e Golf com alternador Bosch USA. Referência cruzada TC1178.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 96.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "IK5225"
+          }
+        },
+        {
+          "label": "RAD2101 — Tinta Spray Preto Brilhante 400ml RADNAQ Radcolor",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/181108/7898173505971-Tinta-Spray-Radcolor-Preto-Brilhante-Uso-Geral-400-ml-Radnaq-RC2101-comp-01.jpg?v=637587496291730000",
+          "payload": {
+            "name": "Tinta Spray Preto Brilhante 400ml RADNAQ Radcolor",
+            "description": "Tinta spray acrílica de uso geral RADNAQ Radcolor, preto brilhante, 400ml. Caixa fechada com 6 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 21.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "RAD2101"
+          }
+        },
+        {
+          "label": "RD1091 — Aditivo de Combustível Flex Limpa Sistema de Injeção 200ml RADNAQ",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/195329/RQ1091-7898173504257-Aditivo-Flex-Potency-Radnaq-comp-01.jpg?v=638830824075800000",
+          "payload": {
+            "name": "Aditivo de Combustível Flex Limpa Sistema de Injeção 200ml RADNAQ",
+            "description": "Aditivo RADNAQ para combustível flex, limpa o sistema de injeção e recupera o desempenho do motor. Frasco de 200ml, caixa fechada com 24 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 16.5,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24,
+            "sku": "RD1091"
+          }
+        },
+        {
+          "label": "RAD3020 — Graxa Branca em Bisnaga 80g RADNAQ",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/163741/Graxa-Branca-Radnaq-comp-1.jpg?v=636658742184400000",
+          "payload": {
+            "name": "Graxa Branca em Bisnaga 80g RADNAQ",
+            "description": "Graxa branca RADNAQ em bisnaga de 80g para lubrificação de terminais, dobradiças e componentes elétricos. Caixa fechada com 12 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "RAD3020"
+          }
+        },
+        {
+          "label": "RAD1010 — Água Desmineralizada para Bateria 1L RADNAQ",
+          "temp_image_url": "https://autopecascomp.vteximg.com.br/arquivos/ids/181166/7898173503434-Agua-Desmineralizada-1L-RADNAQ-RQ1010-Comp-01.jpg?v=637590214496970000",
+          "payload": {
+            "name": "Água Desmineralizada para Bateria 1L RADNAQ",
+            "description": "Água desmineralizada RADNAQ para bateria e radiador, embalagem PET de 1 litro. Caixa fechada com 12 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 7.5,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "RAD1010"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Danda Auto Peças",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Danda Auto Peças — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Danda Auto Peças",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Danda Auto Peças — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Injeção Eletrônica",
+          "salvar_id_como": "criteria_cat_injecao_id",
+          "payload": {
+            "name": "Danda Auto Peças — Injeção Eletrônica (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Químicos e Lubrificantes",
+          "salvar_id_como": "criteria_cat_quimicos_id",
+          "payload": {
+            "name": "Danda Auto Peças — Químicos e Lubrificantes (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Danda Auto Peças",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Danda Auto Peças",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Danda Auto Peças",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Danda Auto Peças",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Danda Auto Peças",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Danda Auto Peças",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Injeção Eletrônica | Danda Auto Peças",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume Injeção Eletrônica | Danda Auto Peças",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Injeção Eletrônica Danda Auto Peças",
+                "criteria_id": "{{criteria_cat_injecao_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Químicos e Lubrificantes | Danda Auto Peças",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Danda Auto Peças — Químicos e Lubrificantes",
+            "start_date": "2026-08-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Danda Auto Peças — Químicos",
+                "criteria_id": "{{criteria_cat_quimicos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
