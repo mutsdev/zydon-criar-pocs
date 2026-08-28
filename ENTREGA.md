@@ -81,8 +81,19 @@ em silêncio é pior que pedido que fracassa.
 
 ## Quando o pedido trouxer `callback_url`
 
-Aí o Mitra alcançou a rotina e quer ser avisado: faça o POST, **além** de
-entregar no repositório. O corpo é o resumo acima mais `callback_token` e
+**Se você é a rotina rodando na nuvem, não faça o POST.** Ele não vai passar, e
+tentar custa caro: em 28/08/2026 foram três pedidos seguidos com o mesmo
+resultado — duas tentativas, duas falhas, minutos gastos, e a entrega saindo pelo
+repositório de qualquer jeito. O egresso do ambiente só aceita CONNECT na 443 e o
+Mitra atende na 8080. Isso não é intermitência, é topologia: **não melhora com
+retentativa e não vai melhorar amanhã.** Registre no resumo que o callback foi
+pulado e siga.
+
+O callback continua valendo **para quem roda na máquina do João Pedro** — de lá
+a 8080 responde, medido no mesmo dia. É o caso do `vigia_drive.py`, e é ele que
+devolve `url` do portal depois da criação.
+
+Quem for fazer o POST: o corpo é o resumo acima mais `callback_token` e
 `catalogo` com o JSON inteiro.
 
 **`catalogo` vai como está**, com `etapas[]`. Não reformate nem resuma: o Mitra

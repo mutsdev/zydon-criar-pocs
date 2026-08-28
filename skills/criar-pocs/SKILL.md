@@ -22,16 +22,19 @@ e adaptar, NUNCA recriar do zero. Grade de variações: bloco pronto em
 **Gatilho: o usuário manda o site da empresa.** Daí você faz tudo sozinho:
 
 1. **Visitar o site** (navegador) — nunca inferir setor/segmento pelo nome da
-   empresa. Coletar: ramo real, **9 a 15 produtos** (máximo 15), **3
+   empresa. Coletar: ramo real, **5 a 12 produtos** (máximo 12), **3
    categorias** e as **URLs das imagens de produto do próprio site** (extrair
    o `src` enquanto navega; se renderizam na página, são válidas). No mesmo
    passo, decidir se a POC pede **grade de variações** (ver abaixo) — o sinal
    é seletor de cor/tamanho/voltagem/sabor/volume na página de produto.
 2. **Completar as imagens que faltaram ANTES de entregar** — TODO produto
-   deve ter `temp_image_url`. Ordem de preferência: site da marca → Mercado
-   Livre (`https://lista.mercadolivre.com.br/NOME-DO-PRODUTO`, pegar URLs
-   `-E.webp` dos cards ou `-V.webp` das thumbs; nunca `-OO.webp`/`-A.webp`,
-   que são banners).
+   deve ter `temp_image_url`. Ordem de preferência: site da marca → **catálogo
+   VTEX público de um varejista do setor** → Mercado Livre.
+   **O Mercado Livre é o último da fila, não o segundo**, e uma tentativa só:
+   ele estava fechado nas três vias em 28/08/2026, duas POCs seguidas, e
+   insistir custou minutos nas duas. Se for tentar,
+   `https://lista.mercadolivre.com.br/NOME-DO-PRODUTO`, pegando `-E.webp` dos
+   cards ou `-V.webp` das thumbs; nunca `-OO.webp`/`-A.webp`, que são banners.
 3. **Copiar `template_poc.json` → `{empresa}_poc.json`** e preencher, com
    todas as imagens inline via `temp_image_url`.
 4. **Validar**: `python "Criar Portais/validar_poc.py" "Arquivos Json/{empresa}_poc.json"`
@@ -50,9 +53,26 @@ e adaptar, NUNCA recriar do zero. Grade de variações: bloco pronto em
 ## Tempo: menos idas, cada uma fazendo mais
 
 O alvo é **menos de 5 minutos por POC**. Medido em 28/08/2026: 11 minutos para
-13 produtos com imagem do próprio site, 20 para 14 com imagem caçada fora. O
-custo não está em pensar — está no número de comandos, porque cada um é uma ida
-e volta inteira. Quatro regras que atacam isso:
+13 produtos com imagem do próprio site, 20 para 14 com imagem caçada fora, 12
+para o Tudo do Mar. O custo não está em pensar — está no número de idas e
+voltas, e **abrir uma imagem é uma ida e volta como qualquer outra**. No Tudo do
+Mar foram sete imagens abertas em quatro rodadas, e essa foi a maior fatia dos
+12 minutos.
+
+**Olhe as imagens candidatas num mosaico só, nunca uma por uma:**
+
+```
+python "Criar Portais/mosaico_imagens.py" --urls <u1> <u2> ... --rotulos <n1> <n2> ...
+```
+
+Ele baixa em paralelo e devolve **uma imagem numerada** com todas — 14 candidatas
+em 1,8 segundo. Aí você abre uma vez e decide todas. O que não abre vira célula
+vermelha com o motivo, em vez de sumir, para a numeração continuar batendo com a
+lista impressa.
+
+Isso **não** substitui o `verificar_imagens.py`: o mosaico é o olho (marca de
+concorrente, embalagem errada, produto trocado) e o verificador é o portão
+mecânico. Mosaico para escolher, verificador no JSON pronto.
 
 **Verifique as imagens num comando só, nunca uma por uma:**
 
@@ -74,6 +94,13 @@ para "conferir a estrutura" é um arquivo grande lido à toa.
 
 **Junte as buscas de página.** Se precisar de N páginas de produto, busque-as num
 comando só (um laço no shell, ou `xargs -P`), não uma por comando.
+
+**Descubra se o site tem catálogo num comando só.** No Tudo do Mar foram sete
+comandos em sequência — Store API, outras rotas do `wp-json`, a home, o REST de
+páginas — para chegar em "é landing page, não tem catálogo". Todas essas rotas
+são independentes: peça as quatro ou cinco de uma vez e leia o resultado junto.
+Descobrir que **não** há catálogo é um resultado válido e tem que custar uma ida,
+não sete.
 
 ## Coletar do site: procure a API antes de ler a página
 
@@ -99,18 +126,19 @@ conte com a rede de proteção.
 Se o preço não for público — o caso mais comum em B2B — diga isso
 explicitamente na entrega, em vez de estimar em silêncio.
 
-### Veio anexo? Então são 5 produtos, não 9 a 15
+### Quantos produtos: 5 a 12, e quem decide é a foto
 
-Quando o pedido traz catálogo em PDF ou planilha, monte a POC com **5 produtos**.
+A faixa é **5 a 12**, e o validador barra acima de 12. Onde cair dentro dela não
+depende do tamanho do catálogo do cliente — depende de **onde vem a imagem**:
 
-O motivo não é o catálogo — é a foto. Anexo quase sempre significa que o site do
-cliente não tem imagem de produto, e aí cada item custa uma caçada em fonte de
-terceiro, uma por vez. A Danda Peças (28/08/2026) levou 20 minutos para 14
-produtos, quase tudo nisso. Cinco produtos bem escolhidos, com imagem boa, valem
-mais numa demonstração que quatorze com foto ruim.
+- **Foto do próprio site do cliente**: pode ir a 12. Custa quase nada por item.
+- **Foto caçada em fonte de terceiro** (site sem imagem, ou pedido com anexo em
+  PDF/planilha): fique perto de **5**. Cada item custa busca, download e
+  julgamento. A Danda Peças levou 20 minutos para 14, o Tudo do Mar 12 para 13
+  — quase tudo nisso.
 
-Escolha os 5 cobrindo as 3 categorias e representando as linhas principais do
-catálogo. O piso do validador é 5 justamente para isso.
+Cinco produtos bem escolhidos, com imagem boa, valem mais numa demonstração que
+doze com foto ruim. Escolha cobrindo as 3 categorias e as linhas principais.
 
 ### Quando o site do cliente não tem foto nenhuma
 
