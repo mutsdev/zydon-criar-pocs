@@ -19,6 +19,7 @@ portal NAO tem simulacao e acontece de verdade em toda execucao. Ou seja: sem
 """
 
 import argparse
+import json
 import os
 import sys
 from pathlib import Path
@@ -26,8 +27,9 @@ from pathlib import Path
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent
 IDENTIDADE = RAIZ / "Identidade Visual"
+PORTAIS = RAIZ / "Criar Portais"
 
-for _caminho in (str(AQUI), str(RAIZ), str(IDENTIDADE)):
+for _caminho in (str(AQUI), str(RAIZ), str(IDENTIDADE), str(PORTAIS)):
     if _caminho not in sys.path:
         sys.path.insert(0, _caminho)
 
@@ -45,6 +47,7 @@ mod_identidade._carregar_env()
 
 import credenciais  # noqa: E402
 import criar_poc  # noqa: E402  (a copia desta pasta, com o parametro `saida`)
+import descobrir_url  # noqa: E402
 
 
 def main(argv=None):
@@ -130,8 +133,22 @@ def main(argv=None):
         codigo = 1
         estado = f"FALHOU — {type(e).__name__}: {e}"
 
+    # O UUID nao serve para o executivo comercial — ele precisa do endereco, e
+    # a API nao entrega dominio nenhum. Fica no fim de proposito: e a unica
+    # etapa que depende do portal ja estar publicado.
+    url_portal = "nao encontrada"
+    try:
+        with open(args.arquivo, encoding="utf-8") as f:
+            nome_portal = json.load(f).get("portal_name")
+        if nome_portal:
+            achada, _ = descobrir_url.descobrir(nome_portal)
+            url_portal = achada or "nao encontrada (o portal pode levar minutos a publicar)"
+    except Exception as e:
+        url_portal = f"nao encontrada — {type(e).__name__}: {e}"
+
     print("\n" + "=" * 62)
     print(f"  Portal     : {portal_id}")
+    print(f"  URL        : {url_portal}")
     print(f"  Catalogo   : criado")
     print(f"  Identidade : {estado}")
     if codigo != 0 or not args.gravar:
