@@ -67,9 +67,9 @@ Se não houver bloco nenhum, pare: esta rotina não roda sem pedido.
 
 PASSO 1 — pedido repetido. Leia pedidos-atendidos.jsonl na raiz (se não
 existir, considere vazio). Se já houver uma linha com este pedido_id, PARE
-imediatamente e responda que o pedido já foi atendido, dizendo em qual PR.
-Não monte nada. O endpoint de disparo não tem idempotência e retry do
-chamador é esperado.
+imediatamente e responda que o pedido já foi atendido, dizendo quando e para
+onde foi entregue. Não monte nada. O endpoint de disparo não tem idempotência
+e retry do chamador é esperado.
 
 PASSO 2 — monte o JSON. Siga skills/criar-pocs/SKILL.md à risca: visitar o
 site, 9 a 15 produtos, 3 categorias, imagens do próprio site, copiar
