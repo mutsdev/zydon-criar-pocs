@@ -175,7 +175,11 @@ def validar(path):
     precos = []
     for e in etapa_por_endpoint(poc, "products"):
         reqs = e.get("requests", [])
-        if len(reqs) < 6:
+        # 5 e o piso desde 28/08/2026: POC montada a partir de catalogo anexado
+        # usa 5 de proposito. Quando a foto nao vem do site do cliente, cada
+        # produto custa uma cacada de imagem em fonte de terceiro — a Danda
+        # Pecas levou 20 minutos para 14, quase tudo nisso.
+        if len(reqs) < 5:
             aviso(f"PRODUTOS: apenas {len(reqs)} produtos (tipico: 9-15)")
         if len(reqs) > 15:
             erro(f"PRODUTOS: {len(reqs)} produtos — maximo 15 por POC")

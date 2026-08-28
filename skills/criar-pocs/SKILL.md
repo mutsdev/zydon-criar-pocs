@@ -71,6 +71,19 @@ conte com a rede de proteção.
 Se o preço não for público — o caso mais comum em B2B — diga isso
 explicitamente na entrega, em vez de estimar em silêncio.
 
+### Veio anexo? Então são 5 produtos, não 9 a 15
+
+Quando o pedido traz catálogo em PDF ou planilha, monte a POC com **5 produtos**.
+
+O motivo não é o catálogo — é a foto. Anexo quase sempre significa que o site do
+cliente não tem imagem de produto, e aí cada item custa uma caçada em fonte de
+terceiro, uma por vez. A Danda Peças (28/08/2026) levou 20 minutos para 14
+produtos, quase tudo nisso. Cinco produtos bem escolhidos, com imagem boa, valem
+mais numa demonstração que quatorze com foto ruim.
+
+Escolha os 5 cobrindo as 3 categorias e representando as linhas principais do
+catálogo. O piso do validador é 5 justamente para isso.
+
 ### Quando o site do cliente não tem foto nenhuma
 
 Medido em 28/08/2026, num distribuidor de autopeças com site one-page:
