@@ -100,14 +100,20 @@ def processar(pedido, args):
         caminho, logo, args.org, args.gravar,
         pedido_id=pedido_id, origem_id=pedido_id, simular=args.simular)
 
-    if resultado["status"] != "simulado":
-        atendimento.anotar(resultado)
+    url_callback = pedido.get("callback_url") or args.callback
+    token_callback = pedido.get("callback_token") or args.callback_token
 
-    ok, detalhe = atendimento.avisar_mitra(
-        pedido.get("callback_url") or args.callback,
-        pedido.get("callback_token") or args.callback_token,
-        resultado)
+    if resultado["status"] != "simulado":
+        # O par do callback fica gravado para o `--reenviar` funcionar. E por
+        # isso que este arquivo nao e versionado: o callback_token e segredo.
+        atendimento.anotar(dict(resultado, callback_url=url_callback,
+                                callback_token=token_callback))
+
+    ok, detalhe = atendimento.avisar_mitra(url_callback, token_callback, resultado)
     print(f"  callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
+    if not ok and resultado.get("url"):
+        print(f"  O portal existe e o Mitra nao sabe. Reenvie com:\n"
+              f'    python "POC Completa/receptor.py" --reenviar {pedido_id}')
     print(f"  RESULTADO: {resultado['status']}  {resultado.get('url') or ''}")
 
 
@@ -167,11 +173,20 @@ class Manipulador(BaseHTTPRequestHandler):
             # muito melhor que criar um portal vazio sem erro nenhum.
             return self._responder(400, {"ok": False, "erro": "CATALOGO_SEM_ETAPAS"})
 
-        _, pedidos = atendimento.ja_rodou()
-        if pedido_id in pedidos:
-            print(f"  [DUPLICADO] {pedido_id} ja foi atendido.")
-            return self._responder(200, {"ok": True, "duplicado": True,
-                                         "pedido_id": pedido_id})
+        anterior = atendimento.buscar(pedido_id)
+        if anterior:
+            # A resposta carrega o resultado, e nao so "ja foi feito". E o
+            # caminho de recuperacao quando o callback se perde: em 28/08/2026
+            # o -004 criou o portal e o aviso morreu em ReadTimeout, deixando o
+            # Mitra sem saber de um portal que existia. Reenviar o mesmo pedido
+            # devolve a URL na hora, sem callback nenhum no meio.
+            print(f"  [DUPLICADO] {pedido_id} — devolvo o resultado guardado.")
+            return self._responder(200, {
+                "ok": True, "duplicado": True, "pedido_id": pedido_id,
+                "status": anterior.get("status"),
+                "portal_id": anterior.get("portal_id"),
+                "url": anterior.get("url"),
+                "observacoes": anterior.get("observacoes", "")})
 
         FILA.put(pedido)
         print(f"  [ACEITO] {pedido_id} — {FILA.qsize()} na fila.")
@@ -187,6 +202,9 @@ def main(argv=None):
     p.add_argument("--token", help="segredo do X-Token (ou env RECEPTOR_TOKEN)")
     p.add_argument("--novo-token", action="store_true",
                    help="gera um segredo, imprime e sai")
+    p.add_argument("--reenviar", metavar="PEDIDO_ID",
+                   help="reenvia o callback de um pedido ja concluido e sai. "
+                        "Para quando o portal foi criado e o aviso se perdeu.")
     p.add_argument("--gravar", action="store_true",
                    help="grava a identidade visual (o portal e criado de "
                         "qualquer jeito quando nao ha --simular)")
@@ -203,6 +221,25 @@ def main(argv=None):
         print("\nGuarde no cofre do Mitra e passe em RECEPTOR_TOKEN aqui.\n"
               "Nao cole em chat: quem tiver este token cria POC em producao.")
         return 0
+
+    if args.reenviar:
+        registro = atendimento.buscar(args.reenviar)
+        if not registro:
+            print(f"[ERRO] Nenhum pedido concluido com id {args.reenviar}.",
+                  file=sys.stderr)
+            return 1
+        url = registro.get("callback_url") or args.callback
+        token = registro.get("callback_token") or args.callback_token
+        if not url:
+            print(f"[ERRO] O registro de {args.reenviar} nao guardou "
+                  f"callback_url — ele e anterior a este recurso. O portal e "
+                  f"{registro.get('url')}; passe a mao.", file=sys.stderr)
+            return 1
+        limpo = {c: v for c, v in registro.items()
+                 if c not in ("callback_url", "callback_token")}
+        ok, detalhe = atendimento.avisar_mitra(url, token, limpo)
+        print(f"callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
+        return 0 if ok else 1
 
     args.token = args.token or os.environ.get("RECEPTOR_TOKEN")
     if not args.token:

@@ -86,6 +86,27 @@ def anotar(registro):
         f.write(json.dumps(registro, ensure_ascii=False) + "\n")
 
 
+def buscar(pedido_id):
+    """O ultimo registro deste pedido que criou portal, ou None.
+
+    Serve a duas coisas: responder ao reenvio com o resultado em vez de um
+    "duplicado" seco, e reenviar o callback que se perdeu."""
+    achado = None
+    if not REGISTRO.exists():
+        return None
+    for linha in REGISTRO.read_text(encoding="utf-8").splitlines():
+        linha = linha.strip()
+        if not linha:
+            continue
+        try:
+            reg = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if reg.get("pedido_id") == pedido_id and criou_algo(reg):
+            achado = reg
+    return achado
+
+
 # ------------------------------------------------------------------ execucao
 def prefixo(nome):
     """'uze_nails_poc.json' -> 'uze_nails'."""
@@ -191,19 +212,33 @@ def atender(caminho_json, logo, org, gravar, pedido_id=None, origem_id=None,
 
 
 # ------------------------------------------------------------------ callback
-def avisar_mitra(callback_url, token, corpo):
+# Conectar e rapido; processar do outro lado nao e. Em 28/08/2026 o callback do
+# pedido -004 morreu em ReadTimeout com 60s — conexao aberta, resposta nao veio.
+TEMPO_CALLBACK = (10, 180)   # (conectar, ler)
+
+
+def avisar_mitra(callback_url, token, corpo, tentativas=2):
     """(ok, detalhe). Nunca levanta: callback nao e a entrega."""
     if not callback_url:
         return False, "sem callback_url"
-    try:
-        r = requests.post(callback_url, json=dict(corpo, callback_token=token),
-                          timeout=60)
-    except requests.RequestException as e:
-        return False, type(e).__name__
-    # 2xx nao quer dizer entregue — a funcao do Mitra responde 2xx ate quando
-    # rejeita, de proposito. Ver ENTREGA.md: confira o efeito, nao a resposta.
-    try:
-        dados = r.json()
-    except ValueError:
-        return False, f"HTTP {r.status_code}, corpo nao-JSON"
-    return bool(dados.get("ok")), f"HTTP {r.status_code} {dados}"
+
+    ultimo = ""
+    for tentativa in range(1, tentativas + 1):
+        try:
+            r = requests.post(callback_url, json=dict(corpo, callback_token=token),
+                              timeout=TEMPO_CALLBACK)
+        except requests.RequestException as e:
+            # Retentar depois de um timeout de leitura pode entregar duas vezes,
+            # porque o outro lado talvez tenha processado. E seguro: a rota do
+            # Mitra e idempotente pelo callback_token e responde `duplicado`.
+            ultimo = type(e).__name__
+            print(f"  [callback] tentativa {tentativa}/{tentativas}: {ultimo}")
+            continue
+        # 2xx nao quer dizer entregue — a funcao do Mitra responde 2xx ate
+        # quando rejeita, de proposito. Ver ENTREGA.md: confira o efeito.
+        try:
+            dados = r.json()
+        except ValueError:
+            return False, f"HTTP {r.status_code}, corpo nao-JSON"
+        return bool(dados.get("ok")), f"HTTP {r.status_code} {dados}"
+    return False, f"{ultimo} nas {tentativas} tentativas"

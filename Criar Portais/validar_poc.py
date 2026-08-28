@@ -175,15 +175,22 @@ def validar(path):
     precos = []
     for e in etapa_por_endpoint(poc, "products"):
         reqs = e.get("requests", [])
-        # A faixa e 5 a 12 desde 28/08/2026. O que manda no tempo de montagem
-        # nao e escrever o produto: e a imagem dele. Quando a foto nao vem do
-        # site do cliente, cada item custa uma cacada em fonte de terceiro — a
-        # Danda Pecas levou 20 minutos para 14, e o Tudo do Mar 12 para 13.
-        # Doze produtos bem escolhidos demonstram tanto quanto quinze.
+        # 5 a 12 e RECOMENDACAO para quem monta a POC, e nao portao de entrada.
+        # O que manda no tempo de montagem nao e escrever o produto: e a imagem
+        # dele — a Danda Pecas levou 20 minutos para 14, e o Tudo do Mar 12
+        # para 13. Doze bem escolhidos demonstram tanto quanto quinze.
+        #
+        # Mas teto duro aqui BARRA EXECUCAO, e isso e outra coisa. Em
+        # 28/08/2026 um pedido curado voltou reprovado no receptor por passar de
+        # 12: catalogo pronto, executivo esperando, e nada criado por uma regra
+        # que existe para economizar tempo de montagem. Se o catalogo ja existe
+        # — 90 produtos vindos de um ERP, por exemplo —, o custo que a regra
+        # evitava ja foi pago. Avisa e deixa passar.
         if len(reqs) < 5:
-            aviso(f"PRODUTOS: apenas {len(reqs)} produtos (faixa: 5-12)")
+            aviso(f"PRODUTOS: apenas {len(reqs)} produtos (recomendado: 5-12)")
         if len(reqs) > 12:
-            erro(f"PRODUTOS: {len(reqs)} produtos — maximo 12 por POC")
+            aviso(f"PRODUTOS: {len(reqs)} produtos (recomendado: 5-12). "
+                  f"Passa, mas cada imagem custa tempo na montagem.")
         for r in reqs:
             lbl = r.get("label", "?")
             p = r.get("payload", {})
