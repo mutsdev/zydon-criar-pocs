@@ -29,8 +29,15 @@ Entregue quatro coisas, na branch `claude/poc-<cliente>-<pedido_id>`:
 4. **Um PR**, cujo corpo repete o resumo em português, para quem for ler com
    olhos humanos.
 
-O `pedido_id` viaja no nome da branch e no `.jsonl` — é assim que o Mitra
-correlaciona PR com pedido.
+### A correlação é pelo `resumo.json`, não pelo nome da branch
+
+**O `pedido_id` que vale é o de dentro do `resumo.json`.** O nome da branch é
+conveniência para quem lê com olhos, e não dá para confiar nele: na entrega do
+`mitra-2026-08-28-002` a rotina usou a branch automática da sessão
+(`claude/zen-bohr-2jn757`) em vez da nomeada, e o `pedido_id` sumiu do nome.
+
+Ainda assim, **nomeie a branch `claude/poc-<cliente>-<pedido_id>`** — ajuda quem
+for olhar. Só não a deixe carregando o contrato sozinha.
 
 ### O resumo
 
