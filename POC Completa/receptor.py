@@ -36,6 +36,7 @@ cole em chat**.
 import argparse
 import hmac
 import json
+import os
 import queue
 import secrets
 import sys
@@ -191,8 +192,10 @@ def main(argv=None):
                         "qualquer jeito quando nao ha --simular)")
     p.add_argument("--simular", action="store_true",
                    help="valida e para; NAO cria nada")
-    p.add_argument("--callback", help="callback padrao, se o pedido nao trouxer")
-    p.add_argument("--callback-token")
+    # Os defaults saem do .env, que o `atendimento` ja carregou no import.
+    p.add_argument("--callback", default=os.environ.get("MITRA_CALLBACK_URL"),
+                   help="callback padrao, se o pedido nao trouxer")
+    p.add_argument("--callback-token", default=os.environ.get("MITRA_CALLBACK_TOKEN"))
     args = p.parse_args(argv)
 
     if args.novo_token:
@@ -201,11 +204,11 @@ def main(argv=None):
               "Nao cole em chat: quem tiver este token cria POC em producao.")
         return 0
 
-    import os
     args.token = args.token or os.environ.get("RECEPTOR_TOKEN")
     if not args.token:
         print("[ERRO] Falta o segredo. Rode --novo-token, guarde o valor e "
-              "passe em RECEPTOR_TOKEN ou --token.", file=sys.stderr)
+              "ponha RECEPTOR_TOKEN no .env do Sales Ops (ou passe --token).",
+              file=sys.stderr)
         return 1
 
     Manipulador.args = args

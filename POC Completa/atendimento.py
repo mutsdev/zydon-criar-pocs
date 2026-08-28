@@ -23,11 +23,19 @@ RAIZ = AQUI.parent
 PORTAIS = RAIZ / "Criar Portais"
 IDENTIDADE = RAIZ / "Identidade Visual"
 
-for _caminho in (str(AQUI), str(PORTAIS)):
+for _caminho in (str(AQUI), str(PORTAIS), str(IDENTIDADE)):
     if _caminho not in sys.path:
         sys.path.insert(0, _caminho)
 
 import descobrir_url  # noqa: E402
+import subir_identidade as _identidade  # noqa: E402
+
+# O .env mora no Sales Ops, nao neste repo, e quem sabe achar os dois lugares e
+# o _carregar_env. Fica aqui, no miolo, porque tanto o receptor quanto o vigia
+# leem segredo de la — RECEPTOR_TOKEN e o par de callback do Mitra. Sem isto o
+# receptor so enxerga variavel exportada na mao, e a mensagem de erro fala de
+# um token que esta escrito no .env: parece bug, e e so o arquivo nao lido.
+_identidade._carregar_env()
 
 REGISTRO = RAIZ / "pedidos-executados.jsonl"
 DESTINO_JSON = RAIZ / "Arquivos Json"
