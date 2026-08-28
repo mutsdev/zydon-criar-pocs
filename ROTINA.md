@@ -71,20 +71,22 @@ imediatamente e responda que o pedido já foi atendido, dizendo quando e para
 onde foi entregue. Não monte nada. O endpoint de disparo não tem idempotência
 e retry do chamador é esperado.
 
-PASSO 2 — monte o JSON. Siga skills/criar-pocs/SKILL.md à risca: visitar o
-site, 9 a 15 produtos, 3 categorias, imagens do próprio site, copiar
-Criar Portais/template_poc.json e adaptar (nunca recriar do zero). Se vierem
-anexos, baixe-os e use como fonte de preço e de catálogo — PDF e planilha de
-cliente costumam ser a única fonte de preço confiável, porque a maioria dos
+PASSO 2 — monte o JSON. LEIA skills/criar-pocs/SKILL.md e siga à risca. Ela
+manda na quantidade de produtos, nas categorias, na ordem das fontes de imagem
+e no que fazer para não gastar tempo à toa — e muda com mais frequência que
+estas instruções, então o que valer lá vale contra o que você lembrar daqui.
+Copiar Criar Portais/template_poc.json e adaptar, nunca recriar do zero. Se
+vierem anexos, baixe-os e use como fonte de preço e de catálogo: PDF e planilha
+de cliente costumam ser a única fonte de preço confiável, porque a maioria dos
 sites B2B não publica preço.
 
-PASSO 3 — confira cada imagem. Para toda temp_image_url, faça uma requisição
-e verifique que a resposta é imagem de verdade: status 200 e Content-Type
-começando em "image/". Página de erro devolvendo HTML com status 200, e link
-que morreu depois que o site mudou, são os dois casos comuns — medidos em
-27/08/2026, 2 de 14 URLs de POCs antigas já estavam mortas. URL que não passar,
-substitua pelo caminho da skill (site da marca, depois Mercado Livre). Não
-entregue produto com imagem que você não verificou.
+PASSO 3 — confira as imagens com os dois comandos da skill, e não uma por uma:
+  python "Criar Portais/mosaico_imagens.py" --urls <candidatas>   (o olho)
+  python "Criar Portais/verificar_imagens.py" "Arquivos Json/<cliente>_poc.json"
+O primeiro junta as candidatas numa imagem só, para você julgar todas de uma
+olhada; o segundo é o portão mecânico e sai com código 1 se alguma reprovar.
+Conferir uma imagem por vez foi a maior fatia dos 12 minutos do Tudo do Mar.
+Não entregue produto com imagem que você não verificou.
 
 PASSO 4 — valide. Rode:
   python "Criar Portais/validar_poc.py" "Arquivos Json/<cliente>_poc.json"
@@ -129,8 +131,12 @@ entrega. Isso é de propósito: o prompt mora na configuração da rotina, na we
 então descrever a entrega ali significava recolar o prompt a cada mudança de
 contrato. Apontando para o repositório, mudança de contrato vira commit.
 
-Em resumo: callback no Mitra quando o pedido traz `callback_url`, PR como plano
-B quando ele não traz ou quando o callback falha.
+Em resumo: **a entrega é pelo repositório, e o callback ficou de fora**. A
+rotina roda na nuvem, cujo egresso só aceita CONNECT na 443, e o Mitra atende na
+8080 — três pedidos seguidos tentaram, seis tentativas, zero entregas. Isso é
+topologia, não intermitência: não melhora com retentativa. O Mitra vem buscar no
+PR, e quem faz o POST na 8080 é o `vigia_drive.py`, que roda na máquina do João
+Pedro, de onde aquela porta responde.
 
 ## Depois da entrega
 
