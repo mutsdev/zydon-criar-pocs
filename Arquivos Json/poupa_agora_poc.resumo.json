@@ -1,0 +1,14 @@
+{
+  "pedido_id": "mitra-2026-08-28-002",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/poupa_agora_poc.json",
+  "resumo": {
+    "produtos": 13,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Site OpenCart; o sitemap publica exatamente 13 produtos, todos entraram. Categorias derivadas por familia, porque o site nao tem arvore. A unidade de venda e a CAIXA: o valor em price e o por CX, com preco unitario e vencimento do lote na descricao. Precisa de gente: ha dois cadastros do mesmo sache Hellmann's 168x7g com precos 3x diferentes (R$ 10,08 venc. 23/10/2026 e R$ 3,36 venc. 23/09/2026) - nao e erro de extracao, a diferenca acompanha a validade, que e o modelo de negocio da Poupa Agora. Mantidos os dois, nomeados por lote; confirmar se o cliente quer ambos na demonstracao. Resumo escrito a mao em 28/08/2026: esta entrega e anterior ao contrato do resumo.json."
+  },
+  "sessao_url": null
+}
