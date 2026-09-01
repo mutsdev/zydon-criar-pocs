@@ -1,8 +1,8 @@
 {
-  "url": "https://applications-subscription-sustained-perry.trycloudflare.com",
-  "pedido": "https://applications-subscription-sustained-perry.trycloudflare.com/pedido",
-  "saude": "https://applications-subscription-sustained-perry.trycloudflare.com/saude",
+  "url": "https://transcripts-ware-facilitate-suppose.trycloudflare.com",
+  "pedido": "https://transcripts-ware-facilitate-suppose.trycloudflare.com/pedido",
+  "saude": "https://transcripts-ware-facilitate-suppose.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-01T14:51:46-03:00",
+  "atualizado_em": "2026-09-01T19:07:23-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
