@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-01-001",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/witop_poc.json",
+  "logo_url": "https://images.tcdn.com.br/img/img_prod/1365249/1734531913_witop.png",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo extraido do proprio site (Loja Integrada): sitemap + JSON-LD de 48 paginas de produto, com preco publico em BRL e imagem oficial no CDN do cliente (images.tcdn.com.br) — nenhuma imagem de terceiro. 3 produtos tem grade de variacoes no eixo 'Acabamento' (Siena, Bruxelas e Cordoba), que e como o proprio site organiza o catalogo (mesmo modelo, acabamentos diferentes). Callback nao foi chamado: rotina na nuvem nao alcanca a porta 8080 do Mitra (ver ENTREGA.md). POC nao foi executada — entrega termina no JSON validado."
+  },
+  "sessao_url": "https://claude.ai/code/session_0153y2J7zLy3SqvNXyfko2YK"
+}
