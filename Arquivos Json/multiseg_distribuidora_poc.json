@@ -1,0 +1,595 @@
+{
+  "empresa": "MultiSeg Distribuidora",
+  "descricao_empresa": "Distribuidora de seguranca eletronica, redes e automacao, com 10 filiais e mais de 180 marcas em linha: CFTV, alarmes, controle de acesso, automatizadores de portao, cerca eletrica, fibra optica, energia solar e infraestrutura de redes.",
+  "gerado_em": "2026-09-01",
+  "setor": "Seguranca Eletronica — Distribuicao de CFTV, Redes e Automacao",
+  "portal_name": "MultiSeg Distribuidora POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca MultiSeg Distribuidora",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "MultiSeg Distribuidora",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria CFTV e Monitoramento",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "CFTV e Monitoramento",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria Redes e Fibra Óptica",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Redes e Fibra Óptica",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria Alarmes e Automação",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Alarmes e Automação",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "MSD-022186 — Câmera Bullet VHD 1220 B Full Color G9 - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/022186-15274.jpg",
+          "payload": {
+            "name": "Câmera Bullet VHD 1220 B Full Color G9 - Intelbras",
+            "description": "Câmera bullet HD com tecnologia Full Color, que entrega imagem colorida também à noite. Corpo com proteção contra intempéries para uso externo em projetos de CFTV analógico HD.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-022186",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 132.5,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "MSD-020762 — Câmera IP Bullet VIP 1230 FC+ - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/020762-14998.jpg",
+          "payload": {
+            "name": "Câmera IP Bullet VIP 1230 FC+ - Intelbras",
+            "description": "Câmera IP bullet Full HD com tecnologia Full Color+ e iluminação ativa. Integra com gravadores NVR e com o ecossistema de monitoramento Intelbras.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-020762",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 329.99,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MSD-019820 — Câmera IP Wi-Fi Motorizada VIPW 1300 Mini SD - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/019820-14481.jpg",
+          "payload": {
+            "name": "Câmera IP Wi-Fi Motorizada VIPW 1300 Mini SD - Intelbras",
+            "description": "Câmera IP Wi-Fi motorizada com movimento pan/tilt, visão noturna e gravação em cartão microSD. Dispensa cabeamento de rede, o que agiliza a instalação.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-019820",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 253.65,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MSD-019165 — Câmera Wi-Fi Full HD iM7 S Full Color - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/019165-14243.jpg",
+          "payload": {
+            "name": "Câmera Wi-Fi Full HD iM7 S Full Color - Intelbras",
+            "description": "Câmera Wi-Fi Full HD com tecnologia Full Color e proteção IP66. Campo de visão de 360°, detecção de pessoas, notificação por movimento, microfone interno e gravação em microSD de até 256 GB ou em nuvem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-019165",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 323.12,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MSD-017963 — Switch Gerenciável 24P Gigabit PoE + 4P SFP S2328G-PA - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/017963-11962.jpg",
+          "payload": {
+            "name": "Switch Gerenciável 24P Gigabit PoE + 4P SFP S2328G-PA - Intelbras",
+            "description": "Switch gerenciável de 24 portas Gigabit com PoE e 4 slots SFP 1000Base-X. Indicado para a espinha dorsal de projetos de CFTV IP e de redes corporativas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-017963",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 3267.8,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MSD-018879 — Modem Óptico GPON HG6145F3 FiberHome - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/018879-13891.jpg",
+          "payload": {
+            "name": "Modem Óptico GPON HG6145F3 FiberHome - Intelbras",
+            "description": "Terminal óptico GPON (ONT) para arquiteturas FTTH, com Wi-Fi 6 AX3000. Entrega dados, voz e vídeo para residências e pequenas empresas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-018879",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 295.0,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "MSD-004920 — Cabo LAN Cat6 U/UTP 24AWG 4 Pares Azul - Caixa 305 m - Soho Plus",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/004920-14674.jpg",
+          "payload": {
+            "name": "Cabo LAN Cat6 U/UTP 24AWG 4 Pares Azul - Caixa 305 m - Soho Plus",
+            "description": "Cabo de rede U/UTP Cat6 24AWG x 4 pares, condutor de cobre e revestimento em PVC retardante à chama. Impedância de 100 Ohms e diâmetro de 6 mm. Caixa com 305 metros.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-004920",
+            "ean_gtin": "7893137170387",
+            "video_url": "",
+            "highlight": true,
+            "price": 1175.97,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MSD-013112 — Cabo de Fibra Óptica Drop 1FO G.657A2 LSZH Preto - Bobina 1 km - WEC",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/013112-11276.jpg",
+          "payload": {
+            "name": "Cabo de Fibra Óptica Drop 1FO G.657A2 LSZH Preto - Bobina 1 km - WEC",
+            "description": "Cabo drop óptico monofibra G.657A2 com revestimento LSZH, para uso interno e externo. Bobina com 1.000 metros, peso unitário de 18 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-013112",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 614.76,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MSD-200866 — Central de Alarme Monitorada ANM 24 Net - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/200866-5375.jpg",
+          "payload": {
+            "name": "Central de Alarme Monitorada ANM 24 Net - Intelbras",
+            "description": "Central de alarme com conexão Ethernet e gerenciamento por aplicativo. Atenção: o modelo ANM 24 Net não possui barramento e, por isso, não é compatível com teclados ou receptores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-200866",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 284.4,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "MSD-015582 — Central de Cerca Elétrica ELC 6012 Net (sem bateria) - Intelbras",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/015582-11314.jpg",
+          "payload": {
+            "name": "Central de Cerca Elétrica ELC 6012 Net (sem bateria) - Intelbras",
+            "description": "Central de cerca elétrica para até 7.000 metros lineares de fio de inox 1,2 mm, com 8 zonas e módulo Wi-Fi Connect incluso. Habilita e desabilita por controle remoto ou aplicativo. Fornecida sem bateria.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-015582",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 317.2,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MSD-020220 — Kit Automatizador Deslizante DZ Stark 650 JetFlex Híbrida Bivolt - PPA",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/020220-14845.jpg",
+          "payload": {
+            "name": "Kit Automatizador Deslizante DZ Stark 650 JetFlex Híbrida Bivolt - PPA",
+            "description": "Kit automatizador para portões deslizantes com motor JetFlex híbrido bivolt 60 Hz, linha Facility. Fornecido sem cremalheira.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-020220",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 612.85,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MSD-020221 — Kit Automatizador Deslizante DZ Rio 500 JetFlex Híbrida Bivolt - PPA",
+          "temp_image_url": "https://multisystem.com.br/imagens/produtos/020221-14777.jpg",
+          "payload": {
+            "name": "Kit Automatizador Deslizante DZ Rio 500 JetFlex Híbrida Bivolt - PPA",
+            "description": "Kit automatizador para portões deslizantes da linha Rio 500, com motor JetFlex híbrido bivolt 60 Hz. Fornecido sem cremalheira.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "sku": "MSD-020221",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 637.57,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PREÇO) - MultiSeg Distribuidora",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "MultiSeg Distribuidora — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - MultiSeg Distribuidora",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "MultiSeg Distribuidora — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - CFTV e Monitoramento",
+          "salvar_id_como": "criteria_cat_cftv_id",
+          "payload": {
+            "name": "MultiSeg Distribuidora — CFTV e Monitoramento (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Alarmes e Automação",
+          "salvar_id_como": "criteria_cat_alarmes_id",
+          "payload": {
+            "name": "MultiSeg Distribuidora — Alarmes e Automação (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | MultiSeg Distribuidora",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | MultiSeg Distribuidora",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | MultiSeg Distribuidora",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | MultiSeg Distribuidora",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 12
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | MultiSeg Distribuidora",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | MultiSeg Distribuidora",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 28
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume CFTV | MultiSeg Distribuidora",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume CFTV | MultiSeg Distribuidora",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume CFTV MultiSeg Distribuidora",
+                "criteria_id": "{{criteria_cat_cftv_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 24,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 15,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Alarmes e Automação | MultiSeg Distribuidora",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF MultiSeg Distribuidora — Alarmes e Automação",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF MultiSeg Distribuidora",
+                "criteria_id": "{{criteria_cat_alarmes_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
