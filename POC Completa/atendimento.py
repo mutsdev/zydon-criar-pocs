@@ -133,10 +133,19 @@ def baixar_logo(url, nome_base):
     return alvo
 
 
-def _rodar(comando):
+# Uma execucao nao pode prender a fila para sempre. Em 01/09/2026 a criacao da
+# Witop levou 5h30 — a rede da maquina oscilou no meio e cada chamada gastou o
+# backoff inteiro. O portal saiu, mas nada mais rodou nesse tempo e o /saude
+# dizia "fila: 0", porque o item ja tinha saido da fila. O limite e generoso de
+# proposito: matar no meio deixa objeto orfao na Zydon, entao ele existe para o
+# caso travado, nao para o caso lento.
+LIMITE_EXECUCAO = 90 * 60
+
+
+def _rodar(comando, limite=None):
     return subprocess.run(comando, cwd=str(RAIZ),
                           env=dict(os.environ, PYTHONIOENCODING="utf-8"),
-                          capture_output=True, text=True,
+                          capture_output=True, text=True, timeout=limite,
                           encoding="utf-8", errors="replace")
 
 
@@ -158,7 +167,16 @@ def executar(caminho_json, logo, org, nome_cliente, gravar):
         # Sem logo o criar_poc_completo nem comeca (--logo e obrigatorio la, e
         # com razao: o caso normal tem logo). Cai no runner puro.
         comando = [sys.executable, str(AQUI / "criar_poc.py"), str(caminho_json), org]
-    p = _rodar(comando)
+    try:
+        p = _rodar(comando, limite=LIMITE_EXECUCAO)
+    except subprocess.TimeoutExpired as e:
+        parcial = (e.stdout or "") + (e.stderr or "")
+        if isinstance(parcial, bytes):
+            parcial = parcial.decode("utf-8", "replace")
+        return 1, parcial + (
+            f"\n[PARADO] A execucao passou de {LIMITE_EXECUCAO // 60} minutos e "
+            f"foi interrompida para nao prender a fila. PODE TER DEIXADO OBJETO "
+            f"PELA METADE na Zydon — confira antes de rodar de novo.")
     return p.returncode, (p.stdout or "") + (p.stderr or "")
 
 
@@ -240,5 +258,34 @@ def avisar_mitra(callback_url, token, corpo, tentativas=2):
             dados = r.json()
         except ValueError:
             return False, f"HTTP {r.status_code}, corpo nao-JSON"
-        return bool(dados.get("ok")), f"HTTP {r.status_code} {dados}"
+        resposta = _desembrulhar(dados)
+        # `duplicado` conta como entregue: quer dizer que ele ja sabia.
+        ok = bool(resposta.get("ok")) and not dados.get("error")
+        return ok, f"HTTP {r.status_code} {resposta}"
     return False, f"{ultimo} nas {tentativas} tentativas"
+
+
+def _desembrulhar(dados):
+    """A resposta do Mitra vem dentro de um envelope da plataforma dele:
+
+        {"output": "{\\"ok\\":true,\\"duplicado\\":true}",
+         "status": "COMPLETED", "error": null, "executionId": "..."}
+
+    O `ok` que interessa esta **dentro de `output`, como string**. Ler o
+    envelope de fora nao acha `ok` nenhum e devolve "nao entregue" para uma
+    entrega que funcionou — foi o que aconteceu em 01/09/2026, e por causa
+    disso passamos dias achando que o canal estava quebrado. Este projeto ja
+    caiu nessa com outra roupa: confira o efeito, nao a resposta.
+    """
+    if not isinstance(dados, dict):
+        return {}
+    saida = dados.get("output")
+    if isinstance(saida, str):
+        try:
+            interno = json.loads(saida)
+        except json.JSONDecodeError:
+            return dados
+        return interno if isinstance(interno, dict) else dados
+    if isinstance(saida, dict):
+        return saida
+    return dados

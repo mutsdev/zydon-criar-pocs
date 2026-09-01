@@ -41,6 +41,7 @@ import queue
 import secrets
 import sys
 import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -60,6 +61,12 @@ PORTA_PADRAO = 8787
 TAMANHO_MAXIMO = 8 * 1024 * 1024   # catalogo grande com imagens inline cabe folgado
 FILA = queue.Queue()
 
+# O que esta sendo criado AGORA. Sem isto o /saude diz "fila: 0" enquanto uma
+# execucao trava ha horas — foi o que aconteceu em 01/09/2026 com a Witop: o
+# item ja tinha saido da fila, o Mitra mostrava "na fila ha 2h20" e nada, de
+# nenhum dos dois lados, sabia dizer se estava vivo.
+EM_CURSO = {"pedido_id": None, "desde": None}
+
 
 def _nome_arquivo(poc, pedido_id):
     """<cliente>_poc.json, no padrao que o validador exige."""
@@ -75,11 +82,13 @@ def trabalhar(args):
         pedido = FILA.get()
         if pedido is None:
             return
+        EM_CURSO.update(pedido_id=pedido.get("pedido_id"), desde=time.time())
         try:
             processar(pedido, args)
         except Exception as e:
             print(f"  [ERRO] {type(e).__name__}: {e}")
         finally:
+            EM_CURSO.update(pedido_id=None, desde=None)
             FILA.task_done()
 
 
@@ -136,7 +145,11 @@ class Manipulador(BaseHTTPRequestHandler):
         # Serve para o tunel e para o Mitra conferirem que a ponta esta viva
         # sem disparar criacao nenhuma.
         if self.path.rstrip("/") in ("/saude", "/health"):
-            return self._responder(200, {"ok": True, "fila": FILA.qsize()})
+            corpo = {"ok": True, "fila": FILA.qsize(),
+                     "criando": EM_CURSO["pedido_id"]}
+            if EM_CURSO["desde"]:
+                corpo["criando_ha_segundos"] = int(time.time() - EM_CURSO["desde"])
+            return self._responder(200, corpo)
         self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
 
     def do_POST(self):
