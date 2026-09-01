@@ -39,6 +39,24 @@ falhou.
 custa o mesmo que um de 30 KB — 100× maior. O tempo não acompanha o tamanho,
 então não é banda nem upload de rede. É tempo gasto depois que o corpo chegou.
 
+## Medição 1b — JSONs antigos dão o mesmo resultado
+
+Para descartar que fosse algo nos catálogos montados recentemente, o mesmo
+caminho de código (`upload_image_from_url`: baixa do site do cliente e sobe)
+rodou com imagens de POCs antigas. Nenhum produto foi criado — só o
+`resource-file`.
+
+| catálogo | data do arquivo | tempo |
+|---|---|---|
+| worldseg | **30/04/2026** | 38,1s e 33,9s |
+| cobra | **24/08/2026** | 44,0s e 50,1s |
+
+Quatro de quatro com sucesso, todas lentas. Os tempos aqui incluem baixar a
+imagem do site do cliente; a medição 1, sintética, isola o upload em ~26s.
+
+Vale registrar que estes números foram colhidos cerca de uma hora depois da
+medição 1 e são **piores** — 34 a 50s contra 26s.
+
 ## Medição 2 — a leitura da mesma API está saudável
 
 `GET https://api.zydon.com.br/api/sales/categories/440`, 30 chamadas seguidas:
