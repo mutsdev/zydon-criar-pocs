@@ -1,0 +1,8 @@
+{
+  "url": "https://burner-exit-telecommunications-skin.trycloudflare.com",
+  "pedido": "https://burner-exit-telecommunications-skin.trycloudflare.com/pedido",
+  "saude": "https://burner-exit-telecommunications-skin.trycloudflare.com/saude",
+  "porta_local": 8787,
+  "atualizado_em": "2026-09-01T11:25:39-03:00",
+  "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
+}
