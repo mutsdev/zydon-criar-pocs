@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente de Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+<style>
+  :root {
+    --paper:      #F4F6F7;
+    --surface:    #FFFFFF;
+    --ink:        #131A21;
+    --muted:      #5B6672;
+    --line:       #DCE2E7;
+    --accent:     #1B3A5C;
+    --accent-dim: #E8EFF6;
+    --ok:         #1F6F52;
+    --ok-dim:     #E2F0E9;
+    --wait:       #8A5D0F;
+    --wait-dim:   #F6EEDC;
+    --shadow:     0 1px 2px rgba(19,26,33,.05), 0 8px 24px rgba(19,26,33,.05);
+
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body:    "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+    --measure: 34rem;
+    --wide:    62rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0E1317;
+      --surface:    #161D23;
+      --ink:        #E4EAEF;
+      --muted:      #94A1AD;
+      --line:       #27323B;
+      --accent:     #90B9E0;
+      --accent-dim: #17242F;
+      --ok:         #58C49B;
+      --ok-dim:     #142720;
+      --wait:       #D7A946;
+      --wait-dim:   #2A2115;
+      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #0E1317;
+    --surface:    #161D23;
+    --ink:        #E4EAEF;
+    --muted:      #94A1AD;
+    --line:       #27323B;
+    --accent:     #90B9E0;
+    --accent-dim: #17242F;
+    --ok:         #58C49B;
+    --ok-dim:     #142720;
+    --wait:       #D7A946;
+    --wait-dim:   #2A2115;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .pagina {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem) 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .estreito { max-width: var(--measure); }
+
+  /* ---------------------------------------------------------- cabecalho */
+  .capa { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .sobrelinha {
+    font-family: var(--display);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    letter-spacing: -.03em;
+    line-height: 1.02;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .abertura {
+    max-width: var(--measure);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .carimbo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: .8125rem;
+    color: var(--muted);
+  }
+
+  .carimbo b { color: var(--ink); font-weight: 500; }
+
+  /* ------------------------------------------------------------- secoes */
+  section { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    letter-spacing: -.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h2 .contagem {
+    font-family: var(--mono);
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0;
+    margin-left: .6em;
+  }
+
+  p { margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  a { color: var(--accent); text-underline-offset: .18em; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* --------------------------------------------------------- o fluxo */
+  .fluxo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .passo {
+    background: var(--surface);
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .passo .n {
+    font-family: var(--mono);
+    font-size: .8125rem;
+    color: var(--accent);
+  }
+
+  .passo h3 {
+    font-family: var(--display);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0;
+  }
+
+  .passo p { font-size: .9375rem; color: var(--muted); line-height: 1.55; }
+
+  /* ---------------------------------------------------------- portais */
+  .rolagem { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9375rem;
+    min-width: 40rem;
+  }
+
+  thead th {
+    font-family: var(--display);
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0 1rem .625rem 0;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: .8125rem 1rem .8125rem 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: baseline;
+  }
+
+  tbody tr:last-child td { border-bottom: 0; }
+
+  .cliente { font-weight: 600; white-space: nowrap; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); }
+  .endereco { font-family: var(--mono); font-size: .8125rem; }
+
+  .selo {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .selo.auto { background: var(--ok-dim);     color: var(--ok); }
+  .selo.mao  { background: var(--accent-dim); color: var(--accent); }
+
+  /* ------------------------------------------------------------ tempo */
+  .regua {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .marca { display: flex; flex-direction: column; gap: .25rem; }
+
+  .marca .valor {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .marca.agora .valor { color: var(--ok); }
+  .marca .unidade { font-size: .5em; font-weight: 500; letter-spacing: -.01em; }
+
+  .marca .rotulo {
+    font-family: var(--display);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .marca .nota { font-size: .875rem; color: var(--muted); line-height: 1.5; }
+
+  /* --------------------------------------------------------- pendencias */
+  .lista-pendencias {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .pendencia {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+    gap: .5rem 2rem;
+    align-items: baseline;
+  }
+
+  @media (max-width: 40rem) {
+    .pendencia { grid-template-columns: 1fr; }
+  }
+
+  .pendencia h3 {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+  }
+
+  .pendencia p { font-size: .9375rem; color: var(--muted); line-height: 1.55; }
+
+  .ponto {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: var(--wait);
+    flex: none;
+  }
+
+  /* ------------------------------------------------------------ fecho */
+  .fecho {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow);
+  }
+
+  .fecho p { max-width: var(--measure); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
+    font-family: var(--mono);
+    font-size: .75rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+</style>
+
+</head>
+<body>
+<div class="pagina">
+
+  <header class="capa">
+    <div class="sobrelinha">Zydon &middot; Arquitetura de Soluções</div>
+    <h1>Agente de Portal</h1>
+    <p class="abertura">O executivo manda o site de um cliente e recebe um portal B2B
+      montado, com catálogo, categorias, tabelas de preço e regras de listagem —
+      pronto para demonstrar.</p>
+    <div class="carimbo">
+      <span>Situação em <b>1º de setembro de 2026</b></span>
+      <span><b>6</b> portais no ar</span>
+      <span><b>2</b> criados sem ninguém no meio</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>O que o executivo faz</h2>
+    <div class="fluxo">
+      <div class="passo">
+        <span class="n">Passo 1</span>
+        <h3>Manda o site</h3>
+        <p>Cola o endereço do cliente no Mitra. Se tiver catálogo em PDF ou
+          planilha, anexa — é a fonte de preço mais confiável que existe.</p>
+      </div>
+      <div class="passo">
+        <span class="n">Passo 2</span>
+        <h3>Revisa o catálogo</h3>
+        <p>Em minutos aparece a lista de produtos, com foto, preço e categoria.
+          Ele tira o que não serve e corrige o que estiver errado.</p>
+      </div>
+      <div class="passo">
+        <span class="n">Passo 3</span>
+        <h3>Confirma</h3>
+        <p>Um clique. O portal é criado inteiro e o endereço volta para a tela
+          dele — não um código, o link que abre no navegador.</p>
+      </div>
+    </div>
+    <p class="estreito">Nenhum desses passos passa por mim. Os dois últimos portais da
+      tabela abaixo foram criados assim, do clique ao link.</p>
+  </section>
+
+  <section>
+    <h2>Portais no ar <span class="contagem">6 clientes</span></h2>
+    <div class="rolagem">
+      <table>
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Produtos</th>
+            <th>Endereço</th>
+            <th>Como foi criado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cliente">Aroca Mercearia</td>
+            <td class="num">15</td>
+            <td class="endereco">arocamerceariapoc-2.zydon.com.br</td>
+            <td><span class="selo mao">Assistido</span></td>
+          </tr>
+          <tr>
+            <td class="cliente">Danda Auto Peças</td>
+            <td class="num">14</td>
+            <td class="endereco">dandaautopecaspoc.zydon.com.br</td>
+            <td><span class="selo mao">Assistido</span></td>
+          </tr>
+          <tr>
+            <td class="cliente">Poupa Agora</td>
+            <td class="num">13</td>
+            <td class="endereco">poupaagorapoc.zydon.com.br</td>
+            <td><span class="selo mao">Assistido</span></td>
+          </tr>
+          <tr>
+            <td class="cliente">Uze Nails</td>
+            <td class="num">14</td>
+            <td class="endereco">uzenailspoc.zydon.com.br</td>
+            <td><span class="selo mao">Assistido</span></td>
+          </tr>
+          <tr>
+            <td class="cliente">Tudo do Mar</td>
+            <td class="num">11</td>
+            <td class="endereco">tudodomarpoc.zydon.com.br</td>
+            <td><span class="selo auto">Automático</span></td>
+          </tr>
+          <tr>
+            <td class="cliente">Fornello Conservas</td>
+            <td class="num">12</td>
+            <td class="endereco">fornelloconservaspoc.zydon.com.br</td>
+            <td><span class="selo auto">Automático</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="estreito">Todos com três categorias, marca, tabelas de preço por perfil de
+      comprador, descontos por volume e a regra de listagem aplicada nas três telas
+      — cliente, vendedor e vitrine. É a POC inteira, não uma casca.</p>
+  </section>
+
+  <section>
+    <h2>O tempo de montar o catálogo</h2>
+    <div class="regua">
+      <div class="marca">
+        <span class="rotulo">Onde começou</span>
+        <span class="valor">20<span class="unidade">min</span></span>
+        <span class="nota">Cada foto de produto caçada uma a uma, em site de terceiro.</span>
+      </div>
+      <div class="marca">
+        <span class="rotulo">Depois de medir</span>
+        <span class="valor">12<span class="unidade">min</span></span>
+        <span class="nota">Descobrimos que o custo não era pensar — era o número de idas e voltas.</span>
+      </div>
+      <div class="marca agora">
+        <span class="rotulo">Hoje</span>
+        <span class="valor">6<span class="unidade">min</span></span>
+        <span class="nota">Imagens conferidas todas de uma vez, catálogo lido direto da loja do cliente.</span>
+      </div>
+    </div>
+    <p class="estreito">A criação do portal em si leva mais alguns minutos — a duplicação
+      do portal sozinha espera até um minuto e meio. Na prática, do clique ao link
+      pronto, é cafezinho, não reunião.</p>
+  </section>
+
+  <section>
+    <h2>O que ainda depende de gente</h2>
+    <p class="estreito">Isto está aqui de propósito. Cada item abaixo é uma coisa que
+      pode aparecer errada na frente de um cliente se ninguém olhar.</p>
+    <div class="lista-pendencias">
+
+      <div class="pendencia">
+        <h3><span class="ponto"></span> Preço estimado</h3>
+        <p>A maioria dos sites B2B não publica preço. Quando não publica, o valor no
+          catálogo é estimativa de mercado e vem marcado como tal. <b>Preço estimado
+          não vai para demonstração sem passar pelo cliente</b> — no Tudo do Mar e na
+          Danda Auto Peças são todos os itens.</p>
+      </div>
+
+      <div class="pendencia">
+        <h3><span class="ponto"></span> Logo do cliente</h3>
+        <p>Os dois portais automáticos nasceram sem identidade visual. A busca
+          automática da logo já existe e valida tamanho, proporção e contraste — mas
+          ainda não está ligada no fluxo. Portal sem logo se conserta em um comando;
+          logo ruim aparece em toda tela da demonstração.</p>
+      </div>
+
+      <div class="pendencia">
+        <h3><span class="ponto"></span> Roda na minha máquina</h3>
+        <p>A criação acontece no meu computador, porque é onde estão as credenciais de
+          escrita da plataforma. Máquina desligada significa portal na fila, não
+          portal perdido — mas é o limite real para virar operação de todo dia.</p>
+      </div>
+
+      <div class="pendencia">
+        <h3><span class="ponto"></span> Foto vinda de fora</h3>
+        <p>Quando o site do cliente não tem foto de produto, buscamos em catálogo
+          público de varejista do setor. São fotos de estúdio, sem marca — mas a
+          origem é sempre declarada na entrega, para ninguém ser pego de surpresa.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>O que isso muda</h2>
+    <div class="fecho">
+      <p>Antes, uma POC de portal era uma tarefa minha, com fila. O executivo pedia,
+        esperava, e a demonstração dependia da minha agenda.</p>
+      <p>Agora ele mesmo submete, revisa o catálogo e confirma. Dois portais já
+        nasceram assim, sem ninguém no meio.</p>
+      <p><b>O gargalo deixou de ser a montagem e passou a ser a informação do cliente</b>
+        — preço, foto e logo. É um problema melhor de ter: ele se resolve conversando
+        com o cliente, não esperando alguém ficar livre.</p>
+    </div>
+  </section>
+
+  <footer>
+    Números conferidos em 01/09/2026 &middot; endereços verificados um a um, respondendo no ar<br>
+    João Pedro &middot; Arquitetura de Soluções
+  </footer>
+
+</div>
+
+</body>
+</html>

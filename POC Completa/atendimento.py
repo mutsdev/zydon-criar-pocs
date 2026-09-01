@@ -142,11 +142,37 @@ def baixar_logo(url, nome_base):
 LIMITE_EXECUCAO = 90 * 60
 
 
-def _rodar(comando, limite=None):
-    return subprocess.run(comando, cwd=str(RAIZ),
-                          env=dict(os.environ, PYTHONIOENCODING="utf-8"),
-                          capture_output=True, text=True, timeout=limite,
-                          encoding="utf-8", errors="replace")
+DIARIO = RAIZ / "logs"
+
+
+def _rodar(comando, limite=None, diario=None):
+    """Roda e devolve o processo. Com `diario`, escreve a saida AO VIVO no
+    arquivo, alem de devolve-la.
+
+    O ao vivo nao e luxo. Sem ele a saida so aparece quando o processo termina,
+    e numa execucao de horas ninguem — nem quem esta na frente da maquina —
+    sabe dizer se ela avancou. Em 01/09/2026 gastamos meia hora deduzindo o
+    progresso da Multiseg por consulta a API, produto por produto, porque a
+    unica fonte de verdade estava presa num cano ate o fim.
+    """
+    ambiente = dict(os.environ, PYTHONIOENCODING="utf-8")
+    if diario is None:
+        return subprocess.run(comando, cwd=str(RAIZ), env=ambiente,
+                              capture_output=True, text=True, timeout=limite,
+                              encoding="utf-8", errors="replace")
+
+    diario.parent.mkdir(parents=True, exist_ok=True)
+    with open(diario, "w", encoding="utf-8", errors="replace") as f:
+        processo = subprocess.Popen(comando, cwd=str(RAIZ), env=ambiente,
+                                    stdout=f, stderr=subprocess.STDOUT)
+        try:
+            processo.wait(timeout=limite)
+        except subprocess.TimeoutExpired:
+            processo.kill()
+            processo.wait()
+            raise
+    texto = diario.read_text(encoding="utf-8", errors="replace")
+    return subprocess.CompletedProcess(comando, processo.returncode, texto, "")
 
 
 def validar(caminho_json):
@@ -167,12 +193,16 @@ def executar(caminho_json, logo, org, nome_cliente, gravar):
         # Sem logo o criar_poc_completo nem comeca (--logo e obrigatorio la, e
         # com razao: o caso normal tem logo). Cai no runner puro.
         comando = [sys.executable, str(AQUI / "criar_poc.py"), str(caminho_json), org]
+    diario = DIARIO / f"{prefixo(Path(caminho_json).name)}.log"
+    print(f"  acompanhe ao vivo:  Get-Content -Wait '{diario}'")
     try:
-        p = _rodar(comando, limite=LIMITE_EXECUCAO)
-    except subprocess.TimeoutExpired as e:
-        parcial = (e.stdout or "") + (e.stderr or "")
-        if isinstance(parcial, bytes):
-            parcial = parcial.decode("utf-8", "replace")
+        p = _rodar(comando, limite=LIMITE_EXECUCAO, diario=diario)
+    except subprocess.TimeoutExpired:
+        # A saida parcial esta no arquivo, e nao no `e.stdout`: quem escreveu
+        # foi o proprio processo, direto no diario. Perder isso justo no caso
+        # que mais precisa de explicacao seria o pior momento possivel.
+        parcial = (diario.read_text(encoding="utf-8", errors="replace")
+                   if diario.exists() else "")
         return 1, parcial + (
             f"\n[PARADO] A execucao passou de {LIMITE_EXECUCAO // 60} minutos e "
             f"foi interrompida para nao prender a fila. PODE TER DEIXADO OBJETO "

@@ -14,3 +14,6 @@ Identidade Visual/saidas/
 # Registro local das execucoes do receptor. Nao e versionado porque guarda o
 # callback_token de cada pedido, para o --reenviar funcionar.
 pedidos-executados.jsonl
+
+# Saida ao vivo das execucoes do receptor. E dado de cliente e ruido de log.
+logs/

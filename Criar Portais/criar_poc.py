@@ -297,9 +297,25 @@ def baixar_imagem(image_url):
     """Baixa a imagem (com User-Agent) e valida. Retorna (bytes, mime, fname)."""
     parsed = urlparse(image_url)
     headers = {**IMG_DOWNLOAD_HEADERS, "Referer": f"{parsed.scheme}://{parsed.netloc}/"}
-    resp = requests.get(image_url, headers=headers, timeout=20)
-    if resp.status_code != 200:
-        raise RuntimeError(f"download status={resp.status_code}")
+    # Retry curto e proprio, NAO o request_with_retry. Sem retry nenhum, uma
+    # oscilacao de rede ou um 429 do site de origem cria o produto SEM foto e a
+    # execucao segue calada — na Witop (01/09/2026) foram 7 de 12 produtos
+    # assim. Mas o backoff do request_with_retry (15/30/60/120s) somaria 45
+    # minutos numa POC de 12 imagens: caro demais para uma etapa que o runner
+    # ja trata como opcional. Tres tentativas curtas pegam o caso transitorio,
+    # que e a maioria, sem transformar rede ruim em execucao de horas.
+    resp = None
+    for tentativa in range(3):
+        try:
+            resp = requests.get(image_url, headers=headers, timeout=20)
+            if resp.status_code not in (429, 500, 502, 503, 504):
+                break
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+            if tentativa == 2:
+                raise
+        time.sleep(3 * (tentativa + 1))
+    if resp is None or resp.status_code != 200:
+        raise RuntimeError(f"download status={resp.status_code if resp else 'sem resposta'}")
     if len(resp.content) < 1000:
         raise RuntimeError(f"download retornou {len(resp.content)} bytes (provavel bloqueio)")
     content = resp.content

@@ -1,0 +1,883 @@
+{
+  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
+  "empresa": "Witop Decor Brasil",
+  "descricao_empresa": "Importadora e distribuidora de revestimentos decorativos em WPC/fibra de bambu e PVC: paineis ripados de parede, paineis integrados de grande formato, laminas flexiveis com efeito marmore, pisos vinilicos LVT e SPC, revestimento de teto e acabamentos de instalacao.",
+  "gerado_em": "2026-09-01",
+  "setor": "Material de Construcao — Revestimentos decorativos WPC/PVC",
+  "portal_name": "WITOP DECOR POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Witop",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Witop",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1 — Paineis Ripados WPC",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Paineis Ripados WPC",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2 — Paineis Integrados e Laminas Flexiveis",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Paineis Integrados e Laminas Flexiveis",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3 — Pisos, Teto e Acabamentos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Pisos, Teto e Acabamentos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Acabamento",
+          "salvar_id_como": "variation_acabamento_id",
+          "payload": {
+            "name": "Acabamento",
+            "active": true,
+            "is_searchable": false,
+            "values": [
+              "Nogueira WT038",
+              "Grey WT154",
+              "Grigio FSH-Grey",
+              "Freijo WT107",
+              "Jequitiba C073",
+              "Linho Luce WT082",
+              "Linho Boucle WT086",
+              "Linho Maiori WT088",
+              "Arabescato",
+              "Bianco",
+              "Bronzo Espelhado",
+              "Nero Espelhado"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "WT-RIP-FLO-001 — Painel Ripado de Parede WPC Fibra de Bambu Florenca Teca 34x195x12x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_painel_ripado_de_parede_wpc_fibra_de_bambu_florenca_teca_34_195_12_2900_17_4_0e42b132775b4ad082dce3c7335cf49a.png",
+          "payload": {
+            "sku": "WT-RIP-FLO-001",
+            "name": "Painel Ripado de Parede WPC Fibra de Bambu Florenca Teca 34x195x12x2900",
+            "description": "Painel ripado de parede em WPC com fibra de bambu, acabamento Teca. Regua de 195 mm x 12 mm x 2900 mm, impermeavel, com conforto termico e acustico e instalacao por encaixe, sem obra suja.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 84.99,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "WT-RIP-GEN-002 — Painel Ripado de Parede WPC Fibra de Bambu Genova Jacaranda 49x168x18x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_painel_ripado_de_parede_wpc_fibra_de_1_20251103160127_2f5577ad4607.jpg",
+          "payload": {
+            "sku": "WT-RIP-GEN-002",
+            "name": "Painel Ripado de Parede WPC Fibra de Bambu Genova Jacaranda 49x168x18x2900",
+            "description": "Painel ripado Genova em WPC com fibra de bambu, acabamento Jacaranda. Ripas de 168 mm x 18 mm x 2900 mm, relevo mais profundo para paredes de destaque em ambientes internos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 99.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "WT-RIP-VER-003 — Painel Ripado de Parede WPC Fibra de Bambu Verona Cedro WT107 203x25x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_painel_ripado_de_parede_wpc_fibra_de_bambu_verona_cedro_wt107_203_25_2900_49_1_65297cd47cdf2555b6a1e4d99777fa7b.jpg",
+          "payload": {
+            "sku": "WT-RIP-VER-003",
+            "name": "Painel Ripado de Parede WPC Fibra de Bambu Verona Cedro WT107 203x25x2900",
+            "description": "Painel ripado Verona, a regua mais larga da linha: 203 mm x 25 mm x 2900 mm em WPC com fibra de bambu, acabamento Cedro WT107. Cobre mais area por peca e reduz o tempo de instalacao.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 163.09,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WT-RIP-SIE-004 — Painel Ripado de Parede WPC Fibra de Bambu Siena 168x20x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_painel_ripado_de_parede_wpc_fibra_de_2_20251104125530_76f29fb02a52.jpg",
+          "payload": {
+            "sku": "WT-RIP-SIE-004",
+            "name": "Painel Ripado de Parede WPC Fibra de Bambu Siena 168x20x2900",
+            "description": "Painel ripado Siena em WPC com fibra de bambu, 168 mm x 20 mm x 2900 mm, disponivel em quatro acabamentos (Nogueira, Grey, Grigio e Freijo). Aplicavel em paredes, tetos e paineis de moveis internos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 139.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "WT-RIP-SIE-004-NOG",
+                "price": 139.9,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 5.2,
+                "variation_width": 16.8,
+                "variation_height": 2,
+                "variation_depth": 290,
+                "packaging_weight": 5.6,
+                "packaging_width": 18.8,
+                "packaging_height": 3,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Nogueira WT038"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-RIP-SIE-004-GRE",
+                "price": 139.9,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 5.2,
+                "variation_width": 16.8,
+                "variation_height": 2,
+                "variation_depth": 290,
+                "packaging_weight": 5.6,
+                "packaging_width": 18.8,
+                "packaging_height": 3,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Grey WT154"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-RIP-SIE-004-GRI",
+                "price": 139.9,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 5.2,
+                "variation_width": 16.8,
+                "variation_height": 2,
+                "variation_depth": 290,
+                "packaging_weight": 5.6,
+                "packaging_width": 18.8,
+                "packaging_height": 3,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Grigio FSH-Grey"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-RIP-SIE-004-FRE",
+                "price": 139.9,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 5.2,
+                "variation_width": 16.8,
+                "variation_height": 2,
+                "variation_depth": 290,
+                "packaging_weight": 5.6,
+                "packaging_width": 18.8,
+                "packaging_height": 3,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Freijo WT107"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "WT-INT-BRU-005 — Painel de Parede Integrado Grande Formato WPC Fibra de Bambu Bruxelas 400x8x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_painel_de_parede_integrado_grande_formato_fibra_de_bambu_wpc_bruxelas_jequitiba_c073_40_61_1_c002b5f7f7cc0beb950de2f815972913.jpg",
+          "payload": {
+            "sku": "WT-INT-BRU-005",
+            "name": "Painel de Parede Integrado Grande Formato WPC Fibra de Bambu Bruxelas 400x8x2900",
+            "description": "Painel integrado de grande formato em WPC com fibra de bambu, 400 mm de largura por 8 mm, com encaixe macho-femea que elimina rejunte. Quatro acabamentos: madeirado Jequitiba e a linha Linho (Luce, Boucle e Maiori).",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 174.99,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "variations": [
+              {
+                "sku": "WT-INT-BRU-005-JEQ",
+                "price": 174.99,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 7.5,
+                "variation_width": 40,
+                "variation_height": 0.8,
+                "variation_depth": 290,
+                "packaging_weight": 7.9,
+                "packaging_width": 42,
+                "packaging_height": 1.8,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Jequitiba C073"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-INT-BRU-005-LUC",
+                "price": 286.07,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 7.5,
+                "variation_width": 40,
+                "variation_height": 0.8,
+                "variation_depth": 290,
+                "packaging_weight": 7.9,
+                "packaging_width": 42,
+                "packaging_height": 1.8,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Linho Luce WT082"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-INT-BRU-005-BOU",
+                "price": 286.07,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 7.5,
+                "variation_width": 40,
+                "variation_height": 0.8,
+                "variation_depth": 290,
+                "packaging_weight": 7.9,
+                "packaging_width": 42,
+                "packaging_height": 1.8,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Linho Boucle WT086"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-INT-BRU-005-MAI",
+                "price": 286.07,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 7.5,
+                "variation_width": 40,
+                "variation_height": 0.8,
+                "variation_depth": 290,
+                "packaging_weight": 7.9,
+                "packaging_width": 42,
+                "packaging_height": 1.8,
+                "packaging_depth": 293,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Linho Maiori WT088"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "WT-LAM-COR-006 — Lamina Flexivel Grande Formato WPC Fibra de Bambu PET Filme Cordoba 1220x5x2600",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_lamina_flexivel_grande_formato_wpc_fibra_de_bambu_pet_filme_cordoba_arabescato_11a_11b__95_1_dcf48808e9bae9864e91553d1e84e347.jpeg",
+          "payload": {
+            "sku": "WT-LAM-COR-006",
+            "name": "Lamina Flexivel Grande Formato WPC Fibra de Bambu PET Filme Cordoba 1220x5x2600",
+            "description": "Lamina flexivel de grande formato (1220 mm x 2600 mm x 5 mm) em WPC com fibra de bambu e filme PET. Acompanha o desenho continuo do marmore sem rejunte; disponivel em Arabescato, Bianco, Bronzo e Nero espelhados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 834.99,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "WT-LAM-COR-006-ARA",
+                "price": 834.99,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 9,
+                "variation_width": 122,
+                "variation_height": 0.5,
+                "variation_depth": 260,
+                "packaging_weight": 9.4,
+                "packaging_width": 124,
+                "packaging_height": 1.5,
+                "packaging_depth": 263,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Arabescato"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-LAM-COR-006-BIA",
+                "price": 549.99,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 9,
+                "variation_width": 122,
+                "variation_height": 0.5,
+                "variation_depth": 260,
+                "packaging_weight": 9.4,
+                "packaging_width": 124,
+                "packaging_height": 1.5,
+                "packaging_depth": 263,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Bianco"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-LAM-COR-006-BRO",
+                "price": 674.99,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 9,
+                "variation_width": 122,
+                "variation_height": 0.5,
+                "variation_depth": 260,
+                "packaging_weight": 9.4,
+                "packaging_width": 124,
+                "packaging_height": 1.5,
+                "packaging_depth": 263,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Bronzo Espelhado"
+                  }
+                ]
+              },
+              {
+                "sku": "WT-LAM-COR-006-NER",
+                "price": 674.99,
+                "stock": 100,
+                "images": [],
+                "variation_weight": 9,
+                "variation_width": 122,
+                "variation_height": 0.5,
+                "variation_depth": 260,
+                "packaging_weight": 9.4,
+                "packaging_width": 124,
+                "packaging_height": 1.5,
+                "packaging_depth": 263,
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Nero Espelhado"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "WT-LAM-MAD-007 — Lamina Flexivel Grande Formato PVC Madri Carrara KL8232 1220x2600x3mm",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_lamina_flexivel_grande_formato_pvc_madri_carrara_kl8232_1220_2600_3mm_119_1_f322886a13b1b357af87147e788a5d95.jpg",
+          "payload": {
+            "sku": "WT-LAM-MAD-007",
+            "name": "Lamina Flexivel Grande Formato PVC Madri Carrara KL8232 1220x2600x3mm",
+            "description": "Chapa flexivel de PVC com efeito marmore Carrara, 1220 mm x 2600 mm x 3 mm. Leve, impermeavel e colavel sobre azulejo existente — opcao de reforma rapida para paredes de banho e cozinha.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 558.67,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WT-LAM-BAR-008 — Lamina Flexivel Grande Formato PVC Barcelona Imperial KL8005-1 1220x2440x2mm",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/revestimento_lamina_flexivel_grande_formato_pvc_barcelona_imperial_kl8005_1_tamanho_1220_2440_2mm_123_3_ed5385677e5c516d0e29c83a36b05141.jpg",
+          "payload": {
+            "sku": "WT-LAM-BAR-008",
+            "name": "Lamina Flexivel Grande Formato PVC Barcelona Imperial KL8005-1 1220x2440x2mm",
+            "description": "Chapa flexivel de PVC Barcelona no padrao Imperial, 1220 mm x 2440 mm x 2 mm. Espessura reduzida para revestir superficies curvas, colunas e mobiliario.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 392.88,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "WT-PIS-LVT-009 — Piso Vinilico Modular LVT Auto Adesivo Cedro 152,4x914,4x2mm",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/piso_vinlico_modular_lvt_1_20260213102740_2b47c1f84777.jpg",
+          "payload": {
+            "sku": "WT-PIS-LVT-009",
+            "name": "Piso Vinilico Modular LVT Auto Adesivo Cedro 152,4x914,4x2mm",
+            "description": "Piso vinilico LVT modular auto adesivo, regua de 152,4 mm x 914,4 mm x 2 mm com camada de desgaste de 0,1 mm. Instalacao a seco sobre contrapiso regularizado, sem cola adicional.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 176.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "WT-PIS-SPC-010 — Piso Vinilico Click SPC Nogueira 1220x183x4mm FE0113-OAK",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/piso_vinlico_click_spc_nogueira_12201834mm03_fe011_1_20260213112946_53d8a9f51616.jpg",
+          "payload": {
+            "sku": "WT-PIS-SPC-010",
+            "name": "Piso Vinilico Click SPC Nogueira 1220x183x4mm FE0113-OAK",
+            "description": "Piso vinilico click SPC nucleo rigido, 1220 mm x 183 mm x 4 mm com capa de 0,3 mm. Sistema click sem cola, estavel a variacao de temperatura e indicado para areas de trafego intenso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 288.67,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 8
+          }
+        },
+        {
+          "label": "WT-TET-ATE-011 — Tubo Retangular para Revestimento de Teto WPC Atenas Cedro WT107 50x60x2900",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/tubo_retangular_para_revestimento_teto_wpc_atenas_cedro_wt107_50_60_2900_129_1_1f6e734b59672f94c9dadb96ce70d763.jpg",
+          "payload": {
+            "sku": "WT-TET-ATE-011",
+            "name": "Tubo Retangular para Revestimento de Teto WPC Atenas Cedro WT107 50x60x2900",
+            "description": "Tubo retangular em WPC para revestimento de teto e forros ripados, 50 mm x 60 mm x 2900 mm, acabamento Cedro WT107. Vaza a alma para reduzir peso e facilitar a fixacao em estrutura metalica ou de madeira.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 110.08,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "WT-ACB-COL-012 — Cola PU40 Adesivo Estrutural Witop",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1365249/cola_pu40_1_20260213142458_5feb62d6fcd9.png",
+          "payload": {
+            "sku": "WT-ACB-COL-012",
+            "name": "Cola PU40 Adesivo Estrutural Witop",
+            "description": "Adesivo estrutural PU40 para fixacao de paineis WPC e laminas flexiveis em alvenaria, drywall e madeira. Consumivel de obra — vendido em caixa fechada.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 17.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Witop",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Witop — Marca (Tabela de Preco)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Witop",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Witop — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Paineis Ripados WPC",
+          "salvar_id_como": "criteria_cat_ripados_id",
+          "payload": {
+            "name": "Witop — Paineis Ripados WPC (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pisos, Teto e Acabamentos",
+          "salvar_id_como": "criteria_cat_pisos_id",
+          "payload": {
+            "name": "Witop — Pisos, Teto e Acabamentos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Witop",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Witop",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Witop",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Witop",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Witop",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Witop",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Paineis Ripados | Witop",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Witop",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Paineis Ripados Witop",
+                "criteria_id": "{{criteria_cat_ripados_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 30,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Pisos, Teto e Acabamentos | Witop",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Witop — Pisos, Teto e Acabamentos",
+            "start_date": "2026-09-01",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Witop Pisos, Teto e Acabamentos",
+                "criteria_id": "{{criteria_cat_pisos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
