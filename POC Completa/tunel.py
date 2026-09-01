@@ -25,6 +25,7 @@ import argparse
 import json
 import re
 import subprocess
+import threading
 import sys
 import time
 from datetime import datetime, timezone
@@ -41,11 +42,20 @@ GIT = Path(r"C:\Program Files\Git\cmd\git.exe")
 PADRAO_URL = re.compile(r"https://[a-z0-9-]+\.trycloudflare\.com")
 PADRAO_PRONTO = "Registered tunnel connection"
 
-# O DNS de um nome recem-criado leva de 30 a 60 segundos para propagar: medido
-# em 01/09/2026, quatro sondagens seguidas deram `getaddrinfo failed` antes de
-# o nome existir. Uma janela curta aqui reprova um tunel que estava subindo bem.
-TENTATIVAS_SAUDE = 24
+# O DNS de um nome recem-criado leva de 10 segundos a mais de dois minutos para
+# propagar. Medido em 01/09/2026, na mesma tarde: uma subida passou na terceira
+# sondagem e outra na vigesima quarta — exatamente no limite de uma janela de
+# 24. Janela curta aqui reprova um tunel que estava subindo bem, e o custo de
+# esperar e so tempo, entao ela e folgada de proposito: 3 minutos.
+TENTATIVAS_SAUDE = 36
 ESPERA_SAUDE = 5
+
+# De quanto em quanto tempo o tunel confere a si mesmo, e quantas falhas
+# seguidas ate trocar de endereco. Tres minutos de silencio antes de trocar:
+# oscilacao de rede se resolve sozinha em segundos, e trocar de endereco a cada
+# tossida geraria commit atras de commit.
+INTERVALO_VIGIA = 60
+FALHAS_PARA_TROCAR = 3
 
 
 def _agora():
@@ -180,18 +190,86 @@ def main(argv=None):
     else:
         publicar(url, args.porta)
 
-    print("\n[INFO] Tunel no ar. Ctrl+C para parar.\n")
+    print(f"\n[INFO] Tunel no ar. Confiro a cada {INTERVALO_VIGIA}s. Ctrl+C para parar.\n")
+    return vigiar(processo, url, binario, args)
+
+
+def _drenar(processo):
+    """Consome a saida do cloudflared num fio proprio.
+
+    Nao e so higiene: o cano de stdout enche e o processo TRAVA se ninguem ler.
+    Como o laco principal agora fica sondando o /saude em vez de ler linha a
+    linha, alguem tem que esvaziar isto.
+    """
+    for linha in processo.stdout:
+        if " ERR " in linha and "no recent network activity" not in linha:
+            print(f"  [cloudflared] {linha.rstrip()[:150]}")
+
+
+def vigiar(processo, url, binario, args):
+    """Sonda o proprio endereco e levanta um tunel novo quando ele morre.
+
+    Existe por causa de 01/09/2026, a segunda morte em quatro dias: o
+    `cloudflared` continuava rodando, reconectando a um tunel que a Cloudflare
+    ja tinha recolhido, e nunca pedia um nome novo. Do lado de fora o DNS nem
+    resolvia; do lado de dentro parecia tudo bem. O Mitra levou 300s de timeout
+    contra um endereco publicado que ja nao existia.
+
+    Reiniciar da um nome novo, e o nome novo e publicado — que e o motivo de o
+    endereco morar num arquivo, e nao na configuracao do Mitra.
+    """
+    threading.Thread(target=_drenar, args=(processo,), daemon=True).start()
+    falhas = 0
     try:
-        for linha in processo.stdout:
-            # O cloudflared fala muito; so o que muda o endereco interessa.
-            if PADRAO_URL.search(linha) or " ERR " in linha:
-                print(f"  [cloudflared] {linha.rstrip()}")
-                novo = PADRAO_URL.search(linha)
-                if novo and novo.group(0) != url and not args.sem_publicar:
-                    url = novo.group(0)
-                    print(f"[INFO] Endereco mudou para {url}; republicando.")
-                    if conferir(url)[0]:
-                        publicar(url, args.porta)
+        while True:
+            time.sleep(INTERVALO_VIGIA)
+            try:
+                r = requests.get(f"{url}/saude", timeout=25)
+                viva = r.status_code == 200 and r.json().get("ok")
+            except (requests.RequestException, ValueError):
+                viva = False
+
+            if viva:
+                falhas = 0
+                continue
+
+            falhas += 1
+            print(f"[AVISO] O tunel nao respondeu ({falhas}/{FALHAS_PARA_TROCAR}).")
+            if falhas < FALHAS_PARA_TROCAR:
+                continue
+
+            # Antes de culpar o tunel: se o receptor caiu, trocar de tunel nao
+            # resolve nada e ainda queima um endereco novo a toa.
+            try:
+                requests.get(f"http://127.0.0.1:{args.porta}/saude", timeout=10)
+            except requests.RequestException:
+                print("[AVISO] O receptor local tambem nao responde. O problema "
+                      "nao e o tunel — nao vou trocar de endereco.")
+                falhas = 0
+                continue
+
+            print("[INFO] Levantando um tunel novo.")
+            processo.terminate()
+            processo = subprocess.Popen(
+                [str(binario), "tunnel", "--url", f"http://127.0.0.1:{args.porta}"],
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                text=True, encoding="utf-8", errors="replace", bufsize=1)
+            novo = esperar_url(processo)
+            if not novo:
+                print("[ERRO] O tunel novo nao subiu. Tento de novo na proxima volta.")
+                falhas = 0
+                continue
+            ok, detalhe = conferir(novo)
+            if not ok:
+                print(f"[ERRO] O tunel novo nao respondeu ({detalhe}). Nao publiquei.")
+                falhas = 0
+                continue
+            url = novo
+            falhas = 0
+            print(f"[OK] Endereco novo: {url}")
+            if not args.sem_publicar:
+                publicar(url, args.porta)
+            threading.Thread(target=_drenar, args=(processo,), daemon=True).start()
     except KeyboardInterrupt:
         print("\n[INFO] Parando o tunel.")
     finally:
