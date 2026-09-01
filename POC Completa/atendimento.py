@@ -14,6 +14,7 @@ import os
 import re
 import subprocess
 import sys
+import threading
 from pathlib import Path
 
 import requests
@@ -145,33 +146,69 @@ LIMITE_EXECUCAO = 90 * 60
 DIARIO = RAIZ / "logs"
 
 
-def _rodar(comando, limite=None, diario=None):
-    """Roda e devolve o processo. Com `diario`, escreve a saida AO VIVO no
-    arquivo, alem de devolve-la.
+def _rodar(comando, limite=None, diario=None, ecoar=False):
+    """Roda o comando. Com `ecoar`, imprime cada linha assim que ela sai.
 
-    O ao vivo nao e luxo. Sem ele a saida so aparece quando o processo termina,
-    e numa execucao de horas ninguem — nem quem esta na frente da maquina —
-    sabe dizer se ela avancou. Em 01/09/2026 gastamos meia hora deduzindo o
-    progresso da Multiseg por consulta a API, produto por produto, porque a
-    unica fonte de verdade estava presa num cano ate o fim.
+    O ao vivo nao e conforto. Sem ele a saida so aparece quando o processo
+    termina, e numa execucao de horas ninguem — nem quem esta na frente da
+    maquina — sabe dizer se ela avancou. Em 01/09/2026 gastamos meia hora
+    deduzindo o progresso da Multiseg por consulta a API, produto por produto,
+    porque a unica fonte de verdade estava presa num cano ate o fim.
+
+    PYTHONUNBUFFERED e o que faz isso funcionar de verdade. O filho e Python e,
+    escrevendo para um cano em vez de um terminal, ele passa a bufferizar por
+    bloco: as linhas so apareceriam de 8 KB em 8 KB, o que numa POC inteira
+    significa "no fim". A variavel desliga isso.
     """
-    ambiente = dict(os.environ, PYTHONIOENCODING="utf-8")
-    if diario is None:
+    ambiente = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1")
+    if not ecoar and diario is None:
         return subprocess.run(comando, cwd=str(RAIZ), env=ambiente,
                               capture_output=True, text=True, timeout=limite,
                               encoding="utf-8", errors="replace")
 
-    diario.parent.mkdir(parents=True, exist_ok=True)
-    with open(diario, "w", encoding="utf-8", errors="replace") as f:
-        processo = subprocess.Popen(comando, cwd=str(RAIZ), env=ambiente,
-                                    stdout=f, stderr=subprocess.STDOUT)
-        try:
-            processo.wait(timeout=limite)
-        except subprocess.TimeoutExpired:
-            processo.kill()
-            processo.wait()
-            raise
-    texto = diario.read_text(encoding="utf-8", errors="replace")
+    arquivo = None
+    if diario is not None:
+        diario.parent.mkdir(parents=True, exist_ok=True)
+        arquivo = open(diario, "w", encoding="utf-8", errors="replace")
+
+    processo = subprocess.Popen(comando, cwd=str(RAIZ), env=ambiente,
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                text=True, encoding="utf-8", errors="replace",
+                                bufsize=1)
+
+    # O limite vive num despertador proprio: ler linha bloqueia, e um processo
+    # calado (dormindo num backoff de 120s) nunca voltaria para o laco conferir
+    # o relogio. Sem o despertador, o teto so valeria para processo falante.
+    estourou = {"sim": False}
+
+    def _matar():
+        estourou["sim"] = True
+        processo.kill()
+
+    despertador = threading.Timer(limite, _matar) if limite else None
+    if despertador:
+        despertador.daemon = True
+        despertador.start()
+
+    linhas = []
+    try:
+        for linha in processo.stdout:
+            linhas.append(linha)
+            if arquivo:
+                arquivo.write(linha)
+                arquivo.flush()
+            if ecoar:
+                print(f"  | {linha.rstrip()}", flush=True)
+        processo.wait()
+    finally:
+        if despertador:
+            despertador.cancel()
+        if arquivo:
+            arquivo.close()
+
+    texto = "".join(linhas)
+    if estourou["sim"]:
+        raise subprocess.TimeoutExpired(comando, limite, output=texto)
     return subprocess.CompletedProcess(comando, processo.returncode, texto, "")
 
 
@@ -196,7 +233,7 @@ def executar(caminho_json, logo, org, nome_cliente, gravar):
     diario = DIARIO / f"{prefixo(Path(caminho_json).name)}.log"
     print(f"  acompanhe ao vivo:  Get-Content -Wait '{diario}'")
     try:
-        p = _rodar(comando, limite=LIMITE_EXECUCAO, diario=diario)
+        p = _rodar(comando, limite=LIMITE_EXECUCAO, diario=diario, ecoar=True)
     except subprocess.TimeoutExpired:
         # A saida parcial esta no arquivo, e nao no `e.stdout`: quem escreveu
         # foi o proprio processo, direto no diario. Perder isso justo no caso
@@ -241,8 +278,9 @@ def atender(caminho_json, logo, org, gravar, pedido_id=None, origem_id=None,
         return dict(base, status="simulado", observacoes="modo simulacao")
 
     print(f"  logo   : {logo if logo else 'nao encontrada — portal sem identidade'}")
+    # A saida ja foi ecoada linha a linha durante a execucao; reimprimir o fim
+    # aqui duplicaria tudo que voce acabou de ler.
     codigo, saida = executar(caminho_json, logo, org, poc.get("empresa", ""), gravar)
-    print(saida[-3000:])
 
     portal_id = uuid_da_saida(saida)
     url, _ = descobrir_url.descobrir(nome_portal) if nome_portal else (None, [])
