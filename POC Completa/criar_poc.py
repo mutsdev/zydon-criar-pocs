@@ -66,6 +66,8 @@ CONVERTER_PARA_JPEG = True  # converte webp/png/etc para JPEG antes do upload
 # Sem timeout o requests espera para sempre: uma conexao pendurada travava a
 # criacao da POC sem imprimir nada, e a unica saida era Ctrl+C.
 TIMEOUT_PADRAO = 30
+# O upload de imagem tem teto proprio: ver upload_image_from_url.
+TIMEOUT_UPLOAD = 180
 
 
 def request_with_retry(method, url, **kwargs):
@@ -348,11 +350,19 @@ def upload_image_from_url(url, headers):
         img_data, mime, fname = baixar_imagem(url)
         files = {"files": (fname, img_data, mime)}
         upload_headers = {k: v for k, v in headers.items() if k.lower() != "content-type"}
+        # Timeout proprio, MUITO maior que o TIMEOUT_PADRAO de 30s. Medido em
+        # 01/09/2026: este endpoint passou a responder em ~29 segundos, contra
+        # menos de um na semana anterior. Com o teto em 30s virava cara ou
+        # coroa — as vezes passava raspando, as vezes estourava e queimava o
+        # backoff inteiro (15+30+60+120s) para no fim criar o produto sem foto.
+        # Foi isso que deixou a Witop com 5 de 12 imagens e fez uma POC de um
+        # minuto levar 45. Esperar 29s e barato; perder a foto nao e.
         res = request_with_retry("POST", f"{BASE_URL}/resource-files",
-                                 headers=upload_headers, files=files)
+                                 headers=upload_headers, files=files,
+                                 timeout=TIMEOUT_UPLOAD)
         if res.status_code in (200, 201):
             return res.json()["resourceFiles"][0]["id"]
-        print(f"  [FALHA] Upload de imagem: {res.status_code} - {res.text[:200]}")
+        print(f"  [FALHA] Upload de imagem: {res.status_code} - {res.text[:600]}")
     except Exception as e:
         print(f"  [ERRO] Upload de imagem: {e}")
     return None
@@ -383,7 +393,7 @@ def duplicar_portal(portal_origem_id, nome, cor, headers):
     url = f"{APPCENTER_BASE_URL}/solutions/{portal_origem_id}/duplicate-async"
     res = request_with_retry("POST", url, headers=headers, json={"name": nome, "color": cor})
     if res.status_code not in (200, 201):
-        print(f"  [FALHA] Duplicar portal: {res.status_code} - {res.text[:200]}")
+        print(f"  [FALHA] Duplicar portal: {res.status_code} - {res.text[:600]}")
         return None
     print("  [INFO] Duplicacao iniciada - aguardando conclusao...")
     status_url = f"{APPCENTER_BASE_URL}/solutions/{portal_origem_id}/duplicate-async/status"
@@ -427,7 +437,7 @@ def associar_categorias_ao_portal(categorias_criadas, portal_id, headers):
             print(f"  [OK] Categoria '{cat_payload['name']}' associada")
         else:
             print(f"  [FALHA] Associar '{cat_payload['name']}': "
-                  f"{res.status_code} - {res.text[:200]}")
+                  f"{res.status_code} - {res.text[:600]}")
         time.sleep(0.5)
 
 
@@ -457,7 +467,7 @@ def obter_jwt_portal(headers, portal_id):
               "solution_id": portal_id},
     )
     if res.status_code != 200:
-        print(f"  [FALHA] Login do portal: {res.status_code} - {res.text[:200]}")
+        print(f"  [FALHA] Login do portal: {res.status_code} - {res.text[:600]}")
         return None
     return res.json().get("accessToken")
 
@@ -601,7 +611,7 @@ def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
                     produtos_criados.append((label, new_id))
             else:
                 falhas += 1
-                print(f"  [FALHA] {label}: {res.status_code} - {res.text[:200]}")
+                print(f"  [FALHA] {label}: {res.status_code} - {res.text[:600]}")
                 if rollback_on_error:
                     # Parar aqui: os proximos requests dependem deste ID e so
                     # produziriam erros em cascata (400 de placeholder nao resolvido).
