@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-01-002",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/multiseg_distribuidora_poc.json",
+  "logo_url": null,
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo publico do proprio site (Laravel/Inertia): os 12 produtos, precos e imagens saem do payload da home e das paginas /produto/<codigo>, sem credencial. Precos em reais decimais, campo PRECO1 do catalogo do cliente — nao ha estimativa. Ressalva para quem for demonstrar: o site NAO exibe preco para visitante nao logado (price_info.status = not_logged); os valores vem do payload publico, entao confirme com o cliente antes de mostrar preco em tela. Imagens: todas as 12 do CDN do proprio cliente (multisystem.com.br), aprovadas no mosaico e no verificar_imagens.py — nenhuma substituida, nenhuma marca de concorrente (as marcas visiveis sao Intelbras, PPA, Soho Plus e WEC, que a MultiSeg distribui). Sem grade de variacoes: o eixo do catalogo e codigo de fabricante, nao escolha do comprador. LOGO: nenhuma candidata passou o portao — /images/logo-multiseg.png tem 202x42 (menor lado abaixo de 200px) e /images/logo-multiseg.svg e vetor, que o achar_logo.py nao mede. O SVG e a melhor fonte que existe: baixar de https://www.multisegdistribuidora.com.br/images/logo-multiseg.svg e converter na etapa de identidade visual, que roda na maquina com credencial. Callback do Mitra nao foi chamado: porta 8080 e inalcancavel do egresso da rotina (topologia, conforme ENTREGA.md). Entrega pela branch da sessao (claude/eager-faraday-o6kg6e) em vez de claude/poc-<cliente>-<pedido_id>, porque a branch de desenvolvimento desta sessao e fixada pela plataforma; a correlacao vale pelo pedido_id deste resumo."
+  },
+  "sessao_url": "https://claude.ai/code/session_013jZnrBqBn6cLyAdZ79efj9"
+}
