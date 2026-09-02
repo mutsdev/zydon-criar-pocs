@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-02-004",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/cirurgica_sao_jose_poc.json",
+  "logo_url": "https://images.tcdn.com.br/img/img_prod/1364423/1734098519_logo_vertical_256.jpg",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Loja Tray/CommerceSuite com 220 produtos no sitemap e JSON-LD por produto: nome, SKU, GTIN, preco e imagem vieram estruturados do proprio site, sem estimativa. Todas as 12 imagens sao do CDN do cliente (images.tcdn.com.br) e passaram no mosaico e no verificar_imagens.py. Grade de variacoes em 3 produtos, todos com valores reais de SKUs existentes na loja: luva nitrilica Medix em Cor (Preto/Rosa/Azul Claro) x Tamanho (PP/P/M/G) = 12 variantes; Nutren Senior 200ml em Sabor (Baunilha/Chocolate/Mix de Frutas); Impact 200ml em Sabor (Banana/Baunilha/Torta de Limao). Na imagem do kit Impact o site sobrepoe o texto promocional 'Escolha o sabor do seu kit', que na Zydon fica redundante com o seletor de grade — trocada pela foto limpa do Impact Baunilha, tambem do site do cliente. O pedido chegou com o nome grafado 'Cirugica Sao Jose'; o nome correto, conforme o site, e 'Cirurgica Sao Jose'. Maior desconto de tabela no perfil Distribuidor (atacado para revenda e o core da empresa). Callback na porta 8080 nao foi chamado: topologia de egresso do ambiente da rotina so aceita CONNECT na 443, conforme ENTREGA.md — a entrega saiu pelo repositorio."
+  },
+  "sessao_url": "https://claude.ai/code/session_01L6wNJ314LziHz1wNyz3zdP"
+}
