@@ -1,0 +1,240 @@
+[
+  {
+    "cliente": "Aroca Mercearia",
+    "setor": "Alimentos — Mercearia Fina e Queijos",
+    "site": "https://arocamercearia.com.br/",
+    "slug": "aroca-mercearia",
+    "logo_url": "https://arocamercearia.com.br/wp-content/uploads/2024/11/LOGO-PNG.png",
+    "logo": "aroca-mercearia.png",
+    "motivo": "",
+    "candidatas": 6,
+    "aprovadas": 2,
+    "tamanho": [
+      1848,
+      1516
+    ],
+    "visivel_no_branco": 1.0
+  },
+  {
+    "cliente": "Fornello Conservas",
+    "setor": "Alimentos — Conservas e Antepastos",
+    "site": "https://www.fornello.com.br/",
+    "slug": "fornello-conservas",
+    "logo_url": "https://www.fornello.com.br/wp-content/uploads/2022/04/cropped-cropped-LOGO-NOVO-1-1-1.png",
+    "logo": "fornello-conservas.png",
+    "motivo": "",
+    "candidatas": 5,
+    "aprovadas": 2,
+    "tamanho": [
+      498,
+      346
+    ],
+    "visivel_no_branco": 0.7615
+  },
+  {
+    "cliente": "Tudo do Mar",
+    "setor": "Alimentos — Pescados e Frutos do Mar",
+    "site": "https://tudodomar.com.br/",
+    "slug": "tudo-do-mar",
+    "logo_url": "https://tudodomar.com.br/wp-content/uploads/2026/01/logo.png",
+    "logo": "tudo-do-mar.png",
+    "motivo": "",
+    "candidatas": 4,
+    "aprovadas": 1,
+    "tamanho": [
+      708,
+      442
+    ],
+    "visivel_no_branco": 0.3551
+  },
+  {
+    "cliente": "Poupa Agora",
+    "setor": "Alimentos e Bens de Consumo — Atacado",
+    "site": "https://loja.poupagora.com.br/",
+    "slug": "poupa-agora",
+    "logo_url": "https://loja.poupagora.com.br/image/cachewebp/catalog/sistema/logo-poupa-agora-300x300.webp",
+    "logo": "poupa-agora.webp",
+    "motivo": "",
+    "candidatas": 4,
+    "aprovadas": 2,
+    "tamanho": [
+      299,
+      90
+    ],
+    "visivel_no_branco": 0.854
+  },
+  {
+    "cliente": "Alimentos Talita",
+    "setor": "Alimentos — Moagem de Trigo e Farinhas",
+    "site": "https://alimentostalita.com.br/",
+    "slug": "alimentos-talita",
+    "logo_url": "https://alimentostalita.com.br/wp-content/uploads/2024/03/AVATAR.png",
+    "logo": "alimentos-talita.png",
+    "motivo": "",
+    "candidatas": 3,
+    "aprovadas": 2,
+    "tamanho": [
+      897,
+      406
+    ],
+    "visivel_no_branco": 0.6319
+  },
+  {
+    "cliente": "Vo Dora Congelados",
+    "setor": "Alimentos — Industria de Congelados",
+    "site": "https://vodoracongelados.com.br/",
+    "slug": "vo-dora-congelados",
+    "logo_url": "https://vodoracongelados.com.br/wp-content/uploads/2023/02/vodora-logo.png",
+    "logo": "vo-dora-congelados.png",
+    "motivo": "",
+    "candidatas": 4,
+    "aprovadas": 1,
+    "tamanho": [
+      1000,
+      953
+    ],
+    "visivel_no_branco": 0.6062
+  },
+  {
+    "cliente": "Pelicula da Vida",
+    "setor": "Automotivo — Peliculas de Protecao",
+    "site": "https://peliculadavida.com.br/",
+    "slug": "pelicula-da-vida",
+    "logo_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Favicon-300x300.png",
+    "logo": "pelicula-da-vida.png",
+    "motivo": "",
+    "candidatas": 4,
+    "aprovadas": 2,
+    "tamanho": [
+      262,
+      298
+    ],
+    "visivel_no_branco": 1.0
+  },
+  {
+    "cliente": "Manaus Automotive",
+    "setor": "Autopecas — Motopecas e Acessorios",
+    "site": "https://www.manausautomotive.com.br/",
+    "slug": "manaus-automotive",
+    "logo_url": "https://www.manausautomotive.com.br/images/logotipo%20manauto.png",
+    "logo": "manaus-automotive.png",
+    "motivo": "",
+    "candidatas": 2,
+    "aprovadas": 1,
+    "tamanho": [
+      1210,
+      1210
+    ],
+    "visivel_no_branco": 0.4746
+  },
+  {
+    "cliente": "WGK",
+    "setor": "Autopecas — Fabricante de pecas",
+    "site": "https://www.wgkindustria.com.br/",
+    "slug": "wgk",
+    "logo_url": "https://www.wgkindustria.com.br/wp-content/uploads/sb-instagram-feed-images/775336727_18125331193685230_8620120698452129274_nfull.webp",
+    "logo": "wgk.webp",
+    "motivo": "",
+    "candidatas": 8,
+    "aprovadas": 5,
+    "tamanho": [
+      640,
+      1138
+    ],
+    "visivel_no_branco": 0.954
+  },
+  {
+    "cliente": "Cobra Correntes",
+    "setor": "Industria — Componentes para Transmissao",
+    "site": "https://www.cobra.ind.br/",
+    "slug": "cobra-correntes",
+    "logo_url": "https://www.cobra.ind.br/application/modules/comum/assets/img/logo.png",
+    "logo": "cobra-correntes.png",
+    "motivo": "",
+    "candidatas": 6,
+    "aprovadas": 1,
+    "tamanho": [
+      205,
+      58
+    ],
+    "visivel_no_branco": 0.7392
+  },
+  {
+    "cliente": "DEC Temper",
+    "setor": "Material de Construcao — Vidro Temperado",
+    "site": "https://web.dectemper.com.br/",
+    "slug": "dec-temper",
+    "logo_url": "https://web.dectemper.com.br/assets/img/logodec.ae681ccc352c.png",
+    "logo": "dec-temper.png",
+    "motivo": "",
+    "candidatas": 2,
+    "aprovadas": 2,
+    "tamanho": [
+      256,
+      140
+    ],
+    "visivel_no_branco": 1.0
+  },
+  {
+    "cliente": "Portwell",
+    "setor": "Tecnologia — Computacao Industrial",
+    "site": "https://portwell.com.br/",
+    "slug": "portwell",
+    "logo_url": "https://portwell.com.br/wp-content/uploads/2026/01/portwelllogo.svg",
+    "logo": "portwell.svg",
+    "motivo": "",
+    "candidatas": 29,
+    "aprovadas": 3,
+    "tamanho": [
+      1024,
+      268
+    ],
+    "visivel_no_branco": 0.9763
+  },
+  {
+    "cliente": "Santos e Porto",
+    "setor": "Equipamentos — Movimentacao de Materiais",
+    "site": "https://www.santoseporto.com.br/",
+    "slug": "santos-e-porto",
+    "logo_url": "https://www.santoseporto.com.br/wp-content/uploads/2021/01/pecas-para-empilhadeira-still.jpg.pagespeed.ce_.CHG6_LwkGk.jpg",
+    "logo": "santos-e-porto.jpg",
+    "motivo": "",
+    "candidatas": 7,
+    "aprovadas": 2,
+    "tamanho": [
+      785,
+      528
+    ],
+    "visivel_no_branco": 0.5364
+  },
+  {
+    "cliente": "Benenutri",
+    "setor": "Saude — Distribuicao de Nutricao",
+    "site": "https://benenutri.com/",
+    "slug": "benenutri",
+    "logo_url": "https://benenutri.com/wp-content/uploads/2025/10/logo_grupobenenutri.png",
+    "logo": "benenutri.png",
+    "motivo": "",
+    "candidatas": 10,
+    "aprovadas": 2,
+    "tamanho": [
+      598,
+      173
+    ],
+    "visivel_no_branco": 1.0
+  },
+  {
+    "cliente": "Cirurgica Sao Jose",
+    "setor": "Saude — Material Medico-Hospitalar",
+    "site": "https://www.cirurgicasaojose.com.br/",
+    "slug": "cirurgica-sao-jose",
+    "logo_url": null,
+    "logo": "cirurgica-sao-jose.webp",
+    "motivo": "logo ja em disco (site nao reabre para o achar_logo)",
+    "tamanho": [
+      788,
+      293
+    ],
+    "visivel_no_branco": null
+  }
+]

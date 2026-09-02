@@ -628,3 +628,38 @@ def test_favicon_sai_quadrado_em_todos_os_caminhos(limiares, tmp_path):
     assert caminhos["quadrada"] == "logo-inteira"
     assert caminhos["lockup"] == "simbolo-destacado"
     assert caminhos["palavra"] == "inicial"
+
+
+# ==========================================
+# gerador: o tamanho pedido tem que caber
+# ==========================================
+
+def test_dimensao_gerada_nunca_obriga_a_ampliar():
+    """O `cenas.ajustar` proibe ampliar. Se o gerador pedir pequeno demais, a
+    cena morre em CenaPequena DEPOIS de ja ter custado neurons — o erro mais
+    caro possivel. Esta e a conta que impede isso."""
+    import gerador
+
+    for formato in formatos.COM_CENA:
+        largura, altura = gerador.dimensao(formato)
+        _, laudo = cenas.ajustar(Image.new("RGB", (largura, altura)), formato)
+        assert not laudo["ampliou"], f"{formato.chave} obrigaria a ampliar"
+
+
+def test_dimensao_respeita_o_contrato_da_api():
+    """256-1920 e multiplo de 16. O modelo arredonda sozinho para 16, e pedir
+    823 para receber 816 e a diferenca que um dia vira bug."""
+    import gerador
+    for formato in formatos.COM_CENA:
+        for lado in gerador.dimensao(formato):
+            assert 256 <= lado <= gerador.LADO_MAXIMO
+            assert lado % gerador.MULTIPLO == 0
+
+
+def test_gerador_sem_chave_levanta_o_erro_proprio(monkeypatch):
+    """SemChave e o que faz o chamador cair no GEM manual em vez de estourar."""
+    import gerador
+    monkeypatch.delenv("CLOUDFLARE_ACCOUNT_ID", raising=False)
+    monkeypatch.delenv("CLOUDFLARE_API_TOKEN", raising=False)
+    with pytest.raises(gerador.SemChave):
+        gerador.credenciais()

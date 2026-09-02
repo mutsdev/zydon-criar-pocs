@@ -101,18 +101,36 @@ def _pasta_cliente(nome, carimbo=None):
 # preparar
 # --------------------------------------------------------------------------
 
-def preparar(args):
-    limiares = mod_regua.carregar(args.regua)
-    logo_img, laudo = mod_logo.normalizar(args.logo, limiares["logo"])
-    pal = mod_paleta.extrair(logo_img, args.cor)
+def _limiares_logo(limiares, regua_logo):
+    """Qual das duas reguas de tamanho vale nesta execucao.
 
-    pasta = _pasta_cliente(args.nome)
+    `banner` e a de casa: a logo e composta num painel de 768px, entao 200px no
+    MENOR lado e o minimo honesto. `portal` e a do cabecalho (200 no maior, 48
+    no menor), mais frouxa, e existe para o estudo poder gerar peca de marca
+    horizontal — Cobra 205x58, Benenutri 598x173 — e mostrar o resultado em vez
+    de barrar antes. Ver a peca ruim e o que decide se a regua dura procede.
+    """
+    if regua_logo == "portal":
+        return {**limiares["logo"], **limiares.get("logo_portal", {})}
+    return limiares["logo"]
+
+
+def _preparar(logo, nome, segmento, cor, sem_rede, limiares, regua_logo="banner"):
+    """O miolo do `preparar`, sem argparse e sem imprimir instrucao de GEM.
+
+    Separado porque o `auto` precisa exatamente disto e mais nada: a diferenca
+    entre os dois comandos e quem enche a pasta `cenas/` depois.
+    """
+    logo_img, laudo = mod_logo.normalizar(logo, _limiares_logo(limiares, regua_logo))
+    pal = mod_paleta.extrair(logo_img, cor)
+
+    pasta = _pasta_cliente(nome)
     (pasta / "cenas").mkdir(parents=True, exist_ok=True)
     logo_img.save(pasta / "logo-normalizada.png")
 
-    contexto = mod_segmento.resolver(args.segmento, limiares["juiz"]["modelo"],
-                                     usar_rede=not args.sem_rede)
-    contexto["segmento"] = args.segmento
+    contexto = mod_segmento.resolver(segmento, limiares["juiz"]["modelo"],
+                                     usar_rede=not sem_rede)
+    contexto["segmento"] = segmento
 
     (pasta / "paleta.json").write_text(
         json.dumps({k: pal[k] for k in ("principal", "destaque", "neutra")},
@@ -120,9 +138,16 @@ def preparar(args):
     (pasta / "prompt-gem.txt").write_text(
         prompt_gem.folha(pal, contexto), encoding="utf-8")
     (pasta / "contexto.json").write_text(
-        json.dumps({"cliente": args.nome, "logo": laudo, "paleta": pal,
+        json.dumps({"cliente": nome, "logo": laudo, "paleta": pal,
                     "contexto": contexto}, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8")
+    return pasta, pal, contexto, laudo
+
+
+def preparar(args):
+    limiares = mod_regua.carregar(args.regua)
+    pasta, pal, contexto, _ = _preparar(
+        args.logo, args.nome, args.segmento, args.cor, args.sem_rede, limiares)
 
     print(f"\nPasta:   {pasta}")
     print(f"Paleta:  {pal['principal']}  {pal['destaque']}  {pal['neutra']}"
@@ -244,6 +269,58 @@ def montar(args):
     return 0
 
 
+# --------------------------------------------------------------------------
+# auto — preparar + gerar as cenas + montar, sem humano no meio
+# --------------------------------------------------------------------------
+
+def auto(args):
+    """O caminho fechado: logo -> pecas, sem passar pelo GEM.
+
+    E o `preparar` e o `montar` com o gerador no meio. Existe separado dos dois
+    porque o caminho manual continua valendo: sem chave da Cloudflare, ou com a
+    API fora do ar, o certo e cair nele em vez de entregar peca pior.
+    """
+    import gerador
+
+    limiares = mod_regua.carregar(args.regua)
+    pasta, pal, contexto, laudo_logo = _preparar(
+        args.logo, args.nome, args.segmento, args.cor, args.sem_rede,
+        limiares, args.regua_logo)
+
+    print(f"Pasta:   {pasta}")
+    print(f"Logo:    {laudo_logo['original'][0]}x{laudo_logo['original'][1]} -> "
+          f"{laudo_logo['recortada'][0]}x{laudo_logo['recortada'][1]}"
+          f"   (regua: {args.regua_logo})")
+    print(f"Paleta:  {pal['principal']}  {pal['destaque']}  {pal['neutra']}")
+    print(f"Objetos: {', '.join(contexto['objetos'][:4])}"
+          f"   (origem: {contexto['origem']})")
+    if contexto.get("erro"):
+        print(f"  [AVISO] segmento caiu no generico — {contexto['erro']}")
+
+    linhas, total = gerador.orcamento(args.candidatas)
+    print(f"\nEtapa: gerar {args.candidatas} cena(s) por formato  "
+          f"(~{total} neurons dos {gerador.NEURONS_POR_DIA} do dia)")
+    try:
+        laudos = gerador.encher(pasta / "cenas", pal, contexto,
+                                quantas=args.candidatas, ecoar=print)
+    except gerador.SemChave as erro:
+        print(f"[ERRO] {erro}")
+        print("       Sem gerador, use o caminho manual: 'preparar' e o GEM.")
+        return 2
+
+    geradas = [l for l in laudos if l.get("ok")]
+    print(f"  {len(geradas)}/{len(laudos)} cena(s) geradas")
+    if not geradas:
+        print("  [AVISO] nenhuma cena saiu. As pecas vao sair pelo fallback "
+              "deterministico, que e o piso e nunca fica feio — mas e o piso.")
+
+    print("\nEtapa: montar as pecas")
+    args.pasta = str(pasta)
+    codigo = montar(args)
+    print(f"\nPASTA={pasta}")  # a ultima linha e o que o estudio le
+    return codigo
+
+
 def _tentativa(arquivo, indice, formato, pal, contexto, logo_img, limiares,
                pasta, args):
     """Uma cena: encaixa, valida, compoe, valida de novo e julga."""
@@ -323,6 +400,28 @@ def main(argv=None):
     b.add_argument("--tentativas", type=int,
                    help="limita quantas cenas por formato sao julgadas")
     b.set_defaults(func=montar)
+
+    c = sub.add_parser("auto", help="logo -> pecas, gerando as cenas sozinho")
+    c.add_argument("--logo", required=True)
+    c.add_argument("--nome", required=True)
+    c.add_argument("--segmento", required=True)
+    c.add_argument("--cor", help="cor primaria em hex; manda sobre a extraida")
+    c.add_argument("--candidatas", type=int, default=2,
+                   help="cenas geradas por formato (padrao: 2). Cada cliente "
+                        "custa ~784 neurons com 2, de 10.000 por dia.")
+    c.add_argument("--regua-logo", default="banner", choices=("banner", "portal"),
+                   help="banner: 200px no menor lado (o padrao, e o que o "
+                        "painel de 768px pede). portal: 200 no maior e 48 no "
+                        "menor, para nao barrar marca horizontal.")
+    c.add_argument("--sem-rede", action="store_true",
+                   help="nao consulta o segmento; usa a lista generica")
+    c.add_argument("--sem-juiz", action="store_true",
+                   help="so o degrau 1; itera a regua sem gastar cota")
+    c.add_argument("--so-fallback", action="store_true",
+                   help="ignora as cenas; mostra o piso de qualidade")
+    c.add_argument("--tentativas", type=int,
+                   help="limita quantas cenas por formato sao julgadas")
+    c.set_defaults(func=auto)
 
     args = p.parse_args(argv)
     try:

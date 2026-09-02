@@ -20,5 +20,15 @@
       "Conjunto de pastilhas de freio"
     ],
     "ambiente": "Corredores de um amplo galpão logístico com prateleiras industriais altas e caixas organizadas."
+  },
+  "automotivo-peliculas-de-protecao": {
+    "objetos": [
+      "Rolo de película de proteção transparente",
+      "Espátula flexível de silicone para aplicação",
+      "Soprador térmico de precisão",
+      "Borrifador manual de água pressurizado",
+      "Estilete metálico de precisão"
+    ],
+    "ambiente": "Estúdio de estética automotiva moderno e climatizado, com iluminação LED tubular no teto e a silhueta de um carro esportivo."
   }
 }

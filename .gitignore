@@ -11,6 +11,11 @@ __pycache__/
 # E dado de cliente, e segue a mesma regra de "Arquivos Json/saidas".
 Identidade Visual/saidas/
 
+# Logos baixadas dos sites para o estudio. Sao arquivo de marca de cliente, e
+# nao nosso — o elenco.json (nome, setor, site, URL da logo) fica versionado
+# porque e a receita para refazer a colheita em qualquer clone.
+Identidade Visual/estudo/logos/
+
 # Registro local das execucoes do receptor. Nao e versionado porque guarda o
 # callback_token de cada pedido, para o --reenviar funcionar.
 pedidos-executados.jsonl

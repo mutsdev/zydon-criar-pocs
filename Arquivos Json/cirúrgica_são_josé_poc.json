@@ -1,0 +1,1228 @@
+{
+  "empresa": "Cirúrgica São José",
+  "descricao_empresa": "Distribuidora de material médico-hospitalar e nutrição clínica em atividade desde 1986, com linha de dietas enterais e suplementos Nestlé Health Science, descartáveis estéreis, luvas de procedimento e estetoscópios 3M Littmann.",
+  "gerado_em": "2026-09-02",
+  "setor": "Saúde — Material Médico-Hospitalar e Nutrição Clínica",
+  "portal_name": "Cirúrgica São José POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Cirúrgica São José",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Cirúrgica São José",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1 — Dieta Enteral e Nutrição Clínica",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Dieta Enteral e Nutrição Clínica",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2 — Suplementos e Nutrição Infantil",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Suplementos e Nutrição Infantil",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3 — Materiais e Equipamentos Hospitalares",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Materiais e Equipamentos Hospitalares",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Cor",
+          "salvar_id_como": "variation_cor_id",
+          "payload": {
+            "name": "Cor",
+            "active": true,
+            "is_searchable": false,
+            "display_type": "COLOR",
+            "values": [
+              "Branco",
+              "Azul Claro",
+              "Preto",
+              "Marrom",
+              "Azul Marinho",
+              "Verde Militar",
+              "Off White",
+              "Bege",
+              "Areia",
+              "Caqui",
+              "Cinza Claro",
+              "Cinza",
+              "Grafite",
+              "Chumbo",
+              "Prata",
+              "Azul Royal",
+              "Azul Jeans",
+              "Verde",
+              "Verde Oliva",
+              "Vermelho",
+              "Vinho",
+              "Terracota",
+              "Laranja",
+              "Amarelo",
+              "Dourado",
+              "Rosa",
+              "Roxo"
+            ],
+            "variant_options": [
+              {
+                "name": "Branco",
+                "display_value": "#FFFFFF"
+              },
+              {
+                "name": "Azul Claro",
+                "display_value": "#A8C8E8"
+              },
+              {
+                "name": "Preto",
+                "display_value": "#000000"
+              },
+              {
+                "name": "Marrom",
+                "display_value": "#6B4A2F"
+              },
+              {
+                "name": "Azul Marinho",
+                "display_value": "#1B2A4A"
+              },
+              {
+                "name": "Verde Militar",
+                "display_value": "#4B5320"
+              },
+              {
+                "name": "Off White",
+                "display_value": "#F2EFE6"
+              },
+              {
+                "name": "Bege",
+                "display_value": "#D9C6A5"
+              },
+              {
+                "name": "Areia",
+                "display_value": "#E0D5C0"
+              },
+              {
+                "name": "Caqui",
+                "display_value": "#9C8A5F"
+              },
+              {
+                "name": "Cinza Claro",
+                "display_value": "#C0C0C0"
+              },
+              {
+                "name": "Cinza",
+                "display_value": "#808080"
+              },
+              {
+                "name": "Grafite",
+                "display_value": "#4A4A4A"
+              },
+              {
+                "name": "Chumbo",
+                "display_value": "#3A3F44"
+              },
+              {
+                "name": "Prata",
+                "display_value": "#BFC1C2"
+              },
+              {
+                "name": "Azul Royal",
+                "display_value": "#1F4FA3"
+              },
+              {
+                "name": "Azul Jeans",
+                "display_value": "#4A6D8C"
+              },
+              {
+                "name": "Verde",
+                "display_value": "#2E7D48"
+              },
+              {
+                "name": "Verde Oliva",
+                "display_value": "#6B7A3A"
+              },
+              {
+                "name": "Vermelho",
+                "display_value": "#C0272D"
+              },
+              {
+                "name": "Vinho",
+                "display_value": "#6E1423"
+              },
+              {
+                "name": "Terracota",
+                "display_value": "#B5533C"
+              },
+              {
+                "name": "Laranja",
+                "display_value": "#E8701A"
+              },
+              {
+                "name": "Amarelo",
+                "display_value": "#F2C230"
+              },
+              {
+                "name": "Dourado",
+                "display_value": "#C9A227"
+              },
+              {
+                "name": "Rosa",
+                "display_value": "#E8A0B4"
+              },
+              {
+                "name": "Roxo",
+                "display_value": "#5B3A8E"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Criar Variacao: Tamanho",
+          "salvar_id_como": "variation_tamanho_id",
+          "payload": {
+            "name": "Tamanho",
+            "active": true,
+            "values": [
+              "PP",
+              "P",
+              "M",
+              "G",
+              "GG",
+              "XGG"
+            ]
+          }
+        },
+        {
+          "label": "Criar Variacao: Sabor",
+          "salvar_id_como": "variation_sabor_id",
+          "payload": {
+            "name": "Sabor",
+            "active": true,
+            "values": [
+              "Sem Sabor",
+              "Baunilha",
+              "Chocolate",
+              "Morango",
+              "Mix de Frutas",
+              "Banana",
+              "Torta de Limão",
+              "Cappuccino"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "CSJ-DIE-023 — Isosource 1.5 Nutrição Enteral Sem Sabor 1L Nestlé — Caixa com 6",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/isosource_1_5_sem_sabor_1l_nestle_caixa_com_6_23_1_71a254b154299218c1d75e84bcc49e7d.png",
+          "payload": {
+            "sku": "CSJ-DIE-023",
+            "name": "Isosource 1.5 Nutrição Enteral Sem Sabor 1L Nestlé — Caixa com 6",
+            "description": "Dieta enteral hipercalórica de 1,5 kcal/mL, nutricionalmente completa, pronta para uso em sistema fechado de 1 litro. Indicada para pacientes com necessidade energética elevada e restrição de volume. Caixa com 6 frascos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7891000238691",
+            "video_url": "",
+            "highlight": true,
+            "price": 159.15,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "CSJ-DIE-027 — Isosource Soya Fiber Baunilha 1L Nestlé — Caixa com 6",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/isosource_soya_fiber_baunilha_1l_nestle_caixa_com_6_27_1_bda53fb8ccc7210713106b16ef727d82.png",
+          "payload": {
+            "sku": "CSJ-DIE-027",
+            "name": "Isosource Soya Fiber Baunilha 1L Nestlé — Caixa com 6",
+            "description": "Dieta enteral normocalórica à base de proteína isolada de soja com mistura de fibras, 1,2 kcal/mL, sabor baunilha. Indicada para nutrição enteral e oral prolongada com necessidade de modulação intestinal. Caixa com 6 frascos de 1 litro.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7891000067079",
+            "video_url": "",
+            "highlight": false,
+            "price": 132,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "CSJ-DIE-143 — Novasource Proline Sem Sabor 1L Nestlé",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/novasource_proline_sem_sabor_1l_143_1_691ae4edbcf7c422493d3475882306c7.png",
+          "payload": {
+            "sku": "CSJ-DIE-143",
+            "name": "Novasource Proline Sem Sabor 1L Nestlé",
+            "description": "Fórmula hiperproteica e hipercalórica modificada para nutrição enteral e oral, 1,3 kcal/mL, com arginina, zinco e vitaminas A, C e E. Indicada no suporte à cicatrização de lesões por pressão. Frasco de 1 litro em sistema fechado.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7891000411117",
+            "video_url": "",
+            "highlight": false,
+            "price": 47.25,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "CSJ-DIE-155 — Impact 200ml Nestlé — Kit com 6",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/impact_baunilha_200ml_kit_com_6_1_20250811173132_f61e5e4b954f.png",
+          "payload": {
+            "sku": "CSJ-DIE-155",
+            "name": "Impact 200ml Nestlé — Kit com 6",
+            "description": "Suplemento nutricional imunomodulador com arginina, nucleotídeos e ácidos graxos ômega-3, indicado no preparo e na recuperação de pacientes cirúrgicos. Kit com 6 unidades de 200ml — escolha o sabor na grade.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 89.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "CSJ-DIE-155-BAN",
+                "price": 89.9,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Banana"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-DIE-155-BAU",
+                "price": 89.9,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Baunilha"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-DIE-155-TOR",
+                "price": 89.9,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Torta de Limão"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "CSJ-SUP-063 — Nutren Senior 200ml Nestlé — Kit com 6",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/nutren_senior_baunilha_200ml_kit_com_6_1_20260302121304_8b9494605e33.png",
+          "payload": {
+            "sku": "CSJ-SUP-063",
+            "name": "Nutren Senior 200ml Nestlé — Kit com 6",
+            "description": "Complemento alimentar líquido para adultos 50+, com 16 g de proteína por porção, cálcio, vitamina D e mix de vitaminas e minerais. Zero lactose. Kit com 6 unidades de 200ml — escolha o sabor na grade.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 71.26,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "CSJ-SUP-063-BAU",
+                "price": 71.26,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Baunilha"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-SUP-063-CHO",
+                "price": 71.26,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Chocolate"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-SUP-063-MIX",
+                "price": 71.26,
+                "stock": 100,
+                "variation_weight": 1.32,
+                "variation_width": 16,
+                "variation_height": 11,
+                "variation_depth": 24,
+                "packaging_weight": 1.452,
+                "packaging_width": 18,
+                "packaging_height": 12,
+                "packaging_depth": 26,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Mix de Frutas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "CSJ-SUP-037 — Nutren Control Diet Pó Baunilha 380g Nestlé",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/nutren_control_diet_po_baunilha_nestle_380g_37_1_e1839a519e54b33796891b63f8a5db0f.jpg",
+          "payload": {
+            "sku": "CSJ-SUP-037",
+            "name": "Nutren Control Diet Pó Baunilha 380g Nestlé",
+            "description": "Complemento alimentar em pó para dietas com restrição de açúcares, sabor baunilha, com 15 g de proteínas por porção e carboidratos de baixo índice glicêmico. Zero lactose. Lata de 380 g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7891000401972",
+            "video_url": "",
+            "highlight": false,
+            "price": 105.69,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3
+          }
+        },
+        {
+          "label": "CSJ-INF-201 — Mucilon Multicereais 400g Nestlé",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/mucilon_multicereais_400g_201_1_c4d2d4a3df8863bc0fe445fdfed83b71.jpg",
+          "payload": {
+            "sku": "CSJ-INF-201",
+            "name": "Mucilon Multicereais 400g Nestlé",
+            "description": "Cereal infantil multicereais enriquecido com ferro, zinco e vitaminas do complexo B, indicado a partir dos 6 meses como complemento da alimentação. Lata de 400 g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7891000035832",
+            "video_url": "",
+            "highlight": false,
+            "price": 21.17,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "CSJ-INF-165 — Alfamino 400g Nestlé",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/alfamino_400g_165_1_a6fe02be00a58cce88117d90da88271c.jpg",
+          "payload": {
+            "sku": "CSJ-INF-165",
+            "name": "Alfamino 400g Nestlé",
+            "description": "Fórmula infantil dietoterápica à base de aminoácidos livres, com HMO 2'FL e LNnT, DHA e ARA, indicada para lactentes e crianças com alergia à proteína do leite de vaca e distúrbios de má absorção. Lata de 400 g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "8445290830197",
+            "video_url": "",
+            "highlight": false,
+            "price": 228.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "CSJ-AGU-355 — Agulha para Aspiração 18G 1,2x25mm Estéril SR — Caixa com 100",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/agulha_desc_aspirao_18g_12x25_c100_sr_1_20260306124337_fd30260dce9e.png",
+          "payload": {
+            "sku": "CSJ-AGU-355",
+            "name": "Agulha para Aspiração 18G 1,2x25mm Estéril SR — Caixa com 100",
+            "description": "Agulha hipodérmica de aspiração calibre 18G (1,2 x 25 mm) com bisel de corte simples reto, para preparo, aspiração e transferência de medicamentos. Estéril a óxido de etileno, descartável, registro ANVISA. Caixa com 100 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "7898259491556",
+            "video_url": "",
+            "highlight": false,
+            "price": 13.49,
+            "minimum_for_sale": 50,
+            "multiple_for_sale": 100
+          }
+        },
+        {
+          "label": "CSJ-LUV-313 — Luva para Procedimento Nitrílica Não Talcada Medix — Caixa com 100",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/luva_para_procedimento_nitrilica_azul_m_nao_talcad_1_20260219115909_a66a469c91b6.jpeg",
+          "payload": {
+            "sku": "CSJ-LUV-313",
+            "name": "Luva para Procedimento Nitrílica Não Talcada Medix — Caixa com 100",
+            "description": "Luva de procedimento não cirúrgico em nitrilo, não talcada, ambidestra, com alta resistência química e à punção. Livre de látex, indicada para uso médico-hospitalar, odontológico e estético. Caixa com 100 unidades — escolha cor e tamanho na grade.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 33,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "variations": [
+              {
+                "sku": "CSJ-LUV-313-PRE-PP",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "PP"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-PRE-P",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "P"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-PRE-M",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "M"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-PRE-G",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "G"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-ROS-PP",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "PP"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-ROS-P",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "P"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-ROS-M",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "M"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-ROS-G",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "G"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-AZC-PP",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Claro"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "PP"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-AZC-P",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Claro"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "P"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-AZC-M",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Claro"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "M"
+                  }
+                ]
+              },
+              {
+                "sku": "CSJ-LUV-313-AZC-G",
+                "price": 33,
+                "stock": 100,
+                "variation_weight": 0.55,
+                "variation_width": 24,
+                "variation_height": 7,
+                "variation_depth": 12,
+                "packaging_weight": 0.605,
+                "packaging_width": 26,
+                "packaging_height": 8,
+                "packaging_depth": 14,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Claro"
+                  },
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "G"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "CSJ-GAZ-411 — Compressa de Gaze Estéril 13 Fios Nobre — 50 Pacotes com 10",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/compressa_gaze_estril_13_fios_kit_50_unidades_com_1_20260727165905_8eed8f2e2a89.jpg",
+          "payload": {
+            "sku": "CSJ-GAZ-411",
+            "name": "Compressa de Gaze Estéril 13 Fios Nobre — 50 Pacotes com 10",
+            "description": "Compressa de gaze hidrófila 100% algodão, 13 fios/cm², 7,5 x 7,5 cm com 5 dobras e 8 camadas, estéril. Caixa com 50 pacotes de 10 unidades — 500 compressas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 60,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "CSJ-EST-153 — Estetoscópio 3M Littmann Classic III 5627 Vinho com Inox Escovado",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1364423/estetoscopio_3m_littmann_classic_iii_5627_vinho_com_inox_escovado_153_1_7014e8223e0c1f5fd21791d3642438af.png",
+          "payload": {
+            "sku": "CSJ-EST-153",
+            "name": "Estetoscópio 3M Littmann Classic III 5627 Vinho com Inox Escovado",
+            "description": "Estetoscópio de dupla face com diafragma ajustável em ambos os lados, permitindo ausculta de frequências altas e baixas pela variação da pressão. Tubo vinho de peça única sem látex e auscultador em inox escovado. Garantia de 5 anos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 745,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Cirúrgica São José",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Cirúrgica São José — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Cirúrgica São José",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Cirúrgica São José — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Dieta Enteral e Nutrição Clínica",
+          "salvar_id_como": "criteria_cat_dieta_id",
+          "payload": {
+            "name": "Cirúrgica São José — Dieta Enteral e Nutrição Clínica (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Materiais e Equipamentos Hospitalares",
+          "salvar_id_como": "criteria_cat_materiais_id",
+          "payload": {
+            "name": "Cirúrgica São José — Materiais e Equipamentos Hospitalares (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Cirúrgica São José",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Cirúrgica São José",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Cirúrgica São José",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Cirúrgica São José",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Cirúrgica São José",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Cirúrgica São José",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 12
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Dieta Enteral e Nutrição Clínica",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Cirúrgica São José — Dieta Enteral e Nutrição Clínica",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Cirúrgica São José",
+                "criteria_id": "{{criteria_cat_dieta_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 6,
+                    "type": "PERCENTAGE",
+                    "value": 4,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 24,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 13,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 6% — Materiais e Equipamentos Hospitalares | Cirúrgica São José",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "6% OFF Cirúrgica São José — Materiais e Equipamentos Hospitalares",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "6% OFF Cirúrgica São José",
+                "criteria_id": "{{criteria_cat_materiais_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 6,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
