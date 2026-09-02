@@ -90,12 +90,14 @@ Não entregue produto com imagem que você não verificou.
 
 PASSO 3B — ache a logo do cliente:
   python "Identidade Visual/achar_logo.py" <site> --json
-Se o site for renderizado por JavaScript, o HTML cru não traz a logo e ele volta
-sem candidata — foi o caso da Multiseg. Você tem navegador e ele não: pegue as
-URLs que enxergar na página e passe em `--extra url1 url2`. **Inclua o SVG
-quando houver**: vetor não tem lado mínimo e costuma ganhar de todas.
 Ele varre o HTML, baixa as candidatas e reprova pelas mesmas regras da
-identidade visual (menor lado 200px, proporção até 6:1, placeholder de tema).
+identidade visual: menor lado 200px, proporção até 6:1, placeholder de tema.
+SVG ele mede também, rasterizando — e vetor costuma ganhar de todas, porque não
+tem lado mínimo.
+Se ele voltar SEM CANDIDATA, o site provavelmente é renderizado por JavaScript e
+o HTML cru não traz a logo — foi o caso da Multiseg. Você tem navegador e ele
+não: pegue as URLs de logo que enxergar na página e rode de novo com
+`--extra url1 url2`, incluindo o .svg quando houver.
 Ponha a `logo_url` que ele escolher no resumo da entrega. Não precisa de
 credencial: achar e validar é o mesmo trabalho das imagens de produto — quem
 precisa de credencial é subir, e isso acontece na máquina do João Pedro.
@@ -149,12 +151,25 @@ Em resumo: **a entrega é pelo repositório, e o callback ficou de fora**. A
 rotina roda na nuvem, cujo egresso só aceita CONNECT na 443, e o Mitra atende na
 8080 — três pedidos seguidos tentaram, seis tentativas, zero entregas. Isso é
 topologia, não intermitência: não melhora com retentativa. O Mitra vem buscar no
-PR, e quem faz o POST na 8080 é o `vigia_drive.py`, que roda na máquina do João
-Pedro, de onde aquela porta responde.
+PR, e quem faz o POST na 8080 é o `POC Completa/receptor.py`, que roda na
+máquina do João Pedro, de onde aquela porta responde.
 
 ## Depois da entrega
 
-A execução é local, com credencial:
+A execução é local, porque é onde estão as credenciais. **O caminho normal é o
+receptor**: o Mitra faz `POST /pedido` quando o executivo salva a curadoria, e a
+máquina cria a POC e devolve `{pedido_id, portal_id, url}` no callback.
+
+```bash
+python "POC Completa/receptor.py" --gravar   # terminal 1
+python "POC Completa/tunel.py"               # terminal 2, publica o endereço
+```
+
+O endereço do túnel é efêmero e muda sozinho; ele fica em
+`endereco-receptor.json`, e o Mitra lê esse arquivo antes de cada POST em vez de
+guardar a URL.
+
+Para rodar um JSON à mão, sem passar pelo Mitra:
 
 ```bash
 PYTHONIOENCODING=utf-8 python "POC Completa/criar_poc_completo.py" \
