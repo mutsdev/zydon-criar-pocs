@@ -115,15 +115,27 @@ def prefixo(nome):
     return re.sub(r"_poc$", "", base, flags=re.I)
 
 
+# Sem User-Agent de navegador, servidor de cliente devolve 403. Medido em
+# 01/09/2026: a logo da Aroca — a mesma que o achar_logo.py aprova, porque ELE
+# manda estes cabecalhos — falhava aqui com HTTPError. O efeito seria calado e
+# caro: a rotina acha a logo, o Mitra manda a URL, e o portal nasce sem
+# identidade com um [AVISO] que ninguem le.
+CABECALHOS_LOGO = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "Accept": "image/webp,image/avif,image/*,*/*;q=0.8",
+}
+
+
 def baixar_logo(url, nome_base):
     """Devolve o caminho local da logo, ou None."""
     if not url:
         return None
     try:
-        r = requests.get(url, timeout=30)
+        r = requests.get(url, headers=CABECALHOS_LOGO, timeout=30)
         r.raise_for_status()
     except requests.RequestException as e:
-        print(f"  [AVISO] logo_url falhou: {type(e).__name__}")
+        print(f"  [AVISO] logo_url falhou: {type(e).__name__} — {url}")
         return None
     extensao = Path(url.split("?")[0]).suffix.lower()
     if extensao not in EXTENSOES_LOGO:
