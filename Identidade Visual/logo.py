@@ -81,7 +81,27 @@ def normalizar(caminho, limiares):
             raise LogoInvalida(f"nao consegui abrir a logo: {erro}") from erro
 
     largura_original, altura_original = img.size
-    if min(img.size) < limiares["lado_minimo_px"]:
+
+    # Duas reguas de tamanho, porque sao dois usos diferentes.
+    #
+    # O banner compoe a logo em peca grande, e ali 200px no MENOR lado e o
+    # minimo honesto. Mas o cabecalho do portal mostra a logo com cerca de
+    # 120x29: uma marca horizontal de 250x60 — caso da Brava, em 02/09/2026 —
+    # cobre isso com folga e foi reprovada pela regua do banner, que nao era a
+    # dela. O mesmo aconteceu com a Poupa Agora (330x100).
+    #
+    # Quando `lado_maior_minimo_px` vem nos limiares, vale a regra de duas
+    # pontas: a marca precisa ter corpo (lado maior) e altura util (lado menor).
+    # Sem ele, continua a regra do banner, intacta.
+    if limiares.get("lado_maior_minimo_px"):
+        maior_min = limiares["lado_maior_minimo_px"]
+        menor_min = limiares.get("lado_menor_minimo_px", 48)
+        if max(img.size) < maior_min or min(img.size) < menor_min:
+            raise LogoInvalida(
+                f"logo pequena demais: {largura_original}x{altura_original}, "
+                f"minimo {maior_min}px no maior lado e {menor_min}px no menor. "
+                "Peca o arquivo vetorial ou uma exportacao maior.")
+    elif min(img.size) < limiares["lado_minimo_px"]:
         raise LogoInvalida(
             f"logo pequena demais: {largura_original}x{altura_original}, "
             f"minimo {limiares['lado_minimo_px']}px no menor lado. "

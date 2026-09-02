@@ -1,0 +1,551 @@
+{
+  "empresa": "Brava Soluções",
+  "descricao_empresa": "Integradora e distribuidora de Goiânia (GO) especializada em painéis elétricos de baixa e média tensão, CCMs, automação industrial e automação predial (BMS), atendendo indústria e construção civil do projeto à montagem e testes finais.",
+  "gerado_em": "2026-09-02",
+  "setor": "Materiais Elétricos — Painéis Elétricos e Automação Industrial",
+  "portal_name": "Brava Soluções POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Brava Soluções",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Brava Soluções",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1 — Painéis e Distribuição Elétrica",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Painéis e Distribuição Elétrica",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2 — Automação e Acionamento",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Automação e Acionamento",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3 — Comando e Proteção",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Comando e Proteção",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "BRV-PDE-001 — Quadro de Comando Metálico Atlantic 1000x800x300mm",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/343152/036939-1.png.png",
+          "payload": {
+            "name": "Quadro de Comando Metálico Atlantic 1000x800x300mm",
+            "description": "Gabinete de comando em aço com pintura eletrostática, 1000x800x300 mm, porta com fechamento e placa de montagem — base para painéis de distribuição e de automação industrial.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 3879.99,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BRV-PDE-001"
+          }
+        },
+        {
+          "label": "BRV-PDE-002 — Disjuntor Caixa Moldada Tripolar 100A 25kA 415VCA",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/229902/139875.jpg",
+          "payload": {
+            "name": "Disjuntor Caixa Moldada Tripolar 100A 25kA 415VCA",
+            "description": "Disjuntor em caixa moldada tripolar com unidade eletrônica, 100 A e capacidade de interrupção de 25 kA em 415 VCA, para proteção geral de quadros de baixa tensão.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 592.99,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "BRV-PDE-002"
+          }
+        },
+        {
+          "label": "BRV-PDE-003 — Disjuntor-Motor Tripolar 25A 50kA",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/316031/143823.jpg",
+          "payload": {
+            "name": "Disjuntor-Motor Tripolar 25A 50kA",
+            "description": "Disjuntor-motor tripolar 25 A com proteção termomagnética ajustável e capacidade de 50 kA, para partida e proteção de motores em CCMs.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 461.99,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "BRV-PDE-003"
+          }
+        },
+        {
+          "label": "BRV-PDE-004 — Transformador de Corrente 1000/5A Tipo Janela",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/189426/157224.jpg",
+          "payload": {
+            "name": "Transformador de Corrente 1000/5A Tipo Janela",
+            "description": "TC tipo janela com relação 1000/5 A para medição e monitoramento de energia em painéis de baixa tensão e sistemas de qualidade de energia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 595.54,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6,
+            "sku": "BRV-PDE-004"
+          }
+        },
+        {
+          "label": "BRV-AUT-001 — Inversor de Frequência Trifásico 40CV 35A 500-690V",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/239136/163021.jpg",
+          "payload": {
+            "name": "Inversor de Frequência Trifásico 40CV 35A 500-690V",
+            "description": "Inversor de frequência trifásico de 40 CV (35 A) para 500-690 V, com controle vetorial para acionamento de motores em linhas de processo industrial.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 41000,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BRV-AUT-001"
+          }
+        },
+        {
+          "label": "BRV-AUT-002 — Soft Starter Trifásico 143A 200-480V",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/256370/1303332.jpg",
+          "payload": {
+            "name": "Soft Starter Trifásico 143A 200-480V",
+            "description": "Chave de partida suave trifásica de 143 A para 200-480 V, com rampa de tensão e proteções integradas — reduz picos de corrente na partida de motores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 16500,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BRV-AUT-002"
+          }
+        },
+        {
+          "label": "BRV-AUT-003 — IHM Touch 15\" Comfort Panel",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/343602/6AV21240QC020AX2-1.png.png",
+          "payload": {
+            "name": "IHM Touch 15\" Comfort Panel",
+            "description": "Interface homem-máquina com tela sensível ao toque de 15 polegadas para supervisão e operação de processos, com interfaces de comunicação industrial.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 56400,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BRV-AUT-003"
+          }
+        },
+        {
+          "label": "BRV-CMD-001 — Contator Tripolar 80A 220V 3NA",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/172385/121825_import_17668_d6769d1719ede126248a833a9b2f20f5.png",
+          "payload": {
+            "name": "Contator Tripolar 80A 220V 3NA",
+            "description": "Contator tripolar de 80 A com bobina 220 V, 50/60 Hz e três contatos auxiliares NA, para comando de motores e cargas em painéis industriais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1429.99,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "BRV-CMD-001"
+          }
+        },
+        {
+          "label": "BRV-CMD-002 — Relé Térmico de Sobrecarga 4-6A Classe 20",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/188839/134912.jpg",
+          "payload": {
+            "name": "Relé Térmico de Sobrecarga 4-6A Classe 20",
+            "description": "Relé térmico de sobrecarga com faixa de ajuste de 4 a 6 A, classe de disparo 20 e contatos 1NA+1NF, para proteção de motores contra sobrecarga.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 416.99,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 10,
+            "sku": "BRV-CMD-002"
+          }
+        },
+        {
+          "label": "BRV-CMD-003 — Botoeira Vazia em Aço 22mm IP66",
+          "temp_image_url": "https://dimensionalstoreb2b.vteximg.com.br/arquivos/ids/238651/1232575.jpg",
+          "payload": {
+            "name": "Botoeira Vazia em Aço 22mm IP66",
+            "description": "Caixa de botoeira vazia em aço para um elemento de 22 mm, grau de proteção IP66, para montagem de comandos e sinalização em campo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 246.99,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 20,
+            "sku": "BRV-CMD-003"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Brava Soluções",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Brava Soluções — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Brava Soluções",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Brava Soluções — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Automação e Acionamento",
+          "salvar_id_como": "criteria_cat_automacao_id",
+          "payload": {
+            "name": "Brava Soluções — Automação e Acionamento (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Comando e Proteção",
+          "salvar_id_como": "criteria_cat_comando_id",
+          "payload": {
+            "name": "Brava Soluções — Comando e Proteção (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Brava Soluções",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Brava Soluções",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Brava Soluções",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Brava Soluções",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Brava Soluções",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Brava Soluções",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Automação e Acionamento | Brava Soluções",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Brava Soluções",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Automação Brava Soluções",
+                "criteria_id": "{{criteria_cat_automacao_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Comando e Proteção | Brava Soluções",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Brava Soluções — Comando e Proteção",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Brava Soluções",
+                "criteria_id": "{{criteria_cat_comando_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

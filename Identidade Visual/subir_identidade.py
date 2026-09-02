@@ -91,7 +91,11 @@ def main(argv=None):
     headers, org = credenciais.carregar(args.org)
 
     # 1. Logo: normaliza e extrai a paleta (o favicon precisa das cores).
-    logo_img, laudo_logo = mod_logo.normalizar(args.logo, limiares["logo"])
+    # A regua do portal por cima da do banner: o destino aqui e o cabecalho, que
+    # mostra a logo com ~120x29. Sem isto, marca horizontal legitima (Brava
+    # 250x60, Poupa Agora 330x100) e reprovada por uma regra que nao e dela.
+    limiares_logo = {**limiares["logo"], **limiares.get("logo_portal", {})}
+    logo_img, laudo_logo = mod_logo.normalizar(args.logo, limiares_logo)
     pal = mod_paleta.extrair(logo_img, args.cor)
     print(f"Logo:    {laudo_logo['original'][0]}x{laudo_logo['original'][1]} -> "
           f"{laudo_logo['recortada'][0]}x{laudo_logo['recortada'][1]}"

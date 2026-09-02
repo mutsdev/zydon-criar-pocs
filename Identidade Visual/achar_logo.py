@@ -188,7 +188,10 @@ def main(argv=None):
                    help="imprime so o laudo em JSON, para script")
     args = p.parse_args(argv)
 
-    limiares = mod_regua.carregar(args.regua)["logo"]
+    # A regua do portal por cima da do banner: aqui a logo vai para o cabecalho,
+    # nao para uma peca grande. Ver `logo_portal` no regua.json.
+    _regua = mod_regua.carregar(args.regua)
+    limiares = {**_regua["logo"], **_regua.get("logo_portal", {})}
 
     try:
         pagina = requests.get(args.site, headers=CABECALHOS, timeout=30)

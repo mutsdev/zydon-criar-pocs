@@ -42,5 +42,10 @@
     "exigidos_verdadeiros": [
       "cena_condiz_com_o_segmento"
     ]
+  },
+  "logo_portal": {
+    "_comentario": "Regua do cabecalho do portal, onde a logo aparece com ~120x29. Mais folgada que a do banner de proposito: la ela e composta em peca grande, aqui nao.",
+    "lado_maior_minimo_px": 200,
+    "lado_menor_minimo_px": 48
   }
 }
