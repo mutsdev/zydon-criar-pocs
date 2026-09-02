@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-02-003",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/manaus_automotive_poc.json",
+  "logo_url": "https://www.manausautomotive.com.br/images/logotipo%20manauto.png",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo proprio do cliente em /api/products (5.051 produtos, 15 categorias de topo, todos com imagem propria em /api/products/image/<id>). O catalogo NAO expoe preco: nenhum campo de preco/valor existe no retorno da API e o pedido nao trouxe anexo (PDF ou planilha). Os 12 precos do JSON sao ESTIMATIVAS de atacado de motopecas e precisam de confirmacao do cliente antes de qualquer demonstracao com valor na tela. Todo o resto veio do proprio site: as 12 imagens sao do dominio do cliente (WebP, 413x307 a 1156x867), verificadas em bloco pelo verificar_imagens.py. Categorias escolhidas entre as 15 de topo do site, pelas 3 maiores: Motor (1.043 itens), Eletrica (776) e Transmissao (531). Sem grade de variacoes: em motopecas o eixo e aplicacao/modelo de moto, ou seja outro produto, e nao escolha do comprador sobre o mesmo item. Callback pulado por topologia de egresso (porta 8080), conforme ENTREGA.md. Entregue na branch claude/amazing-edison-9g4bx6, fixada pela configuracao da sessao, em vez de claude/poc-manaus-automotive-mitra-2026-09-02-003; a correlacao e por este resumo.json."
+  },
+  "sessao_url": "https://claude.ai/code/session_015rdaQHS4ZVkmWuW2UbwZLQ"
+}
