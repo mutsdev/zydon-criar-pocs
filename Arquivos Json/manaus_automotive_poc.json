@@ -1,0 +1,519 @@
+{
+  "empresa": "Manaus Automotive",
+  "descricao_empresa": "Distribuidor atacadista de pecas e acessorios para motocicletas em Manaus (AM), com mais de 20 anos de atuacao no Amazonas e na regiao Norte.",
+  "gerado_em": "2026-09-02",
+  "setor": "Autopecas — Motopecas e Acessorios para Motocicletas",
+  "portal_name": "Manaus Automotive POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Manaus Automotive",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "Manaus Automotive", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Motor",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Motor", "active": true, "images": [] }
+        },
+        {
+          "label": "Eletrica",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Eletrica", "active": true, "images": [] }
+        },
+        {
+          "label": "Transmissao",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Transmissao", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "MAN-12921 — Pistao com Aneis CG 160 Titan / NXR 160 Bros",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/7275",
+          "payload": {
+            "name": "Pistao com Aneis CG 160 Titan / NXR 160 Bros - Standard",
+            "description": "Kit pistao com aneis, pino e travas para Honda CG 160 Titan e NXR 160 Bros, todos os anos. Medida standard, marca Smart Fox, referencia OEM 11320-BF0-CG15.",
+            "sku": "MAN-12921",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 89.90,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MAN-12083 — Kit Cilindro Biz 125 2006/2008",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/7102",
+          "payload": {
+            "name": "Kit Cilindro Completo Biz 125 2006/2008",
+            "description": "Kit cilindro completo com pistao, aneis, pino e junta para Honda Biz 125 modelos 2006 a 2008. Marca Smart Fox, referencia OEM 11200-BF0-BZ03.",
+            "sku": "MAN-12083",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 249.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MAN-12044 — Carburador CG / Titan 2002-2008 Fan",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/7069",
+          "payload": {
+            "name": "Carburador Completo CG 125 Titan 2002-2008 / Fan 125",
+            "description": "Carburador completo para Honda CG 125 Titan 2002 a 2008 e CG 125 Fan. Montado e regulado de fabrica, marca Smart Fox, referencia OEM 11600-BF0-CG09.",
+            "sku": "MAN-12044",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 179.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MAN-11412 — Filtro de Ar Biz 125 2011-2021 / Biz 110 2016-2021",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/6807",
+          "payload": {
+            "name": "Filtro de Ar Biz 125 2011-2021 / Biz 110i 2016-2021",
+            "description": "Elemento filtrante de ar para Honda Biz 125 2011 a 2021 e Biz 110i 2016 a 2021. Item de reposicao periodica, vendido em caixa fechada de 10 unidades. Marca Smart Fox, referencia OEM 11710-BF0-BZ06.",
+            "sku": "MAN-11412",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 24.90,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "MAN-12278 — Bobina de Ignicao PCX 150 2016-2020",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/10812",
+          "payload": {
+            "name": "Bobina de Ignicao PCX 150 2016-2020",
+            "description": "Bobina de ignicao com cabo e supressor para Honda PCX 150 modelos 2016 a 2020. Marca Magnetron, referencia 90202650.",
+            "sku": "MAN-12278",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 69.90,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3
+          }
+        },
+        {
+          "label": "MAN-11260 — CDI Digital NXR 150 Bros / CG 150 Titan",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/6660",
+          "payload": {
+            "name": "CDI Digital NXR 150 Bros ate 2008 / CG 150 Titan 2004",
+            "description": "Modulo CDI digital para Honda NXR 150 Bros ate 2008 e CG 150 Titan 2004. Curva de avanco programada, marca Smart Fox, referencia OEM 33200-BB0-BR04.",
+            "sku": "MAN-11260",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 119.90,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MAN-14943 — Chave de Ignicao Titan 125 2002-2004 / Fan 125 2005-2008",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/7628",
+          "payload": {
+            "name": "Chave de Ignicao CG 125 Titan 2002-2004 / Fan 125 2005-2008",
+            "description": "Chave de ignicao completa com duas chaves e chicote para Honda CG 125 Titan 2002 a 2004 e CG 125 Fan 2005 a 2008. Marca Smart Fox, referencia OEM 37210-BB0-CG06.",
+            "sku": "MAN-14943",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.90,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "MAN-13398 — Painel Completo CG 150 Titan ESD 2004-2008",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/11000",
+          "payload": {
+            "name": "Painel Completo CG 150 Titan ESD 2004-2008",
+            "description": "Painel de instrumentos completo com velocimetro, conta-giros e luzes indicadoras para Honda CG 150 Titan ESD 2004 a 2008. Marca Magnetron, referencia 90290030.",
+            "sku": "MAN-13398",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 189.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MAN-10257 — Kit de Transmissao Fazer 150 Aco 1045 41T",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/8579",
+          "payload": {
+            "name": "Kit de Transmissao Fazer 150 Aco 1045 - Coroa 41 Dentes",
+            "description": "Kit de transmissao com coroa de 41 dentes, pinhao e corrente em aco 1045 para Yamaha Fazer 150. Marca Siverst, referencia SV20246.",
+            "sku": "MAN-10257",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 159.90,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MAN-12209 — Kit de Embreagem Biz 125",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/7160",
+          "payload": {
+            "name": "Kit de Embreagem Biz 125",
+            "description": "Kit de embreagem completo para Honda Biz 125, com cubo, discos e molas. Marca Smart Fox, referencia OEM 12130-BF0-BZ03.",
+            "sku": "MAN-12209",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 74.90,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "MAN-11845 — Disco de Embreagem 5 Pecas CG 125/150/160",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/9959",
+          "payload": {
+            "name": "Jogo de Discos de Embreagem 5 Pecas CG 125/150/160",
+            "description": "Jogo com 5 discos de embreagem para Honda CG 125, CG 150 e CG 160, incluindo linha Cargo e Fan. Item de desgaste, vendido em multiplos de 5 jogos. Marca Laquila, referencia 1105204.",
+            "sku": "MAN-11845",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 54.90,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "MAN-5468 — Plato de Embreagem CB 300 / XRE 300",
+          "temp_image_url": "https://www.manausautomotive.com.br/api/products/image/11896",
+          "payload": {
+            "name": "Plato de Embreagem CB 300R / XRE 300",
+            "description": "Plato de embreagem para Honda CB 300R e XRE 300. Usinado e balanceado, marca Scud, referencia 5468.",
+            "sku": "MAN-5468",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 99.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Manaus Automotive",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Manaus Automotive — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Manaus Automotive",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Manaus Automotive — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Motor",
+          "salvar_id_como": "criteria_cat_motor_id",
+          "payload": {
+            "name": "Manaus Automotive — Motor (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_0}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Eletrica",
+          "salvar_id_como": "criteria_cat_eletrica_id",
+          "payload": {
+            "name": "Manaus Automotive — Eletrica (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_1}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Manaus Automotive",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Manaus Automotive",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Manaus Automotive",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Manaus Automotive",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Manaus Automotive",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Manaus Automotive",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Motor | Manaus Automotive",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Manaus Automotive",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Manaus Automotive",
+                "criteria_id": "{{criteria_cat_motor_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 10, "type": "PERCENTAGE", "value": 5, "is_product_value": false },
+                  { "minimum_quantity": 20, "type": "PERCENTAGE", "value": 8, "is_product_value": false },
+                  { "minimum_quantity": 50, "type": "PERCENTAGE", "value": 12, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Eletrica | Manaus Automotive",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Manaus Automotive — Eletrica",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Manaus Automotive",
+                "criteria_id": "{{criteria_cat_eletrica_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 7, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
