@@ -30,5 +30,15 @@
       "Estilete metálico de precisão"
     ],
     "ambiente": "Estúdio de estética automotiva moderno e climatizado, com iluminação LED tubular no teto e a silhueta de um carro esportivo."
+  },
+  "alimentos-e-bens-de-consumo-atacado": {
+    "objetos": [
+      "Caixas de papelão pardo sem impressão",
+      "Sacaria de juta com grãos visíveis",
+      "Garrafas de vidro transparentes e sem rótulo",
+      "Prancheta de madeira com papel e caneta",
+      "Palete de madeira reforçado"
+    ],
+    "ambiente": "Corredor amplo de um grande galpão logístico de abastecimento com prateleiras industriais verticais e iluminação forte."
   }
 }

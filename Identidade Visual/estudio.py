@@ -289,6 +289,10 @@ function acompanhar(slug){{
     cx.textContent = (d.log||[]).slice(-14).join('\\n');
     cx.scrollTop = cx.scrollHeight;
     if(d.estado === 'rodando'){{ setTimeout(()=>acompanhar(slug), 1500); }}
+    // Terminou: vai direto para a tela de pontuar. Obrigar um segundo clique
+    // para ver o que acabou de ser gerado e atrito a toa — o objetivo do
+    // estudio e pontuar, nao administrar cartoes.
+    else if(d.estado === 'pronto'){{ location.href = '/cliente?slug='+slug; }}
     else {{ location.reload(); }}
   }});
 }}
