@@ -90,6 +90,10 @@ Não entregue produto com imagem que você não verificou.
 
 PASSO 3B — ache a logo do cliente:
   python "Identidade Visual/achar_logo.py" <site> --json
+Se o site for renderizado por JavaScript, o HTML cru não traz a logo e ele volta
+sem candidata — foi o caso da Multiseg. Você tem navegador e ele não: pegue as
+URLs que enxergar na página e passe em `--extra url1 url2`. **Inclua o SVG
+quando houver**: vetor não tem lado mínimo e costuma ganhar de todas.
 Ele varre o HTML, baixa as candidatas e reprova pelas mesmas regras da
 identidade visual (menor lado 200px, proporção até 6:1, placeholder de tema).
 Ponha a `logo_url` que ele escolher no resumo da entrega. Não precisa de

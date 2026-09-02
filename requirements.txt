@@ -4,3 +4,7 @@ python-dotenv
 # Gerador de banners (Identidade Visual/): composicao e checagens do degrau 1.
 Pillow
 numpy
+
+# Logo em SVG: vetor e a melhor fonte, e sem estes o achar_logo nao o mede.
+svglib
+rlPyCairo

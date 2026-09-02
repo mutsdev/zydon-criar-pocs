@@ -54,9 +54,7 @@ CABECALHOS = {
 PARALELISMO = 10
 FUNDO_PORTAL = (255, 255, 255)
 
-# SVG nao passa pelo Pillow. Ficaria melhor que qualquer PNG, entao vale
-# apontar em vez de ignorar em silencio.
-EXTENSOES_RASTER = (".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp")
+
 
 
 def _absoluta(base, referencia):
@@ -141,12 +139,6 @@ def avaliar(par, limiares, pasta):
     if re.search(r"placeholder|no-image|sem-imagem", caminho):
         laudo["motivo"] = "placeholder do tema, nao e a logo"
         return laudo
-    if caminho.endswith(".svg"):
-        laudo["motivo"] = ("SVG — nao da para medir aqui, mas vetor e a melhor "
-                           "fonte que existe: baixe e converta")
-        laudo["svg"] = True
-        return laudo
-
     try:
         r = requests.get(url, headers=CABECALHOS, timeout=30)
         r.raise_for_status()
@@ -158,7 +150,11 @@ def avaliar(par, limiares, pasta):
         laudo["motivo"] = f"so {len(r.content)} bytes"
         return laudo
 
-    alvo = pasta / (re.sub(r"[^a-zA-Z0-9]", "_", url)[-60:] or "cand")
+    # A extensao precisa sobreviver: e por ela que o `normalizar` sabe que o
+    # arquivo e SVG e manda rasterizar. Sem isso o vetor chega la como binario
+    # qualquer e o Pillow reprova.
+    extensao = Path(caminho).suffix[:5] or ".bin"
+    alvo = pasta / ((re.sub(r"[^a-zA-Z0-9]", "_", url)[-56:] or "cand") + extensao)
     alvo.write_bytes(r.content)
 
     try:

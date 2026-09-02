@@ -33,13 +33,52 @@ def _alfa_de_fundo_chapado(img, tolerancia):
     return Image.fromarray(np.where(distancia > tolerancia, 255, 0).astype(np.uint8), "L")
 
 
+# Vetor nao tem tamanho: o lado de saida e escolha nossa. 1024 sobra para o
+# cabecalho do portal e para o favicon, sem virar arquivo pesado a toa.
+LADO_RASTER_SVG = 1024
+
+
+def _rasterizar_svg(caminho):
+    """SVG -> imagem, para o resto do modulo poder medir como mede as outras.
+
+    Vetor e a melhor fonte de logo que existe — nao tem lado minimo e escala
+    para qualquer tela. Ate 01/09/2026 ele era simplesmente ignorado aqui, e o
+    efeito era caro: na Multiseg o site publicava um PNG de 202x42 (reprovado
+    por ser pequeno) e o logo em SVG, que ninguem olhava. Resultado: portal sem
+    identidade, tendo a melhor fonte disponivel o tempo todo.
+
+    O fundo sai branco porque renderPM nao faz alfa direito. Nao e problema: o
+    `_alfa_de_fundo_chapado` logo abaixo deriva a transparencia de um fundo
+    solido, que e exatamente este caso.
+    """
+    try:
+        from reportlab.graphics import renderPM
+        from svglib.svglib import svg2rlg
+    except ImportError as erro:
+        raise LogoInvalida(
+            f"SVG precisa de svglib e rlPyCairo, que nao estao instalados "
+            f"({erro}). Instale com: pip install svglib rlPyCairo") from erro
+
+    desenho = svg2rlg(str(caminho))
+    if desenho is None or not desenho.width or not desenho.height:
+        raise LogoInvalida("nao consegui ler o SVG — arquivo vazio ou invalido.")
+    fator = LADO_RASTER_SVG / max(desenho.width, desenho.height)
+    desenho.width *= fator
+    desenho.height *= fator
+    desenho.scale(fator, fator)
+    return renderPM.drawToPIL(desenho, dpi=72, bg=0xFFFFFF)
+
+
 def normalizar(caminho, limiares):
     """Abre, recorta a moldura vazia e valida. Devolve (RGBA recortada, laudo)."""
-    try:
-        img = Image.open(caminho)
-        img.load()
-    except Exception as erro:
-        raise LogoInvalida(f"nao consegui abrir a logo: {erro}") from erro
+    if str(caminho).lower().endswith(".svg"):
+        img = _rasterizar_svg(caminho)
+    else:
+        try:
+            img = Image.open(caminho)
+            img.load()
+        except Exception as erro:
+            raise LogoInvalida(f"nao consegui abrir a logo: {erro}") from erro
 
     largura_original, altura_original = img.size
     if min(img.size) < limiares["lado_minimo_px"]:
