@@ -79,6 +79,12 @@ nenhuma candidata passou. **O Mitra repassa esse campo no POST para o receptor**
 e é assim que o portal nasce com a identidade certa. `null` não é falha: a POC é
 criada sem logo e isso vai em `observacoes`.
 
+Quando vier `null`, acrescente **`logo_motivo`**: uma frase dizendo o que foi
+achado e por que reprovou, em português, para o executivo saber o que pedir ao
+cliente. Ex.: `"as 3 candidatas do site têm no máximo 250x60; peça o vetor ou
+uma exportação com pelo menos 200px no maior lado"`. Sem isso o executivo vê
+"sem logo" e não sabe o que fazer com a informação.
+
 `sessao_url` é o campo `claude_code_session_url` da resposta do disparo.
 
 Falhou a extração? Entregue mesmo assim o `resumo.json` com `status: "falhou"` e
