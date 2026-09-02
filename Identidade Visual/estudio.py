@@ -80,30 +80,58 @@ def notas():
     return fora
 
 
-def ultima_pasta(slug):
-    """A execucao mais recente deste cliente, ou None."""
+def corridas(slug):
+    """As execucoes deste cliente, da mais velha para a mais nova."""
     raiz = SAIDAS / slug
     if not raiz.is_dir():
-        return None
-    corridas = sorted((p for p in raiz.iterdir()
-                       if p.is_dir() and re.match(r"\d{4}-\d{2}-\d{2}_\d{4}", p.name)),
-                      key=lambda p: p.name)
-    return corridas[-1] if corridas else None
+        return []
+    return sorted((p for p in raiz.iterdir()
+                   if p.is_dir() and re.match(r"\d{4}-\d{2}-\d{2}_\d{4}", p.name)),
+                  key=lambda p: p.name)
+
+
+def terminou(pasta):
+    """O `montar` so escreve o manifesto no fim. E o unico sinal confiavel.
+
+    Antes disto o cartao dizia "gerado" para qualquer pasta existente — e a
+    pasta nasce no `preparar`, antes de a primeira cena ser gerada. Em
+    02/09/2026 tres execucoes foram interrompidas no meio, os cartoes disseram
+    "gerado" e a tela de pontuar abriu vazia. Existir nao e ter terminado.
+    """
+    return pasta is not None and (Path(pasta) / "manifesto.json").exists()
+
+
+def ultima_pasta(slug):
+    """A execucao COMPLETA mais recente, ou None."""
+    completas = [p for p in corridas(slug) if terminou(p)]
+    return completas[-1] if completas else None
+
+
+def pasta_incompleta(slug):
+    """Execucao que parou no meio mas ja tem cena em disco.
+
+    Vale ouro: as cenas ja custaram neurons. Montar em cima delas nao gasta
+    nada e recupera o trabalho — foi assim que as tres interrompidas voltaram.
+    """
+    for pasta in reversed(corridas(slug)):
+        if terminou(pasta):
+            return None  # a mais recente ja e boa; nao ha o que retomar
+        if any((pasta / "cenas").glob("*.png")):
+            return pasta
+    return None
 
 
 # --------------------------------------------------------------------------
 # a execucao
 # --------------------------------------------------------------------------
 
-def rodar(slug, cliente, setor, logo, candidatas, regua_logo):
-    """Roda o `gerar_banners.py auto` e vai anotando a saida linha a linha."""
-    comando = [sys.executable, str(AQUI / "gerar_banners.py"), "auto",
-               "--logo", str(logo), "--nome", cliente, "--segmento", setor,
-               "--candidatas", str(candidatas), "--regua-logo", regua_logo]
+def rodar(slug, comando, pasta_conhecida=None):
+    """Roda um comando do gerar_banners e vai anotando a saida linha a linha."""
     ambiente = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1")
 
     with TRAVA:
-        TRABALHOS[slug] = {"estado": "rodando", "log": [], "pasta": None,
+        TRABALHOS[slug] = {"estado": "rodando", "log": [],
+                           "pasta": str(pasta_conhecida) if pasta_conhecida else None,
                            "erro": None, "comeco": agora()}
 
     def anotar(linha):
@@ -111,8 +139,7 @@ def rodar(slug, cliente, setor, logo, candidatas, regua_logo):
             TRABALHOS[slug]["log"].append(linha.rstrip())
         print(f"  [{slug}] {linha.rstrip()}", flush=True)
 
-    anotar(f"$ gerar_banners.py auto --candidatas {candidatas} "
-           f"--regua-logo {regua_logo}")
+    anotar("$ " + " ".join(c for c in comando[1:] if not c.startswith("C:\\")))
     try:
         processo = subprocess.Popen(
             comando, cwd=str(RAIZ), env=ambiente, stdout=subprocess.PIPE,
@@ -234,22 +261,30 @@ def tela_inicial():
         with TRAVA:
             trabalho = dict(TRABALHOS.get(slug) or {})
         estado = trabalho.get("estado")
-        pasta = trabalho.get("pasta") or ultima_pasta(slug)
+        pasta = ultima_pasta(slug)
+        meia = None if pasta else pasta_incompleta(slug)
         nota = marcadas.get(slug)
         if estado == "rodando":
             selo = '<span class="selo rodando">gerando…</span>'
         elif estado == "erro":
             selo = '<span class="selo erro">erro</span>'
-        elif nota:
+        elif nota and pasta:
             selo = f'<span class="selo ok">nota {html.escape(str(nota.get("media","?")))}</span>'
         elif pasta:
             selo = '<span class="selo ok">gerado</span>'
+        elif meia:
+            selo = '<span class="selo erro">parou no meio</span>'
         else:
             selo = '<span class="selo">nao gerado</span>'
 
         acoes = [f'<button onclick="gerar(\'{slug}\')">Gerar banners</button>']
         if pasta:
             acoes.append(f'<a href="/cliente?slug={slug}"><button>Ver e pontuar</button></a>')
+        elif meia:
+            # As cenas ja foram pagas; montar em cima delas nao gasta neuron.
+            acoes.append(f'<button onclick="retomar(\'{slug}\')" '
+                         f'title="monta em cima das cenas que ja existem, '
+                         f'sem gerar de novo">Retomar</button>')
         logo = (f'<img src="/logo?slug={slug}" alt="">' if r.get("logo")
                 else '<span class="sub">sem logo</span>')
         cartoes.append(f"""<div class="cartao" id="c-{slug}">
@@ -276,13 +311,15 @@ cliente (2 candidatas) &middot; {gerador.NEURONS_POR_DIA}/dia gratis</span></hea
 <main>{aviso}<div class="grade">{''.join(cartoes)}</div></main>
 <script>
 const emCurso = new Set();
-function gerar(slug){{
+function disparar(slug, rota, corpo){{
   const cx = document.getElementById('l-'+slug); cx.style.display='block';
   cx.textContent = 'iniciando...';
-  fetch('/gerar', {{method:'POST', headers:{{'Content-Type':'application/json'}},
-    body: JSON.stringify({{slug: slug, candidatas: 2}})}})
+  fetch(rota, {{method:'POST', headers:{{'Content-Type':'application/json'}},
+    body: JSON.stringify(corpo)}})
    .then(r=>r.json()).then(()=>{{ emCurso.add(slug); acompanhar(slug); }});
 }}
+function gerar(slug){{ disparar(slug, '/gerar', {{slug:slug, candidatas:2}}); }}
+function retomar(slug){{ disparar(slug, '/retomar', {{slug:slug}}); }}
 function acompanhar(slug){{
   fetch('/estado?slug='+slug).then(r=>r.json()).then(d=>{{
     const cx = document.getElementById('l-'+slug);
@@ -304,11 +341,24 @@ def tela_cliente(slug):
     r = registros.get(slug)
     if not r:
         return None
-    with TRAVA:
-        pasta = (TRABALHOS.get(slug) or {}).get("pasta")
-    pasta = Path(pasta) if pasta else ultima_pasta(slug)
-    if not pasta or not pasta.exists():
-        return pagina("sem execucao", "<main>Este cliente ainda nao foi gerado. "
+    pasta = ultima_pasta(slug)
+    if not pasta:
+        meia = pasta_incompleta(slug)
+        if meia:
+            corpo = (f"<main><div class='aviso'>A execucao de "
+                     f"<b>{html.escape(r['cliente'])}</b> parou no meio: a pasta "
+                     f"existe e as cenas ja foram geradas, mas as pecas nao "
+                     f"chegaram a ser montadas.<br><br>As cenas ja custaram "
+                     f"neurons — <b>Retomar</b> monta em cima delas sem gerar "
+                     f"nada de novo.</div>"
+                     f"<button onclick=\"fetch('/retomar',{{method:'POST',"
+                     f"headers:{{'Content-Type':'application/json'}},"
+                     f"body:JSON.stringify({{slug:'{slug}'}})}})"
+                     f".then(()=>location.href='/')\">Retomar</button> "
+                     f"<a href='/'>voltar</a></main>")
+            return pagina("execucao incompleta", corpo)
+        return pagina("sem execucao", "<main><div class='aviso'>Este cliente "
+                                      "ainda nao foi gerado.</div>"
                                       "<a href='/'>voltar</a></main>")
 
     grupos, manifesto = candidatas_da_pasta(pasta)
@@ -449,13 +499,27 @@ class Manipulador(BaseHTTPRequestHandler):
             with TRAVA:
                 if (TRABALHOS.get(slug) or {}).get("estado") == "rodando":
                     return self._json(202, {"estado": "ja rodando"})
-            threading.Thread(target=rodar, daemon=True, args=(
-                slug, r["cliente"], r.get("setor", ""), LOGOS / r["logo"],
-                int(corpo.get("candidatas") or 2),
-                # Marca horizontal (Cobra 205x58) reprova na regua do banner. No
-                # estudo ela entra assim mesmo: ver a peca ruim e o dado que
-                # decide se aquela regua procede.
-                "portal")).start()
+            comando = [sys.executable, str(AQUI / "gerar_banners.py"), "auto",
+                       "--logo", str(LOGOS / r["logo"]), "--nome", r["cliente"],
+                       "--segmento", r.get("setor", ""),
+                       "--candidatas", str(int(corpo.get("candidatas") or 2)),
+                       # Marca horizontal (Cobra 205x58) reprova na regua do
+                       # banner. No estudo ela entra assim mesmo: ver a peca
+                       # ruim e o dado que decide se aquela regua procede.
+                       "--regua-logo", "portal"]
+            threading.Thread(target=rodar, daemon=True,
+                             args=(slug, comando)).start()
+            return self._json(202, {"estado": "rodando"})
+
+        if url.path == "/retomar":
+            slug = corpo.get("slug")
+            meia = pasta_incompleta(slug)
+            if not meia:
+                return self._json(404, {"erro": "nao ha execucao para retomar"})
+            comando = [sys.executable, str(AQUI / "gerar_banners.py"),
+                       "montar", str(meia)]
+            threading.Thread(target=rodar, daemon=True,
+                             args=(slug, comando, meia)).start()
             return self._json(202, {"estado": "rodando"})
 
         if url.path == "/nota":
