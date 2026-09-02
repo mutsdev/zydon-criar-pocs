@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-02-001",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/brava_solucoes_poc.json",
+  "logo_url": null,
+  "resumo": {
+    "produtos": 10,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 10,
+    "observacoes": "Site institucional (sem catalogo e sem loja: o item de menu LOJA ONLINE esta comentado no HTML e o /wp-json redireciona para /404). Ramo confirmado pelas paginas /solucoes/industrias, /solucoes/construcao-civil e /paineis-eletricos: paineis eletricos de baixa e media tensao, CCMs, automacao industrial (CLP, IHM, SCADA, inversores, soft starters), automacao predial (BMS) e IT Medico, em Goiania/GO, com Schneider Electric citada como marca representada. PRECO ESTIMADO, nao publico: a Brava nao publica preco, e os valores sao referencia de mercado do distribuidor de material eletrico Dimensional (VTEX publico) para os mesmos itens — conferir antes de qualquer uso comercial. IMAGENS: nenhuma veio do site do cliente (ele so tem banners de segmento), todas as 10 vieram do CDN da Dimensional, catalogo do mesmo setor, e sao fotos de fabricante (Eaton, Siemens, Schneider, WEG, Cemar Legrand), nao fotos autorais do varejista. Julgadas em mosaico e 3 candidatas foram reprovadas: um quadro Cemar 227x202 branco-sobre-branco, um Quadro Comando BC Schneider de 930 bytes que nao abre, e um quadro Cemar cuja foto era o LOGO DA SONEPAR — distribuidor concorrente do canal, que apareceria em tela na demonstracao. Substituidas antes de entregar; verificar_imagens.py deu 10/10. Sem grade de variacoes: os eixos aqui sao corrente e tensao, que sao SKU proprio de fabricante e nao escolha do comprador sobre o mesmo produto. Maior desconto (30%) no perfil Industria/Manufatura, que e o core da Brava; Distribuidor 15%, Varejo 5%. LOGO NAO ENTREGUE: o achar_logo.py reprovou as 5 candidatas por lado minimo — logo.png e og:image tem 250x60, logo-rodape 226x74, favicon 32x32, e nao existe versao vetorial (logo.svg da 404 no ImageKit e 302 no site); o original do ImageKit (tr=orig-true) tambem e 250x60, entao nao ha exportacao maior a extrair. A POC nasce sem identidade visual: pedir ao cliente o arquivo vetorial ou uma exportacao com no minimo 200px no menor lado. CALLBACK PULADO conforme ENTREGA.md: a rotina roda na nuvem, o egresso so aceita CONNECT na 443 e o callback do Mitra atende na 8080; nenhum POST foi tentado e o callback_token nao saiu daqui. Entrega pela branch designada da sessao (claude/amazing-edison-537892) em vez de claude/poc-<cliente>-<pedido_id>: o harness proibe push para outra branch: a correlacao e por este pedido_id, como o proprio ENTREGA.md determina."
+  },
+  "sessao_url": "https://claude.ai/code/session_016zrJ2xv1XWXr34AnNLj9Ea"
+}
