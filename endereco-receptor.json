@@ -1,8 +1,8 @@
 {
-  "url": "https://pick-rock-theoretical-beverage.trycloudflare.com",
-  "pedido": "https://pick-rock-theoretical-beverage.trycloudflare.com/pedido",
-  "saude": "https://pick-rock-theoretical-beverage.trycloudflare.com/saude",
+  "url": "https://cellular-announcements-surrounding-cycling.trycloudflare.com",
+  "pedido": "https://cellular-announcements-surrounding-cycling.trycloudflare.com/pedido",
+  "saude": "https://cellular-announcements-surrounding-cycling.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-02T10:35:34-03:00",
+  "atualizado_em": "2026-09-02T14:05:28-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
