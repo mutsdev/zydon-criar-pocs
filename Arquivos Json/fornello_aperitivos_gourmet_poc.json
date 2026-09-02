@@ -1,0 +1,441 @@
+{
+  "empresa": "Fornello Aperitivos Gourmet",
+  "descricao_empresa": "Fabricante de aperitivos gourmet de Franca (SP), aberta em fevereiro de 2020 (CNPJ 36.333.547/0001-56). Faz crostinis crocantes e a linha nova de Biscoitos Gourmet nos sabores Lemon Pepper e Queijo Canastra, com foco em tabua de frios, harmonizacao e aperitivo de evento. Atende empresas e eventos (CNAE 5620-1/01) e tem fabricacao de biscoitos e bolachas como atividade secundaria; os pedidos hoje entram por WhatsApp.",
+  "gerado_em": "2026-09-02",
+  "setor": "Alimentos — Aperitivos e Biscoitos Gourmet",
+  "portal_name": "Fornello Aperitivos Gourmet POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Fornello",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Fornello",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Crostinis",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Crostinis",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Biscoitos Gourmet",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Biscoitos Gourmet",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Kits para Tabua e Eventos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Kits para Tabua e Eventos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "FRN-CRO-001 — Crostini Gourmet Queijo Canastra",
+          "temp_image_url": "https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/771823026_18092112644409181_5518363530898487072_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzk2NzMwNTE3MjAxMDY3OTI4Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQwMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ZLBK5Yc2l_cQ7kNvwEwZz9M&_nc_oc=Adr8TlRVQCxZW0-HEi2UuZ6_ohk1ydVT7S37fKVqENEdqUlKXmDSZov5y9GVfwGQnpk&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&_nc_gid=0no53D1lGckP2DU_PaTWlw&_nc_ss=7960f&oh=00_AQJaF5UKYffLwFgaHyBbygVo66CH6UPd0iomE2PFx9W53w&oe=6A9E3B31",
+          "payload": {
+            "name": "Crostini Gourmet Queijo Canastra",
+            "description": "Crostini artesanal em tiras, crocante, com queijo canastra. Aperitivo para tabua de frios, harmonizacao com vinho e servico de eventos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 21.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "FRN-CRO-001"
+          }
+        },
+        {
+          "label": "FRN-CRO-002 — Crostini Gourmet Lemon Pepper",
+          "temp_image_url": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/786213642_18092714729409181_3588549387885176571_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzk3MTcxOTAyNjc5Mjg1NzIxNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=1mQM7fL59BsQ7kNvwF66Kcj&_nc_oc=Adp_hrsL4BqHEOqbnl8b4ZVfYAYIR5tNKuv3aYbt6luKwYd49G1YrApOkqE2rEG_XTE&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=D9hE9VXHPj4VepVOKOhYQg&_nc_ss=7960f&oh=00_AQK0t94ocV_0nU7oogSf7v6uI7HKnByqLH3oa03X7yTOLQ&oe=6A9E3647",
+          "payload": {
+            "name": "Crostini Gourmet Lemon Pepper",
+            "description": "Crostini artesanal crocante em laminas, no tempero lemon pepper. Mesmo sabor da linha de biscoitos, para servir com queijo, geleia e embutidos em tabua.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 19.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12,
+            "sku": "FRN-CRO-002"
+          }
+        },
+        {
+          "label": "FRN-BIS-001 — Biscoito Gourmet Lemon Pepper",
+          "temp_image_url": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/756779472_18089793539409181_1750150533714488847_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzk1MTI1ODUzMjk1MDkwMTI5Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=iul87OEZ9EAQ7kNvwG7urYG&_nc_oc=AdobxHDAu88asVistS8X-yef-6qdX07hXVEkClYDiaoJ_YeVtsxV23pgWbFAifXcMHk&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=oFRH0X48b8oRNOGAW_G1Lg&_nc_ss=7960f&oh=00_AQJbCfFh4tVo_RHRMvGTLDapdfyF7B37qqwm3BTdn0OAow&oe=6A9E5FD4",
+          "payload": {
+            "name": "Biscoito Gourmet Lemon Pepper",
+            "description": "Biscoito gourmet assado em pacote transparente, tempero lemon pepper. Lancamento da marca, para revenda em emporio, adega e casa de frios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 16.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "FRN-BIS-001"
+          }
+        },
+        {
+          "label": "FRN-BIS-002 — Biscoito Gourmet Queijo Canastra",
+          "temp_image_url": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/757533532_18089793551409181_2575178403363227693_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzk1MTI1ODUzMTc1OTcyMTA5NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Px8pCCT2on0Q7kNvwG1wyWM&_nc_oc=AdrgsrlrDsa_bMZ3UhuMeCP4aiJArW7FIi8fMlnftO9deQMKdU8byIfRNy5ql-Y_le0&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=j186lIXbozcGdnlVR_NQDg&_nc_ss=7960f&oh=00_AQLQLL0V6ntaQacVTNUVZLe19uc7TcPzz14NVx1lib1a9w&oe=6A9E61EC",
+          "payload": {
+            "name": "Biscoito Gourmet Queijo Canastra",
+            "description": "Biscoito gourmet assado com queijo canastra, em pacote transparente. Aperitivo pronto para servir, com giro alto em bar e cafeteria.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 17.5,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "FRN-BIS-002"
+          }
+        },
+        {
+          "label": "FRN-KIT-001 — Kit Degustacao Biscoitos Gourmet 2 Sabores",
+          "temp_image_url": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/757969628_18089793542409181_5060669907738387851_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzk1MTI1ODUzNDIxNzY3OTkxMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=BIURK2HTH5oQ7kNvwGMyPvj&_nc_oc=AdoNUz6OSiEwp4Xwr8JqYLAfaWQ94g-Cu1TjT6ADRBf0cprADoXmLh7k_hMbMHoPfww&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=iWSQ9d3p4TmFtfb5nqJ5sg&_nc_ss=7960f&oh=00_AQJklt2XQc5SZD1mo5Yd04os97VL-oyTZVuYmP1txesfJA&oe=6A9E615B",
+          "payload": {
+            "name": "Kit Degustacao Biscoitos Gourmet 2 Sabores",
+            "description": "Kit com os dois sabores da linha de Biscoitos Gourmet, Lemon Pepper e Queijo Canastra. Formato de entrada para novo cliente e para cesta de presente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 34.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "FRN-KIT-001"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Fornello",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Fornello — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Fornello",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Fornello — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Crostinis",
+          "salvar_id_como": "criteria_cat_crostinis_id",
+          "payload": {
+            "name": "Fornello — Crostinis (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Biscoitos Gourmet",
+          "salvar_id_como": "criteria_cat_biscoitos_id",
+          "payload": {
+            "name": "Fornello — Biscoitos Gourmet (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Fornello Aperitivos Gourmet",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Fornello Aperitivos Gourmet",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Fornello Aperitivos Gourmet",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Fornello Aperitivos Gourmet",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Fornello Aperitivos Gourmet",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Fornello Aperitivos Gourmet",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Crostinis | Fornello Aperitivos Gourmet",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Fornello Aperitivos Gourmet",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Crostinis Fornello",
+                "criteria_id": "{{criteria_cat_crostinis_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7 por cento — Biscoitos Gourmet | Fornello Aperitivos Gourmet",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Fornello — Biscoitos Gourmet",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Fornello Biscoitos Gourmet",
+                "criteria_id": "{{criteria_cat_biscoitos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}
