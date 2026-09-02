@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-02-002",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/pelicula_da_vida_poc.json",
+  "logo_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Favicon-300x300.png",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo veio da Store API do WooCommerce (36 produtos, preco publico em centavos, convertido para reais). Ramo real: kits de PPF pre-cortados a laser para o interior do veiculo, por marca/modelo/versao, alem de Film Ceramic e Coat Ceramic. O site tem uma unica categoria WooCommerce, entao as 3 categorias da POC foram derivadas do proprio catalogo por carroceria (SUV, Picape, Seda). Todas as 12 imagens sao do site do cliente (renders 1200x1200 do interior de cada modelo), aprovadas no mosaico e no verificar_imagens. Sem grade de variacoes: os produtos sao simples e os atributos Marca/Modelo/Ano nao sao eixo de escolha do comprador. Excluidos os dois kits Chevrolet Tracker, que estao com preco 0 no site. A logo escolhida foi o emblema quadrado (Favicon 300x300): a logo horizontal reprovou por proporcao (981x102, 9.6:1) e a versao branca e invisivel em fundo claro — vale pedir ao cliente o vetor ou uma exportacao horizontal com proporcao ate 6:1. Callback nao foi chamado: o Mitra atende na porta 8080 e o egresso deste ambiente so aceita CONNECT na 443 (topologia, nao intermitencia) — entrega pelo repositorio, conforme ENTREGA.md. Entregue na branch da sessao (claude/amazing-edison-wby9t2) em vez de claude/poc-...: as instrucoes desta sessao fixam a branch de trabalho; a correlacao e pelo pedido_id deste resumo."
+  },
+  "sessao_url": "https://claude.ai/code/session_01ErMFREkqypnWKLL8NnVw3m"
+}
