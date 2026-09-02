@@ -5,7 +5,7 @@
 
 Costura duas coisas que ja existiam separadas:
 
-  1. `criar_poc.py` desta pasta  - catalogo + portal + regra de listagem
+  1. `Criar Portais/criar_poc.py`  - catalogo + portal + regra de listagem
   2. `Identidade Visual/subir_identidade.py` - logo e favicon no portal criado
 
 O que a costura resolve: o portal so ganha UUID no meio da execucao do runner, e
@@ -29,7 +29,11 @@ RAIZ = AQUI.parent
 IDENTIDADE = RAIZ / "Identidade Visual"
 PORTAIS = RAIZ / "Criar Portais"
 
-for _caminho in (str(AQUI), str(RAIZ), str(IDENTIDADE), str(PORTAIS)):
+# A ordem inverte de proposito: `insert(0)` empilha, entao a lista escrita ao
+# contrario deixa AQUI na frente. Isso ja custou uma execucao inteira — quando
+# havia uma copia de `criar_poc.py` nesta pasta, `Criar Portais` vinha primeiro
+# e o import trazia a copia errada, sem o parametro `saida`.
+for _caminho in (str(PORTAIS), str(IDENTIDADE), str(RAIZ), str(AQUI)):
     if _caminho not in sys.path:
         sys.path.insert(0, _caminho)
 
@@ -46,7 +50,7 @@ import subir_identidade as mod_identidade  # noqa: E402
 mod_identidade._carregar_env()
 
 import credenciais  # noqa: E402
-import criar_poc  # noqa: E402  (a copia desta pasta, com o parametro `saida`)
+import criar_poc  # noqa: E402  (o runner de 'Criar Portais', unico que existe)
 import descobrir_url  # noqa: E402
 
 

@@ -17,6 +17,7 @@ Nada aqui toca a rede.
 """
 
 import importlib.util
+import inspect
 import json
 import os
 import sys
@@ -312,3 +313,31 @@ def test_request_with_retry_respeita_timeout_explicito(monkeypatch):
     )
     criar_poc.request_with_retry("GET", "https://exemplo.invalido/x", timeout=5)
     assert capturado["timeout"] == 5
+
+
+# ==========================================
+# 6. O runner é um só
+# ==========================================
+
+def test_run_poc_devolve_o_id_do_portal_por_saida():
+    """Sem isto o `criar_poc_completo` não tem como subir a identidade.
+
+    O UUID do portal nasce no meio da execução e não entra no `_ids.json`,
+    que é gravado antes dessa etapa. `saida` é o único caminho de volta.
+    """
+    criar_poc = _carregar_criar_poc()
+    assert "saida" in inspect.signature(criar_poc.run_poc).parameters
+
+
+def test_nao_existe_segunda_copia_do_runner():
+    """Duas pastas do sys.path com `criar_poc.py` = import por sorte.
+
+    Em 02/09/2026 havia uma cópia em 'POC Completa/'. O `criar_poc_completo`
+    montava o sys.path com `insert(0)` numa ordem que punha 'Criar Portais' na
+    frente, importava o original — sem `saida` — e morria em TypeError antes de
+    criar coisa alguma. A primeira POC com logo foi a que descobriu.
+    """
+    copias = [pasta for pasta in ("Criar Portais", "POC Completa",
+                                  "Identidade Visual", ".")
+              if os.path.exists(os.path.join(POC_PORTAIS, pasta, "criar_poc.py"))]
+    assert copias == ["Criar Portais"], f"runner duplicado em {copias}"

@@ -1,0 +1,596 @@
+{
+  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
+  "empresa": "Película da Vida",
+  "descricao_empresa": "Especialista em películas automotivas: kits de PPF pré-cortados a laser para o interior do veículo (velocímetro, multimídia, console, frisos e portas), além de Film Ceramic e Coat Ceramic. Catálogo organizado por marca, modelo e versão.",
+  "gerado_em": "2026-09-02",
+  "setor": "Automotivo — Películas de Proteção (PPF), Film Ceramic e Coat Ceramic",
+  "portal_name": "Película da Vida POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Película da Vida",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Película da Vida",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Kits PPF Interno — SUV",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Kits PPF Interno — SUV",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Kits PPF Interno — Picape",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Kits PPF Interno — Picape",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Kits PPF Interno — Sedã",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Kits PPF Interno — Sedã",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "PV-HAVAL-H6 — Kit PPF Interno Haval H6",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Haval-H6-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Haval H6",
+            "description": "Kit de películas PPF pré-cortadas a laser para o Haval H6: velocímetro, tela da multimídia e área do câmbio. Tecnologia termo-regenerativa, aplicação sem recorte manual.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 209,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PV-HAVAL-H6"
+          }
+        },
+        {
+          "label": "PV-HR-V — Kit PPF Interno Honda HR-V",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Honda-HR-V-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Honda HR-V",
+            "description": "Kit de películas PPF pré-cortadas para o Honda HR-V: velocímetro, tela, friso do painel, console e volante. Defesa invisível contra riscos e marcas de uso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 429,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "PV-HR-V"
+          }
+        },
+        {
+          "label": "PV-HYUNDAI-CRETA-N-LINE — Kit PPF Interno Hyundai Creta N-Line",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Creta-N-Line.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Hyundai Creta N-Line",
+            "description": "Kit de películas PPF pré-cortadas para o Hyundai Creta N-Line: multimídia, frisos, ar-condicionado, console e lateral do console. Acabamento premium de alta transparência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 439,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PV-HYUNDAI-CRETA-N-LINE"
+          }
+        },
+        {
+          "label": "PV-BYD-SONG-PLUS — Kit PPF Interno BYD Song Plus",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Song-Plus-2026-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno BYD Song Plus",
+            "description": "Kit completo de películas PPF pré-cortadas para o BYD Song Plus: painel, velocímetro, tela, volante, console e as quatro portas. Kit de maior cobertura da linha.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 919,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PV-BYD-SONG-PLUS"
+          }
+        },
+        {
+          "label": "PV-T-CROSS-COMFORTLINE-HIGHLINE — Kit PPF Interno VW T-Cross Comfortline / Highline",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/T-Cross-Comfortline-Highline-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno VW T-Cross Comfortline / Highline",
+            "description": "Kit de películas PPF pré-cortadas para o VW T-Cross Comfortline e Highline: velocímetro e tela, moldura, friso, saída de ar, console e portas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 599,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "PV-T-CROSS-COMFORTLINE-HIGHLINE"
+          }
+        },
+        {
+          "label": "PV-RANGER-XLT — Kit PPF Interno Ford Ranger XLT",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Ranger-XLT-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Ford Ranger XLT",
+            "description": "Kit de películas PPF pré-cortadas para a Ford Ranger XLT: velocímetro e tela, moldura, saídas de ar, friso, volante, câmbio, console e portas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 619,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4,
+            "sku": "PV-RANGER-XLT"
+          }
+        },
+        {
+          "label": "PV-RANGER-XL-XLS — Kit PPF Interno Ford Ranger XL / XLS",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Ranger-XL-XLS-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Ford Ranger XL / XLS",
+            "description": "Kit de películas PPF pré-cortadas para a Ford Ranger XL e XLS: velocímetro, tela, friso, console e volante. Proteção das áreas de maior manuseio da cabine.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 419,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "PV-RANGER-XL-XLS"
+          }
+        },
+        {
+          "label": "PV-S10-LTZ-HIGH-COUNTRY — Kit PPF Interno Chevrolet S10 LTZ / High Country",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/S10-LTZ-e-High-Country-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Chevrolet S10 LTZ / High Country",
+            "description": "Kit de películas PPF pré-cortadas para a Chevrolet S10 LTZ e High Country: velocímetro, tela, moldura do ar, friso, console, volante e portas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 699,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "PV-S10-LTZ-HIGH-COUNTRY"
+          }
+        },
+        {
+          "label": "PV-S10-WT — Kit PPF Interno Chevrolet S10 WT",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/S10-WT-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Chevrolet S10 WT",
+            "description": "Kit de películas PPF pré-cortadas para a Chevrolet S10 WT: velocímetro, tela e friso do painel. Entrada de linha da família S10.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 239,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PV-S10-WT"
+          }
+        },
+        {
+          "label": "PV-COROLLA-XEI — Kit PPF Interno Toyota Corolla XEI",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Corolla-XEI-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Toyota Corolla XEI",
+            "description": "Kit de películas PPF pré-cortadas para o Toyota Corolla XEI: velocímetro, tela, ar-condicionado, friso, console e as duas portas dianteiras.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 539,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "PV-COROLLA-XEI"
+          }
+        },
+        {
+          "label": "PV-COROLLA-ALTIS — Kit PPF Interno Toyota Corolla Altis",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Corolla-Altis-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Toyota Corolla Altis",
+            "description": "Kit de películas PPF pré-cortadas para o Toyota Corolla Altis: velocímetro, tela, ar-condicionado, friso, console, portas e moldura dos botões.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 679,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "PV-COROLLA-ALTIS"
+          }
+        },
+        {
+          "label": "PV-COROLLA-GLI-HYBRID — Kit PPF Interno Toyota Corolla GLI Hybrid",
+          "temp_image_url": "https://peliculadavida.com.br/wp-content/uploads/2026/02/Corolla-GLI-Hybrid-Limpo.jpg",
+          "payload": {
+            "name": "Kit PPF Interno Toyota Corolla GLI Hybrid",
+            "description": "Kit de películas PPF pré-cortadas para o Toyota Corolla GLI Hybrid: velocímetro, tela, ar-condicionado, friso e console.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 309,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 10,
+            "sku": "PV-COROLLA-GLI-HYBRID"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Película da Vida",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Película da Vida — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Película da Vida",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Película da Vida — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Kits PPF Interno — SUV",
+          "salvar_id_como": "criteria_cat_suv_id",
+          "payload": {
+            "name": "Película da Vida — Kits PPF Interno SUV (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Kits PPF Interno — Picape",
+          "salvar_id_como": "criteria_cat_picape_id",
+          "payload": {
+            "name": "Película da Vida — Kits PPF Interno Picape (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Película da Vida",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Película da Vida",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Película da Vida",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Película da Vida",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Película da Vida",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Película da Vida",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Película da Vida",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Película da Vida",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Película da Vida — Kits SUV",
+                "criteria_id": "{{criteria_cat_suv_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Kits PPF Interno Picape | Película da Vida",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Película da Vida — Kits PPF Interno Picape",
+            "start_date": "2026-09-02",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Película da Vida — Picape",
+                "criteria_id": "{{criteria_cat_picape_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

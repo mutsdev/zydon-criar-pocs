@@ -15,25 +15,25 @@ de criar, sem refazer a POC.
 
 ## Por que esta pasta existe
 
-O `criar_poc.py` daqui é uma **cópia** do de `Criar Portais/`, para que iterar
-nesta costura não toque no runner que já roda em produção.
+Ela costura o runner com a identidade visual. **O runner é um só**, o de
+`Criar Portais/criar_poc.py` — esta pasta não tem cópia dele.
 
-A cópia tem **uma única diferença**, e ela existe por um motivo concreto: o
-portal só ganha UUID no meio da execução, e até agora esse id era apenas
-impresso na tela — o `_ids.json` é gravado *antes* da etapa do portal e não o
-contém. Sem isso, subir a identidade exigia o humano copiar o UUID da tela e
-colar num segundo comando. O `run_poc` da cópia aceita `saida=None`; quando vem
-um dicionário, ele recebe `saida["portal_id"]`.
+Teve, até 02/09/2026, "para iterar sem tocar no que roda em produção". A cópia
+diferia do original por um parâmetro: o portal só ganha UUID no meio da
+execução, e o `_ids.json` é gravado *antes* dessa etapa, então o id não estava
+em lugar nenhum. O `run_poc` passou a aceitar `saida=None` e a escrever
+`saida["portal_id"]` ali.
 
-Para ver a diferença:
+**O que a cópia custou.** Duas pastas com um módulo de mesmo nome, e o
+`sys.path` do `criar_poc_completo.py` montado com `insert(0)` numa ordem que
+punha `Criar Portais` na frente: o `import criar_poc` trazia o original, sem
+`saida`, e a execução morria em `TypeError` antes de criar coisa alguma. Não
+apareceu antes porque o caminho sem logo chama o runner direto — só a primeira
+POC **com** logo passou por aqui (Película da Vida, 02/09/2026).
 
-```bash
-diff "Criar Portais/criar_poc.py" "POC Completa/criar_poc.py"
-```
-
-**Cópia diverge.** Correção feita no original não chega aqui sozinha. Enquanto
-esta pasta for experimental isso é aceitável; quando a costura estabilizar, o
-certo é o parâmetro `saida` subir para o runner original e esta cópia sumir.
+Hoje o parâmetro está no runner original e a cópia não existe. Se voltar a
+aparecer um módulo de mesmo nome em duas pastas do `sys.path`, o import não é
+"o daqui": é o da primeira pasta da lista.
 
 ## A ordem, e por que ela é essa
 

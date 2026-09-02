@@ -554,9 +554,14 @@ def configurar_regra_listagem(headers, portal_id, criterio_id):
 # Fluxo principal
 # ===========================================================================
 
-def run_poc(file_path, headers, org, rollback_on_error=True):
+def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
     """Executa a POC inteira. Retorna True se tudo concluiu sem falhas.
-    Em caso de falha, apaga tudo que criou (a menos que rollback_on_error=False)."""
+    Em caso de falha, apaga tudo que criou (a menos que rollback_on_error=False).
+
+    `saida`, se vier um dicionario, recebe o UUID do portal novo em
+    saida['portal_id']. Quem sobe a identidade visual depois precisa desse id, e
+    ele nao esta no `_ids.json` — o arquivo e gravado antes da etapa do portal.
+    """
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             poc = json.load(f)
@@ -645,6 +650,11 @@ def run_poc(file_path, headers, org, rollback_on_error=True):
         if rollback_on_error:
             rollback(criados, headers)
         return False
+
+    # O id precisa sobreviver a chamada: quem sobe a identidade visual depois so
+    # tem este caminho.
+    if saida is not None:
+        saida["portal_id"] = novo_portal_id
 
     # 3) Associar categorias
     if categorias_criadas:

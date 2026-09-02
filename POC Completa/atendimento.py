@@ -241,7 +241,7 @@ def executar(caminho_json, logo, org, nome_cliente, gravar):
     else:
         # Sem logo o criar_poc_completo nem comeca (--logo e obrigatorio la, e
         # com razao: o caso normal tem logo). Cai no runner puro.
-        comando = [sys.executable, str(AQUI / "criar_poc.py"), str(caminho_json), org]
+        comando = [sys.executable, str(PORTAIS / "criar_poc.py"), str(caminho_json), org]
     diario = DIARIO / f"{prefixo(Path(caminho_json).name)}.log"
     print(f"  acompanhe ao vivo:  Get-Content -Wait '{diario}'")
     try:
