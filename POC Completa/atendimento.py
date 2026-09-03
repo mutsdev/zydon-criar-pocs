@@ -487,6 +487,38 @@ def aplicar_pecas(org, portal_id, ids):
         raise GravacaoPelaMetade(erro, erro.gravados, erro.faltou) from erro
 
 
+def ids_publicados(pedido_id):
+    """{file_id: peca} de TUDO que ja foi publicado para este pedido.
+
+    A uniao de todos os registros, e nao so o ultimo: o contrato promete que o
+    executivo pode aplicar a segunda cena de login depois de ter visto a
+    terceira, e o `estado_do_pedido` funde por substituicao — a geracao antiga
+    sumiria dele. Aqui elas se somam.
+
+    Existe para o file_id desconhecido morrer aqui, e nao na Zydon. Sondado
+    pelo time do Mitra em 03/09/2026: um id inventado atravessava tudo e
+    voltava como `HTTP 500 — Invalid UUID string`, que le como falha da
+    plataforma quando e erro de quem chamou.
+    """
+    conhecidos = {}
+    if not REGISTRO.exists():
+        return conhecidos
+    for linha in REGISTRO.read_text(encoding="utf-8").splitlines():
+        linha = linha.strip()
+        if not linha:
+            continue
+        try:
+            reg = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if reg.get("pedido_id") != pedido_id:
+            continue
+        for peca, dados in (reg.get("banners") or {}).items():
+            if isinstance(dados, dict) and dados.get("file_id"):
+                conhecidos[dados["file_id"]] = peca
+    return conhecidos
+
+
 def estado_do_pedido(pedido_id):
     """O estado acumulado de um pedido: todos os registros dele, fundidos.
 

@@ -166,10 +166,17 @@ def publicar(headers_org, jwt, pecas, ecoar=None):
 
 
 class GravacaoPelaMetade(RuntimeError):
-    """Um dos PUTs falhou depois de o outro ter gravado.
+    """Um dos PUTs falhou **depois** de o outro ter gravado.
 
     Carrega `gravados` e `faltou` porque o estado real do portal e a unica
     informacao que importa nesse momento — e ela nao esta na mensagem da API.
+
+    So e levantada com `gravados` NAO vazio. Ate 03/09/2026 ela saia tambem
+    quando nada tinha entrado, e o nome mentia: o time do Mitra sondou a rota
+    com um file_id invalido, recebeu "pela metade" com `gravados: []`, e o lado
+    deles reenviava por reflexo — duas viagens condenadas para ouvir o mesmo
+    nao. Falha no primeiro PUT nao e meia gravacao, e agora sobe como
+    `ErroDoPortal` puro.
     """
 
     def __init__(self, causa, gravados, faltou):
@@ -211,6 +218,11 @@ def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None):
             if ecoar:
                 ecoar("  [OK] banner.images[0].imageLarge")
     except mod_portal.ErroDoPortal as erro:
+        # Nada gravado nao e meia gravacao: o portal esta como estava, e quem
+        # recebe isso nao tem o que reenviar. Sobe puro, para virar "a Zydon
+        # recusou" com o motivo — que e a unica coisa que conserta.
+        if not gravados:
+            raise
         raise GravacaoPelaMetade(
             erro, gravados, [c for c in ids if c not in gravados]) from erro
 

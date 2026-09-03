@@ -233,7 +233,14 @@ def _regerar(tarefa):
     pasta, saida = atendimento.regerar_pecas(estado["pasta_banners"], pecas,
                                              candidatas=args.candidatas)
 
-    corpo = {"pedido_id": pedido_id, "acao": "regerar", "pecas": pecas}
+    # `url` e `status` viajam de novo, embora este callback nao seja sobre o
+    # portal. Sem eles o outro lado recebe um callback sem URL e pode concluir
+    # que o portal perdeu a dele — o time do Mitra gravava PORTAL_SEM_URL, um
+    # erro inventado em cima de um callback correto. Repetir dois campos e mais
+    # barato que depender de o consumidor distinguir os eventos.
+    corpo = {"pedido_id": pedido_id, "acao": "regerar", "pecas": pecas,
+             "status": estado.get("status"), "url": estado.get("url"),
+             "portal_id": estado.get("portal_id")}
     if not pasta:
         corpo.update(fase="curadoria", erro=str(saida)[-500:])
         print(f"  [ERRO] regeracao falhou: {str(saida)[-300:]}")
@@ -427,6 +434,26 @@ class Manipulador(BaseHTTPRequestHandler):
                 "ok": False, "erro": "ESCOLHAS_INVALIDAS",
                 "detalhe": f"escolhas e {{peca: file_id}} com peca em "
                            f"{sorted(conhecidas)}"})
+
+        # O file_id tambem e conferido, contra tudo que ja foi publicado para
+        # este pedido — a uniao das geracoes, para o contrato de "aplicar a
+        # segunda depois de ver a terceira" continuar valendo. Sem isto o id
+        # inventado atravessa e volta como `HTTP 500 — Invalid UUID string`,
+        # que le como falha da Zydon quando e erro de quem chamou.
+        publicados = atendimento.ids_publicados(pedido_id)
+        if not publicados:
+            return self._responder(409, {
+                "ok": False, "erro": "SEM_PECAS", "pedido_id": pedido_id,
+                "detalhe": "nenhuma peca foi publicada para este pedido; "
+                           "nao ha file_id que se possa aplicar"})
+        intrusos = {p: i for p, i in escolhas.items() if i not in publicados}
+        if intrusos:
+            return self._responder(400, {
+                "ok": False, "erro": "ESCOLHAS_INVALIDAS",
+                "pedido_id": pedido_id, "desconhecidos": intrusos,
+                "detalhe": "estes file_id nunca foram publicados para este "
+                           "pedido. Use os que vieram no callback.",
+                "publicados": publicados})
         if self.args.simular:
             print(f"  [SIMULACAO] aplicaria {escolhas} em {estado['portal_id']}")
             return self._responder(200, {"ok": True, "simulado": True,
@@ -448,8 +475,13 @@ class Manipulador(BaseHTTPRequestHandler):
                 "faltou": e.faltou, "detalhe": str(e)})
         except Exception as e:  # noqa: BLE001
             print(f"  [BANNER] {pedido_id} falhou: {type(e).__name__}: {e}")
-            return self._responder(502, {"ok": False, "erro": "ZYDON_RECUSOU",
-                                         "detalhe": f"{type(e).__name__}: {e}"})
+            # `gravados` vazio vai explicito, e no mesmo formato do 409: a tela
+            # do outro lado decide o que dizer olhando esse campo, e um corpo
+            # com forma diferente a obrigaria a tratar dois casos.
+            return self._responder(502, {
+                "ok": False, "erro": "ZYDON_RECUSOU", "pedido_id": pedido_id,
+                "gravados": [], "faltou": sorted(escolhas),
+                "detalhe": str(e)})
 
         atendimento.anotar({"pedido_id": pedido_id, "fase": "aplicado",
                             "aplicado": relato["gravados"]})

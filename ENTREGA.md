@@ -218,26 +218,51 @@ significa nada.
 | 401 | `NAO_AUTORIZADO` | `X-Token` não confere |
 | 404 | `PEDIDO_DESCONHECIDO` | esse `pedido_id` nunca passou por aqui |
 | 409 | `SEM_PORTAL` | o pedido não criou portal; não há onde aplicar |
-| 409 | `SEM_PECAS` | não houve geração para esse pedido |
+| 409 | `SEM_PECAS` | nada foi publicado para esse pedido |
 | 400 | `PECAS_FALTANDO` | `regerar` sem dizer o quê |
-| 400 | `ESCOLHAS_INVALIDAS` | peça fora de `login`/`cabecalho` |
-| 409 | `GRAVACAO_PELA_METADE` | **leia abaixo** |
-| 502 | `ZYDON_RECUSOU` | a API recusou; nada foi gravado |
+| 400 | `ESCOLHAS_INVALIDAS` | peça fora de `login`/`cabecalho`, **ou `file_id` que nunca foi publicado** |
+| 409 | `GRAVACAO_PELA_METADE` | gravou uma peça e a outra não — **leia abaixo** |
+| 502 | `ZYDON_RECUSOU` | a Zydon recusou e **nada** foi gravado |
 
-### `GRAVACAO_PELA_METADE` é o erro que importa
+O `ESCOLHAS_INVALIDAS` de `file_id` desconhecido traz `desconhecidos` e
+`publicados`, para o outro lado não ter que adivinhar quais valem. Ele é
+conferido contra a **união de todas as gerações** do pedido, e não só a última —
+é isso que sustenta a promessa de aplicar a segunda cena depois de ver a
+terceira.
+
+Isto existe porque um `file_id` inventado atravessava tudo e voltava como
+`HTTP 500 — Invalid UUID string`, que lê como falha da plataforma quando é erro
+de quem chamou. Achado por sondagem do time do Mitra em 03/09/2026.
+
+### `gravados` diz o que fazer, e os dois erros têm a mesma forma
 
 A tela de login e o banner moram em **endpoints diferentes**, e são dois PUTs sem
 transação entre eles. Dá para terminar com a tela de login nova e o banner velho.
 
-Quando isso acontece, a resposta traz `gravados` e `faltou`:
+`GRAVACAO_PELA_METADE` e `ZYDON_RECUSOU` respondem no mesmo formato, e o que
+separa os dois é o `gravados`:
 
 ```json
 {"ok": false, "erro": "GRAVACAO_PELA_METADE",
- "gravados": ["login"], "faltou": ["cabecalho"]}
+ "gravados": ["login"], "faltou": ["cabecalho"], "detalhe": "..."}
+
+{"ok": false, "erro": "ZYDON_RECUSOU",
+ "gravados": [], "faltou": ["login"], "detalhe": "gravar aparencia: HTTP 500 — ..."}
 ```
 
-**Reenvie só o que está em `faltou`.** Repetir a peça que já gravou não quebra
-nada, mas esconde o estado real do portal de quem for olhar o log depois.
+**`gravados` vazio não é meia gravação.** O portal está como estava, e não há o
+que reenviar — reenviar é uma segunda viagem condenada. Só reenvie quando
+`gravados` tiver algo, e mande só o que está em `faltou`.
+
+O `detalhe` é a única coisa que explica o quê. "Não gravou o login" não conserta
+nada; `Invalid UUID string` conserta. Ele vem preenchido nos dois casos.
+
+### Um callback de `regerar` não é um callback de portal
+
+Ele traz `url`, `status` e `portal_id` repetidos, embora o evento não seja sobre
+o portal. É defensivo de propósito: sem eles, um consumidor que trate todo
+callback como "resultado da POC" conclui que o portal perdeu a URL. Distinga
+pelo campo `acao`, que só existe nos callbacks de banner.
 
 ### O orçamento
 

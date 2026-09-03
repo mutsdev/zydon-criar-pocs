@@ -710,6 +710,41 @@ def test_banner_nao_mexe_nos_slides_seguintes():
     assert corpo["images"][1]["imageLarge"] == "outro"
 
 
+def test_falha_no_primeiro_put_nao_e_meia_gravacao(monkeypatch):
+    """Sondado pelo time do Mitra em 03/09/2026 com um file_id invalido: a rota
+    respondia GRAVACAO_PELA_METADE com `gravados: []`, e o lado deles reenviava
+    por reflexo — duas viagens condenadas para ouvir o mesmo nao.
+
+    Nada gravado nao e meia gravacao: o portal esta como estava, e quem recebe
+    isso nao tem o que reenviar.
+    """
+    import subir_banners
+
+    def recusar(*a, **k):
+        raise portal.ErroDoPortal("gravar aparencia: HTTP 500 — "
+                                  "Invalid UUID string: TESTE-login-B")
+
+    monkeypatch.setattr(subir_banners.mod_portal, "atualizar_aparencia", recusar)
+    with pytest.raises(portal.ErroDoPortal, match="Invalid UUID"):
+        subir_banners.aplicar("jwt", {"login": "TESTE-login-B"}, aparencia={})
+
+
+def test_falha_no_segundo_put_continua_sendo_meia_gravacao(monkeypatch):
+    """O caso que o nome descreve: uma peca entrou e a outra nao."""
+    import subir_banners
+
+    monkeypatch.setattr(subir_banners.mod_portal, "atualizar_aparencia",
+                        lambda *a, **k: {})
+    monkeypatch.setattr(subir_banners.mod_portal, "atualizar_banner",
+                        lambda *a, **k: (_ for _ in ()).throw(
+                            portal.ErroDoPortal("gravar banner: HTTP 500")))
+    with pytest.raises(subir_banners.GravacaoPelaMetade) as erro:
+        subir_banners.aplicar("jwt", {"login": "a", "cabecalho": "b"},
+                              aparencia={}, banner=BANNER)
+    assert erro.value.gravados == ["login"]
+    assert erro.value.faltou == ["cabecalho"]
+
+
 def test_pecas_da_pasta_saem_do_manifesto_e_nao_de_um_glob(tmp_path):
     """Um glob em aprovados/ pegaria peca que ficou para tras numa remontagem.
     O manifesto e quem sabe qual arquivo foi o escolhido de cada formato."""

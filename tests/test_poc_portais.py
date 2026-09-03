@@ -507,9 +507,11 @@ def test_banner_recusa_acao_inventada(receptor_no_ar):
 def test_ciclo_de_curadoria(receptor_no_ar):
     """As tres acoes contra um pedido que ja criou portal."""
     porta, mod = receptor_no_ar
-    mod.atendimento.anotar({"pedido_id": "p1", "status": "concluido",
-                            "portal_id": "uuid-1", "fase": "curadoria",
-                            "pasta_banners": "/pasta", "org": "pocs"})
+    mod.atendimento.anotar({
+        "pedido_id": "p1", "status": "concluido", "portal_id": "uuid-1",
+        "fase": "curadoria", "pasta_banners": "/pasta", "org": "pocs",
+        "banners": {"login": {"file_id": "file-1", "url": "http://x"},
+                    "cabecalho": {"file_id": "file-2", "url": "http://y"}}})
 
     # regerar sem dizer o que refaria tambem a peca aprovada.
     status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
@@ -541,6 +543,65 @@ def test_ciclo_de_curadoria(receptor_no_ar):
                                                "acao": "dispensar"})
     assert status == 200 and corpo["fase"] == "dispensado"
     assert mod.atendimento.estado_do_pedido("p1")["fase"] == "dispensado"
+
+
+def test_file_id_desconhecido_morre_aqui_e_nao_na_zydon(receptor_no_ar):
+    """Sondado pelo time do Mitra em 03/09/2026: um id inventado atravessava
+    tudo e voltava como `HTTP 500 — Invalid UUID string`, que le como falha da
+    plataforma quando e erro de quem chamou."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({
+        "pedido_id": "p4", "status": "concluido", "portal_id": "uuid-4",
+        "fase": "curadoria", "pasta_banners": "/pasta", "org": "pocs",
+        "banners": {"login": {"file_id": "real-login-1", "url": "http://x"},
+                    "cabecalho": {"file_id": "real-cab-1", "url": "http://y"}}})
+
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "p4", "acao": "aplicar",
+        "escolhas": {"login": "TESTE-login-B"}})
+    assert status == 400 and corpo["erro"] == "ESCOLHAS_INVALIDAS"
+    assert corpo["desconhecidos"] == {"login": "TESTE-login-B"}
+    # A resposta diz quais valem, para o outro lado nao ter que adivinhar.
+    assert "real-login-1" in corpo["publicados"]
+
+
+def test_geracao_antiga_continua_aplicavel_depois_de_regerar(receptor_no_ar):
+    """O contrato promete aplicar a SEGUNDA cena depois de ver a terceira.
+
+    O `estado_do_pedido` funde por substituicao, entao a geracao antiga sumiria
+    dele; a conferencia do file_id usa a uniao dos registros justamente por
+    isso. Era aqui que o 1920x320 aprovado se perderia.
+    """
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({
+        "pedido_id": "p5", "status": "concluido", "portal_id": "uuid-5",
+        "fase": "curadoria", "pasta_banners": "/pasta", "org": "pocs",
+        "banners": {"login": {"file_id": "login-ger1"},
+                    "cabecalho": {"file_id": "cab-ger1"}}})
+    # A regeracao publica so o login, e so ele entra no registro novo.
+    mod.atendimento.anotar({"pedido_id": "p5", "fase": "curadoria",
+                            "banners": {"login": {"file_id": "login-ger2"}}})
+
+    publicados = mod.atendimento.ids_publicados("p5")
+    assert publicados == {"login-ger1": "login", "cab-ger1": "cabecalho",
+                          "login-ger2": "login"}
+
+    # Aplicar a geracao ANTIGA do login junto com o cabecalho de sempre passa
+    # pela validacao — em --simular nao chega a tocar a Zydon.
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "p5", "acao": "aplicar",
+        "escolhas": {"login": "login-ger1", "cabecalho": "cab-ger1"}})
+    assert status == 200 and corpo["simulado"] is True
+
+
+def test_aplicar_sem_nada_publicado_diz_sem_pecas(receptor_no_ar):
+    """Antes isto viajava ate a Zydon para voltar como erro dela."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "p6", "status": "concluido",
+                            "portal_id": "uuid-6"})
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "p6", "acao": "aplicar", "escolhas": {"login": "qualquer"}})
+    assert status == 409 and corpo["erro"] == "SEM_PECAS"
 
 
 def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
