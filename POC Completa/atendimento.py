@@ -226,14 +226,57 @@ def _rodar(comando, limite=None, diario=None, ecoar=False):
 
 def validar(caminho_json):
     """(ok, saida) do validar_poc.py."""
-    p = _rodar([sys.executable, str(PORTAIS / "validar_poc.py"), str(caminho_json)])
+    p = _rodar([sys.executable, str(VALIDADOR), str(caminho_json)])
     return p.returncode == 0, (p.stdout or "") + (p.stderr or "")
+
+
+# Os scripts que o `executar` dispara por subprocesso. Ficam nomeados aqui, e
+# nao soltos no meio da funcao, porque e esta lista que o `conferir_instalacao`
+# checa antes de o receptor abrir a porta.
+RUNNER = PORTAIS / "criar_poc.py"
+RUNNER_COMPLETO = AQUI / "criar_poc_completo.py"
+VALIDADOR = PORTAIS / "validar_poc.py"
+
+
+def versao_do_codigo():
+    """O commit que este processo carregou na memoria. None fora de um clone.
+
+    Serve para comparar com o HEAD do disco: processo velho e invisivel, e foi
+    exatamente o que aconteceu em 03/09/2026 — o receptor rodava desde a
+    vespera, o commit e63d723 tinha apagado a copia do runner, e a falha
+    chegou como "can't open file", que parece problema de caminho e nao de
+    processo desatualizado.
+    """
+    try:
+        pronto = subprocess.run(["git", "rev-parse", "--short", "HEAD"],
+                                cwd=str(RAIZ), capture_output=True, text=True,
+                                timeout=10)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return pronto.stdout.strip() or None if pronto.returncode == 0 else None
+
+
+def conferir_instalacao():
+    """Levanta se algum script que vamos disparar nao existir.
+
+    Barato, e evita a pior forma de falhar: descobrir que o caminho mudou
+    depois que o cliente ja mandou o pedido, com o erro saindo no log de uma
+    execucao em vez de na subida do processo.
+    """
+    faltando = [c for c in (RUNNER, RUNNER_COMPLETO, VALIDADOR) if not c.exists()]
+    if faltando:
+        recado = ["[ERRO] Estes scripts nao existem:"]
+        recado += [f"         {c}" for c in faltando]
+        recado.append("       Se o repositorio mudou desde que este processo "
+                      "subiu, reinicie-o: o Python carrega o modulo na "
+                      "memoria e nao rele o disco sozinho.")
+        raise SystemExit(chr(10).join(recado))
 
 
 def executar(caminho_json, logo, org, nome_cliente, gravar):
     """(codigo, saida) do pipeline completo."""
     if logo:
-        comando = [sys.executable, str(AQUI / "criar_poc_completo.py"),
+        comando = [sys.executable, str(RUNNER_COMPLETO),
                    str(caminho_json), org, "--logo", str(logo),
                    "--nome", nome_cliente]
         if gravar:
@@ -241,7 +284,7 @@ def executar(caminho_json, logo, org, nome_cliente, gravar):
     else:
         # Sem logo o criar_poc_completo nem comeca (--logo e obrigatorio la, e
         # com razao: o caso normal tem logo). Cai no runner puro.
-        comando = [sys.executable, str(PORTAIS / "criar_poc.py"), str(caminho_json), org]
+        comando = [sys.executable, str(RUNNER), str(caminho_json), org]
     diario = DIARIO / f"{prefixo(Path(caminho_json).name)}.log"
     print(f"  acompanhe ao vivo:  Get-Content -Wait '{diario}'")
     try:

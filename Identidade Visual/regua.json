@@ -6,7 +6,7 @@
     "razao_opaca_minima": 0.05,
     "tolerancia_fundo_chapado": 18,
     "contraste_logo_minimo": 2.0,
-    "fracao_logo_visivel_minima": 0.35
+    "fracao_logo_visivel_minima": 0.45
   },
   "mecanico": {
     "peso_maximo_kb": 700,

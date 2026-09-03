@@ -341,3 +341,38 @@ def test_nao_existe_segunda_copia_do_runner():
                                   "Identidade Visual", ".")
               if os.path.exists(os.path.join(POC_PORTAIS, pasta, "criar_poc.py"))]
     assert copias == ["Criar Portais"], f"runner duplicado em {copias}"
+
+
+# ==========================================
+# 7. Receptor rodando codigo velho
+# ==========================================
+
+def _carregar_atendimento():
+    """Importa 'POC Completa/atendimento.py' (pasta com espaco, nao e pacote)."""
+    caminho = os.path.join(POC_PORTAIS, "POC Completa", "atendimento.py")
+    spec = importlib.util.spec_from_file_location("atendimento", caminho)
+    modulo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modulo)
+    return modulo
+
+
+def test_os_scripts_que_o_receptor_dispara_existem():
+    """O guarda que o receptor roda antes de abrir a porta.
+
+    Em 03/09/2026 o receptor estava no ar desde a vespera e o commit e63d723
+    tinha apagado 'POC Completa/criar_poc.py'. O pedido da Fornello — o
+    primeiro SEM logo desde entao, e por isso o primeiro a usar o runner puro —
+    morreu com "can't open file", que le como erro de caminho e nao como
+    processo desatualizado. Este teste pega a mesma quebra no CI.
+    """
+    atendimento = _carregar_atendimento()
+    atendimento.conferir_instalacao()  # levanta SystemExit se faltar algum
+
+
+def test_conferir_instalacao_acusa_script_ausente(tmp_path):
+    """Falhar alto, e com a instrucao certa: reinicie o processo."""
+    atendimento = _carregar_atendimento()
+    atendimento.RUNNER = tmp_path / "nao-existe.py"
+    with pytest.raises(SystemExit) as erro:
+        atendimento.conferir_instalacao()
+    assert "reinicie-o" in str(erro.value)

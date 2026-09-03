@@ -126,6 +126,11 @@ def processar(pedido, args):
     print(f"  RESULTADO: {resultado['status']}  {resultado.get('url') or ''}")
 
 
+# Capturada no import, e nao a cada /saude: o valor que interessa e o do codigo
+# que este processo carregou, nao o que esta no disco agora.
+VERSAO = atendimento.versao_do_codigo()
+
+
 class Manipulador(BaseHTTPRequestHandler):
     server_version = "receptor-poc"
     args = None
@@ -146,7 +151,12 @@ class Manipulador(BaseHTTPRequestHandler):
         # sem disparar criacao nenhuma.
         if self.path.rstrip("/") in ("/saude", "/health"):
             corpo = {"ok": True, "fila": FILA.qsize(),
-                     "criando": EM_CURSO["pedido_id"]}
+                     "criando": EM_CURSO["pedido_id"],
+                     # O commit que ESTE processo carregou, capturado na
+                     # subida. Comparado com o HEAD do disco, denuncia
+                     # receptor rodando codigo velho — que falha de um jeito
+                     # que nao parece codigo velho.
+                     "versao": VERSAO}
             if EM_CURSO["desde"]:
                 corpo["criando_ha_segundos"] = int(time.time() - EM_CURSO["desde"])
             return self._responder(200, corpo)
@@ -261,12 +271,19 @@ def main(argv=None):
               file=sys.stderr)
         return 1
 
+    # Antes de abrir a porta, e nao no meio de um pedido do cliente.
+    atendimento.conferir_instalacao()
+
     Manipulador.args = args
     threading.Thread(target=trabalhar, args=(args,), daemon=True).start()
 
     servidor = ThreadingHTTPServer(("127.0.0.1", args.porta), Manipulador)
     print(f"[INFO] Receptor em http://127.0.0.1:{args.porta}  "
           f"(POST /pedido, GET /saude)")
+    atual = atendimento.versao_do_codigo()
+    print(f"[INFO] codigo: {VERSAO or 'fora de um clone git'}")
+    if atual and VERSAO and atual != VERSAO:
+        print(f"[AVISO] o disco ja esta em {atual}. Reinicie para carregar.")
     print(f"[INFO] org={args.org}  identidade={'grava' if args.gravar else 'simula'}"
           f"{'  MODO SIMULACAO: nada sera criado' if args.simular else ''}")
     print("[INFO] Agora suba o tunel noutro terminal:")

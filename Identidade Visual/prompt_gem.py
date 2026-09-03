@@ -87,17 +87,21 @@ def _bloco_cliente(contexto):
         # da Aroca sairam escritos "Bousin" e "DIAMIANT DA SERA". A lista acima
         # ja foi limpa de marcas, mas alguma escapa quando nao ha forma
         # generica dela no catalogo, e ai so o pedido explicito segura.
-        # Pedir "embalagem lisa" nao funciona: o modelo foi treinado em foto de
-        # produto embalado e desenha rotulo de qualquer jeito — na Aroca saiu
-        # "Bousin" e "cohbbe" em letra torta. O que funciona e tirar a
-        # embalagem do pedido: queijo cortado na tabua nao tem onde escrever.
+        #
+        # A ordem das duas frases importa, e ela mudou em 03/09/2026. Pedir a
+        # embalagem fora da cena e o que mais funciona — queijo cortado na
+        # tabua nao tem onde escrever — mas proibir embalagem por completo
+        # custava caro em segmento que so existe embalado (conserva, congelado,
+        # nutricao clinica). Entao: preferir sem embalagem, permitir embalagem
+        # em branco. O reforco no fim do prompt e que segura o resto.
         linhas.append(
-            "COMO FOTOGRAFAR: o produto FORA da embalagem. Alimento, cortado "
-            "ou servido, sobre tabua, prato ou bancada; peca ou ferramenta, a "
-            "peca nua. NADA de caixa, pote, saco, lata, garrafa, rotulo, "
-            "etiqueta ou embalagem fechada — nem ao fundo. Estes nomes sao "
-            "TIPOS de produto e nao marcas: nao escreva nenhum deles na "
-            "imagem.")
+            "COMO FOTOGRAFAR: de preferencia o produto FORA da embalagem — "
+            "alimento cortado ou servido sobre tabua, prato ou bancada; peca "
+            "ou ferramenta, a peca nua. Embalagem pode aparecer, mas so se "
+            "estiver COMPLETAMENTE EM BRANCO: superficie lisa de cor solida, "
+            "sem rotulo, sem etiqueta, sem selo, sem codigo de barras e sem "
+            "uma unica palavra impressa. Estes nomes sao TIPOS de produto e "
+            "nao marcas: nao escreva nenhum deles na imagem.")
     else:
         linhas.append(f"Objetos em primeiro plano (escolha 2 ou 3 destes): "
                       f"{objetos}.")
@@ -115,6 +119,11 @@ def montar(formato, paleta, contexto):
         _bloco_cor(paleta),
         _bloco_enquadramento(formato),
         _bloco_cliente(contexto),
+        "ANTES DE ENTREGAR, confira a imagem inteira: se houver qualquer "
+        "letra, palavra ou numero — num rotulo, numa etiqueta, numa placa, "
+        "numa embalagem, num equipamento ao fundo — refaca sem eles. Texto "
+        "gerado sai torto, em ingles ou em portugues errado, e estraga a peca "
+        "inteira. Zero caracteres.",
         "Gere UMA imagem. Pode arrastar direto para a pasta cenas/ com o "
         "nome que vier — o script identifica a cena pelo formato dela.",
     ])
