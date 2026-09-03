@@ -1,0 +1,595 @@
+{
+  "empresa": "Nutrye",
+  "descricao_empresa": "Fabricante brasileira de suplementos alimentares e nutraceuticos, com linhas proprias Nutrye, Nutryervas, Nutrytech e Yup Gummy — vitaminas, minerais, colageno, nutricosmeticos e performance esportiva.",
+  "gerado_em": "2026-09-03",
+  "setor": "Alimentos — Suplementos Alimentares e Nutraceuticos",
+  "portal_name": "Nutrye POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Nutrye",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Nutrye",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Vitaminas e Minerais",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Vitaminas e Minerais",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Colageno e Beleza",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Colageno e Beleza",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Performance e Atividade Fisica",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Performance e Atividade Fisica",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "01328 — Suplemento de Vitamina D3 2000UI — 60 Capsulas",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/05/vitamina-d3-nutrye-cap.jpg",
+          "payload": {
+            "name": "Suplemento de Vitamina D3 2000UI — 60 Capsulas",
+            "description": "Vitamina D3 concentrada em 2000UI por capsula. Auxilia no funcionamento do sistema imunologico, na absorcao de calcio e na manutencao dos ossos e dentes. Frasco com 60 capsulas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 26.84,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "01328"
+          }
+        },
+        {
+          "label": "06629 — Vitamina B12 Metilcobalamina — 60 Comprimidos Mastigaveis",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/09/vitamina-b12-comp-matigavel-nutrye-2.jpg",
+          "payload": {
+            "name": "Vitamina B12 Metilcobalamina — 60 Comprimidos Mastigaveis",
+            "description": "Formula de alto teor de vitamina B12 na forma metilcobalamina, sabor morango, vegana. Suporte energetico, funcao neurologica e saude cardiovascular. Frasco com 60 pastilhas mastigaveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 22.2,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12,
+            "sku": "06629"
+          }
+        },
+        {
+          "label": "06766 — Magne 3 — Magnesio Quelato Bisglicinato, Citrato e Malato — 90 Comprimidos",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/05/magne3-magnesio-nutrye-comp.jpg",
+          "payload": {
+            "name": "Magne 3 — Magnesio Quelato Bisglicinato, Citrato e Malato — 90 Comprimidos",
+            "description": "Combinacao de tres formas quelatas de magnesio para saude muscular, nervosa e cardiaca. Formula vegana com 90 comprimidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 36.7,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "06766"
+          }
+        },
+        {
+          "label": "06810 — Vitali AZ — Polivitaminico e Polimineral A-Z — 60 Comprimidos",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/05/vitali-AZ-polivitaminico-nutrye-comp.jpg",
+          "payload": {
+            "name": "Vitali AZ — Polivitaminico e Polimineral A-Z — 60 Comprimidos",
+            "description": "Polivitaminico e polimineral completo de A a Z, com complexo B. Suporte diario para energia, imunidade e bem-estar geral. Frasco com 60 comprimidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 32.2,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "06810"
+          }
+        },
+        {
+          "label": "06346 — RenoDerm Beauty — Colageno Hidrolisado, Acido Hialuronico e Biotina — 200g",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/03/renoderm-beauty-colageno-biotina-acido-hialuronico-nutrye-600x600-3.jpg",
+          "payload": {
+            "name": "RenoDerm Beauty — Colageno Hidrolisado, Acido Hialuronico e Biotina — 200g",
+            "description": "Colageno hidrolisado com acido hialuronico, biotina, vitaminas do complexo B, selenio e zinco. 3g de peptideos bioativos por porcao, sabor limao. Pote com 200g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 82.2,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "06346"
+          }
+        },
+        {
+          "label": "02372 — Colageno Hidrolisado + Vitamina C — 120 Comprimidos",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/60cccee6ab12aa9555f7396a3de8abf5.jpg",
+          "payload": {
+            "name": "Colageno Hidrolisado + Vitamina C — 120 Comprimidos",
+            "description": "Colageno hidrolisado 1000mg associado a vitamina C, da linha Nutryervas. Apoio a firmeza da pele e a saude de cabelos e unhas. Frasco com 120 comprimidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 65.34,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "02372"
+          }
+        },
+        {
+          "label": "06322 — Revibelle Cabelos e Unhas — 60 Comprimidos",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/03/revibelle-cabelos-unhas-biotina-acido-pantotenico-nutrye-600x600-1.jpg",
+          "payload": {
+            "name": "Revibelle Cabelos e Unhas — 60 Comprimidos",
+            "description": "Formula com colageno, biotina, acido folico, metionina, cisteina, acido pantotenico, minerais quelatos e vitaminas A, C e E para fortalecer cabelos e unhas. Frasco com 60 comprimidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 43.2,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "06322"
+          }
+        },
+        {
+          "label": "06476 — Yup Gummy Biotina (B7) — Cabelos e Unhas — 30 Gomas",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2024/05/gummy-yup-biotina-nutrye.jpg",
+          "payload": {
+            "name": "Yup Gummy Biotina (B7) — Cabelos e Unhas — 30 Gomas",
+            "description": "Goma mastigavel sabor morango com vitamina B7 (biotina), 100% natural e vegana, sem gluten. Formula organica e inovadora para cabelos e unhas. Pote com 30 gomas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 52.39,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 24,
+            "sku": "06476"
+          }
+        },
+        {
+          "label": "05622 — Creatina Monohidratada Pura Nutrytech — 300g",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2023/08/creatina-nutrytech-monohidratada-300g.jpg",
+          "payload": {
+            "name": "Creatina Monohidratada Pura Nutrytech — 300g",
+            "description": "Creatina monohidratada pura de alta pureza, em po, com 300g. Auxilia forca, desempenho, recuperacao muscular e suporte a funcao cognitiva.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 92.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "05622"
+          }
+        },
+        {
+          "label": "00211 — Pre-Workout Nutrytech — Beta Alanina, Tirosina, Arginina, Taurina e Cafeina",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2025/01/5eb29e50630fd1741416e5b512c36bc6.jpg",
+          "payload": {
+            "name": "Pre-Workout Nutrytech — Beta Alanina, Tirosina, Arginina, Taurina e Cafeina",
+            "description": "Pre-treino em po com beta alanina, tirosina, arginina, taurina e cafeina. Energia, foco, intensidade e resistencia para treinos de alta demanda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 87.7,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "00211"
+          }
+        },
+        {
+          "label": "01690 — Creatina Gummies Nutrytech — Sabor Frutas Vermelhas — 60 Gomas",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2026/08/creatina-site-1.jpg",
+          "payload": {
+            "name": "Creatina Gummies Nutrytech — Sabor Frutas Vermelhas — 60 Gomas",
+            "description": "Creatina em gomas mastigaveis sabor frutas vermelhas, 3g por porcao. Praticidade para consumo diario dentro e fora do treino. Pote com 60 gomas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 99.0,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "01690"
+          }
+        },
+        {
+          "label": "07398 — Burst Caffein — Cafeina, Cromo e Taurina — 60 Capsulas",
+          "temp_image_url": "https://nutrye.com.br/wp-content/uploads/2023/08/burstcaffein-nurtrye-60caps-cafeina-cromo-taurina-frente-v2.jpg",
+          "payload": {
+            "name": "Burst Caffein — Cafeina, Cromo e Taurina — 60 Capsulas",
+            "description": "Suplemento de cafeina com cromo e taurina para energia e foco. Indicado para atividades fisicas de alta performance e tarefas de atencao plena. Frasco com 60 capsulas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 36.7,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24,
+            "sku": "07398"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Nutrye",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Nutrye — Marca (Tabela de Preco)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Nutrye",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Nutrye — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Vitaminas e Minerais",
+          "salvar_id_como": "criteria_cat_vitaminas_id",
+          "payload": {
+            "name": "Nutrye — Vitaminas e Minerais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Colageno e Beleza",
+          "salvar_id_como": "criteria_cat_beleza_id",
+          "payload": {
+            "name": "Nutrye — Colageno e Beleza (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Nutrye",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Nutrye",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Nutrye",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Nutrye",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Nutrye",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Nutrye",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Nutrye (Vitaminas e Minerais)",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Nutrye",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Nutrye — Vitaminas e Minerais",
+                "criteria_id": "{{criteria_cat_vitaminas_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 24,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 120,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Colageno e Beleza | Nutrye",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF Nutrye — Colageno e Beleza",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Nutrye — Colageno e Beleza",
+                "criteria_id": "{{criteria_cat_beleza_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

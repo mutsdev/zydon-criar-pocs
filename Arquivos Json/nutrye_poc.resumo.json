@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-03-001",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/nutrye_poc.json",
+  "logo_url": "https://nutrye.com.br/wp-content/uploads/2022/11/logo-nutrye-nutricao-eficiente-vitaminas-suplementos-alimentares.svg",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo veio da Store API do WooCommerce (https://nutrye.com.br/wp-json/wc/store/v1/products), 92 produtos com preco publico; precos chegam em CENTAVOS (currency_minor_unit 2) e foram divididos por 100 antes de gravar. As 12 imagens sao packshots do proprio site, das marcas da casa (Nutrye, Nutryervas, Nutrytech, Yup Gummy) — nenhuma imagem de terceiro, nenhuma marca de concorrente. Sem grade de variacoes: nenhum produto tem seletor de cor/tamanho/sabor; os sabores sao SKUs distintos. Maior desconto na Tabela 2 (perfil 3, Distribuidor), que e o canal mais aderente ao core de um fabricante de suplementos. Callback nao foi chamado: a rotina roda na nuvem e o egresso so aceita CONNECT na 443, enquanto o Mitra atende na 8080 — entrega pelo repositorio, conforme ENTREGA.md. Branch: claude/amazing-edison-rf63bz (a sessao foi fixada nela pelo ambiente, em vez da nomeada claude/poc-nutrye-mitra-2026-09-03-001); a correlacao vale por este pedido_id."
+  },
+  "sessao_url": "https://claude.ai/code/session_0181SCepuRF5zjR2QiBGAZsN"
+}
