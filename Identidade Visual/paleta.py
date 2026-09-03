@@ -99,11 +99,24 @@ def extrair(logo, cor_informada=None):
         destaque = cor.girar_matiz(principal, 160)
 
     # O destaque precisa ser legivel *sobre a principal*: e a cor da segunda
-    # linha do titulo e do selo do cupom. Se nao for, clareia ate ser.
+    # linha da manchete e do selo do cupom.
+    #
+    # A direcao importa, e ate 03/09/2026 estava errada: clareava sempre. Sobre
+    # marca CLARA — o verde da Aroca Mercearia — clarear APROXIMA o destaque do
+    # fundo, e as oito tentativas terminavam com menos contraste do que
+    # comecaram. A peca saia com "CLIENTE" quase invisivel e reprovada por
+    # contraste no degrau 1. Agora anda para o lado que o fundo pede.
+    passo = 26 if cor.texto_sobre(principal) == cor.BRANCO else -26
     tentativas = 0
-    while cor.contraste(destaque, principal) < 3.0 and tentativas < 8:
-        destaque = tuple(min(255, int(c + 26)) for c in destaque)
+    while cor.contraste(destaque, principal) < 3.0 and tentativas < 12:
+        destaque = tuple(max(0, min(255, int(c + passo))) for c in destaque)
         tentativas += 1
+
+    # Marca de baixo contraste em qualquer direcao (cinza medio, por exemplo)
+    # existe. Ali o destaque abre mao da cor para nao abrir mao da leitura.
+    if cor.contraste(destaque, principal) < 3.0:
+        destaque = cor.texto_sobre(principal)
+        destaque_origem = "legibilidade"
 
     clara, escura = cor.NEUTRA_CLARA, cor.NEUTRA_ESCURA
     neutra = clara if cor.contraste(clara, principal) >= cor.contraste(escura, principal) else escura

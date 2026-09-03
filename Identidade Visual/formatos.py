@@ -31,11 +31,18 @@ class Formato:
         return largura / altura
 
 
-# A PEÇA é 4:3 (1920x1440), mas a CENA não: descontado o painel de 768px,
-# sobram 1152x1440, que é 4:5 retrato. Confundir as duas é o erro fácil aqui —
-# pedir 4:3 ao gerador e encaixar em 4:5 custaria 27% da imagem em recorte.
-# 4:5 é proporção nativa da lista suportada, então não se perde nada.
-LOGIN = Formato("login", 1920, 1440, painel=768, proporcao_pedida="4:5")
+# A PEÇA é 4:3, mas a CENA não: descontado o painel, o que sobra é 4:5 retrato.
+# Confundir as duas é o erro fácil aqui — pedir 4:3 ao gerador e encaixar em 4:5
+# custaria 27% da imagem em recorte. 4:5 é proporção nativa da lista suportada,
+# então não se perde nada.
+#
+# 2400x1800 e não 1920x1440: é a dimensão que a plataforma serve hoje no
+# `login_image` do portal base, medida baixando o byte em 03/09/2026. Como esta
+# peça é a primeira tela que o cliente vê numa demonstração, entregar menor que
+# o padrão da casa significa imagem mole em monitor grande.
+#
+# O painel é 40% da peça (960 de 2400), a mesma proporção do layout anterior.
+LOGIN = Formato("login", 2400, 1800, painel=960, proporcao_pedida="4:5")
 
 # A PEÇA é 6:1, e 6:1 NÃO existe em gerador nenhum (o teto é 21:9 ≈ 2,33:1).
 # Descontado o painel, a cena é 1056x320 = 3,3:1 — ainda mais largo que 21:9,
@@ -50,8 +57,36 @@ TODOS = (LOGIN, CABECALHO, MINIMALISTA)
 COM_CENA = (LOGIN, CABECALHO)
 POR_CHAVE = {f.chave: f for f in TODOS}
 
-# Os textos fixos, iguais aos do GEM. Ficam aqui porque são conteúdo de layout,
-# e porque texto que o Pillow desenha nunca pode ser gerado por modelo nenhum.
+# Os textos fixos. Ficam aqui porque são conteúdo de layout, e porque texto que
+# o Pillow desenha nunca pode ser gerado por modelo nenhum.
+
+# ---------------------------------------------------------------------------
+# Tela de login: o padrão que os portais Zydon de verdade usam
+# ---------------------------------------------------------------------------
+# Levantado em 03/09/2026 de cinco portais no ar — Naturall Foods, Cosamo,
+# Mouragro, Grupo Paccini e Falcão Tintas. Os cinco repetem a mesma estrutura:
+# manchete "PORTAL DO CLIENTE" em caixa alta, quatro recursos com ícone, e uma
+# faixa de selos na base. O layout anterior tinha "Bem-vindo ao Portal do
+# Cliente" em caixa baixa e três ícones soltos — não era o padrão da casa.
+MANCHETE = ("PORTAL DO", "CLIENTE")
+
+# (chave do ícone, título, apoio). A chave escolhe o glifo em compor._icone.
+RECURSOS = (
+    ("pedido", "FAÇA SEU PEDIDO", "Rápido e fácil"),
+    ("estoque", "ESTOQUE EM TEMPO REAL", "Informações atualizadas"),
+    ("nota", "NOTA FISCAL E XML", "Emita e consulte"),
+    ("boleto", "BOLETOS E PAGAMENTOS", "Mais praticidade"),
+)
+
+# A faixa da base. Três e não quatro: com quatro, o texto de apoio some no
+# corpo mínimo quando o painel é estreito.
+SELOS_RODAPE = (
+    ("escudo", "COMPRA SEGURA", "Seus dados protegidos"),
+    ("entrega", "ENTREGA RÁPIDA", "Agilidade em cada pedido"),
+    ("atendimento", "ATENDIMENTO", "Conte com nosso time"),
+)
+
+# Ainda usados pelo fallback determinístico e pelo cabeçalho.
 TITULO = ("Bem-vindo ao", "Portal do Cliente")
 SUBTITULO = "Compre com agilidade e segurança, direto do seu fornecedor."
 ATALHOS = ("PEDIDOS", "FINANCEIRO", "CATÁLOGO")

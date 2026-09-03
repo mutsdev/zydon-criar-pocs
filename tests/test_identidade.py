@@ -191,6 +191,20 @@ def test_logo_monocromatica_ainda_recebe_destaque(limiares, tmp_path):
                          cor.de_hex(resultado["principal"])) >= 3.0
 
 
+def test_destaque_e_legivel_tambem_sobre_marca_clara():
+    """A correcao de contraste tem que andar para o lado que o fundo pede.
+
+    Ate 03/09/2026 ela clareava sempre: sobre o verde claro da Aroca Mercearia
+    as oito tentativas terminavam com MENOS contraste, e a manchete saia quase
+    invisivel. Um caso claro e um escuro travam as duas direcoes.
+    """
+    for principal in ("#4CAF25", "#F2C230", "#1A4FA0", "#101418", "#7A7A7A"):
+        resultado = mod_paleta.extrair(
+            Image.new("RGBA", (300, 300), (0, 0, 0, 0)), principal)
+        assert cor.contraste(cor.de_hex(resultado["destaque"]),
+                             cor.de_hex(principal)) >= 3.0, principal
+
+
 def test_neutra_sempre_contrasta_com_a_principal(logo_normalizada):
     for informada in ("#FFFFFF", "#000000", "#C81828", "#7A7A7A"):
         resultado = mod_paleta.extrair(logo_normalizada, informada)
@@ -350,6 +364,35 @@ def test_peca_composta_passa_e_tem_dimensao_exata(formato, paleta, logo_normaliz
     assert peca.size == (formato.largura, formato.altura)
     falhas = validar.checar_peca(peca, relato, formato, limiares["mecanico"])
     assert falhas == [], validar.resumir(falhas)
+
+
+def test_painel_de_login_ocupa_a_altura_toda(paleta, logo_normalizada, limiares):
+    """O painel e escrito em fracao da altura, nao em pixel fixo.
+
+    Quando o login foi de 1440 para 1800 de altura, as constantes codificadas
+    empilhavam tudo no topo e deixavam o terco de baixo vazio — a peca passava
+    em toda checagem e ficava feia, que e o pior tipo de falha. Isto ancora as
+    duas pontas: algo perto do topo, algo perto da base.
+    """
+    formato = formatos.LOGIN
+    _, relato = compor.montar(formato, paleta, logo_normalizada,
+                              cena_fotografica(formato.cena), limiares["logo"])
+    topos = [c["caixa"][1] for c in relato["caixas"]] + [relato["logo"]["caixa"][1]]
+    bases = [c["caixa"][3] for c in relato["caixas"]]
+    assert min(topos) < formato.altura * 0.12
+    assert formato.altura * 0.85 < max(bases) < formato.altura
+
+
+def test_login_traz_os_quatro_recursos_e_os_selos(paleta, logo_normalizada, limiares):
+    """O padrao dos portais no ar: manchete, quatro recursos, faixa de selos."""
+    formato = formatos.LOGIN
+    _, relato = compor.montar(formato, paleta, logo_normalizada,
+                              cena_fotografica(formato.cena), limiares["logo"])
+    tipos = {c["tipo"] for c in relato["caixas"]}
+    for i in range(1, len(formatos.RECURSOS) + 1):
+        assert f"recurso_{i}_titulo" in tipos
+    for i in range(1, len(formatos.SELOS_RODAPE) + 1):
+        assert f"selo_{i}_titulo" in tipos
 
 
 @pytest.mark.parametrize("formato", formatos.COM_CENA, ids=lambda f: f.chave)
@@ -523,8 +566,15 @@ def test_imagem_de_aspecto_absurdo_nao_e_chutada_em_nenhum_formato(tmp_path):
 
 
 def test_quadrado_vira_login_e_e_recortado(tmp_path):
-    """Documenta a decisao acima: quadrado e cena de login valida."""
-    _gravar(tmp_path, "Gemini_Generated_Image_quadrada.png", (1600, 1600))
+    """Documenta a decisao acima: quadrado e cena de login valida.
+
+    O lado sai da propria cena do formato para o caso nao envelhecer junto com
+    a dimensao: quando o login foi de 1440 para 1800 de altura, o quadrado de
+    1600 fixo passou a ser pequeno demais e o teste quebrou por um motivo que
+    nao era o que ele mede.
+    """
+    lado = max(formatos.LOGIN.cena) + 200
+    _gravar(tmp_path, "Gemini_Generated_Image_quadrada.png", (lado, lado))
     achadas = cenas.procurar(tmp_path, formatos.LOGIN, formatos.COM_CENA)
     assert len(achadas) == 1
     ajustada, laudo = cenas.carregar(achadas[0], formatos.LOGIN)

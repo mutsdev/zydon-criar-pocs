@@ -47,10 +47,11 @@ BASE = "https://api.cloudflare.com/client/v4/accounts/{conta}/ai/run/{modelo}"
 LADO_MAXIMO = 1920
 MULTIPLO = 16
 
-# Lado maior que pedimos. Nao e o maximo de proposito: a cena de login e
-# consumida a 1152x1440, entao gerar maior so gastaria neuron para o
-# `cenas.ajustar` jogar fora na reducao. 1440 e o ponto em que o login sai no
-# tamanho exato e o cabecalho ainda sobra margem para o recorte na altura.
+# Lado maior que pedimos. Nao e o maximo de proposito: gerar acima do que a
+# cena consome so gastaria neuron para o `cenas.ajustar` jogar fora na reducao.
+# Desde 03/09/2026 a cena de login e 1440x1800 e ja passa deste alvo — o piso
+# manda, e o valor so continua limitando o cabecalho, que sobra margem para o
+# recorte na altura. O login custa 313 neurons e o cabecalho 157.
 LADO_ALVO = 1440
 
 TEMPO_LIMITE = 300
