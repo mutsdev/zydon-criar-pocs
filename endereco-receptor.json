@@ -1,8 +1,8 @@
 {
-  "url": "https://chosen-acquire-quantum-mail.trycloudflare.com",
-  "pedido": "https://chosen-acquire-quantum-mail.trycloudflare.com/pedido",
-  "saude": "https://chosen-acquire-quantum-mail.trycloudflare.com/saude",
+  "url": "https://arc-sophisticated-basename-kilometers.trycloudflare.com",
+  "pedido": "https://arc-sophisticated-basename-kilometers.trycloudflare.com/pedido",
+  "saude": "https://arc-sophisticated-basename-kilometers.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-03T18:47:55-03:00",
+  "atualizado_em": "2026-09-03T19:37:21-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
