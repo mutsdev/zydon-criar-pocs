@@ -24,7 +24,9 @@ RAIZ = AQUI.parent
 PORTAIS = RAIZ / "Criar Portais"
 IDENTIDADE = RAIZ / "Identidade Visual"
 
-for _caminho in (str(AQUI), str(PORTAIS), str(IDENTIDADE)):
+# RAIZ entra por causa do `credenciais.py`, que mora na raiz do repo e e quem
+# tem as chaves da organizacao — sem ele, publicar peca nenhuma sai do lugar.
+for _caminho in (str(AQUI), str(PORTAIS), str(IDENTIDADE), str(RAIZ)):
     if _caminho not in sys.path:
         sys.path.insert(0, _caminho)
 
@@ -263,7 +265,8 @@ def conferir_instalacao():
     depois que o cliente ja mandou o pedido, com o erro saindo no log de uma
     execucao em vez de na subida do processo.
     """
-    faltando = [c for c in (RUNNER, RUNNER_COMPLETO, VALIDADOR) if not c.exists()]
+    faltando = [c for c in (RUNNER, RUNNER_COMPLETO, VALIDADOR, GERADOR)
+                if not c.exists()]
     if faltando:
         recado = ["[ERRO] Estes scripts nao existem:"]
         recado += [f"         {c}" for c in faltando]
@@ -350,6 +353,168 @@ def atender(caminho_json, logo, org, gravar, pedido_id=None, origem_id=None,
     return dict(base, status="concluido", portal_id=portal_id, url=url,
                 observacoes=("" if logo else "portal criado sem identidade visual: "
                                              "nenhuma logo veio no pedido"))
+
+
+# ------------------------------------------------------------------- banners
+# A geracao das pecas roda EM PARALELO com a criacao do portal, e nao depois.
+# Criar uma POC leva minutos e nao depende de banner nenhum; gerar as cenas leva
+# um a dois minutos e nao toca a Zydon. Encadear os dois so somaria os tempos.
+#
+# O que precisa esperar e a PUBLICACAO: subir a peca como resource-file usa o
+# JWT do portal, e o portal so existe no fim. Por isso a divisao e gerar ->
+# (esperar o portal) -> publicar -> callback.
+GERADOR = IDENTIDADE / "gerar_banners.py"
+
+# Rotulo de segmento quando o pedido nao traz um. Nao e o nome da empresa de
+# proposito: ele entra no prompt como "empresa do segmento de {X}", e "empresa
+# do segmento de Fornello Aperitivos" nao dirige arte nenhuma. Os objetos da
+# cena saem do catalogo, que manda sobre isto.
+SEGMENTO_PADRAO = "distribuicao B2B"
+
+LIMITE_BANNERS = 15 * 60
+
+
+def _pasta_da_saida(texto):
+    """A ultima linha 'PASTA=' que o gerar_banners imprime."""
+    achado = re.findall(r"^PASTA=(.+)$", texto or "", flags=re.M)
+    return Path(achado[-1].strip()) if achado else None
+
+
+def _rodar_gerador(comando, rotulo):
+    """Roda o gerar_banners e devolve (pasta, saida). Nunca levanta.
+
+    Banner e o acessorio; o portal e a entrega. Uma POC sem banner continua
+    sendo uma POC, e uma excecao aqui derrubaria o pedido inteiro por causa
+    dele.
+    """
+    try:
+        diario = DIARIO / f"{rotulo}-banners.log"
+        p = _rodar(comando, limite=LIMITE_BANNERS, diario=diario)
+    except subprocess.TimeoutExpired:
+        return None, f"a geracao passou de {LIMITE_BANNERS // 60} minutos"
+    except Exception as e:  # noqa: BLE001 — ver a docstring
+        return None, f"{type(e).__name__}: {e}"
+
+    saida = (p.stdout or "") + (p.stderr or "")
+    achada = _pasta_da_saida(saida)
+    if p.returncode != 0 or not achada or not achada.exists():
+        return None, saida[-1500:]
+    return achada, saida
+
+
+def gerar_pecas(caminho_json, logo, nome_cliente, segmento=None, candidatas=2,
+                quais=None):
+    """Gera as pecas de um cliente novo. Devolve (pasta, saida)."""
+    if not logo:
+        return None, "sem logo: nao ha de onde tirar a paleta nem a marca"
+    comando = [sys.executable, str(GERADOR), "auto",
+               "--logo", str(logo), "--nome", nome_cliente,
+               "--segmento", segmento or SEGMENTO_PADRAO,
+               "--catalogo", str(caminho_json),
+               "--candidatas", str(candidatas)]
+    if quais:
+        comando += ["--formatos", ",".join(quais)]
+    return _rodar_gerador(comando, prefixo(Path(caminho_json).name))
+
+
+def regerar_pecas(pasta, quais, candidatas=2):
+    """Gera cenas NOVAS dos formatos pedidos, dentro de uma pasta que existe.
+
+    E a curadoria do executivo: "nao gostei do 4:3, gera outro e mantem o
+    1920x320". Nao precisa de logo nem de catalogo — os dois ja estao gravados
+    na pasta desde o `gerar_pecas`, e reabri-los daria a chance de divergirem.
+    """
+    if not quais:
+        return None, "regerar sem dizer o que: seria refazer tudo"
+    comando = [sys.executable, str(GERADOR), "regerar", str(pasta),
+               "--formatos", ",".join(quais), "--candidatas", str(candidatas)]
+    return _rodar_gerador(comando, Path(pasta).parent.name)
+
+
+# As pecas que tem destino no portal. Espelha `subir_banners.DESTINOS`, e o
+# teste trava as duas juntas — o receptor precisa validar a escolha do Mitra
+# ANTES de importar o modulo pesado, e a lista nao pode divergir em silencio.
+DESTINOS_BANNER = ("login", "cabecalho")
+
+
+class GravacaoPelaMetade(RuntimeError):
+    """Um PUT gravou e o outro falhou: o portal esta com uma peca so.
+
+    Existe aqui, e nao so em `subir_banners`, porque o receptor precisa
+    captura-la sem importar o modulo de imagem inteiro. O `aplicar_pecas`
+    traduz uma na outra — herdar nao serviria, ja que quem levanta e o outro
+    modulo.
+    """
+
+    def __init__(self, causa, gravados, faltou):
+        super().__init__(str(causa))
+        self.gravados = gravados
+        self.faltou = faltou
+
+
+def _abrir_portal(org, portal_id):
+    """(headers_da_org, jwt_do_portal). Os dois sao credenciais diferentes."""
+    import credenciais
+    import portal as mod_portal
+    headers, _ = credenciais.carregar(org)
+    jwt = mod_portal.entrar(headers["X-Zydon-Access-Key-Code"],
+                            headers["X-Zydon-Access-Key-Token"], portal_id)
+    return headers, jwt
+
+
+def publicar_pecas(org, portal_id, pasta, quais=None):
+    """Sobe as pecas e devolve {chave: {file_id, url, dimensao}}.
+
+    **Nao muda o portal.** O executivo precisa VER as pecas antes de decidir, e
+    a URL de resource-file e permanente — servir pelo tunel daria um endereco
+    que morre junto com o processo.
+    """
+    import subir_banners
+    pecas, _ = subir_banners.pecas_da_pasta(pasta, quais)
+    if not pecas:
+        return {}
+    headers, jwt = _abrir_portal(org, portal_id)
+    return subir_banners.publicar(headers, jwt, pecas, ecoar=print)
+
+
+def aplicar_pecas(org, portal_id, ids):
+    """Aponta o portal para os ids escolhidos. Devolve o relato do GET."""
+    import subir_banners
+    _, jwt = _abrir_portal(org, portal_id)
+    try:
+        return subir_banners.aplicar(jwt, ids, ecoar=print)
+    except subir_banners.GravacaoPelaMetade as erro:
+        raise GravacaoPelaMetade(erro, erro.gravados, erro.faltou) from erro
+
+
+def estado_do_pedido(pedido_id):
+    """O estado acumulado de um pedido: todos os registros dele, fundidos.
+
+    O `buscar` responde "o que este pedido criou"; este responde "onde ele
+    esta". Sao perguntas diferentes desde que existe a fase de curadoria: entre
+    o portal ficar pronto e o executivo decidir, o pedido tem estado e nao
+    terminou.
+
+    A fusao e na ordem do arquivo, entao o registro mais novo manda — que e o
+    comportamento certo para `fase`, e o motivo de a regeracao poder acontecer
+    varias vezes sem perder a pasta nem o portal_id.
+    """
+    if not REGISTRO.exists():
+        return None
+    estado = None
+    for linha in REGISTRO.read_text(encoding="utf-8").splitlines():
+        linha = linha.strip()
+        if not linha:
+            continue
+        try:
+            reg = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if reg.get("pedido_id") != pedido_id:
+            continue
+        estado = dict(estado or {}, **{c: v for c, v in reg.items()
+                                       if v is not None})
+    return estado
 
 
 # ------------------------------------------------------------------ callback

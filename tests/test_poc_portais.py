@@ -376,3 +376,187 @@ def test_conferir_instalacao_acusa_script_ausente(tmp_path):
     with pytest.raises(SystemExit) as erro:
         atendimento.conferir_instalacao()
     assert "reinicie-o" in str(erro.value)
+
+
+# ==========================================
+# 8. O ciclo de banner: gerar, curar, aplicar
+# ==========================================
+
+def _carregar(nome, pasta="POC Completa"):
+    caminho = os.path.join(POC_PORTAIS, pasta, nome + ".py")
+    spec = importlib.util.spec_from_file_location(nome, caminho)
+    modulo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modulo)
+    return modulo
+
+
+def test_as_pecas_com_destino_no_portal_nao_divergem():
+    """`atendimento.DESTINOS_BANNER` existe para o receptor validar a escolha do
+    Mitra sem importar o modulo de imagem. Duas listas separadas divergem em
+    silencio, e o efeito seria o receptor recusar uma peca que sobe bem."""
+    atendimento = _carregar_atendimento()
+    sys.path.insert(0, os.path.join(POC_PORTAIS, "Identidade Visual"))
+    import subir_banners
+    assert set(atendimento.DESTINOS_BANNER) == set(subir_banners.DESTINOS)
+
+
+def test_pasta_da_saida_le_a_ultima_linha_do_gerador():
+    """O `gerar_banners` imprime `PASTA=` por ultimo, e e assim que o
+    atendimento sabe onde as pecas foram parar."""
+    atendimento = _carregar_atendimento()
+    saida = ("Etapa: montar as pecas\n"
+             "  login        cena aprovada\n"
+             "PASTA=C:\\saidas\\cliente\\2026-09-03_1700\n")
+    assert atendimento._pasta_da_saida(saida).name == "2026-09-03_1700"
+    assert atendimento._pasta_da_saida("nada aqui") is None
+
+
+def test_regerar_sem_dizer_o_que_e_recusado():
+    """Regerar tudo mudaria tambem o formato que o executivo aprovou."""
+    atendimento = _carregar_atendimento()
+    pasta, motivo = atendimento.regerar_pecas("/qualquer", [])
+    assert pasta is None and "refazer tudo" in motivo
+
+
+def test_estado_do_pedido_funde_os_registros_em_ordem(tmp_path):
+    """O `buscar` responde 'o que este pedido criou'; o `estado_do_pedido`
+    responde 'onde ele esta'. Sao perguntas diferentes desde que existe
+    curadoria: entre o portal ficar pronto e o executivo decidir, o pedido tem
+    estado e nao terminou."""
+    atendimento = _carregar_atendimento()
+    atendimento.REGISTRO = tmp_path / "pedidos.jsonl"
+    for reg in ({"pedido_id": "p1", "status": "concluido",
+                 "portal_id": "uuid-1", "fase": "curadoria",
+                 "pasta_banners": "/pasta"},
+                {"pedido_id": "outro", "portal_id": "uuid-9"},
+                {"pedido_id": "p1", "fase": "aplicado"}):
+        atendimento.anotar(reg)
+
+    estado = atendimento.estado_do_pedido("p1")
+    assert estado["fase"] == "aplicado"          # o mais novo manda
+    assert estado["portal_id"] == "uuid-1"       # e o antigo nao se perde
+    assert estado["pasta_banners"] == "/pasta"
+    assert atendimento.estado_do_pedido("nunca-visto") is None
+
+
+@pytest.fixture()
+def receptor_no_ar(tmp_path):
+    """Um receptor de verdade, em --simular, numa porta efemera.
+
+    HTTP de verdade e nao chamada direta ao manipulador: o que quebra nessa
+    rota e autenticacao, codigo de status e forma do corpo, e nada disso
+    aparece chamando o metodo Python. A Zydon nao e tocada — `--simular` para
+    antes de qualquer PUT — e o registro vai para tmp_path, para nao escrever
+    no `pedidos-executados.jsonl` de verdade.
+    """
+    import argparse
+    import threading
+    from http.server import ThreadingHTTPServer
+
+    for pasta in ("POC Completa", "Identidade Visual", "."):
+        caminho = os.path.join(POC_PORTAIS, pasta)
+        if caminho not in sys.path:
+            sys.path.insert(0, caminho)
+    import receptor as mod
+
+    mod.atendimento.REGISTRO = tmp_path / "pedidos.jsonl"
+    mod.Manipulador.args = argparse.Namespace(
+        token="segredo-de-teste", org="pocs", gravar=False, simular=True,
+        sem_banner=False, candidatas=1, callback=None, callback_token=None)
+
+    servidor = ThreadingHTTPServer(("127.0.0.1", 0), mod.Manipulador)
+    threading.Thread(target=servidor.serve_forever, daemon=True).start()
+    yield servidor.server_address[1], mod
+    servidor.shutdown()
+
+
+def _postar(porta, rota, corpo, token="segredo-de-teste"):
+    import http.client
+    conexao = http.client.HTTPConnection("127.0.0.1", porta, timeout=10)
+    cabecalhos = {"Content-Type": "application/json"}
+    if token is not None:
+        cabecalhos["X-Token"] = token
+    conexao.request("POST", rota, json.dumps(corpo), cabecalhos)
+    resposta = conexao.getresponse()
+    dados = json.loads(resposta.read().decode("utf-8"))
+    conexao.close()
+    return resposta.status, dados
+
+
+def test_banner_sem_token_e_recusado(receptor_no_ar):
+    porta, _ = receptor_no_ar
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
+                                               "acao": "dispensar"}, token=None)
+    assert status == 401 and corpo["erro"] == "NAO_AUTORIZADO"
+
+
+def test_banner_de_pedido_que_nao_existe_da_404(receptor_no_ar):
+    porta, _ = receptor_no_ar
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "fantasma",
+                                               "acao": "dispensar"})
+    assert status == 404 and corpo["erro"] == "PEDIDO_DESCONHECIDO"
+
+
+def test_banner_recusa_acao_inventada(receptor_no_ar):
+    porta, _ = receptor_no_ar
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
+                                               "acao": "apagar_tudo"})
+    assert status == 400 and corpo["erro"] == "CAMPOS_FALTANDO"
+
+
+def test_ciclo_de_curadoria(receptor_no_ar):
+    """As tres acoes contra um pedido que ja criou portal."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "p1", "status": "concluido",
+                            "portal_id": "uuid-1", "fase": "curadoria",
+                            "pasta_banners": "/pasta", "org": "pocs"})
+
+    # regerar sem dizer o que refaria tambem a peca aprovada.
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
+                                               "acao": "regerar"})
+    assert status == 400 and corpo["erro"] == "PECAS_FALTANDO"
+
+    # regerar um formato so entra na fila propria, e nao na fila de POC.
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
+                                               "acao": "regerar",
+                                               "pecas": ["login"]})
+    assert status == 202 and corpo["pecas"] == ["login"]
+    assert mod.FILA_BANNER.qsize() == 1 and mod.FILA.qsize() == 0
+    mod.FILA_BANNER.get()  # tira da fila: o trabalhador nao esta rodando aqui
+
+    # peca que nao existe nao chega a virar chamada para a Zydon.
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "p1", "acao": "aplicar", "escolhas": {"rodape": "x"}})
+    assert status == 400 and corpo["erro"] == "ESCOLHAS_INVALIDAS"
+
+    # em --simular, aplicar responde sem tocar na Zydon.
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "p1", "acao": "aplicar",
+        "escolhas": {"login": "file-1", "cabecalho": "file-2"}})
+    assert status == 200 and corpo["simulado"] is True
+
+    # dispensar fica GRAVADO: sem isto, "nunca respondeu" e "disse que nao"
+    # viram o mesmo estado e alguem pergunta de novo.
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p1",
+                                               "acao": "dispensar"})
+    assert status == 200 and corpo["fase"] == "dispensado"
+    assert mod.atendimento.estado_do_pedido("p1")["fase"] == "dispensado"
+
+
+def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
+    """Sem portal_id nao ha JWT, e sem JWT nao ha onde aplicar."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "p3", "status": "falhou"})
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "p3",
+                                               "acao": "dispensar"})
+    assert status == 409 and corpo["erro"] == "SEM_PORTAL"
+
+
+def test_registro_de_fase_nao_envenena_o_pedido_id(tmp_path):
+    """A fase de banner nao pode fazer o `ja_rodou` bloquear um pedido que nao
+    criou portal: um erro de catalogo envenenaria o id para sempre."""
+    atendimento = _carregar_atendimento()
+    atendimento.REGISTRO = tmp_path / "pedidos.jsonl"
+    atendimento.anotar({"pedido_id": "p2", "fase": "dispensado"})
+    _, pedidos = atendimento.ja_rodou()
+    assert "p2" not in pedidos

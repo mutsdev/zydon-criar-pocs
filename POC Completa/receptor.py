@@ -27,6 +27,19 @@ TRES DECISOES QUE VALE ENTENDER ANTES DE MEXER:
    evita corrida; paralelizar aqui economizaria minutos e criaria bug de
    madrugada.
 
+O CICLO DE BANNER, que acontece depois. Enquanto a POC e criada, as pecas de
+identidade sao geradas **em paralelo** — elas so dependem da logo e do catalogo,
+que ja estao em disco. Prontas as duas coisas, cada peca sobe como resource-file
+(o que **nao muda o portal**) e as URLs vao no callback para o executivo curar:
+
+    POST /banner  {"pedido_id","acao":"regerar",  "pecas":["login"]}
+    POST /banner  {"pedido_id","acao":"aplicar",  "escolhas":{"login":"<id>"}}
+    POST /banner  {"pedido_id","acao":"dispensar"}
+
+`regerar` gera outra cena SO do formato pedido — e o "nao gostei do 4:3, mantem
+o 1920x320". `aplicar` grava. `dispensar` nao sobe nada, e fica registrado: sem
+isso, "ele nunca respondeu" e "ele disse que nao" viram o mesmo estado.
+
 SEGREDO. O cabecalho `X-Token` tem que bater com o token do receptor, comparado
 com `compare_digest`. Sem ele, qualquer um que descubra a URL do tunel cria
 objeto em producao. Gere com `--novo-token`, guarde no cofre do Mitra e **nunca
@@ -60,6 +73,18 @@ import atendimento  # noqa: E402
 PORTA_PADRAO = 8787
 TAMANHO_MAXIMO = 8 * 1024 * 1024   # catalogo grande com imagens inline cabe folgado
 FILA = queue.Queue()
+
+# Fila propria para a curadoria de banner, com um trabalhador so.
+#
+# Separada da FILA de POC de proposito. A fila de POC existe para duas POCs nao
+# disputarem `Arquivos Json/saidas/` e a mesma org na Zydon; regerar uma cena
+# nao toca em nenhum dos dois — e uma chamada a Cloudflare e um subir de arquivo
+# escopado num portal. Enfileirar a regeracao atras de uma POC de 90 minutos
+# faria o executivo esperar por uma corrida que nao existe.
+#
+# Um trabalhador, e nao varios: duas regeracoes do mesmo pedido escreveriam na
+# mesma pasta ao mesmo tempo.
+FILA_BANNER = queue.Queue()
 
 # O que esta sendo criado AGORA. Sem isto o /saude diz "fila: 0" enquanto uma
 # execucao trava ha horas — foi o que aconteceu em 01/09/2026 com a Witop: o
@@ -105,9 +130,36 @@ def processar(pedido, args):
     logo = atendimento.baixar_logo(pedido.get("logo_url"),
                                    atendimento.prefixo(caminho.name))
 
+    # As pecas sao geradas EM PARALELO com a criacao do portal. Elas nao
+    # dependem dele — so da logo e do catalogo, que ja estao em disco — e
+    # encadear os dois somaria os tempos sem motivo. O que espera o portal e a
+    # publicacao, la embaixo, porque subir arquivo usa o JWT dele.
+    banner = {}
+    linha = None
+    if not args.sem_banner and not args.simular:
+        def _gerar():
+            banner["pasta"], banner["saida"] = atendimento.gerar_pecas(
+                caminho, logo, poc.get("empresa", ""), pedido.get("segmento"),
+                candidatas=args.candidatas)
+        linha = threading.Thread(target=_gerar, daemon=True)
+        linha.start()
+        print("  banners: gerando em paralelo...")
+
     resultado = atendimento.atender(
         caminho, logo, args.org, args.gravar,
         pedido_id=pedido_id, origem_id=pedido_id, simular=args.simular)
+
+    if linha is not None:
+        linha.join()
+        pasta = banner.get("pasta")
+        if pasta:
+            print(f"  banners: {pasta}")
+            resultado["pasta_banners"] = str(pasta)
+        else:
+            print(f"  banners: nao saiu — {str(banner.get('saida'))[-300:]}")
+
+    resultado.update(_publicar_para_curadoria(resultado, banner.get("pasta"),
+                                              args))
 
     url_callback = pedido.get("callback_url") or args.callback
     token_callback = pedido.get("callback_token") or args.callback_token
@@ -116,7 +168,7 @@ def processar(pedido, args):
         # O par do callback fica gravado para o `--reenviar` funcionar. E por
         # isso que este arquivo nao e versionado: o callback_token e segredo.
         atendimento.anotar(dict(resultado, callback_url=url_callback,
-                                callback_token=token_callback))
+                                callback_token=token_callback, org=args.org))
 
     ok, detalhe = atendimento.avisar_mitra(url_callback, token_callback, resultado)
     print(f"  callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
@@ -124,6 +176,80 @@ def processar(pedido, args):
         print(f"  O portal existe e o Mitra nao sabe. Reenvie com:\n"
               f'    python "POC Completa/receptor.py" --reenviar {pedido_id}')
     print(f"  RESULTADO: {resultado['status']}  {resultado.get('url') or ''}")
+
+
+def _publicar_para_curadoria(resultado, pasta, args, quais=None):
+    """Sobe as pecas e devolve os campos de banner do callback.
+
+    Publicar **nao muda o portal**: e so upload de arquivo, para o executivo
+    poder ver a peca antes de decidir. Nada aqui pode derrubar o pedido — o
+    portal e a entrega, o banner e o acessorio.
+    """
+    if not pasta or resultado.get("status") != "concluido":
+        return {"fase": resultado.get("status", "falhou"), "banners": {}}
+    if not resultado.get("portal_id"):
+        # Sem portal_id nao ha JWT, e sem JWT nao ha upload. Acontece quando o
+        # runner cria o portal e a linha de [OK] nao sai como esperado.
+        return {"fase": "concluido", "banners": {},
+                "banners_erro": "o pedido nao capturou o portal_id"}
+    try:
+        publicadas = atendimento.publicar_pecas(args.org, resultado["portal_id"],
+                                                pasta, quais)
+    except Exception as e:  # noqa: BLE001 — banner nunca derruba o pedido
+        print(f"  [AVISO] as pecas nao subiram: {type(e).__name__}: {e}")
+        return {"fase": "concluido", "banners": {},
+                "banners_erro": f"{type(e).__name__}: {e}"}
+    if not publicadas:
+        return {"fase": "concluido", "banners": {}}
+    print(f"  banners: {len(publicadas)} peca(s) publicada(s) para curadoria")
+    return {"fase": "curadoria", "banners": publicadas}
+
+
+# --------------------------------------------------------------------- banner
+ACOES = ("regerar", "aplicar", "dispensar")
+
+
+def trabalhar_banner():
+    """Consome a fila de curadoria. So `regerar` passa por aqui: `aplicar` e
+    `dispensar` sao rapidos e respondem na propria chamada."""
+    while True:
+        tarefa = FILA_BANNER.get()
+        if tarefa is None:
+            return
+        try:
+            _regerar(tarefa)
+        except Exception as e:
+            print(f"  [ERRO] regeracao: {type(e).__name__}: {e}")
+        finally:
+            FILA_BANNER.task_done()
+
+
+def _regerar(tarefa):
+    """Gera cenas novas dos formatos pedidos e avisa o Mitra com as URLs."""
+    estado, pecas, args = tarefa["estado"], tarefa["pecas"], tarefa["args"]
+    pedido_id = estado["pedido_id"]
+    print(f"\n  REGERAR {pedido_id}: {', '.join(pecas)}")
+
+    pasta, saida = atendimento.regerar_pecas(estado["pasta_banners"], pecas,
+                                             candidatas=args.candidatas)
+
+    corpo = {"pedido_id": pedido_id, "acao": "regerar", "pecas": pecas}
+    if not pasta:
+        corpo.update(fase="curadoria", erro=str(saida)[-500:])
+        print(f"  [ERRO] regeracao falhou: {str(saida)[-300:]}")
+    else:
+        # So os formatos regerados sobem: os outros ja estao com o Mitra, e
+        # republica-los daria ao executivo uma URL nova para uma peca que ele
+        # ja aprovou — que le como "mudou".
+        corpo.update(_publicar_para_curadoria(
+            {"status": "concluido", "portal_id": estado.get("portal_id")},
+            pasta, args, quais=set(pecas)))
+
+    atendimento.anotar({"pedido_id": pedido_id, "fase": corpo.get("fase"),
+                        "banners": corpo.get("banners")})
+    ok, detalhe = atendimento.avisar_mitra(estado.get("callback_url"),
+                                           estado.get("callback_token"), corpo)
+    print(f"  callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
 
 
 # Capturada no import, e nao a cada /saude: o valor que interessa e o do codigo
@@ -151,6 +277,7 @@ class Manipulador(BaseHTTPRequestHandler):
         # sem disparar criacao nenhuma.
         if self.path.rstrip("/") in ("/saude", "/health"):
             corpo = {"ok": True, "fila": FILA.qsize(),
+                     "fila_banner": FILA_BANNER.qsize(),
                      "criando": EM_CURSO["pedido_id"],
                      # O commit que ESTE processo carregou, capturado na
                      # subida. Comparado com o HEAD do disco, denuncia
@@ -162,29 +289,41 @@ class Manipulador(BaseHTTPRequestHandler):
             return self._responder(200, corpo)
         self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
 
-    def do_POST(self):
-        if self.path.rstrip("/") not in ("/pedido", ""):
-            return self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
-
+    def _corpo(self):
+        """(corpo, erro). Autentica, mede e decodifica. `erro` ja foi respondido."""
         enviado = self.headers.get("X-Token", "")
         if not hmac.compare_digest(enviado, self.args.token):
             # Sem detalhe no corpo: dizer "token errado" versus "faltou token"
             # ajuda quem estiver tentando adivinhar.
             print("  [RECUSADO] X-Token nao confere.")
-            return self._responder(401, {"ok": False, "erro": "NAO_AUTORIZADO"})
+            self._responder(401, {"ok": False, "erro": "NAO_AUTORIZADO"})
+            return None, True
 
         try:
             tamanho = int(self.headers.get("Content-Length") or 0)
         except ValueError:
             tamanho = 0
         if tamanho <= 0 or tamanho > TAMANHO_MAXIMO:
-            return self._responder(413, {"ok": False, "erro": "TAMANHO_INVALIDO"})
+            self._responder(413, {"ok": False, "erro": "TAMANHO_INVALIDO"})
+            return None, True
 
         try:
-            pedido = json.loads(self.rfile.read(tamanho).decode("utf-8"))
+            return json.loads(self.rfile.read(tamanho).decode("utf-8")), False
         except (UnicodeDecodeError, json.JSONDecodeError) as e:
-            return self._responder(400, {"ok": False, "erro": "JSON_INVALIDO",
-                                         "detalhe": str(e)})
+            self._responder(400, {"ok": False, "erro": "JSON_INVALIDO",
+                                  "detalhe": str(e)})
+            return None, True
+
+    def do_POST(self):
+        rota = self.path.rstrip("/")
+        if rota == "/banner":
+            return self.banner()
+        if rota not in ("/pedido", ""):
+            return self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
+
+        pedido, erro = self._corpo()
+        if erro:
+            return
 
         pedido_id = pedido.get("pedido_id")
         catalogo = pedido.get("catalogo") or pedido.get("poc")
@@ -217,6 +356,109 @@ class Manipulador(BaseHTTPRequestHandler):
         self._responder(202, {"ok": True, "aceito": True, "pedido_id": pedido_id,
                               "fila": FILA.qsize()})
 
+    # ---------------------------------------------------------------- banner
+    def banner(self):
+        """A curadoria do executivo, depois que o portal ja existe.
+
+            {"pedido_id":"...", "acao":"regerar",   "pecas":["login"]}
+            {"pedido_id":"...", "acao":"aplicar",   "escolhas":{"login":"<id>"}}
+            {"pedido_id":"...", "acao":"dispensar"}
+
+        `regerar` responde 202 e avisa pelo callback, porque gerar cena leva
+        minutos. `aplicar` e `dispensar` respondem na hora: sao segundos, e o
+        executivo acabou de clicar — mandar ele esperar um callback para saber
+        se o proprio clique funcionou seria pior de usar e mais dificil de
+        depurar.
+        """
+        corpo, erro = self._corpo()
+        if erro:
+            return
+
+        pedido_id = corpo.get("pedido_id")
+        acao = corpo.get("acao")
+        if not pedido_id or acao not in ACOES:
+            return self._responder(400, {
+                "ok": False, "erro": "CAMPOS_FALTANDO",
+                "detalhe": f"exijo pedido_id e acao em {list(ACOES)}"})
+
+        estado = atendimento.estado_do_pedido(pedido_id)
+        if not estado:
+            return self._responder(404, {"ok": False, "erro": "PEDIDO_DESCONHECIDO",
+                                         "pedido_id": pedido_id})
+        if not estado.get("portal_id"):
+            return self._responder(409, {
+                "ok": False, "erro": "SEM_PORTAL", "pedido_id": pedido_id,
+                "detalhe": "este pedido nao criou portal; nao ha onde aplicar"})
+
+        if acao == "dispensar":
+            # Nao subir nada e uma decisao legitima, e precisa ficar gravada:
+            # sem isto, "ele nunca respondeu" e "ele disse que nao" viram o
+            # mesmo estado, e alguem vai perguntar de novo.
+            atendimento.anotar({"pedido_id": pedido_id, "fase": "dispensado"})
+            print(f"  [BANNER] {pedido_id} dispensado — o portal fica com a "
+                  f"aparencia padrao.")
+            return self._responder(200, {"ok": True, "pedido_id": pedido_id,
+                                         "fase": "dispensado"})
+
+        if acao == "regerar":
+            pecas = [p for p in (corpo.get("pecas") or []) if isinstance(p, str)]
+            if not pecas:
+                return self._responder(400, {
+                    "ok": False, "erro": "PECAS_FALTANDO",
+                    "detalhe": "regerar sem 'pecas' seria refazer tudo, "
+                               "inclusive o que o executivo aprovou"})
+            if not estado.get("pasta_banners"):
+                return self._responder(409, {
+                    "ok": False, "erro": "SEM_PECAS",
+                    "detalhe": "este pedido nao gerou banner nenhum"})
+            FILA_BANNER.put({"estado": estado, "pecas": pecas, "args": self.args})
+            print(f"  [BANNER] {pedido_id} regerar {pecas} — "
+                  f"{FILA_BANNER.qsize()} na fila.")
+            return self._responder(202, {"ok": True, "aceito": True,
+                                         "pedido_id": pedido_id, "acao": "regerar",
+                                         "pecas": pecas,
+                                         "fila": FILA_BANNER.qsize()})
+
+        # aplicar
+        escolhas = corpo.get("escolhas") or {}
+        conhecidas = set(atendimento.DESTINOS_BANNER)
+        if not escolhas or not set(escolhas) <= conhecidas:
+            return self._responder(400, {
+                "ok": False, "erro": "ESCOLHAS_INVALIDAS",
+                "detalhe": f"escolhas e {{peca: file_id}} com peca em "
+                           f"{sorted(conhecidas)}"})
+        if self.args.simular:
+            print(f"  [SIMULACAO] aplicaria {escolhas} em {estado['portal_id']}")
+            return self._responder(200, {"ok": True, "simulado": True,
+                                         "pedido_id": pedido_id,
+                                         "escolhas": escolhas})
+        try:
+            relato = atendimento.aplicar_pecas(
+                estado.get("org") or self.args.org, estado["portal_id"], escolhas)
+        except atendimento.GravacaoPelaMetade as e:
+            # O estado real do portal e a informacao que importa aqui, e ela
+            # nao esta na mensagem da API: uma peca ficou no ar e a outra nao.
+            atendimento.anotar({"pedido_id": pedido_id, "fase": "aplicado_parcial",
+                                "aplicado": e.gravados})
+            print(f"  [BANNER] {pedido_id} PELA METADE: gravou {e.gravados}, "
+                  f"faltou {e.faltou}")
+            return self._responder(409, {
+                "ok": False, "erro": "GRAVACAO_PELA_METADE",
+                "pedido_id": pedido_id, "gravados": e.gravados,
+                "faltou": e.faltou, "detalhe": str(e)})
+        except Exception as e:  # noqa: BLE001
+            print(f"  [BANNER] {pedido_id} falhou: {type(e).__name__}: {e}")
+            return self._responder(502, {"ok": False, "erro": "ZYDON_RECUSOU",
+                                         "detalhe": f"{type(e).__name__}: {e}"})
+
+        atendimento.anotar({"pedido_id": pedido_id, "fase": "aplicado",
+                            "aplicado": relato["gravados"]})
+        print(f"  [BANNER] {pedido_id} aplicado: {relato['gravados']}")
+        # `confere` sai do GET, e nao do status do PUT. Vai no corpo de
+        # proposito: e a unica prova de que o portal realmente mudou.
+        return self._responder(200, {"ok": True, "pedido_id": pedido_id,
+                                     "fase": "aplicado", **relato})
+
 
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -233,6 +475,11 @@ def main(argv=None):
                         "qualquer jeito quando nao ha --simular)")
     p.add_argument("--simular", action="store_true",
                    help="valida e para; NAO cria nada")
+    p.add_argument("--sem-banner", action="store_true",
+                   help="nao gera nem publica banner; so cria o portal")
+    p.add_argument("--candidatas", type=int, default=2,
+                   help="cenas geradas por formato (padrao: 2). Cada cliente "
+                        "custa ~940 neurons com 2, de 10.000 por dia.")
     # Os defaults saem do .env, que o `atendimento` ja carregou no import.
     p.add_argument("--callback", default=os.environ.get("MITRA_CALLBACK_URL"),
                    help="callback padrao, se o pedido nao trouxer")
@@ -276,15 +523,17 @@ def main(argv=None):
 
     Manipulador.args = args
     threading.Thread(target=trabalhar, args=(args,), daemon=True).start()
+    threading.Thread(target=trabalhar_banner, daemon=True).start()
 
     servidor = ThreadingHTTPServer(("127.0.0.1", args.porta), Manipulador)
     print(f"[INFO] Receptor em http://127.0.0.1:{args.porta}  "
-          f"(POST /pedido, GET /saude)")
+          f"(POST /pedido, POST /banner, GET /saude)")
     atual = atendimento.versao_do_codigo()
     print(f"[INFO] codigo: {VERSAO or 'fora de um clone git'}")
     if atual and VERSAO and atual != VERSAO:
         print(f"[AVISO] o disco ja esta em {atual}. Reinicie para carregar.")
     print(f"[INFO] org={args.org}  identidade={'grava' if args.gravar else 'simula'}"
+          f"  banner={'nao' if args.sem_banner else args.candidatas}"
           f"{'  MODO SIMULACAO: nada sera criado' if args.simular else ''}")
     print("[INFO] Agora suba o tunel noutro terminal:")
     print(f"         cloudflared tunnel --url http://127.0.0.1:{args.porta}")

@@ -133,6 +133,122 @@ minutos em retentativa, porque o tempo da rotina é o recurso escasso.
 endpoint de logo do portal, que respondia 200 e não trocava a imagem. Confira o
 efeito, não a resposta.
 
+## O ciclo de banner: gerar, curar, aplicar
+
+Depois que o portal existe, ele ainda está com a **arte do portal de
+demonstração** — a tela de login e o banner da home nascem duplicados do portal
+base, e nenhuma POC jamais os trocou. Medido em 03/09/2026: o `login_image` e o
+`imageLarge` da Fornello são os **mesmos ids** do portal base da org `pocs`.
+
+O ciclo fecha isso, e ele tem uma pessoa no meio de propósito: quem decide se a
+peça presta é o executivo, não a régua.
+
+### O que a máquina faz sozinha
+
+Enquanto a POC é criada, as peças são geradas **em paralelo** — elas só dependem
+da logo e do catálogo, que já estão em disco quando a criação começa. Encadear os
+dois só somaria os tempos.
+
+Prontas as duas coisas, cada peça sobe como **resource-file**. Isso **não muda o
+portal**: é só upload, e a URL que ele devolve é permanente. É essa URL que vai
+no callback, e é ela que o Mitra exibe. Servir a peça pelo túnel não serviria —
+o endereço do `cloudflared` morre junto com o processo, e o executivo abriria a
+tela no dia seguinte com as imagens quebradas.
+
+O callback do `/pedido` ganha dois campos:
+
+```json
+{"fase": "curadoria",
+ "banners": {
+   "login":     {"file_id": "...", "url": "https://...", "dimensao": [2400, 1800]},
+   "cabecalho": {"file_id": "...", "url": "https://...", "dimensao": [1920, 320]}
+ }}
+```
+
+`fase` é `curadoria` quando há peça esperando decisão, e `concluido` quando não
+há — sem logo, sem chave do gerador, ou com `--sem-banner`. **`concluido` sem
+`banners` não é erro**: o portal está pronto e fica com a aparência padrão.
+
+Quando a geração sai mas a publicação falha, vem `banners_erro` com o motivo, e
+`fase` continua `concluido`. Banner é o acessório; o portal é a entrega.
+
+### A tela que o executivo vê
+
+Duas peças, cada uma com a sua dimensão declarada, e três botões:
+
+| botão | o que manda |
+|---|---|
+| **Gerar outra** (por peça) | `{"acao": "regerar", "pecas": ["login"]}` |
+| **Aplicar** | `{"acao": "aplicar", "escolhas": {"login": "<file_id>"}}` |
+| **Seguir sem banner** | `{"acao": "dispensar"}` |
+
+O "Gerar outra" é **por peça**, e essa é a razão de a rota existir: recusar o 4:3
+não pode custar o 1920x320 que ele aprovou. Regerar sem `pecas` é recusado com
+`PECAS_FALTANDO` justamente por isso.
+
+Em `escolhas` vai o `file_id` da peça que ele escolheu — não a chave dela. É o
+que permite aplicar a **segunda** cena de login depois de ter visto a terceira:
+todas continuam publicadas, cada uma com o seu id.
+
+### A rota
+
+```
+POST /banner        (X-Token, o mesmo do /pedido)
+{"pedido_id": "...", "acao": "regerar" | "aplicar" | "dispensar", ...}
+```
+
+| ação | resposta | por quê |
+|---|---|---|
+| `regerar` | **202**, e o resultado vem pelo callback | gerar cena leva minutos |
+| `aplicar` | **200** com `gravados` e `confere` | são segundos; ele acabou de clicar |
+| `dispensar` | **200** | idem |
+
+`aplicar` e `dispensar` respondem na hora de propósito. Mandar o executivo
+esperar um callback para saber se o próprio clique funcionou seria pior de usar
+e mais difícil de depurar.
+
+O `confere` da resposta do `aplicar` **sai de um GET**, e não do status do PUT.
+É a única prova de que o portal mudou — pela terceira vez neste projeto, 2xx não
+significa nada.
+
+### Os erros que a rota devolve
+
+| status | erro | o que aconteceu |
+|---|---|---|
+| 401 | `NAO_AUTORIZADO` | `X-Token` não confere |
+| 404 | `PEDIDO_DESCONHECIDO` | esse `pedido_id` nunca passou por aqui |
+| 409 | `SEM_PORTAL` | o pedido não criou portal; não há onde aplicar |
+| 409 | `SEM_PECAS` | não houve geração para esse pedido |
+| 400 | `PECAS_FALTANDO` | `regerar` sem dizer o quê |
+| 400 | `ESCOLHAS_INVALIDAS` | peça fora de `login`/`cabecalho` |
+| 409 | `GRAVACAO_PELA_METADE` | **leia abaixo** |
+| 502 | `ZYDON_RECUSOU` | a API recusou; nada foi gravado |
+
+### `GRAVACAO_PELA_METADE` é o erro que importa
+
+A tela de login e o banner moram em **endpoints diferentes**, e são dois PUTs sem
+transação entre eles. Dá para terminar com a tela de login nova e o banner velho.
+
+Quando isso acontece, a resposta traz `gravados` e `faltou`:
+
+```json
+{"ok": false, "erro": "GRAVACAO_PELA_METADE",
+ "gravados": ["login"], "faltou": ["cabecalho"]}
+```
+
+**Reenvie só o que está em `faltou`.** Repetir a peça que já gravou não quebra
+nada, mas esconde o estado real do portal de quem for olhar o log depois.
+
+### O orçamento
+
+O gerador é gratuito com teto: **10.000 neurons por dia**. Um cliente custa ~940
+com duas candidatas por formato (login 313, cabeçalho 157, vezes duas). Cada
+"Gerar outra" de login custa mais 313.
+
+Dá para uns dez clientes por dia contando as regerações. Passou disso, a geração
+falha e a peça sai pelo fallback determinístico — que é o piso e nunca fica feio,
+mas é o piso.
+
 ## Nunca mande o callback para outro endereço
 
 Se o `callback_url` não responder, **não tente outra porta nem outro host**. Em

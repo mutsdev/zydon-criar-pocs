@@ -93,6 +93,103 @@ def _mime(caminho):
     return MIMES.get(Path(caminho).suffix.lower(), "image/png")
 
 
+class ByteDiferente(RuntimeError):
+    """O arquivo servido nao e o que subiu. Nada foi apontado no portal."""
+
+
+def publicar(headers_org, jwt, pecas, ecoar=None):
+    """Sobe as pecas e devolve {chave: {file_id, url, dimensao}}.
+
+    **Isto nao muda o portal.** Sobe arquivo e colhe a URL publica — que e o
+    que o Mitra consegue exibir na tela de curadoria. Servir a peca pelo tunel
+    nao serviria: o endereco do cloudflared morre com o processo, e o executivo
+    abriria a tela no dia seguinte com tres imagens quebradas.
+
+    Confere o byte servido antes de devolver. O endpoint dedicado de logo do
+    spec ja respondeu 200 sem trocar nada; o unico teste honesto e baixar e
+    comparar.
+    """
+    publicadas = {}
+    for chave, caminho in pecas.items():
+        file_id = mod_portal.subir_arquivo(headers_org, caminho, _mime(caminho))
+        laudo = mod_portal.conferir_no_ar(jwt, file_id, caminho)
+        if not laudo["identico"]:
+            raise ByteDiferente(
+                f"o arquivo de '{chave}' servido nao e o que subiu "
+                f"({laudo['bytes']} bytes). Nada foi apontado no portal.")
+        publicadas[chave] = {
+            "file_id": file_id,
+            "url": laudo["url"],
+            "dimensao": list(DESTINOS[chave]["dimensao"]),
+            "arquivo": Path(caminho).name,
+        }
+        if ecoar:
+            ecoar(f"  {chave:10s} -> {file_id}  ({laudo['bytes']} bytes)")
+    return publicadas
+
+
+class GravacaoPelaMetade(RuntimeError):
+    """Um dos PUTs falhou depois de o outro ter gravado.
+
+    Carrega `gravados` e `faltou` porque o estado real do portal e a unica
+    informacao que importa nesse momento — e ela nao esta na mensagem da API.
+    """
+
+    def __init__(self, causa, gravados, faltou):
+        super().__init__(str(causa))
+        self.gravados = gravados
+        self.faltou = faltou
+
+
+def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None):
+    """Aponta o portal para os ids ja publicados. Devolve o relato do GET.
+
+    `ids` e {"login": file_id, "cabecalho": file_id} — qualquer um dos dois
+    pode faltar, e o que faltar nao e tocado. E assim que o executivo aplica
+    uma peca e descarta a outra.
+
+    Sao dois PUTs em endpoints diferentes e **nao ha transacao entre eles**: da
+    para terminar com a tela de login nova e o banner velho. Quando o segundo
+    falha, isto levanta `GravacaoPelaMetade` dizendo o que ja ficou gravado,
+    em vez de deixar o portal num estado que ninguem sabe qual e.
+    """
+    if aparencia is None and "login" in ids:
+        aparencia = mod_portal.obter_aparencia(jwt)
+    if banner is None and "cabecalho" in ids:
+        banner = _banner_alvo(jwt)
+
+    gravados = []
+    try:
+        if ids.get("login"):
+            mod_portal.atualizar_aparencia(jwt, aparencia,
+                                           {"login_image": ids["login"]})
+            gravados.append("login")
+            if ecoar:
+                ecoar("  [OK] aparencia.login_image")
+        if ids.get("cabecalho") and banner:
+            identificador = banner.get("id") or banner.get("bannerId")
+            mod_portal.atualizar_banner(jwt, identificador, banner,
+                                        {"imageLarge": ids["cabecalho"]})
+            gravados.append("cabecalho")
+            if ecoar:
+                ecoar("  [OK] banner.images[0].imageLarge")
+    except mod_portal.ErroDoPortal as erro:
+        raise GravacaoPelaMetade(
+            erro, gravados, [c for c in ids if c not in gravados]) from erro
+
+    # Conferencia pelo GET, nunca pela resposta do PUT.
+    relato = {"gravados": gravados, "confere": {}}
+    if "login" in gravados:
+        depois = mod_portal.obter_aparencia(jwt)
+        relato["confere"]["login"] = depois.get("login_image") == ids["login"]
+    if "cabecalho" in gravados:
+        identificador = banner.get("id") or banner.get("bannerId")
+        agora = mod_portal.obter_banner(jwt, identificador)
+        servido = ((agora.get("images") or [{}])[0]).get("imageLarge")
+        relato["confere"]["cabecalho"] = servido == ids["cabecalho"]
+    return relato
+
+
 def _banner_alvo(jwt, banner_id=None):
     """O banner que vamos trocar: o pedido, ou o primeiro que existir."""
     if banner_id:
@@ -178,72 +275,42 @@ def main(argv=None):
         mod_portal.salvar_backup(banner, trabalho / f"banner-antes-{carimbo}.json")
     print(f"\nBackup do estado anterior em: {trabalho}")
 
-    # Passo 1: subir os arquivos. Nada muda no portal ainda — se algo falhar
-    # aqui, o portal continua exatamente como estava.
+    # Passo 1: subir e conferir o byte. Nada muda no portal ainda — se algo
+    # falhar aqui, ele continua exatamente como estava.
     print("Subindo arquivos...")
-    ids = {}
-    for chave, caminho in pecas.items():
-        ids[chave] = mod_portal.subir_arquivo(headers, caminho, _mime(caminho))
-        print(f"  {chave:10s} -> {ids[chave]}")
-
-    # Passo 2: conferir o BYTE servido antes de apontar o portal para ele. O
-    # endpoint dedicado de logo do spec ja respondeu 200 sem trocar nada; o
-    # unico teste honesto e baixar e comparar.
-    print("Conferindo o byte servido...")
-    for chave, caminho in pecas.items():
-        laudo = mod_portal.conferir_no_ar(jwt, ids[chave], caminho)
-        print(f"  {chave:10s} {laudo['bytes']:>8} bytes  "
-              f"identico ao enviado: {laudo['identico']}")
-        if not laudo["identico"]:
-            print(f"\n[ERRO] o arquivo de '{chave}' servido nao e o que subiu. "
-                  f"Nada foi apontado no portal; nenhuma gravacao aconteceu.",
-                  file=sys.stderr)
-            return 1
-
-    # Passo 3: os dois PUTs. Sem transacao entre eles — o relato importa.
-    gravados = []
     try:
-        if "login" in pecas:
-            mod_portal.atualizar_aparencia(jwt, aparencia,
-                                           {"login_image": ids["login"]})
-            gravados.append("login")
-            print("  [OK] aparencia.login_image")
+        publicadas = publicar(headers, jwt, pecas, ecoar=print)
+    except ByteDiferente as erro:
+        print(f"\n[ERRO] {erro}", file=sys.stderr)
+        return 1
 
-        if "cabecalho" in pecas:
-            identificador = banner.get("id") or banner.get("bannerId")
-            mod_portal.atualizar_banner(jwt, identificador, banner,
-                                        {"imageLarge": ids["cabecalho"]})
-            gravados.append("cabecalho")
-            print("  [OK] banner.images[0].imageLarge")
-    except mod_portal.ErroDoPortal as erro:
+    # Passo 2: os dois PUTs. Sem transacao entre eles — o relato importa.
+    print("Gravando...")
+    ids = {c: dados["file_id"] for c, dados in publicadas.items()}
+    try:
+        relato = aplicar(jwt, ids, aparencia, banner, ecoar=print)
+    except GravacaoPelaMetade as erro:
         print(f"\n[ERRO] {erro}")
-        faltou = [c for c in pecas if c not in gravados]
-        if gravados:
-            print(f"[ATENCAO] ISTO JA FICOU GRAVADO: {', '.join(gravados)}.")
+        if erro.gravados:
+            print(f"[ATENCAO] ISTO JA FICOU GRAVADO: {', '.join(erro.gravados)}.")
             print("          O portal esta pela metade — a peca gravada esta no "
                   "ar e a outra nao.")
             print("          Repita so o que faltou:")
             print(f'            python "Identidade Visual/subir_banners.py" '
                   f'--org {args.org} --portal {args.portal} \\\n'
                   f'                --pasta "{args.pasta}" '
-                  f'--so {",".join(faltou)} --gravar')
+                  f'--so {",".join(erro.faltou)} --gravar')
         else:
             print("[INFO] Nada ficou gravado: o portal esta como estava.")
         return 1
 
-    # Passo 4: conferir pelo GET, nunca pela resposta do PUT.
     print("\n=== conferencia, pelo GET ===")
-    depois = mod_portal.obter_aparencia(jwt)
-    if "login" in pecas:
-        certo = depois.get("login_image") == ids["login"]
-        print(f"  login_image  {aparencia.get('login_image')} -> "
-              f"{depois.get('login_image')}  {'OK' if certo else 'NAO BATE'}")
-    if "cabecalho" in pecas:
-        identificador = banner.get("id") or banner.get("bannerId")
-        agora = mod_portal.obter_banner(jwt, identificador)
-        servido = ((agora.get("images") or [{}])[0]).get("imageLarge")
-        certo = servido == ids["cabecalho"]
-        print(f"  imageLarge   {servido}  {'OK' if certo else 'NAO BATE'}")
+    for chave, certo in relato["confere"].items():
+        print(f"  {chave:10s} {ids[chave]}  {'OK' if certo else 'NAO BATE'}")
+    if not all(relato["confere"].values()):
+        print("\n[ERRO] o portal nao esta apontando para o que foi gravado. "
+              "Nao confie nesta gravacao; confira no painel.", file=sys.stderr)
+        return 1
 
     print("\nPronto. Confira no portal.")
     return 0
