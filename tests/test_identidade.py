@@ -18,6 +18,7 @@ Nada aqui toca a rede: o degrau 2 (juiz de visao) e testado so na regra de
 decisao, com veredito de mentira.
 """
 
+import json
 import os
 import sys
 
@@ -663,3 +664,53 @@ def test_gerador_sem_chave_levanta_o_erro_proprio(monkeypatch):
     monkeypatch.delenv("CLOUDFLARE_API_TOKEN", raising=False)
     with pytest.raises(gerador.SemChave):
         gerador.credenciais()
+
+
+# ==========================================
+# catalogo: o que a cena mostra
+# ==========================================
+
+def test_tira_marcas_mantendo_o_tipo():
+    """Marca no nome faz o modelo DESENHAR o rotulo, torto. Em 02/09/2026 a
+    cena da Aroca saiu com potes escritos "Bousin" e "DIAMIANT DA SERA"."""
+    import segmento
+    tipos = segmento.tirar_marcas([
+        "Queijo de Cabra Boursin", "Queijo de Cabra Buchette",
+        "Queijo de Cabra Petit", "Cafe Torrado Diamante da Serra"])
+    assert "Queijo de Cabra" in tipos
+    assert not any("Boursin" in t or "Buchette" in t for t in tipos)
+
+
+def test_palavra_de_embalagem_nao_vira_objeto_da_cena():
+    """"Champignon Inteiro Balde" pediria um balde, e balde tem rotulo."""
+    import segmento
+    tipos = segmento.tirar_marcas(["Champignon Inteiro Balde",
+                                   "Champignon Inteiro Pote",
+                                   "Champignon Fatiado Vidro"])
+    assert all("Balde" not in t and "Pote" not in t and "Vidro" not in t
+               for t in tipos), tipos
+
+
+def test_catalogo_manda_sobre_a_inferencia_de_setor(tmp_path):
+    """Produto que o cliente vende ganha de palpite sobre o setor — e nao
+    depende de cota: foi um 429 que fez a mercearia virar galpao de caixas."""
+    import segmento
+    poc = tmp_path / "x_poc.json"
+    poc.write_text(json.dumps({"empresa": "X", "etapas": [
+        {"endpoint": "categories", "requests": [
+            {"payload": {"name": "Queijos de Cabra"}}]},
+        {"endpoint": "products", "requests": [
+            {"payload": {"name": "Queijo de Cabra Um"}},
+            {"payload": {"name": "Queijo de Cabra Dois"}},
+            {"payload": {"name": "Queijo de Cabra Tres"}}]}]},
+        ensure_ascii=False), encoding="utf-8")
+    contexto = segmento.resolver("Alimentos", "modelo", usar_rede=False,
+                                 catalogo=str(poc))
+    assert contexto["origem"] == "catalogo"
+    assert any("Queijo" in o for o in contexto["objetos"])
+
+
+def test_regra_zero_abre_o_prompt():
+    """Instrucao no topo pesa mais. No meio do bloco ela era ignorada."""
+    import prompt_gem
+    assert prompt_gem.FIXO.lstrip().startswith("REGRA ZERO")

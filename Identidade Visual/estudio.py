@@ -507,6 +507,11 @@ class Manipulador(BaseHTTPRequestHandler):
                        # banner. No estudo ela entra assim mesmo: ver a peca
                        # ruim e o dado que decide se aquela regua procede.
                        "--regua-logo", "portal"]
+            # Os produtos reais mandam sobre qualquer inferencia de setor. Sem
+            # isto a Aroca Mercearia (queijos) foi fotografada como galpao de
+            # caixas — a reprovacao numero um da primeira rodada.
+            if r.get("catalogo"):
+                comando += ["--catalogo", r["catalogo"]]
             threading.Thread(target=rodar, daemon=True,
                              args=(slug, comando)).start()
             return self._json(202, {"estado": "rodando"})

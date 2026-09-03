@@ -13,7 +13,8 @@
       1848,
       1516
     ],
-    "visivel_no_branco": 1.0
+    "visivel_no_branco": 1.0,
+    "catalogo": "Arquivos Json\\aroca_mercearia_poc.json"
   },
   {
     "cliente": "Fornello Conservas",
@@ -29,7 +30,8 @@
       498,
       346
     ],
-    "visivel_no_branco": 0.7615
+    "visivel_no_branco": 0.7615,
+    "catalogo": "Arquivos Json\\fornello_conservas_poc.json"
   },
   {
     "cliente": "Tudo do Mar",
@@ -45,7 +47,8 @@
       708,
       442
     ],
-    "visivel_no_branco": 0.3551
+    "visivel_no_branco": 0.3551,
+    "catalogo": "Arquivos Json\\tudo_do_mar_poc.json"
   },
   {
     "cliente": "Poupa Agora",
@@ -61,7 +64,8 @@
       299,
       90
     ],
-    "visivel_no_branco": 0.854
+    "visivel_no_branco": 0.854,
+    "catalogo": "Arquivos Json\\poupa_agora_poc.json"
   },
   {
     "cliente": "Alimentos Talita",
@@ -77,7 +81,8 @@
       897,
       406
     ],
-    "visivel_no_branco": 0.6319
+    "visivel_no_branco": 0.6319,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\talita_poc.json"
   },
   {
     "cliente": "Vo Dora Congelados",
@@ -93,7 +98,8 @@
       1000,
       953
     ],
-    "visivel_no_branco": 0.6062
+    "visivel_no_branco": 0.6062,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\vodora_poc.json"
   },
   {
     "cliente": "Pelicula da Vida",
@@ -109,7 +115,8 @@
       262,
       298
     ],
-    "visivel_no_branco": 1.0
+    "visivel_no_branco": 1.0,
+    "catalogo": "Arquivos Json\\película_da_vida_poc.json"
   },
   {
     "cliente": "Manaus Automotive",
@@ -125,7 +132,8 @@
       1210,
       1210
     ],
-    "visivel_no_branco": 0.4746
+    "visivel_no_branco": 0.4746,
+    "catalogo": "Arquivos Json\\manaus_automotive_poc.json"
   },
   {
     "cliente": "WGK",
@@ -141,7 +149,8 @@
       640,
       1138
     ],
-    "visivel_no_branco": 0.954
+    "visivel_no_branco": 0.954,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\wgk_poc.json"
   },
   {
     "cliente": "Cobra Correntes",
@@ -157,7 +166,8 @@
       205,
       58
     ],
-    "visivel_no_branco": 0.7392
+    "visivel_no_branco": 0.7392,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\cobra_poc.json"
   },
   {
     "cliente": "DEC Temper",
@@ -173,7 +183,8 @@
       256,
       140
     ],
-    "visivel_no_branco": 1.0
+    "visivel_no_branco": 1.0,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\dectemper_poc.json"
   },
   {
     "cliente": "Portwell",
@@ -189,7 +200,8 @@
       1024,
       268
     ],
-    "visivel_no_branco": 0.9763
+    "visivel_no_branco": 0.9763,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\portwell_poc.json"
   },
   {
     "cliente": "Santos e Porto",
@@ -205,7 +217,8 @@
       785,
       528
     ],
-    "visivel_no_branco": 0.5364
+    "visivel_no_branco": 0.5364,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\santoseporto_poc.json"
   },
   {
     "cliente": "Benenutri",
@@ -221,7 +234,8 @@
       598,
       173
     ],
-    "visivel_no_branco": 1.0
+    "visivel_no_branco": 1.0,
+    "catalogo": "C:\\Users\\joaop\\Documents\\Criador de POCs\\benenutri_poc.json"
   },
   {
     "cliente": "Cirurgica Sao Jose",
@@ -235,6 +249,7 @@
       788,
       293
     ],
-    "visivel_no_branco": null
+    "visivel_no_branco": null,
+    "catalogo": "Arquivos Json\\cirúrgica_são_josé_poc.json"
   }
 ]

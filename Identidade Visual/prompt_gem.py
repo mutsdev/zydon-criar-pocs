@@ -18,7 +18,17 @@ nao tem como virar ajuste na iteracao seguinte.
 
 import formatos
 
-FIXO = """Voce e um diretor de arte senior de campanhas B2B. Gere FOTOGRAFIA
+# A REGRA ZERO abre o prompt de proposito. Ate 03/09/2026 a proibicao de texto
+# vivia no meio do bloco de direcao de arte e era ignorada: as cenas de
+# mercearia saiam com potes escritos "Bousin" e "Parbolules" em letra torta.
+# Instrucao no topo pesa mais para o modelo, e esta e a que nao pode falhar —
+# texto na imagem e o unico defeito que o cliente enxerga de longe.
+FIXO = """REGRA ZERO, acima de todas as outras: a imagem nao pode conter
+NENHUMA letra, palavra, numero, rotulo, etiqueta ou embalagem impressa. Zero
+caracteres. Se um objeto normalmente teria rotulo, mostre-o SEM rotulo, ou nao
+mostre o objeto.
+
+Voce e um diretor de arte senior de campanhas B2B. Gere FOTOGRAFIA
 DE CAMPANHA, nao um banner diagramado: a diagramacao e feita depois, fora daqui.
 
 Direcao de arte, obrigatoria em todas as imagens:
@@ -61,9 +71,39 @@ da altura; o topo e a base serao descartados e devem conter so ambiente."""
 
 def _bloco_cliente(contexto):
     objetos = ", ".join(contexto["objetos"])
-    return f"""Cliente: empresa do segmento de {contexto['segmento']}.
-Objetos em primeiro plano (escolha 2 ou 3 destes): {objetos}.
-Ambiente ao fundo, desfocado: {contexto['ambiente']}."""
+    linhas = [f"Cliente: empresa do segmento de {contexto['segmento']}."]
+
+    # Quando os objetos vem do catalogo real, dizer isso muda o pedido: nao sao
+    # sugestoes de ambientacao, sao os produtos que a empresa vende, e a cena
+    # existe para mostra-los. O contrario foi o defeito da Aroca Mercearia —
+    # cena bonita de galpao para quem vende queijo.
+    if contexto.get("origem") == "catalogo":
+        linhas.append(
+            f"O que ela vende de verdade, tirado do catalogo dela: {objetos}.\n"
+            f"Escolha 2 ou 3 e ponha em primeiro plano. A cena SO presta se "
+            f"mostrar este tipo de produto — cenario de galpao, caixas ou "
+            f"paletes no lugar do produto e recusado.")
+        # Segunda linha de defesa contra o defeito do dia 02/09/2026: os potes
+        # da Aroca sairam escritos "Bousin" e "DIAMIANT DA SERA". A lista acima
+        # ja foi limpa de marcas, mas alguma escapa quando nao ha forma
+        # generica dela no catalogo, e ai so o pedido explicito segura.
+        # Pedir "embalagem lisa" nao funciona: o modelo foi treinado em foto de
+        # produto embalado e desenha rotulo de qualquer jeito — na Aroca saiu
+        # "Bousin" e "cohbbe" em letra torta. O que funciona e tirar a
+        # embalagem do pedido: queijo cortado na tabua nao tem onde escrever.
+        linhas.append(
+            "COMO FOTOGRAFAR: o produto FORA da embalagem. Alimento, cortado "
+            "ou servido, sobre tabua, prato ou bancada; peca ou ferramenta, a "
+            "peca nua. NADA de caixa, pote, saco, lata, garrafa, rotulo, "
+            "etiqueta ou embalagem fechada — nem ao fundo. Estes nomes sao "
+            "TIPOS de produto e nao marcas: nao escreva nenhum deles na "
+            "imagem.")
+    else:
+        linhas.append(f"Objetos em primeiro plano (escolha 2 ou 3 destes): "
+                      f"{objetos}.")
+
+    linhas.append(f"Ambiente ao fundo, desfocado: {contexto['ambiente']}.")
+    return "\n".join(linhas)
 
 
 def montar(formato, paleta, contexto):

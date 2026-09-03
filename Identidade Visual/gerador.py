@@ -54,7 +54,10 @@ MULTIPLO = 16
 LADO_ALVO = 1440
 
 TEMPO_LIMITE = 300
-TENTATIVAS = 3
+# 4 e nao 3 por causa do filtro de conteudo: ele barra imagem boa de vez em
+# quando, e cada retentativa troca a semente. Com 4 chances, uma cena so se
+# perde quando o prompt realmente incomoda o filtro, e nao por azar.
+TENTATIVAS = 4
 
 # $0,000287 por tile 512x512 de saida, $0,011 por 1.000 neurons (tabela do
 # Workers AI). Serve para dizer quanto resta do dia ANTES de gastar.
@@ -165,12 +168,30 @@ def gerar(prompt, largura, altura, semente=None, tempo_limite=TEMPO_LIMITE):
             if r.status_code == 200:
                 return _imagem_da_resposta(r)
             ultimo = f"http {r.status_code}: {r.text[:300]}"
-            # 4xx que nao seja 429 e erro de pedido: repetir so gasta tempo.
-            if 400 <= r.status_code < 500 and r.status_code != 429:
-                break
+            if _foi_barrado(r):
+                # O filtro julga a IMAGEM, nao o pedido, e nao e deterministico:
+                # o mesmo prompt de queijos passou com semente 2 e foi barrado
+                # com a 99, em 02/09/2026. Repetir igual so repete o resultado;
+                # trocar a semente gera outra imagem, que costuma passar.
+                semente = (semente or 0) + 1000 * tentativa
+                campos["seed"] = (None, str(semente))
+            elif 400 <= r.status_code < 500 and r.status_code != 429:
+                break  # erro de pedido de verdade: repetir so gasta tempo
         if tentativa < TENTATIVAS:
             time.sleep(2 ** tentativa)
     raise GeracaoFalhou(f"{MODELO} nao devolveu imagem ({ultimo})")
+
+
+def _foi_barrado(resposta):
+    """O filtro de conteudo recusou a imagem gerada (codigo 3030)."""
+    if resposta.status_code != 400:
+        return False
+    try:
+        erros = resposta.json().get("errors") or []
+    except ValueError:
+        return False
+    return any(e.get("code") == 3030 or "flagged" in str(e.get("message", "")).lower()
+               for e in erros)
 
 
 def _imagem_da_resposta(r):

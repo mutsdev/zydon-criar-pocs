@@ -115,7 +115,8 @@ def _limiares_logo(limiares, regua_logo):
     return limiares["logo"]
 
 
-def _preparar(logo, nome, segmento, cor, sem_rede, limiares, regua_logo="banner"):
+def _preparar(logo, nome, segmento, cor, sem_rede, limiares, regua_logo="banner",
+              catalogo=None):
     """O miolo do `preparar`, sem argparse e sem imprimir instrucao de GEM.
 
     Separado porque o `auto` precisa exatamente disto e mais nada: a diferenca
@@ -129,7 +130,7 @@ def _preparar(logo, nome, segmento, cor, sem_rede, limiares, regua_logo="banner"
     logo_img.save(pasta / "logo-normalizada.png")
 
     contexto = mod_segmento.resolver(segmento, limiares["juiz"]["modelo"],
-                                     usar_rede=not sem_rede)
+                                     usar_rede=not sem_rede, catalogo=catalogo)
     contexto["segmento"] = segmento
 
     (pasta / "paleta.json").write_text(
@@ -285,7 +286,7 @@ def auto(args):
     limiares = mod_regua.carregar(args.regua)
     pasta, pal, contexto, laudo_logo = _preparar(
         args.logo, args.nome, args.segmento, args.cor, args.sem_rede,
-        limiares, args.regua_logo)
+        limiares, args.regua_logo, args.catalogo)
 
     print(f"Pasta:   {pasta}")
     print(f"Logo:    {laudo_logo['original'][0]}x{laudo_logo['original'][1]} -> "
@@ -294,8 +295,12 @@ def auto(args):
     print(f"Paleta:  {pal['principal']}  {pal['destaque']}  {pal['neutra']}")
     print(f"Objetos: {', '.join(contexto['objetos'][:4])}"
           f"   (origem: {contexto['origem']})")
-    if contexto.get("erro"):
-        print(f"  [AVISO] segmento caiu no generico — {contexto['erro']}")
+    if contexto["origem"] == "generico":
+        print("  [AVISO] os objetos sao a lista generica (caixas e paletes) — "
+              "a cena NAO vai mostrar o que o cliente vende.")
+        if contexto.get("erro"):
+            print(f"          {contexto['erro']}")
+        print("          Passe --catalogo com o <cliente>_poc.json da rotina.")
 
     linhas, total = gerador.orcamento(args.candidatas)
     print(f"\nEtapa: gerar {args.candidatas} cena(s) por formato  "
@@ -406,6 +411,10 @@ def main(argv=None):
     c.add_argument("--nome", required=True)
     c.add_argument("--segmento", required=True)
     c.add_argument("--cor", help="cor primaria em hex; manda sobre a extraida")
+    c.add_argument("--catalogo",
+                   help="o <cliente>_poc.json da rotina. Os produtos DELE "
+                        "viram os objetos da cena — e a unica forma de a "
+                        "imagem mostrar o que a empresa vende de verdade.")
     c.add_argument("--candidatas", type=int, default=2,
                    help="cenas geradas por formato (padrao: 2). Cada cliente "
                         "custa ~784 neurons com 2, de 10.000 por dia.")
