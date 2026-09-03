@@ -631,6 +631,117 @@ def test_campo_inventado_falha_antes_de_chamar_a_api():
         portal.corpo_do_put(APARENCIA, {"logo_image": "x"})
 
 
+# ---------------------------------------------------------------------------
+# Banner da home: o mesmo cuidado do PUT da aparencia, noutro endpoint
+# ---------------------------------------------------------------------------
+
+# Copiado do que a API devolveu de verdade em 03/09/2026, para o portal da
+# Fornello (`GET /api/b2b/banners/banners` -> envelope com `items`). Os dois
+# campos do fim vem do GET e nao existem no PUT.
+BANNER = {
+    "id": "b-1", "title": "Banner principal", "type": "LARGE",
+    "durationType": "LIFETIME", "active": True,
+    "profile_partner": True, "profile_seller": True,
+    "images": [{"id": "img-1", "description": "Banner principal",
+                "imageSmall": "peq-antigo", "imageLarge": "grd-antigo",
+                "link": "https://zydon.com.br", "order": 1, "active": True}],
+    "group": [],
+    "created_at": "2026-01-01T00:00:00Z", "portal_id": "p-1",
+}
+
+
+def test_banner_troca_a_imagem_e_preserva_o_resto():
+    corpo = portal.corpo_do_banner(BANNER, {"imageLarge": "grd-novo"})
+    assert corpo["images"][0]["imageLarge"] == "grd-novo"
+    # O que nao foi pedido nao muda: link, ordem e a imagem mobile.
+    assert corpo["images"][0]["imageSmall"] == "peq-antigo"
+    assert corpo["images"][0]["link"] == "https://zydon.com.br"
+    # O id da imagem tem que voltar: e ele que diz "atualize esta", e nao
+    # "crie outra". Sem ele o slide duplicaria em silencio.
+    assert corpo["images"][0]["id"] == "img-1"
+    for campo in ("title", "type", "durationType", "active", "profile_partner"):
+        assert corpo[campo] == BANNER[campo], campo
+
+
+def test_envelope_paginado_do_banner_e_lido_pelo_items(monkeypatch):
+    """A lista vem em `items`, e nao em `content`. Ler a chave errada devolve
+    lista vazia, que le como 'o portal nao tem banner' — uma mentira dificil de
+    desconfiar, porque nao ha erro nenhum."""
+    class Resposta:
+        status_code = 200
+        text = ""
+
+        @staticmethod
+        def json():
+            return {"currentPage": 0, "perPage": 25, "total": 1,
+                    "items": [BANNER]}
+
+    monkeypatch.setattr(portal.requests, "get", lambda *a, **k: Resposta())
+    assert portal.listar_banners("jwt-falso") == [BANNER]
+
+
+def test_banner_descarta_campos_que_o_put_nao_aceita():
+    corpo = portal.corpo_do_banner(BANNER, {"imageLarge": "x"})
+    for intruso in ("created_at", "portal_id", "id"):
+        assert intruso not in corpo
+
+
+def test_banner_com_campo_de_imagem_inventado_falha_antes_da_api():
+    with pytest.raises(ValueError, match="nao aceita"):
+        portal.corpo_do_banner(BANNER, {"imagemGrande": "x"})
+
+
+def test_banner_sem_imagem_nenhuma_ganha_a_primeira():
+    """Alguem pode ter apagado a imagem do portal base. Falhar ali seria pior:
+    o resto do corpo ja e valido e o unico que falta e o que vamos por."""
+    vazio = dict(BANNER, images=[])
+    corpo = portal.corpo_do_banner(vazio, {"imageLarge": "grd-novo"})
+    assert len(corpo["images"]) == 1
+    assert corpo["images"][0]["imageLarge"] == "grd-novo"
+
+
+def test_banner_nao_mexe_nos_slides_seguintes():
+    """Slide dois em diante foi alguem que pos a mao — sobrescrever seria
+    decidir por essa pessoa."""
+    dois = dict(BANNER, images=BANNER["images"] + [
+        {"description": "segundo", "imageLarge": "outro", "order": 2,
+         "active": True}])
+    corpo = portal.corpo_do_banner(dois, {"imageLarge": "grd-novo"})
+    assert corpo["images"][1]["imageLarge"] == "outro"
+
+
+def test_pecas_da_pasta_saem_do_manifesto_e_nao_de_um_glob(tmp_path):
+    """Um glob em aprovados/ pegaria peca que ficou para tras numa remontagem.
+    O manifesto e quem sabe qual arquivo foi o escolhido de cada formato."""
+    import subir_banners
+
+    (tmp_path / "aprovados").mkdir()
+    for nome in ("login.jpg", "cabecalho.jpg", "minimalista.png", "orfa.jpg"):
+        (tmp_path / "aprovados" / nome).write_bytes(b"x")
+    (tmp_path / "manifesto.json").write_text(json.dumps({
+        "cliente": "Teste", "pecas": {
+            "login": {"arquivo": "login.jpg"},
+            "cabecalho": {"arquivo": "cabecalho.jpg"},
+            "minimalista": {"arquivo": "minimalista.png"}}}), encoding="utf-8")
+
+    pecas, _ = subir_banners.pecas_da_pasta(tmp_path)
+    # O minimalista nao tem destino no portal, e a orfa nao esta no manifesto.
+    assert set(pecas) == {"login", "cabecalho"}
+
+    so_login, _ = subir_banners.pecas_da_pasta(tmp_path, {"login"})
+    assert set(so_login) == {"login"}
+
+
+def test_manifesto_apontando_arquivo_que_sumiu_falha_claro(tmp_path):
+    import subir_banners
+
+    (tmp_path / "aprovados").mkdir()
+    (tmp_path / "manifesto.json").write_text(json.dumps({
+        "pecas": {"login": {"arquivo": "login.jpg"}}}), encoding="utf-8")
+    with pytest.raises(FileNotFoundError, match="aprovados"):
+        subir_banners.pecas_da_pasta(tmp_path)
+
+
 def test_login_sem_portal_e_recusado():
     """Sem solution_id o JWT nasce sem portal e a aparencia responde 404 sem
     dizer por que — falhar aqui e mais barato que depurar aquilo."""
@@ -705,6 +816,69 @@ def test_dimensao_respeita_o_contrato_da_api():
         for lado in gerador.dimensao(formato):
             assert 256 <= lado <= gerador.LADO_MAXIMO
             assert lado % gerador.MULTIPLO == 0
+
+
+def test_orcamento_de_um_formato_so_e_menor_que_o_dos_dois():
+    """Recusar uma peca tem que custar uma peca, e nao as duas."""
+    import gerador
+    _, tudo = gerador.orcamento(1)
+    _, so_login = gerador.orcamento(1, ["login"])
+    assert 0 < so_login < tudo
+
+
+def test_formato_desconhecido_levanta_antes_de_gastar_neuron():
+    import gerador
+    with pytest.raises(ValueError, match="desconhecido"):
+        gerador.alvos_validos(["logim"])
+    # O minimalista existe, mas nao tem cena: gerar para ele seria gasto puro.
+    with pytest.raises(ValueError, match="nao tem cena"):
+        gerador.alvos_validos(["minimalista"])
+
+
+def test_regerar_acrescenta_em_vez_de_sobrescrever(tmp_path):
+    """A cena recusada continua em disco: o executivo pode mudar de ideia."""
+    import gerador
+    for nome in ("login-1.png", "login-2.png", "cabecalho-1.png"):
+        Image.new("RGB", (40, 40)).save(tmp_path / nome)
+    assert gerador.proximo_indice(tmp_path, formatos.LOGIN) == 3
+    assert gerador.proximo_indice(tmp_path, formatos.CABECALHO) == 2
+    assert gerador.proximo_indice(tmp_path / "vazia", formatos.LOGIN) == 1
+
+
+def test_manifesto_preserva_o_formato_que_nao_foi_remontado(tmp_path, paleta,
+                                                            logo_normalizada):
+    """Remontar so o login nao pode sumir com o cabecalho do manifesto.
+
+    O arquivo continuaria em `aprovados/` e desapareceria para todo consumidor
+    — a pior forma de perder uma peca, porque nada acusa.
+    """
+    import gerar_banners
+
+    logo_normalizada.save(tmp_path / "logo-normalizada.png")
+    (tmp_path / "cenas").mkdir()
+    (tmp_path / "contexto.json").write_text(json.dumps({
+        "cliente": "Teste", "paleta": paleta,
+        "contexto": {"segmento": "Alimentos", "objetos": ["Queijo"],
+                     "ambiente": "cozinha", "origem": "catalogo"}}),
+        encoding="utf-8")
+    (tmp_path / "manifesto.json").write_text(json.dumps({
+        "cliente": "Teste", "pecas": {
+            "cabecalho": {"origem": "aprovado", "arquivo": "cabecalho.jpg"}}}),
+        encoding="utf-8")
+
+    class Args:
+        pasta = str(tmp_path)
+        regua = None
+        sem_juiz = True
+        so_fallback = True
+        tentativas = None
+        formatos = "login"
+
+    assert gerar_banners.montar(Args()) == 0
+    pecas = json.loads((tmp_path / "manifesto.json").read_text(
+        encoding="utf-8"))["pecas"]
+    assert pecas["cabecalho"]["arquivo"] == "cabecalho.jpg"
+    assert "login" in pecas
 
 
 def test_gerador_sem_chave_levanta_o_erro_proprio(monkeypatch):

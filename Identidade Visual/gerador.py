@@ -134,14 +134,38 @@ def custo_neurons(largura, altura):
     return int(round(tiles * NEURONS_POR_TILE))
 
 
-def orcamento(quantas=1):
+def alvos_validos(alvos=None):
+    """Normaliza `alvos` — None, chaves ou Formatos — em tupla de Formato.
+
+    Aceitar a chave em texto existe porque quem pede a regeracao e o Mitra, e o
+    que chega de la e `["login"]`, nao objeto nenhum. Chave desconhecida levanta
+    aqui, antes de gastar neuron com um formato que nao existe.
+    """
+    if alvos is None:
+        return tuple(formatos.COM_CENA)
+    resolvidos = []
+    for alvo in alvos:
+        if isinstance(alvo, str):
+            if alvo not in formatos.POR_CHAVE:
+                raise ValueError(f"formato desconhecido: {alvo!r}. Conheco "
+                                 f"{sorted(formatos.POR_CHAVE)}.")
+            alvo = formatos.POR_CHAVE[alvo]
+        if alvo not in formatos.COM_CENA:
+            raise ValueError(f"'{alvo.chave}' nao tem cena — nao ha o que gerar.")
+        resolvidos.append(alvo)
+    return tuple(resolvidos)
+
+
+def orcamento(quantas=1, alvos=None):
     """[(formato, largura, altura, neurons)] e o total, sem gerar nada.
 
     Existe para a decisao de gastar vir ANTES do gasto: sao 10.000 neurons por
-    dia e um cliente inteiro consome uma fatia visivel deles.
+    dia e um cliente inteiro consome uma fatia visivel deles. Com `alvos`, o
+    orcamento e o da regeracao pedida — que e o numero que interessa quando o
+    executivo recusa uma peca e mantem a outra.
     """
     linhas, total = [], 0
-    for formato in formatos.COM_CENA:
+    for formato in alvos_validos(alvos):
         largura, altura = dimensao(formato)
         custo = custo_neurons(largura, altura) * quantas
         linhas.append((formato.chave, largura, altura, custo))
@@ -207,11 +231,38 @@ def _imagem_da_resposta(r):
     return img
 
 
-def encher(pasta_cenas, paleta, contexto, quantas=2, semente=1, ecoar=None):
-    """Gera `quantas` cenas de cada formato dentro de `pasta_cenas`.
+def proximo_indice(pasta_cenas, formato):
+    """O menor indice ainda livre para este formato em `pasta_cenas`.
+
+    Regeracao **acrescenta**, nunca sobrescreve: quando o executivo recusa o
+    login e pede outro, a cena recusada continua em disco. Ele pode mudar de
+    ideia, e apagar a evidencia de uma decisao que ele acabou de tomar seria a
+    forma mais barata de tornar a curadoria irreversivel.
+    """
+    pasta_cenas = Path(pasta_cenas)
+    if not pasta_cenas.exists():
+        return 1
+    maior = 0
+    for caminho in pasta_cenas.iterdir():
+        if not caminho.stem.lower().startswith(formato.chave):
+            continue
+        sufixo = caminho.stem[len(formato.chave):].lstrip("-_")
+        if sufixo.isdigit():
+            maior = max(maior, int(sufixo))
+    return maior + 1
+
+
+def encher(pasta_cenas, paleta, contexto, quantas=2, semente=1, ecoar=None,
+           alvos=None):
+    """Gera `quantas` cenas de cada formato de `alvos` dentro de `pasta_cenas`.
 
     Grava como `login-1.png` / `cabecalho-1.png`: o `cenas.procurar` da
-    precedencia ao nome sobre o aspecto, entao nomear elimina o palpite.
+    precedencia ao nome sobre o aspecto, entao nomear elimina o palpite. O
+    indice continua de onde a pasta parou, entao chamar de novo acrescenta
+    `login-3.png` em vez de apagar a `login-1.png`.
+
+    `alvos` limita os formatos. E o que sustenta "nao gostei do 4:3, gera outro
+    e mantem o 1920x320": sem ele, recusar uma peca custaria as duas.
 
     Devolve a lista de laudos. **Uma falha nao derruba as outras**: cada cena e
     independente, e uma cena a menos so significa uma candidata a menos para o
@@ -222,10 +273,12 @@ def encher(pasta_cenas, paleta, contexto, quantas=2, semente=1, ecoar=None):
     pasta_cenas.mkdir(parents=True, exist_ok=True)
     laudos = []
 
-    for formato in formatos.COM_CENA:
+    for formato in alvos_validos(alvos):
         largura, altura = dimensao(formato)
         prompt = prompt_gem.montar(formato, paleta, contexto)
-        for indice in range(1, quantas + 1):
+        primeiro = proximo_indice(pasta_cenas, formato)
+        for passo in range(quantas):
+            indice = primeiro + passo
             nome = f"{formato.chave}-{indice}.png"
             laudo = {"formato": formato.chave, "arquivo": nome,
                      "pedido": [largura, altura], "neurons": custo_neurons(largura, altura)}

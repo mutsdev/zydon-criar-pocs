@@ -177,6 +177,127 @@ def conferir_no_ar(jwt, file_id, caminho_local):
     }
 
 
+# ---------------------------------------------------------------------------
+# Banners da home
+# ---------------------------------------------------------------------------
+# A aparencia expoe so tres campos de imagem — brand_image, favicon_image e
+# login_image. A peca de 1920x320 nao cabe em nenhum deles: ela mora noutro
+# recurso, `/api/b2b/banners`, que nao estava no modulo nem nas rotas que
+# chutamos. Descoberto em 03/09/2026 lendo o spec `b2b - admin`.
+#
+# Medindo o byte que a plataforma serve hoje:
+#     imageLarge  1920x320   desktop  <- o nosso cabecalho, encaixe exato
+#     imageSmall   960x360   mobile
+# Os dois sao **ids de resource-file**, os mesmos que `subir_arquivo` devolve.
+#
+# O portal novo nasce duplicado do base, entao ele JA TEM um "Banner principal".
+# O certo e ler esse banner e devolver o corpo inteiro com as imagens trocadas
+# — criar um segundo deixaria dois banners girando no carrossel, um com a arte
+# do cliente e outro com a do portal de demonstracao.
+CAMPOS_DO_PUT_BANNER = (
+    "title", "type", "durationType", "start_date", "end_date", "active",
+    "profile_partner", "profile_seller", "images", "group",
+)
+
+# O `id` da imagem entra de proposito: ele volta no GET, e devolve-lo no PUT e
+# o que diz "atualize esta imagem" em vez de "crie outra". Omiti-lo na primeira
+# versao teria sido a forma silenciosa de duplicar o slide.
+CAMPOS_DA_IMAGEM = ("id", "description", "imageSmall", "imageLarge", "link",
+                    "order", "active")
+
+
+def listar_banners(jwt):
+    """Os banners do portal do JWT.
+
+    A resposta e um envelope paginado com a lista em **`items`** — medido em
+    03/09/2026 contra o portal da Fornello:
+
+        {"currentPage":0,"perPage":25,"total":1,"items":[{...}]}
+
+    Cada item ja vem completo, com `images` dentro; nao e preciso um GET por
+    banner so para ver o conteudo. As outras chaves ficam aceitas porque custam
+    uma linha e um envelope diferente aqui viraria "o portal nao tem banner",
+    que e uma mentira dificil de desconfiar.
+    """
+    resposta = requests.get(f"{BASE_B2B}/banners/banners", headers=_cabecalho(jwt),
+                            timeout=60)
+    _levantar(resposta, "listar banners")
+    dados = resposta.json()
+    if isinstance(dados, dict):
+        for chave in ("items", "content", "banners"):
+            if isinstance(dados.get(chave), list):
+                return dados[chave]
+        return []
+    return dados or []
+
+
+def obter_banner(jwt, banner_id):
+    resposta = requests.get(f"{BASE_B2B}/banners/{banner_id}",
+                            headers=_cabecalho(jwt), timeout=60)
+    _levantar(resposta, f"ler banner {banner_id}")
+    return resposta.json()
+
+
+def corpo_do_banner(banner_atual, imagens):
+    """Funde o banner atual com os ids novos e devolve o corpo do PUT.
+
+    `imagens` e {"imageLarge": id, "imageSmall": id} — qualquer um dos dois
+    pode faltar, e o que faltar fica como esta. Trocar so o desktop e o caso
+    normal enquanto nao existe peca de 960x360.
+
+    Como o PUT da aparencia, este leva o corpo inteiro: mandar so `images`
+    zeraria titulo, periodo e perfis. E, como la, campo desconhecido levanta
+    aqui em vez de virar 400 no meio de uma gravacao.
+    """
+    desconhecidos = set(imagens) - {"imageSmall", "imageLarge"}
+    if desconhecidos:
+        raise ValueError(f"campos que a imagem do banner nao aceita: "
+                         f"{sorted(desconhecidos)}")
+
+    corpo = {c: banner_atual[c] for c in CAMPOS_DO_PUT_BANNER
+             if c in banner_atual}
+    corpo.setdefault("group", [])
+
+    atuais = list(banner_atual.get("images") or [])
+    if not atuais:
+        # Banner sem imagem nenhuma existe (alguem apagou a do portal base).
+        # Criar a primeira e melhor que falhar: o resto do corpo ja e valido.
+        atuais = [{"description": banner_atual.get("title", ""), "link": "",
+                   "order": 1, "active": True}]
+
+    # So a PRIMEIRA imagem e trocada. As outras sao slides que alguem pos a
+    # mao, e sobrescreve-las seria decidir por essa pessoa.
+    primeira = {c: atuais[0].get(c) for c in CAMPOS_DA_IMAGEM if c in atuais[0]}
+    primeira.update({c: v for c, v in imagens.items() if v})
+    corpo["images"] = [primeira] + [dict(i) for i in atuais[1:]]
+    return corpo
+
+
+def atualizar_banner(jwt, banner_id, banner_atual, imagens):
+    """PUT com o corpo completo. Nunca monta corpo do zero — ver o modulo."""
+    corpo = corpo_do_banner(banner_atual, imagens)
+    resposta = requests.put(f"{BASE_B2B}/banners/{banner_id}",
+                            headers={**_cabecalho(jwt),
+                                     "Content-Type": "application/json"},
+                            json=corpo, timeout=120)
+    _levantar(resposta, f"gravar banner {banner_id}")
+    return corpo
+
+
+def url_do_arquivo(jwt, file_id):
+    """A URL publica e permanente de um resource-file.
+
+    E o que o Mitra consegue exibir na tela de curadoria. Servir a peca pelo
+    tunel nao serve: o endereco do cloudflared e efemero e morre junto com o
+    processo, entao o executivo abriria a tela no dia seguinte e veria tres
+    imagens quebradas.
+    """
+    resposta = requests.get(f"{BASE_FILES}/{file_id}", headers=_cabecalho(jwt),
+                            timeout=60)
+    _levantar(resposta, "ler metadados do arquivo")
+    return (resposta.json().get("url") or "").split("?")[0]
+
+
 def salvar_backup(aparencia, destino):
     """Grava a aparencia anterior. E o unico caminho de volta se algo sair torto."""
     destino = Path(destino)

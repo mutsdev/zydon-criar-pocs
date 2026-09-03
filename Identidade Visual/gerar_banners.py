@@ -172,6 +172,24 @@ def preparar(args):
 # montar
 # --------------------------------------------------------------------------
 
+def _formatos_pedidos(texto):
+    """'login,cabecalho' -> (LOGIN, CABECALHO). Vazio ou None -> todos.
+
+    Existe para o executivo poder recusar UMA peca. Erro de nome levanta aqui,
+    com a lista do que existe, em vez de silenciosamente nao montar nada — que
+    e como um engano de digitacao viraria "o script nao fez o login".
+    """
+    if not texto:
+        return tuple(formatos.TODOS)
+    escolhidos = []
+    for chave in [p.strip() for p in str(texto).split(",") if p.strip()]:
+        if chave not in formatos.POR_CHAVE:
+            raise ValueError(f"formato desconhecido: {chave!r}. Conheco "
+                             f"{', '.join(sorted(formatos.POR_CHAVE))}.")
+        escolhidos.append(formatos.POR_CHAVE[chave])
+    return tuple(escolhidos) or tuple(formatos.TODOS)
+
+
 def _julgar(imagem, contexto_juiz, config, sem_juiz):
     """Chama o degrau 2. Devolve (aprovado, motivos, veredito, aviso)."""
     if sem_juiz:
@@ -205,11 +223,25 @@ def montar(args):
 
     aprovados = pasta / "aprovados"
     aprovados.mkdir(exist_ok=True)
+
+    # O manifesto anterior e o ponto de partida, e nao um arquivo a
+    # sobrescrever. Sem isto, remontar so o login apagaria do manifesto o
+    # cabecalho que continua em `aprovados/` — o arquivo ficaria em disco e
+    # sumiria para todo consumidor, que e a pior forma de perder uma peca.
     manifesto = {"cliente": cliente, "paleta": {k: pal[k] for k in
                  ("principal", "destaque", "neutra")}, "pecas": {}}
+    anterior = pasta / "manifesto.json"
+    if anterior.exists():
+        try:
+            manifesto["pecas"] = json.loads(
+                anterior.read_text(encoding="utf-8")).get("pecas") or {}
+        except json.JSONDecodeError:
+            pass
+
+    alvos = _formatos_pedidos(getattr(args, "formatos", None))
     secoes = []
 
-    for formato in formatos.TODOS:
+    for formato in alvos:
         itens = []
         escolhida = None
 
@@ -302,12 +334,25 @@ def auto(args):
             print(f"          {contexto['erro']}")
         print("          Passe --catalogo com o <cliente>_poc.json da rotina.")
 
-    linhas, total = gerador.orcamento(args.candidatas)
-    print(f"\nEtapa: gerar {args.candidatas} cena(s) por formato  "
+    args.pasta = str(pasta)
+    codigo = _gerar_e_montar(args, pasta, pal, contexto)
+    print(f"\nPASTA={pasta}")  # a ultima linha e o que o estudio le
+    return codigo
+
+
+def _gerar_e_montar(args, pasta, pal, contexto):
+    """Gera as cenas dos formatos pedidos e remonta so eles. Compartilhado
+    entre o `auto` (primeira vez) e o `regerar` (curadoria)."""
+    import gerador
+
+    alvos = [f.chave for f in _formatos_pedidos(getattr(args, "formatos", None))
+             if f in formatos.COM_CENA]
+    _, total = gerador.orcamento(args.candidatas, alvos)
+    print(f"\nEtapa: gerar {args.candidatas} cena(s) de {', '.join(alvos)}  "
           f"(~{total} neurons dos {gerador.NEURONS_POR_DIA} do dia)")
     try:
         laudos = gerador.encher(pasta / "cenas", pal, contexto,
-                                quantas=args.candidatas, ecoar=print)
+                                quantas=args.candidatas, ecoar=print, alvos=alvos)
     except gerador.SemChave as erro:
         print(f"[ERRO] {erro}")
         print("       Sem gerador, use o caminho manual: 'preparar' e o GEM.")
@@ -320,9 +365,25 @@ def auto(args):
               "deterministico, que e o piso e nunca fica feio — mas e o piso.")
 
     print("\nEtapa: montar as pecas")
-    args.pasta = str(pasta)
-    codigo = montar(args)
-    print(f"\nPASTA={pasta}")  # a ultima linha e o que o estudio le
+    return montar(args)
+
+
+def regerar(args):
+    """Gera cenas NOVAS para os formatos pedidos numa pasta que ja existe.
+
+    E a curadoria do executivo virada comando: "nao gostei do 4:3, gera outro e
+    mantem o 1920x320". As cenas antigas ficam em disco e o manifesto e
+    mesclado, entao o formato que ele aprovou nao e tocado.
+    """
+    pasta = Path(args.pasta)
+    arquivo = pasta / "contexto.json"
+    if not arquivo.exists():
+        print(f"[ERRO] {arquivo} nao existe — esta pasta nao veio de um "
+              f"'preparar' nem de um 'auto'.")
+        return 1
+    dados = json.loads(arquivo.read_text(encoding="utf-8"))
+    codigo = _gerar_e_montar(args, pasta, dados["paleta"], dados["contexto"])
+    print(f"\nPASTA={pasta}")
     return codigo
 
 
@@ -404,6 +465,10 @@ def main(argv=None):
                    help="ignora as cenas; mostra o piso de qualidade")
     b.add_argument("--tentativas", type=int,
                    help="limita quantas cenas por formato sao julgadas")
+    b.add_argument("--formatos", help="so estes, separados por virgula "
+                                      "(login,cabecalho,minimalista). O "
+                                      "manifesto e MESCLADO: o que nao foi "
+                                      "remontado continua valendo.")
     b.set_defaults(func=montar)
 
     c = sub.add_parser("auto", help="logo -> pecas, gerando as cenas sozinho")
@@ -430,13 +495,32 @@ def main(argv=None):
                    help="ignora as cenas; mostra o piso de qualidade")
     c.add_argument("--tentativas", type=int,
                    help="limita quantas cenas por formato sao julgadas")
+    c.add_argument("--formatos", help="so estes, separados por virgula")
     c.set_defaults(func=auto)
+
+    d = sub.add_parser("regerar", help="cenas novas de um formato so, "
+                                       "numa pasta que ja existe")
+    d.add_argument("pasta")
+    d.add_argument("--formatos", required=True,
+                   help="quais regerar, separados por virgula. Obrigatorio: "
+                        "sem ele, 'regerar' seria 'refazer tudo' e o formato "
+                        "que o executivo aprovou mudaria sozinho.")
+    d.add_argument("--candidatas", type=int, default=2)
+    d.add_argument("--sem-juiz", action="store_true")
+    d.add_argument("--so-fallback", action="store_true")
+    d.add_argument("--tentativas", type=int)
+    d.set_defaults(func=regerar)
 
     args = p.parse_args(argv)
     try:
         return args.func(args)
     except mod_logo.LogoInvalida as erro:
         print(f"[ERRO] logo recusada: {erro}")
+        return 2
+    except ValueError as erro:
+        # Nome de formato errado chega aqui. E erro de quem chamou, e um
+        # traceback de 20 linhas esconderia a unica linha que importa.
+        print(f"[ERRO] {erro}")
         return 2
     except Exception:
         traceback.print_exc()
