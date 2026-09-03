@@ -1,0 +1,595 @@
+{
+  "empresa": "Rema Tip Top",
+  "descricao_empresa": "Fabricante e fornecedora de soluções em polímeros para a indústria: reparo de pneus, manutenção de correias transportadoras, revestimentos antidesgaste e anticorrosivos. Fundada em 1923, a REMA TIP TOP atende mineração, siderurgia, papel e celulose, cimenteiras, portos e agricultura, com rede global de mais de 180 filiais.",
+  "gerado_em": "2026-09-03",
+  "setor": "Suprimentos Industriais — Borracha técnica, reparo de pneus e correias transportadoras",
+  "portal_name": "Rema Tip Top POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Rema Tip Top",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "REMA TIP TOP",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria Reparos de Pneus",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Reparos de Pneus",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria Correias Transportadoras",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Correias Transportadoras",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria Ferramentas para Vulcanização",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Ferramentas para Vulcanização",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "5136025 — Manchão Radial Eco Plus 25 (115x125) mm — Caixa c/10 peças",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/s/e/sem_nome_1500_x_1500_px_27_.jpg",
+          "payload": {
+            "name": "Manchão Radial Eco Plus 25 (115x125) mm — Caixa c/10 peças",
+            "description": "Manchão radial para reparo de pneus, aplicável tanto a quente quanto a frio. Camada adesiva CN autovulcanizante com proteção plástica, para adaptação a diferentes métodos de reparo. Caixa com 10 peças.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 154.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "5136025"
+          }
+        },
+        {
+          "label": "5136035 — Manchão Eco Plus 35 (148x203) mm — Caixa c/10 peças",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/m/a/manch_o_eco_plus_35__220x75__mm_-_caixa_c_10_pe_as_rema_tip_top_5136035_2.png",
+          "payload": {
+            "name": "Manchão Eco Plus 35 (148x203) mm — Caixa c/10 peças",
+            "description": "Manchão da linha Eco Plus para reparo de pneus com aplicação a quente ou a frio. A tecnologia da camada adesiva CN garante aderência, resistência e confiabilidade no reparo. Caixa com 10 peças.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 214.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "5136035"
+          }
+        },
+        {
+          "label": "5136042 — Manchão Radial Eco Plus 42 (260x130) mm — Caixa c/10 peças",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/s/e/sem_nome_1500_x_1500_px_28_.jpg",
+          "payload": {
+            "name": "Manchão Radial Eco Plus 42 (260x130) mm — Caixa c/10 peças",
+            "description": "Manchão radial de alta versatilidade para reparos de pneus de carga, com vulcanização a quente ou a frio. Camada autovulcanizante e proteção plástica. Caixa com 10 peças.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 314.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4,
+            "sku": "5136042"
+          }
+        },
+        {
+          "label": "5159430 — Adesivo OTR Cement CKW-FR Livre de CHC 650g",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/a/d/adesivo_otr_cement_ckw-fr_-_livre_de_chc_650g_rema_tip_top_5159430_1.png",
+          "payload": {
+            "name": "Adesivo OTR Cement CKW-FR Livre de CHC 650g",
+            "description": "Solução aceleradora para revestimento interno de pneus polidos, livre de CHC. Formulada para uso em conjunto com os manchões REMA TIP TOP RAD e PN OTR, é a escolha para reparos em pneus de grande porte. Lata de 650 g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 227.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "5159430"
+          }
+        },
+        {
+          "label": "5252027 — Adesivo SC 2000 Verde Lata 1kg",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/s/e/sem_nome_1500_x_1500_px_1_.jpg",
+          "payload": {
+            "name": "Adesivo SC 2000 Verde Lata 1kg",
+            "description": "Sistema bicomponente da linha SC Super Cola para emendas a frio, reparos e consertos em correias transportadoras, além de revestimento de superfícies metálicas. Lata de 1 kg.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 120.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12,
+            "sku": "5252027"
+          }
+        },
+        {
+          "label": "5251043 — Catalisador UT-R 20 40g",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/c/a/catalisador_ut-r20_5251043_1.png",
+          "payload": {
+            "name": "Catalisador UT-R 20 40g",
+            "description": "Catalisador do sistema de adesivação REMABOND SC 2000, para emendas e reparos a frio em correias transportadoras. Atua em conjunto com o Adesivo SC 2000, acelerando o processo de cura. Frasco de 40 g.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 42.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "5251043"
+          }
+        },
+        {
+          "label": "5380755 — Solução a Quente STL-NL4 500g",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/2/f/2f3b27a0-b2eb-4c44-8d81-2170d1e19eeb.jpg",
+          "payload": {
+            "name": "Solução a Quente STL-NL4 500g",
+            "description": "Cimento específico para emendas a quente de correias transportadoras, aplicado na preparação das pontas e das camadas de borracha antes da vulcanização. Lata de 500 g / 670 ml.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 155.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4,
+            "sku": "5380755"
+          }
+        },
+        {
+          "label": "5380471 — Borracha de Cobertura STB (4x500x4.500) mm",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/b/o/borracha_de_cobertura_stb_rema_tip_top_5380471_1.png",
+          "payload": {
+            "name": "Borracha de Cobertura STB (4x500x4.500) mm",
+            "description": "Composto de borracha não curada para emendas a quente em correias transportadoras de cabo de aço. Após a vulcanização garante resistência superior e alto desempenho em operação contínua. Rolo 4 x 500 x 4.500 mm.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 889.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "5380471"
+          }
+        },
+        {
+          "label": "5952373 — Faca Corta Lonas",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/s/e/sem_nome_1500_x_1500_px_8_.jpg",
+          "payload": {
+            "name": "Faca Corta Lonas",
+            "description": "Ferramenta manual que auxilia o processo de corte e separação das lonas em serviços de emenda e reparo de correias transportadoras. Lâmina em aço e cabo de madeira.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 309.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "5952373"
+          }
+        },
+        {
+          "label": "5952067 — Faca de Corte para Borracha 6\"",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/f/a/faca_de_corte_para_borracha_6__rema_tip_top_5952067_1.png",
+          "payload": {
+            "name": "Faca de Corte para Borracha 6\"",
+            "description": "Faca profissional para corte de borracha, projetada para precisão, durabilidade e conforto de uso em oficinas e campo. Lâmina de 6\".",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 229.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 2,
+            "sku": "5952067"
+          }
+        },
+        {
+          "label": "MRN0000000256 — Carbide 028 G16 para Preparação e Vulcanização",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/c/a/carbide_028_g16_rema_tip_top_mrn0000000256_1.png",
+          "payload": {
+            "name": "Carbide 028 G16 para Preparação e Vulcanização",
+            "description": "Disco de carbide para limpeza mecânica, preparação e acabamento de superfícies de borracha e pneus que serão vulcanizados. Grão 16.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 169.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "MRN0000000256"
+          }
+        },
+        {
+          "label": "5952940 — Levantador de Lona",
+          "temp_image_url": "https://www.rttshop.com.br/media/catalog/product/cache/70df85b50752c529e56946c1fa99fd32/l/e/levantador_de_lona_rema_tip_top_5952940_1.png",
+          "payload": {
+            "name": "Levantador de Lona",
+            "description": "Ferramenta essencial em serviços de emenda e manutenção de correias transportadoras, usada para levantar e separar as lonas durante a preparação da emenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 134.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "5952940"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Rema Tip Top",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Rema Tip Top — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Rema Tip Top",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Rema Tip Top — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Reparos de Pneus",
+          "salvar_id_como": "criteria_cat_reparos_id",
+          "payload": {
+            "name": "Rema Tip Top — Reparos de Pneus (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Correias Transportadoras",
+          "salvar_id_como": "criteria_cat_correias_id",
+          "payload": {
+            "name": "Rema Tip Top — Correias Transportadoras (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Rema Tip Top",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Rema Tip Top",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Rema Tip Top",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Rema Tip Top",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 18
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Rema Tip Top",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Rema Tip Top",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 6
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Rema Tip Top",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Rema Tip Top — Reparos de Pneus",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Rema Tip Top",
+                "criteria_id": "{{criteria_cat_reparos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Correias Transportadoras | Rema Tip Top",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Rema Tip Top — Correias Transportadoras",
+            "start_date": "2026-09-03",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Rema Tip Top",
+                "criteria_id": "{{criteria_cat_correias_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+ "pedido_id": "mitra-2026-09-03-002",
+ "status": "concluido",
+ "arquivo": "Arquivos Json/rema_tip_top_poc.json",
+ "logo_url": "https://rematiptop.com.br/wp-content/themes/rema-theme/images/logo-rema.png",
+ "resumo": {
+  "produtos": 12,
+  "categorias": 3,
+  "fonte": "site",
+  "preco": "publico",
+  "imagens_substituidas": 0,
+  "observacoes": "Precos e imagens vieram da loja oficial do proprio cliente (rttshop.com.br, Magento), ligada em 'Produtos' no menu de rematiptop.com.br — o site institucional nao tem catalogo. Todos os 12 produtos com SKU real do cliente e preco de tabela publicado. Tres imagens trazem o selo '10 anos' da propria RTT Shop no canto; e marca do cliente, nao de concorrente. Sem grade de variacoes: os eixos do catalogo (medida do manchao, polegada da faca) sao SKUs proprios, nao escolha sobre o mesmo produto. Callback para newmitra.mitrasheet.com:8080 nao foi tentado — a rotina roda na nuvem, cujo egresso so aceita CONNECT na 443 (ENTREGA.md). Entrega pelo repositorio, na branch da sessao."
+ },
+ "sessao_url": "https://claude.ai/code/session_01NA1DcVsZuWoyJm4oBWCay4"
+}
