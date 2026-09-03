@@ -715,14 +715,8 @@ def test_pecas_da_pasta_saem_do_manifesto_e_nao_de_um_glob(tmp_path):
     O manifesto e quem sabe qual arquivo foi o escolhido de cada formato."""
     import subir_banners
 
-    (tmp_path / "aprovados").mkdir()
-    for nome in ("login.jpg", "cabecalho.jpg", "minimalista.png", "orfa.jpg"):
-        (tmp_path / "aprovados" / nome).write_bytes(b"x")
-    (tmp_path / "manifesto.json").write_text(json.dumps({
-        "cliente": "Teste", "pecas": {
-            "login": {"arquivo": "login.jpg"},
-            "cabecalho": {"arquivo": "cabecalho.jpg"},
-            "minimalista": {"arquivo": "minimalista.png"}}}), encoding="utf-8")
+    _pasta_de_pecas(tmp_path)
+    (tmp_path / "aprovados" / "orfa.jpg").write_bytes(b"x")
 
     pecas, _ = subir_banners.pecas_da_pasta(tmp_path)
     # O minimalista nao tem destino no portal, e a orfa nao esta no manifesto.
@@ -730,6 +724,47 @@ def test_pecas_da_pasta_saem_do_manifesto_e_nao_de_um_glob(tmp_path):
 
     so_login, _ = subir_banners.pecas_da_pasta(tmp_path, {"login"})
     assert set(so_login) == {"login"}
+
+
+def _pasta_de_pecas(raiz, dimensoes=None):
+    """Uma pasta como o `montar` deixa: manifesto + aprovados/ com as pecas."""
+    (raiz / "aprovados").mkdir(exist_ok=True)
+    for chave in ("login", "cabecalho", "minimalista"):
+        formato = formatos.POR_CHAVE[chave]
+        tamanho = (dimensoes or {}).get(chave, (formato.largura, formato.altura))
+        Image.new("RGB", tamanho).save(raiz / "aprovados" / f"{chave}.png")
+    (raiz / "manifesto.json").write_text(json.dumps({
+        "cliente": "Teste",
+        "pecas": {c: {"arquivo": f"{c}.png"}
+                  for c in ("login", "cabecalho", "minimalista")}}),
+        encoding="utf-8")
+
+
+def test_peca_de_antes_da_mudanca_de_formato_e_recusada(tmp_path):
+    """Peca gerada antes de o formato mudar continua em aprovados/ e parece
+    boa: mesmo nome, mesma pasta, abre no visualizador.
+
+    Em 03/09/2026 o login foi de 1920x1440 para 2400x1800 e a simulacao chegou
+    a anunciar "2400x1800" para um arquivo de 1920x1440 — com --gravar teria
+    subido a peca velha e informado ao Mitra a dimensao errada.
+    """
+    import subir_banners
+
+    _pasta_de_pecas(tmp_path, {"login": (1920, 1440)})
+    with pytest.raises(subir_banners.PecaDesatualizada) as erro:
+        subir_banners.pecas_da_pasta(tmp_path)
+    # A mensagem tem que dizer como consertar, e nao so que esta errado.
+    assert "1920x1440" in str(erro.value) and "regerar" in str(erro.value)
+
+
+def test_a_dimensao_do_destino_sai_do_formatos_e_nao_da_mao():
+    """Numero de tamanho escrito a mao noutro modulo e bug — foi assim que a
+    simulacao mentiu sobre a peca que ia subir."""
+    import subir_banners
+
+    for chave, dados in subir_banners.DESTINOS.items():
+        formato = formatos.POR_CHAVE[chave]
+        assert dados["dimensao"] == (formato.largura, formato.altura)
 
 
 def test_manifesto_apontando_arquivo_que_sumiu_falha_claro(tmp_path):

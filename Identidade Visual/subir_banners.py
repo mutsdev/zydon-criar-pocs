@@ -42,21 +42,55 @@ for _fluxo in (sys.stdout, sys.stderr):
     except (AttributeError, ValueError):
         pass
 
+from PIL import Image  # noqa: E402
+
 import formatos  # noqa: E402
 import portal as mod_portal  # noqa: E402
 from subir_identidade import _carregar_env  # noqa: E402
 
 # Para onde cada peca vai. O `minimalista` nao aparece: ele nao tem destino no
 # portal — e a peca de reserva, para quando nenhuma cena presta.
+#
+# A dimensao NAO e escrita aqui, e sai de `formatos.py`. Escreve-la a mao ja
+# mentiu uma vez: em 03/09/2026 a simulacao anunciou "2400x1800" para um
+# `login.png` que tinha 1920x1440, gerado antes da mudanca de formato. Com
+# `--gravar` teria subido a peca velha e informado ao Mitra a dimensao errada.
 DESTINOS = {
-    "login": {"onde": "aparencia", "campo": "login_image",
-              "dimensao": (2400, 1800)},
-    "cabecalho": {"onde": "banner", "campo": "imageLarge",
-                  "dimensao": (1920, 320)},
+    "login": {"onde": "aparencia", "campo": "login_image"},
+    "cabecalho": {"onde": "banner", "campo": "imageLarge"},
 }
+for _chave, _dados in DESTINOS.items():
+    _formato = formatos.POR_CHAVE[_chave]
+    _dados["dimensao"] = (_formato.largura, _formato.altura)
 
 MIMES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
          ".webp": "image/webp"}
+
+
+class PecaDesatualizada(ValueError):
+    """A peca em disco nao tem mais a dimensao que o formato pede."""
+
+
+def conferir_dimensao(chave, caminho):
+    """Levanta se o arquivo nao tem a dimensao do formato.
+
+    Peca gerada antes de uma mudanca de formato continua em `aprovados/` e
+    parece boa: mesmo nome, mesma pasta, abre no visualizador. Foi o caso em
+    03/09/2026, quando o login foi de 1920x1440 para 2400x1800 — sem esta
+    checagem, o portal receberia a peca velha e o Mitra ouviria a dimensao
+    nova. O certo e recusar e dizer como regerar.
+    """
+    formato = formatos.POR_CHAVE[chave]
+    esperado = (formato.largura, formato.altura)
+    with Image.open(caminho) as img:
+        real = img.size
+    if real != esperado:
+        raise PecaDesatualizada(
+            f"'{chave}' em disco tem {real[0]}x{real[1]}, e o formato pede "
+            f"{esperado[0]}x{esperado[1]}. A peca e anterior a uma mudanca de "
+            f"formato. Regere:\n"
+            f'  python "Identidade Visual/gerar_banners.py" regerar '
+            f'"{Path(caminho).parent.parent}" --formatos {chave}')
 
 
 def pecas_da_pasta(pasta, quais=None):
@@ -65,6 +99,8 @@ def pecas_da_pasta(pasta, quais=None):
     Sai do `manifesto.json`, e nao de um `glob` em `aprovados/`: o manifesto e
     quem sabe qual arquivo foi o escolhido de cada formato, e um glob pegaria
     tambem a peca que ficou para tras numa remontagem.
+
+    Confere a dimensao de cada uma antes de devolver — ver `conferir_dimensao`.
     """
     pasta = Path(pasta)
     arquivo = pasta / "manifesto.json"
@@ -85,6 +121,7 @@ def pecas_da_pasta(pasta, quais=None):
             raise FileNotFoundError(
                 f"o manifesto aponta {caminho.name}, que nao esta em "
                 f"aprovados/. A pasta foi mexida a mao?")
+        conferir_dimensao(chave, caminho)
         achadas[chave] = caminho
     return achadas, manifesto
 
@@ -226,7 +263,11 @@ def main(argv=None):
               f"recebi {sorted(quais)}.", file=sys.stderr)
         return 2
 
-    pecas, manifesto = pecas_da_pasta(args.pasta, quais)
+    try:
+        pecas, manifesto = pecas_da_pasta(args.pasta, quais)
+    except (PecaDesatualizada, FileNotFoundError) as erro:
+        print(f"[ERRO] {erro}", file=sys.stderr)
+        return 2
     if not pecas:
         print("[ERRO] nenhuma peca com destino no portal nesta pasta.",
               file=sys.stderr)
