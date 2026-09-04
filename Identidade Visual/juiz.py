@@ -39,6 +39,8 @@ from PIL import Image
 BASE = "https://generativelanguage.googleapis.com/v1beta"
 BASE_CLOUDFLARE = "https://api.cloudflare.com/client/v4"
 MODELO_CLOUDFLARE = "@cf/meta/llama-3.2-11b-vision-instruct"
+BASE_OPENROUTER = "https://openrouter.ai/api/v1"
+MODELO_OPENROUTER = "minimax/minimax-m3:free"
 
 CHAVES_ESPERADAS = (
     "tem_texto_ou_letras", "tem_logotipo_ou_marca", "tem_deformacao_anatomica",
@@ -182,6 +184,56 @@ def _avaliar_cloudflare(imagem, contexto, config, tentativas):
     raise RuntimeError(f"juiz da Cloudflare nao respondeu ({ultimo})")
 
 
+def chave_openrouter():
+    valor = os.getenv("OPENROUTER_API_KEY", "").strip().strip('"').strip("'")
+    if not valor:
+        raise SemChave("OPENROUTER_API_KEY nao esta no ambiente. Ver .env.example.")
+    return valor
+
+
+def _avaliar_openrouter(imagem, contexto, config, tentativas):
+    """Julga pelo OpenRouter. O modelo vem da regua.
+
+    `response_format: json_object` e o que separa este caminho do da Cloudflare:
+    la o modelo devolvia lista em markdown quando lhe dava na telha, e o parser
+    virava adivinhacao.
+    """
+    chave = chave_openrouter()
+    modelo = config.get("modelo_openrouter", MODELO_OPENROUTER)
+    b64 = base64.b64encode(_jpeg(imagem, config.get("lado_maximo_px", 896))).decode()
+    corpo = {
+        "model": modelo,
+        "messages": [{"role": "user", "content": [
+            {"type": "text", "text": _instrucao(contexto)},
+            {"type": "image_url",
+             "image_url": {"url": f"data:image/jpeg;base64,{b64}"}}]}],
+        "max_tokens": 700, "temperature": 0,
+        "response_format": {"type": "json_object"},
+    }
+    ultimo = ""
+    for tentativa in range(1, tentativas + 1):
+        resposta = requests.post(
+            BASE_OPENROUTER + "/chat/completions",
+            headers={"Authorization": f"Bearer {chave}"}, json=corpo, timeout=180)
+        # 429 aqui e limite do PROVEDOR por minuto, nao cota do dia: nas medicoes
+        # de 04/09/2026 ele aparecia e sumia entre chamadas seguidas. Insistir
+        # resolve, ao contrario do 429 do Gemini.
+        if resposta.status_code == 429 or resposta.status_code >= 500:
+            ultimo = f"HTTP {resposta.status_code}"
+            if tentativa < tentativas:
+                time.sleep(5 * tentativa)
+                continue
+            raise RuntimeError(f"{ultimo} persistente no juiz do OpenRouter.")
+        resposta.raise_for_status()
+        escolhas = resposta.json().get("choices")
+        if not escolhas:
+            raise RuntimeError(f"juiz sem resposta: "
+                               f"{str(resposta.json())[:200]}")
+        return _conferir(_texto_para_json(
+            escolhas[0]["message"].get("content") or ""))
+    raise RuntimeError(f"juiz do OpenRouter nao respondeu ({ultimo})")
+
+
 def avaliar(imagem, contexto, config, tentativas=4):
     """Um julgamento, no primeiro provedor que responder.
 
@@ -190,8 +242,10 @@ def avaliar(imagem, contexto, config, tentativas=4):
     arte com texto inventado saiu como "cena aprovada" em 04/09/2026.
     """
     erros = []
-    for nome in config.get("provedores", ("cloudflare", "gemini")):
+    for nome in config.get("provedores", ("openrouter", "gemini")):
         try:
+            if nome == "openrouter":
+                return _avaliar_openrouter(imagem, contexto, config, tentativas)
             if nome == "cloudflare":
                 return _avaliar_cloudflare(imagem, contexto, config, tentativas)
             if nome == "gemini":

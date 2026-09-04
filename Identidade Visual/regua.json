@@ -26,9 +26,12 @@
     "_calibracao": "energia_borda_minima e delta_e_paleta foram medidos contra 6 fotos reais em 26/08/2026, nao chutados. Ver README."
   },
   "juiz": {
-    "_provedor": "Gemini continua sozinho. NAO recoloque 'cloudflare' na lista sem repetir a medicao de 04/09/2026: o @cf/meta/llama-3.2-11b-vision-instruct respondeu has_text=true em 10 de 10 chamadas, inclusive num controle de formas geometricas sem um caractere, onde ele mesmo listou 'square, circle, oval' e ainda assim marcou true; e no checklist de 12 criterios marcou true em todos, inclusive 'tem_elemento_cortado'. Ele nao julga, carimba. O llava-1.5-7b reprova ate retangulo cinza. Uma primeira amostra parecia boa — foi a repeticao que derrubou.",
+    "_provedor": "openrouter primeiro, gemini como reserva. NAO ponha 'cloudflare' na lista: medido em 04/09/2026, o @cf/meta/llama-3.2-11b-vision-instruct respondeu tem_texto=true em 10 de 10 chamadas, inclusive num controle de formas sem um caractere onde ele mesmo listou 'square, circle, oval'; no checklist de 12 criterios marcou tudo true, ate 'elemento cortado'. Ele carimba, nao julga. O llava-1.5-7b reprova ate retangulo cinza. A PRIMEIRA amostra dos dois parecia boa — foi repetir que derrubou.",
     "_gemini_tambem_erra": "A cabecalho-1 da Aroca (03/09) saiu 'aprovado' com 'MOZZI CUUDLA' e 'IUEZGAILS' escritos nas embalagens. Confirmado a olho. O juiz de texto ainda nao existe; o que existe e um juiz que as vezes ve.",
-    "provedores": ["gemini"],
+    "provedores": [
+      "openrouter",
+      "gemini"
+    ],
     "modelo": "gemini-3.6-flash",
     "modelo_cloudflare": "@cf/meta/llama-3.2-11b-vision-instruct",
     "lado_maximo_px": 896,
@@ -46,7 +49,9 @@
     ],
     "exigidos_verdadeiros": [
       "cena_condiz_com_o_segmento"
-    ]
+    ],
+    "modelo_openrouter": "minimax/minimax-m3:free",
+    "_openrouter": "minimax/minimax-m3:free acertou 20/20 em 04/09/2026: 10 negativos (controle geometrico e um recorte fotografico da propria cena, sem caractere) e 10 positivos (Aroca e Rema, com rotulo inventado). Gratuito. Reserva paga e barata que tambem fez 20/20: qwen/qwen3.7-flash. 429 aqui e limite por minuto do provedor e passa com retentativa — nao confundir com a cota diaria do Gemini."
   },
   "logo_portal": {
     "_comentario": "Regua do cabecalho do portal, onde a logo aparece com ~120x29. Mais folgada que a do banner de proposito: la ela e composta em peca grande, aqui nao.",

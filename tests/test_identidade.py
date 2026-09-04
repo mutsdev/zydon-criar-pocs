@@ -483,6 +483,83 @@ def test_nota_baixa_reprova_mesmo_sem_defeito_apontado(limiares):
     assert not aprovado and any("nota_3" in m for m in motivos)
 
 
+_CONTEXTO_JUIZ = {"descricao": "cena de banner", "segmento": "alimentos",
+                  "principal": "#50B028", "destaque": "#FFFBFF"}
+
+
+class _Resposta:
+    def __init__(self, codigo, dados):
+        self.status_code, self._dados = codigo, dados
+
+    def json(self):
+        return self._dados
+
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            raise RuntimeError(f"HTTP {self.status_code}")
+
+
+def _veredito_json():
+    import json as _json
+    return _json.dumps({c: (False if c.startswith(("tem_", "composicao", "cor_",
+                                                   "parece_")) else True)
+                        for c in juiz.CHAVES_ESPERADAS
+                        if c not in ("nota_estetica", "defeito_principal")}
+                       | {"nota_estetica": 5, "defeito_principal": ""})
+
+
+def test_juiz_cai_para_o_proximo_provedor(monkeypatch, limiares):
+    """Cota estourada num provedor nao pode virar peca nao julgada.
+
+    Foi assim que arte com texto inventado saiu como "cena aprovada" em
+    04/09/2026: o unico provedor caiu em 429 e o laco aprovou por omissao.
+    """
+    monkeypatch.setenv("OPENROUTER_API_KEY", "x")
+    monkeypatch.setenv("GEMINI_API_KEY", "y")
+    chamados = []
+
+    def falso(url, **kw):
+        chamados.append(url)
+        if "openrouter" in url:
+            return _Resposta(429, {})
+        return _Resposta(200, {"candidates": [{"content": {"parts": [
+            {"text": _veredito_json()}]}}]})
+
+    monkeypatch.setattr(juiz.requests, "post", falso)
+    monkeypatch.setattr(juiz.time, "sleep", lambda s: None)
+    config = dict(limiares["juiz"], provedores=["openrouter", "gemini"])
+    veredito = juiz.avaliar(Image.new("RGB", (200, 80), "white"), _CONTEXTO_JUIZ,
+                            config, tentativas=2)
+    assert veredito["nota_estetica"] == 5
+    assert any("openrouter" in u for u in chamados)
+    assert any("generativelanguage" in u for u in chamados)
+
+
+def test_juiz_pede_json_ao_openrouter(monkeypatch, limiares):
+    """`response_format` e o que separa este caminho do da Cloudflare, onde o
+    modelo devolvia lista em markdown e o parser virava adivinhacao."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "x")
+    visto = {}
+
+    def falso(url, **kw):
+        visto.update(kw.get("json") or {})
+        return _Resposta(200, {"choices": [{"message": {
+            "content": _veredito_json()}}]})
+
+    monkeypatch.setattr(juiz.requests, "post", falso)
+    config = dict(limiares["juiz"], provedores=["openrouter"])
+    juiz.avaliar(Image.new("RGB", (200, 80), "white"), _CONTEXTO_JUIZ, config)
+    assert visto["response_format"] == {"type": "json_object"}
+    assert visto["model"] == config["modelo_openrouter"]
+
+
+def test_juiz_aceita_json_embrulhado_em_prosa():
+    """Modelo sem `response_format` cerca o objeto de texto. Recortar entre a
+    primeira e a ultima chave e mais barato que exigir obediencia."""
+    embrulhado = "Aqui esta:" + chr(10) + "```json" + chr(10) + '{"a": 1}' + chr(10) + "```"
+    assert juiz._texto_para_json(embrulhado)["a"] == 1
+
+
 # ---------------------------------------------------------------------------
 # Tipografia e cor
 # ---------------------------------------------------------------------------
