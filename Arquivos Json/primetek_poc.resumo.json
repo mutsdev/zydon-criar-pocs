@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-04-001",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/primetek_poc.json",
+  "logo_url": "https://images.tcdn.com.br/files/1416572/themes/49/img/settings/q0go-1758121177914-LogoPrimetek300dpi-LARANJA-PRETO-1---Edson-Quaresma.png?f7a664f84b06858c79d3f8fcfbbf5232",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Primetek e distribuidora de TI (loja Tray, 560 itens no sitemap): preco publico na propria pagina de produto e imagem no CDN da loja, entao todas as 12 fotos sao do site do cliente. Categorias: Computadores e Monitores, Energia e Protecao Eletrica, Perifericos e Acessorios. Sem grade de variacoes — os eixos do catalogo sao modelo de fabricante, nao escolha do comprador. Maior desconto (30%) no perfil Varejo, que e a revenda de TI, o core do canal. Callback nao foi enviado: a rotina roda na nuvem e o Mitra atende na 8080, conforme ENTREGA.md. Atencao ao escolher a logo: a faixa de marcas do site oferece Dell, Acer e Logitech como candidatas validas; a escolhida e a logo da propria Primetek (3933x766, laranja e preto)."
+  },
+  "sessao_url": "https://claude.ai/code/session_01TLr7n3inD4fkPSpcTn5vVF"
+}
