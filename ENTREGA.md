@@ -346,6 +346,25 @@ Consequência a não estranhar: trocar a cor de uma peça deixa **a outra com a
 paleta anterior**. Duas cores no mesmo portal é pior que a cor errada, então
 mande as duas em `pecas` quando mudar `cor`.
 
+### Trocar só a cor: `acao: "recolorir"`
+
+**Trocar a cor não gera cena.** A foto é a mesma; o painel, o título e os ícones
+são desenhados por código em cima dela. Medido em 04/09/2026: **1,9 s e zero
+neurons**, contra minutos e ~940 neurons de um `regerar` — que ainda devolveria
+uma arte **diferente** da que o executivo acabou de aprovar.
+
+```
+{"pedido_id": "...", "acao": "recolorir", "cor": "#33415B"}
+```
+
+Responde **202**; as peças novas voltam pelo callback com `acao: "recolorir"`,
+no mesmo formato do `regerar`. **As duas peças são repintadas sempre** — a cor
+vale para o portal inteiro, e uma peça com a paleta antiga ao lado da nova é pior
+que a cor errada.
+
+Use isto quando o executivo só quer outra cor. Use `regerar` com `cor` quando ele
+quer outra cor **e** outra foto.
+
 **A cor escolhida vai para o portal, não só para os banners.** No `aplicar`, a
 mesma principal que pintou as peças é gravada em `appearance.color`, no mesmo PUT
 da tela de login. Sem isso o executivo trocaria a cor base, veria os banners

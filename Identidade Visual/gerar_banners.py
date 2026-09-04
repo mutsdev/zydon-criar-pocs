@@ -398,6 +398,30 @@ def regerar(args):
     return codigo
 
 
+def repintar(args):
+    """Troca a paleta e REMONTA, sem gerar cena nenhuma.
+
+    A cor e do Pillow: o painel, o titulo e os icones sao desenhados por codigo
+    sobre a foto. Trocar a cor nao precisa de cena nova — a foto serve igual — e
+    passar pelo `regerar` custaria minutos e neurons para produzir uma arte
+    diferente da que o executivo acabou de aprovar. Aqui e questao de segundos e
+    de graca, e a foto e exatamente a mesma.
+    """
+    pasta = Path(args.pasta)
+    arquivo = pasta / "contexto.json"
+    if not arquivo.exists():
+        print(f"[ERRO] {arquivo} nao existe — esta pasta nao veio de um "
+              f"'preparar' nem de um 'auto'.")
+        return 1
+    if not (pasta / "cenas").exists():
+        print(f"[ERRO] {pasta / 'cenas'} nao existe: nao ha o que remontar.")
+        return 1
+    dados = json.loads(arquivo.read_text(encoding="utf-8"))
+    # `_repintar` reescreve paleta.json e contexto.json; o `montar` le de la.
+    _repintar(args, pasta, dados, dados["contexto"])
+    return montar(args)
+
+
 def _feedback_pedido(itens):
     """['login=odiei a paleta'] -> {'login': 'odiei a paleta'}.
 
@@ -584,6 +608,18 @@ def main(argv=None):
     d.add_argument("--so-fallback", action="store_true")
     d.add_argument("--tentativas", type=int)
     d.set_defaults(func=regerar)
+
+    e = sub.add_parser("repintar", help="troca a cor e remonta, SEM gerar cena")
+    e.add_argument("pasta")
+    e.add_argument("--cor", required=True,
+                   help="cor primaria em hex. A foto nao muda: so o painel, "
+                        "o titulo e os icones, que sao desenhados por codigo.")
+    e.add_argument("--formatos", help="so estes, separados por virgula")
+    e.add_argument("--regua", help="regua.json alternativa")
+    e.add_argument("--sem-juiz", action="store_true")
+    e.add_argument("--so-fallback", action="store_true")
+    e.add_argument("--tentativas", type=int)
+    e.set_defaults(func=repintar)
 
     args = p.parse_args(argv)
     try:

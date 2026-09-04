@@ -328,7 +328,7 @@ def _previa(pedido, args):
 
 
 # --------------------------------------------------------------------- banner
-ACOES = ("regerar", "aplicar", "dispensar", "urls")
+ACOES = ("regerar", "recolorir", "aplicar", "dispensar", "urls")
 
 
 def trabalhar_banner():
@@ -346,11 +346,45 @@ def trabalhar_banner():
             FILA_BANNER.task_done()
 
 
+def _recolorir(estado, cor, args):
+    """Troca a cor base sem gerar cena: a foto e a mesma, o painel e repintado.
+
+    Sai pelo mesmo callback do `regerar` de proposito — para o Mitra, "a arte
+    mudou" e um evento so, e distinguir os dois obrigaria a tela a tratar dois
+    caminhos que terminam igual.
+    """
+    pedido_id = estado["pedido_id"]
+    print(chr(10) + f"  RECOLORIR {pedido_id}: {cor}")
+    pasta, saida = atendimento.repintar_pecas(estado["pasta_banners"], cor)
+
+    corpo = {"pedido_id": pedido_id, "acao": "recolorir", "cor": cor,
+             "pecas": list(atendimento.DESTINOS_BANNER),
+             "status": estado.get("status"), "url": estado.get("url"),
+             "portal_id": estado.get("portal_id")}
+    if not pasta:
+        corpo.update(fase="curadoria", erro=str(saida)[-500:])
+        print(f"  [ERRO] repintura falhou: {str(saida)[-300:]}")
+    else:
+        # As DUAS sobem: a cor vale para o portal inteiro, e uma peca com a
+        # paleta antiga ao lado da nova seria pior que a cor errada.
+        corpo.update(_publicar_para_curadoria(
+            {"status": "concluido", "portal_id": estado.get("portal_id")},
+            pasta, args))
+
+    atendimento.anotar({"pedido_id": pedido_id, "fase": corpo.get("fase"),
+                        "banners": corpo.get("banners")})
+    ok, detalhe = atendimento.avisar_mitra(estado.get("callback_url"),
+                                           estado.get("callback_token"), corpo)
+    print(f"  callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
+
+
 def _regerar(tarefa):
     """Gera cenas novas dos formatos pedidos e avisa o Mitra com as URLs."""
     estado, pecas, args = tarefa["estado"], tarefa["pecas"], tarefa["args"]
     feedback, cor = tarefa.get("feedback") or {}, tarefa.get("cor")
     pedido_id = estado["pedido_id"]
+    if tarefa.get("recolorir"):
+        return _recolorir(estado, cor, args)
     print(f"\n  REGERAR {pedido_id}: {', '.join(pecas)}")
     for peca, texto in sorted(feedback.items()):
         print(f'    feedback de {peca}: "{texto}"')
@@ -657,6 +691,29 @@ class Manipulador(BaseHTTPRequestHandler):
             return self._responder(202, {"ok": True, "aceito": True,
                                          "pedido_id": pedido_id, "acao": "regerar",
                                          "pecas": pecas,
+                                         "fila": FILA_BANNER.qsize()})
+
+        if acao == "recolorir":
+            # Trocar a cor NAO gera cena: a foto e a mesma e o painel e
+            # repintado por codigo, em ~2s e de graca. Passar isto pelo
+            # `regerar` gastaria minutos e neurons para devolver uma arte
+            # diferente da que o executivo acabou de aprovar.
+            cor = corpo.get("cor")
+            if not _e_hex(cor):
+                return self._responder(400, {
+                    "ok": False, "erro": "COR_INVALIDA",
+                    "detalhe": "'cor' e hex, no formato #RRGGBB"})
+            if not estado.get("pasta_banners"):
+                return self._responder(409, {
+                    "ok": False, "erro": "SEM_PECAS",
+                    "detalhe": "este pedido nao gerou banner nenhum"})
+            FILA_BANNER.put({"estado": estado, "pecas": [], "cor": cor,
+                             "recolorir": True, "args": self.args})
+            print(f"  [BANNER] {pedido_id} recolorir {cor} — "
+                  f"{FILA_BANNER.qsize()} na fila.")
+            return self._responder(202, {"ok": True, "aceito": True,
+                                         "pedido_id": pedido_id,
+                                         "acao": "recolorir", "cor": cor,
                                          "fila": FILA_BANNER.qsize()})
 
         # aplicar

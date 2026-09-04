@@ -606,6 +606,22 @@ def renovar_urls(org, portal_id, banners):
     return renovadas
 
 
+def repintar_pecas(pasta, cor):
+    """Troca a cor base e REMONTA, sem gerar cena nenhuma.
+
+    Existe porque trocar a cor nao precisa de foto nova: o painel, o titulo e os
+    icones sao desenhados por codigo sobre a cena que ja esta em disco. Passar
+    pelo `regerar` custaria minutos e neurons para devolver uma arte diferente
+    da que o executivo acabou de aprovar — o pior resultado possivel. Medido em
+    04/09/2026: 1,9s e zero neurons.
+    """
+    if not cor:
+        return None, "repintar sem cor: nao ha o que trocar"
+    comando = [sys.executable, str(GERADOR), "repintar", str(pasta),
+               "--cor", str(cor)]
+    return _rodar_gerador(comando, Path(pasta).parent.name)
+
+
 def cor_das_pecas(pasta):
     """A principal com que as pecas daquela pasta foram pintadas, ou None.
 

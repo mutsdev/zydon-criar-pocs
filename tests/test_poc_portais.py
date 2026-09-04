@@ -730,6 +730,41 @@ def test_feedback_viaja_ate_a_regeracao(receptor_no_ar):
     assert comando[comando.index("--cor") + 1] == "#123456"
 
 
+def test_recolorir_nao_passa_pelo_gerador_de_cena(receptor_no_ar):
+    """Trocar a cor e Pillow, nao IA: a foto e a mesma.
+
+    Medido em 04/09/2026: 1,9s e zero neurons pelo `repintar`, contra minutos e
+    ~940 neurons pelo `regerar` — que ainda devolveria uma arte DIFERENTE da que
+    o executivo acabou de aprovar.
+    """
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "rc1", "status": "concluido",
+                            "portal_id": "uuid-rc", "pasta_banners": "/pasta"})
+    recebidas = []
+    mod.FILA_BANNER.put = lambda tarefa: recebidas.append(tarefa)
+
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "rc1", "acao": "recolorir", "cor": "#33415B"})
+    assert status == 202 and corpo["acao"] == "recolorir"
+    assert recebidas[0]["recolorir"] is True and recebidas[0]["cor"] == "#33415B"
+    assert recebidas[0]["pecas"] == []       # nao e uma regeracao
+
+    comando = []
+    mod.atendimento._rodar_gerador = lambda c, r: (comando.extend(c), (None, "x"))[1]
+    mod.atendimento.repintar_pecas("/pasta", "#33415B")
+    assert "repintar" in comando and "auto" not in comando and "regerar" not in comando
+    assert comando[comando.index("--cor") + 1] == "#33415B"
+
+
+def test_recolorir_sem_cor_valida_e_recusado(receptor_no_ar):
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "rc2", "status": "concluido",
+                            "portal_id": "uuid-rc2", "pasta_banners": "/pasta"})
+    status, corpo = _postar(porta, "/banner", {"pedido_id": "rc2",
+                                               "acao": "recolorir"})
+    assert status == 400 and corpo["erro"] == "COR_INVALIDA"
+
+
 def test_feedback_de_peca_inventada_e_recusado(receptor_no_ar):
     porta, mod = receptor_no_ar
     mod.atendimento.anotar({"pedido_id": "fb2", "status": "concluido",
