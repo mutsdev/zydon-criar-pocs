@@ -1,8 +1,23 @@
 """Degrau 2: o juiz de visao.
 
-Roda num modelo de TEXTO com imagem de entrada (`gemini-3.6-flash`), e nao num
-modelo de imagem: o free tier de geracao de imagem do Gemini e `limit: 0`, mas
-o de texto com visao funciona. Foi medido, nao suposto — ver o README.
+Roda num modelo de TEXTO com imagem de entrada, e nao num modelo de imagem: o
+free tier de geracao de imagem do Gemini e `limit: 0`, mas o de texto com visao
+funciona. Foi medido, nao suposto — ver o README.
+
+**A escolha do provedor vem da regua (`provedores`), e hoje so o Gemini esta
+la.** O suporte a mais de um existe porque o Gemini tem dois defeitos medidos:
+cai em 429 de cota diaria, e — pior — APROVOU a `cabecalho-1` da Aroca (03/09),
+uma cena com "MOZZI CUUDLA" e "IUEZGAILS" escritos nas embalagens. Confirmado a
+olho. Ele rodou e nao viu o texto.
+
+O substituto obvio nao serviu, e vale registrar para ninguem repetir: o
+`@cf/meta/llama-3.2-11b-vision-instruct` (mesma conta que gera as cenas, sem
+cadastro novo, ~15 neurons por julgamento) respondeu `has_text: true` em 10 de
+10 chamadas, incluindo um controle de formas geometricas sem um caractere — no
+qual ele mesmo listou "square, circle, oval" e ainda assim marcou verdadeiro. No
+checklist de 12 criterios marcou tudo verdadeiro, inclusive "elemento cortado".
+Ele carimba, nao julga; o `llava-1.5-7b` reprova ate um retangulo cinza. A
+PRIMEIRA amostra dos dois parecia boa — foi repetir que derrubou.
 
 O juiz recebe a paleta e o segmento junto com a imagem. Sem esse contexto ele
 julga no vacuo e nao tem como responder "a cor destoa da marca".
@@ -19,8 +34,11 @@ import time
 from pathlib import Path
 
 import requests
+from PIL import Image
 
 BASE = "https://generativelanguage.googleapis.com/v1beta"
+BASE_CLOUDFLARE = "https://api.cloudflare.com/client/v4"
+MODELO_CLOUDFLARE = "@cf/meta/llama-3.2-11b-vision-instruct"
 
 CHAVES_ESPERADAS = (
     "tem_texto_ou_letras", "tem_logotipo_ou_marca", "tem_deformacao_anatomica",
@@ -80,7 +98,114 @@ Responda SOMENTE um objeto JSON com exatamente estas chaves:
 - defeito_principal: uma frase curta com o pior problema, ou "" se nao houver."""
 
 
+def credenciais_cloudflare():
+    conta = os.getenv("CLOUDFLARE_ACCOUNT_ID", "").strip().strip('"').strip("'")
+    token = os.getenv("CLOUDFLARE_API_TOKEN", "").strip().strip('"').strip("'")
+    if not conta or not token:
+        raise SemChave(
+            "CLOUDFLARE_ACCOUNT_ID/CLOUDFLARE_API_TOKEN nao estao no ambiente. "
+            "Sao as mesmas que geram as cenas — se a geracao roda, o juiz roda.")
+    return conta, token
+
+
+def _jpeg(imagem, lado):
+    """JPEG reduzido, para o payload caber e a leitura nao piorar.
+
+    896px no lado maior: o texto que interessa e rotulo em embalagem, que
+    continua legivel nessa escala, e a cena de 1440px em base64 so engorda o
+    corpo da requisicao.
+    """
+    img = imagem.convert("RGB")
+    if max(img.size) > lado:
+        escala = lado / max(img.size)
+        img = img.resize((int(img.width * escala), int(img.height * escala)),
+                         Image.LANCZOS)
+    buffer = io.BytesIO()
+    img.save(buffer, format="JPEG", quality=88)
+    return buffer.getvalue()
+
+
+def _texto_para_json(texto):
+    """O JSON do veredito, mesmo vindo cercado de prosa ou de crases.
+
+    O Gemini responde com `response_mime_type` e devolve JSON puro; o llama nao
+    tem esse controle e as vezes embrulha o objeto. Recortar entre a primeira
+    chave e a ultima e mais barato que exigir obediencia do modelo.
+    """
+    texto = (texto or "").strip()
+    try:
+        return json.loads(texto)
+    except json.JSONDecodeError:
+        inicio, fim = texto.find("{"), texto.rfind("}")
+        if inicio < 0 or fim <= inicio:
+            raise
+        return json.loads(texto[inicio:fim + 1])
+
+
+def _conferir(veredito):
+    faltando = [c for c in CHAVES_ESPERADAS if c not in veredito]
+    if faltando:
+        raise RuntimeError(f"juiz devolveu JSON incompleto, faltou: {faltando}")
+    return veredito
+
+
+def _avaliar_cloudflare(imagem, contexto, config, tentativas):
+    """Julga pelo Workers AI, na mesma conta que gera as cenas."""
+    conta, token = credenciais_cloudflare()
+    modelo = config.get("modelo_cloudflare", MODELO_CLOUDFLARE)
+    b64 = base64.b64encode(_jpeg(imagem, config.get("lado_maximo_px", 896))).decode()
+    corpo = {
+        "messages": [{"role": "user", "content": [
+            {"type": "text", "text": _instrucao(contexto)},
+            {"type": "image_url",
+             "image_url": {"url": f"data:image/jpeg;base64,{b64}"}}]}],
+        "max_tokens": 700,
+        "temperature": 0,
+    }
+    url = f"{BASE_CLOUDFLARE}/accounts/{conta}/ai/run/{modelo}"
+    ultimo = ""
+    for tentativa in range(1, tentativas + 1):
+        resposta = requests.post(url, headers={"Authorization": f"Bearer {token}"},
+                                 json=corpo, timeout=240)
+        if resposta.status_code == 429 or resposta.status_code >= 500:
+            ultimo = f"HTTP {resposta.status_code}"
+            if tentativa < tentativas:
+                time.sleep(4 * tentativa)
+                continue
+            raise RuntimeError(f"{ultimo} persistente no juiz da Cloudflare.")
+        resposta.raise_for_status()
+        dados = resposta.json()
+        if not dados.get("success"):
+            raise RuntimeError(f"juiz da Cloudflare recusou: "
+                               f"{str(dados.get('errors'))[:200]}")
+        return _conferir(_texto_para_json(dados["result"].get("response")))
+    raise RuntimeError(f"juiz da Cloudflare nao respondeu ({ultimo})")
+
+
 def avaliar(imagem, contexto, config, tentativas=4):
+    """Um julgamento, no primeiro provedor que responder.
+
+    A ordem vem da regua (`provedores`). Cair para o proximo e o ponto: uma cota
+    diaria estourada num deles nao pode virar peca nao julgada — foi assim que
+    arte com texto inventado saiu como "cena aprovada" em 04/09/2026.
+    """
+    erros = []
+    for nome in config.get("provedores", ("cloudflare", "gemini")):
+        try:
+            if nome == "cloudflare":
+                return _avaliar_cloudflare(imagem, contexto, config, tentativas)
+            if nome == "gemini":
+                return _avaliar_gemini(imagem, contexto, config, tentativas)
+            raise RuntimeError(f"provedor de juiz desconhecido: {nome!r}")
+        except (SemChave, LimiteDiarioEsgotado, RuntimeError,
+                requests.RequestException, json.JSONDecodeError, KeyError) as erro:
+            erros.append(f"{nome}: {type(erro).__name__}: {erro}")
+    if all("LimiteDiarioEsgotado" in e or "SemChave" in e for e in erros):
+        raise LimiteDiarioEsgotado(" | ".join(erros))
+    raise RuntimeError(" | ".join(erros) or "nenhum provedor de juiz configurado")
+
+
+def _avaliar_gemini(imagem, contexto, config, tentativas=4):
     """Uma chamada de julgamento. Devolve o dict do veredito.
 
     `imagem` e um PIL.Image; vai inline em PNG. Nao usa a File API: banner cabe
@@ -132,11 +257,7 @@ def avaliar(imagem, contexto, config, tentativas=4):
             raise RuntimeError(f"juiz sem resposta: {dados.get('promptFeedback', dados)}")
         texto = "".join(p.get("text", "")
                         for p in candidatos[0]["content"]["parts"])
-        veredito = json.loads(texto)
-        faltando = [c for c in CHAVES_ESPERADAS if c not in veredito]
-        if faltando:
-            raise RuntimeError(f"juiz devolveu JSON incompleto, faltou: {faltando}")
-        return veredito
+        return _conferir(_texto_para_json(texto))
 
     raise RuntimeError("inalcancavel")
 

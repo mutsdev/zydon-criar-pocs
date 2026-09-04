@@ -26,7 +26,12 @@
     "_calibracao": "energia_borda_minima e delta_e_paleta foram medidos contra 6 fotos reais em 26/08/2026, nao chutados. Ver README."
   },
   "juiz": {
+    "_provedor": "Gemini continua sozinho. NAO recoloque 'cloudflare' na lista sem repetir a medicao de 04/09/2026: o @cf/meta/llama-3.2-11b-vision-instruct respondeu has_text=true em 10 de 10 chamadas, inclusive num controle de formas geometricas sem um caractere, onde ele mesmo listou 'square, circle, oval' e ainda assim marcou true; e no checklist de 12 criterios marcou true em todos, inclusive 'tem_elemento_cortado'. Ele nao julga, carimba. O llava-1.5-7b reprova ate retangulo cinza. Uma primeira amostra parecia boa — foi a repeticao que derrubou.",
+    "_gemini_tambem_erra": "A cabecalho-1 da Aroca (03/09) saiu 'aprovado' com 'MOZZI CUUDLA' e 'IUEZGAILS' escritos nas embalagens. Confirmado a olho. O juiz de texto ainda nao existe; o que existe e um juiz que as vezes ve.",
+    "provedores": ["gemini"],
     "modelo": "gemini-3.6-flash",
+    "modelo_cloudflare": "@cf/meta/llama-3.2-11b-vision-instruct",
+    "lado_maximo_px": 896,
     "nota_minima": 4,
     "fatais": [
       "tem_texto_ou_letras",
