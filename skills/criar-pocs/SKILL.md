@@ -83,6 +83,37 @@ python "Criar Portais/verificar_imagens.py" "Arquivos Json/<cliente>_poc.json"
 Ele confere todas em paralelo — 15 imagens em 1,4 segundo — e sai com código 1
 se alguma reprovar, dizendo qual e por quê. É o PASSO 3 inteiro num comando.
 
+**O Chromium da rotina precisa de `--ssl-version-max=tls1.2`.** Sem isso ele dá
+`ERR_CONNECTION_RESET` em *qualquer* host — `example.com` inclusive — e o erro lê
+como site bloqueado quando é o proxy de saída derrubando o ClientHello grande do
+Chromium. Medido em 04/09/2026, no pedido da Conservas Gentleman: meia dúzia de
+idas até desconfiar do navegador em vez do site. Lance sempre assim, e teste em
+`example.com` antes de culpar o alvo:
+
+```python
+p.chromium.launch(executable_path="/opt/pw-browsers/chromium",
+    args=["--no-sandbox", "--ignore-certificate-errors", "--ssl-version-max=tls1.2"],
+    proxy={"server": "http://127.0.0.1:42749"})
+```
+
+O `proxy=` também é obrigatório: o Chromium não lê `HTTPS_PROXY` do ambiente.
+
+**Perfil de Instagram como "site" não tem catálogo — e a resposta é falhar rápido.**
+O Instagram exige login já na primeira tela do perfil, e em 04/09/2026 estavam
+todos fechados: HTML cru (302), `/embed` e `?__a=1` (vazios),
+`api/v1/users/web_profile_info` por HTTP **e** de dentro do navegador com cookies
+de convidado (401), o perfil no Chromium (muro de login) e quatro espelhos
+públicos (picuki/imginn/pixwox `403`, greatfon/dumpor com desafio anti-bot).
+Só uma coisa abre sem login, e vale saber: **o embed de um post**, em
+`https://www.instagram.com/p/<shortcode>/embed/captioned/`, que entrega legenda,
+hashtags, avatar e a foto do post. Serve para confirmar **ramo e cidade** — não
+para montar catálogo, porque não há como listar os shortcodes dos outros posts.
+
+Então, quando o pedido vier só com Instagram: gaste **uma** rodada procurando
+loja própria ou o catálogo da marca num varejista, e se não achar, entregue
+`status: "falhou"` pedindo anexo (PDF/planilha) ou URL de loja. Inventar produto
+de conserva genérico encheria a demonstração de item que o cliente não vende.
+
 **Não leia o `validar_poc.py` para descobrir as regras.** Ele tem centenas de
 linhas e as regras que importam já estão aqui e no `ESTRUTURA-JSON.md`. Rode o
 validador: ele diz exatamente o que está errado, em um segundo. Ler o validador

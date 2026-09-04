@@ -1,0 +1,16 @@
+{
+  "pedido_id": "mitra-2026-09-04-002",
+  "status": "falhou",
+  "arquivo": null,
+  "logo_url": null,
+  "logo_motivo": "O unico ativo de marca alcancavel e a foto de perfil do Instagram, e ela sai do CDN em 100x100 — reprova na regua (minimo 200px no maior lado). As versoes maiores (s320x320, s640x640, sem stp) respondem 403, porque o parametro faz parte da assinatura da URL. As outras candidatas que o achar_logo.py enxergou no HTML sao favicons do proprio Instagram (152x152, 167x167, 180x180), nao do cliente. Peca ao cliente o arquivo vetorial (.svg/.ai/.pdf) ou uma exportacao PNG com pelo menos 200px no maior lado.",
+  "resumo": {
+    "produtos": 0,
+    "categorias": 0,
+    "fonte": "site",
+    "preco": "ausente",
+    "imagens_substituidas": 0,
+    "observacoes": "Nenhum produto foi extraido: o 'site' do pedido e um perfil de Instagram (https://www.instagram.com/conservasgentleman/) e o Instagram exige login para exibir o perfil desde a primeira tela — nao ha catalogo publico para raspar. Tentado e esgotado: HTML cru (302 para login), /embed e ?__a=1 (vazios), api/v1/users/web_profile_info tanto por HTTP quanto de dentro do contexto do navegador com cookies de convidado (401 require_login), o perfil no Chromium (muro de login), e quatro espelhos publicos (picuki, imginn, pixwox: 403; greatfon/dumpor: desafio anti-bot). Fora do Instagram: nenhum varejista com o catalogo da marca — a busca em 10 catalogos VTEX por 'gentleman conserva' voltou vazia, e a pagina de marca do Trimais que aparece na busca do Google esta 404 no site (a API VipCommerce responde 403); alem disso ha homonimos ('Gentleman' de outros fabricantes e uma pagina argentina de 2017) que nao dao para atribuir a este cliente sem confirmacao. O que se apurou com certeza, pelo embed do unico post indexado: o perfil e @conservasgentleman, tem 89 posts e 233 seguidores, e o ramo real e conservas artesanais para tabua de frios e harmonizacao, em Sao Paulo (#conservas #mesaposta #tabuasdefrios #saopaulo). Isso confirma o segmento (Alimentos), mas nao da nome, embalagem, preco nem foto de produto — e inventar catalogo numa POC significaria demonstrar ao cliente produtos que ele nao vende. Para destravar, redispare o pedido com 'anexos': catalogo/tabela de precos em PDF ou planilha e a via mais rapida, e em B2B costuma ser a unica fonte de preco confiavel de qualquer jeito. Alternativa: qualquer URL de loja propria (Nuvemshop, WooCommerce, Wix) resolve tanto o catalogo quanto as fotos. Callback nao foi chamado: o receptor atende na porta 8080 e o egresso deste ambiente so aceita CONNECT na 443 — topologia, nao intermitencia (ENTREGA.md). A entrega saiu pelo repositorio, como previsto."
+  },
+  "sessao_url": "https://claude.ai/code/session_01QBmUW831Pz24ori9akyorL"
+}
