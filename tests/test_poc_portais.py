@@ -462,7 +462,9 @@ def receptor_no_ar(tmp_path):
 
     # ENDERECO e FILA_PREVIA.put sao de modulo: sem restaurar, um teste que os
     # troca contamina os seguintes.
-    endereco_antes, put_antes = mod.atendimento.ENDERECO, mod.FILA_PREVIA.put
+    antes = {"ENDERECO": mod.atendimento.ENDERECO,
+             "_rodar_gerador": mod.atendimento._rodar_gerador,
+             "previa": mod.FILA_PREVIA.put, "banner": mod.FILA_BANNER.put}
     mod.atendimento.REGISTRO = tmp_path / "pedidos.jsonl"
     mod.Manipulador.args = argparse.Namespace(
         token="segredo-de-teste", org="pocs", gravar=False, simular=True,
@@ -472,7 +474,9 @@ def receptor_no_ar(tmp_path):
     threading.Thread(target=servidor.serve_forever, daemon=True).start()
     yield servidor.server_address[1], mod
     servidor.shutdown()
-    mod.atendimento.ENDERECO, mod.FILA_PREVIA.put = endereco_antes, put_antes
+    mod.atendimento.ENDERECO = antes["ENDERECO"]
+    mod.atendimento._rodar_gerador = antes["_rodar_gerador"]
+    mod.FILA_PREVIA.put, mod.FILA_BANNER.put = antes["previa"], antes["banner"]
 
 
 def _postar(porta, rota, corpo, token="segredo-de-teste"):
@@ -616,6 +620,61 @@ def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
     status, corpo = _postar(porta, "/banner", {"pedido_id": "p3",
                                                "acao": "dispensar"})
     assert status == 409 and corpo["erro"] == "SEM_PORTAL"
+
+
+def test_feedback_viaja_ate_a_regeracao(receptor_no_ar):
+    """O feedback do executivo tem que chegar no comando do gerador.
+
+    Ele e a unica parte do pedido escrita por alguem que VIU a peca; se parasse
+    no receptor, a regeracao seria mais um chute — que e exatamente a queixa que
+    fez a rota ganhar este campo.
+    """
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "fb1", "status": "concluido",
+                            "portal_id": "uuid-fb", "pasta_banners": "/pasta"})
+    recebidas = []
+    mod.FILA_BANNER.put = lambda tarefa: recebidas.append(tarefa)
+
+    status, _ = _postar(porta, "/banner", {
+        "pedido_id": "fb1", "acao": "regerar", "pecas": ["login"],
+        "feedback": {"login": "odiei a paleta",
+                     "cabecalho": "esse ficou otimo, mantem a pegada"}})
+
+    assert status == 202
+    tarefa = recebidas[0]
+    assert tarefa["pecas"] == ["login"]
+    # O elogio ao cabecalho viaja mesmo sem ele estar em `pecas`: e assim que
+    # "faz o login parecido com aquele" chega ao prompt.
+    assert tarefa["feedback"]["cabecalho"].startswith("esse ficou otimo")
+
+    comando = []
+    mod.atendimento._rodar_gerador = lambda c, r: (comando.extend(c), (None, "x"))[1]
+    mod.atendimento.regerar_pecas("/pasta", ["login"],
+                                  feedback=tarefa["feedback"], cor="#123456")
+    assert "--feedback" in comando and "login=odiei a paleta" in comando
+    assert "cabecalho=esse ficou otimo, mantem a pegada" in comando
+    assert comando[comando.index("--cor") + 1] == "#123456"
+
+
+def test_feedback_de_peca_inventada_e_recusado(receptor_no_ar):
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "fb2", "status": "concluido",
+                            "portal_id": "uuid-fb2", "pasta_banners": "/pasta"})
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "fb2", "acao": "regerar", "pecas": ["login"],
+        "feedback": {"logim": "texto"}})
+    assert status == 400 and corpo["erro"] == "FEEDBACK_INVALIDO"
+
+
+def test_cor_precisa_ser_hex(receptor_no_ar):
+    """A cor vira paleta do Pillow; um valor torto sujaria a pasta inteira."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.anotar({"pedido_id": "fb3", "status": "concluido",
+                            "portal_id": "uuid-fb3", "pasta_banners": "/pasta"})
+    status, corpo = _postar(porta, "/banner", {
+        "pedido_id": "fb3", "acao": "regerar", "pecas": ["login"],
+        "cor": "vermelho"})
+    assert status == 400 and corpo["erro"] == "COR_INVALIDA"
 
 
 def test_previa_sem_tunel_avisa_em_vez_de_gerar(receptor_no_ar):

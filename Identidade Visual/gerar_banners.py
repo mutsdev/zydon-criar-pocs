@@ -382,9 +382,75 @@ def regerar(args):
               f"'preparar' nem de um 'auto'.")
         return 1
     dados = json.loads(arquivo.read_text(encoding="utf-8"))
-    codigo = _gerar_e_montar(args, pasta, dados["paleta"], dados["contexto"])
+    pal, contexto = dados["paleta"], dados["contexto"]
+
+    notas = _feedback_pedido(getattr(args, "feedback", None))
+    if notas:
+        contexto = dict(contexto, feedback=notas)
+        for chave, texto in sorted(notas.items()):
+            print(f'  feedback de {chave}: "{texto}"')
+
+    if getattr(args, "cor", None):
+        pal, contexto = _repintar(args, pasta, dados, contexto)
+
+    codigo = _gerar_e_montar(args, pasta, pal, contexto)
     print(f"\nPASTA={pasta}")
     return codigo
+
+
+def _feedback_pedido(itens):
+    """['login=odiei a paleta'] -> {'login': 'odiei a paleta'}.
+
+    Parte no PRIMEIRO '=' porque o texto e do executivo e pode ter outros. Peca
+    desconhecida vira erro alto: engolir 'logim=...' faria a regeracao rodar sem
+    o unico dado que o executivo se deu ao trabalho de escrever.
+    """
+    notas = {}
+    for item in itens or []:
+        chave, _, texto = item.partition("=")
+        chave = chave.strip()
+        if chave not in formatos.POR_CHAVE:
+            raise ValueError(f"feedback para peca desconhecida: {chave!r}")
+        if texto.strip():
+            notas[chave] = texto.strip()
+    return notas
+
+
+def _repintar(args, pasta, dados, contexto):
+    """Extrai a paleta de novo com a cor que o executivo mandou.
+
+    A paleta e do PILLOW, nao do modelo de imagem: o painel, o titulo e os
+    icones sao pintados com ela. Regerar a cena com "odiei a paleta" no prompt
+    mudaria a foto e devolveria o mesmo painel na mesma cor — o executivo pediria
+    de novo, e de novo, sem nunca chegar la.
+    """
+    from PIL import Image
+
+    normalizada = pasta / "logo-normalizada.png"
+    if not normalizada.exists():
+        raise ValueError(f"{normalizada} nao existe: sem a logo nao da para "
+                         f"recalcular destaque e neutra a partir da cor nova")
+    with Image.open(normalizada) as img:
+        pal = mod_paleta.extrair(img.convert("RGBA"), args.cor)
+
+    (pasta / "paleta.json").write_text(
+        json.dumps({k: pal[k] for k in ("principal", "destaque", "neutra")},
+                   indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (pasta / "contexto.json").write_text(
+        json.dumps(dict(dados, paleta=pal, contexto=contexto),
+                   indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    # As pecas NAO regeradas continuam com a paleta velha, em disco e no
+    # manifesto. Duas cores diferentes no mesmo portal e pior que a cor errada,
+    # entao isto e aviso alto e nao nota de rodape.
+    pedidos = {f.chave for f in _formatos_pedidos(getattr(args, "formatos", None))}
+    fora = sorted(f.chave for f in formatos.COM_CENA if f.chave not in pedidos)
+    print(f"  paleta trocada para {pal['principal']} "
+          f"(destaque {pal['destaque']}, neutra {pal['neutra']})")
+    if fora:
+        print(f"  [AVISO] {', '.join(fora)} ficou com a paleta anterior. "
+              f"Regere tambem, ou o portal sai com duas cores.")
+    return pal, contexto
 
 
 def _tentativa(arquivo, indice, formato, pal, contexto, logo_img, limiares,
@@ -505,6 +571,14 @@ def main(argv=None):
                    help="quais regerar, separados por virgula. Obrigatorio: "
                         "sem ele, 'regerar' seria 'refazer tudo' e o formato "
                         "que o executivo aprovou mudaria sozinho.")
+    d.add_argument("--feedback", action="append", metavar="PECA=TEXTO",
+                   help="o que o executivo escreveu sobre uma peca; repita para "
+                        "cada uma. O comentario de uma peca entra no prompt da "
+                        "outra tambem — elogiar uma e a forma de dirigir a "
+                        "seguinte.")
+    d.add_argument("--cor", help="cor primaria em hex. A paleta sai da LOGO: "
+                                 "refazer a cena nao muda uma cor do painel, "
+                                 "entao queixa de cor so tem efeito por aqui.")
     d.add_argument("--candidatas", type=int, default=2)
     d.add_argument("--sem-juiz", action="store_true")
     d.add_argument("--so-fallback", action="store_true")

@@ -426,17 +426,25 @@ def gerar_pecas(caminho_json, logo, nome_cliente, segmento=None, candidatas=2,
     return _rodar_gerador(comando, prefixo(Path(caminho_json).name))
 
 
-def regerar_pecas(pasta, quais, candidatas=2):
+def regerar_pecas(pasta, quais, candidatas=2, feedback=None, cor=None):
     """Gera cenas NOVAS dos formatos pedidos, dentro de uma pasta que existe.
 
     E a curadoria do executivo: "nao gostei do 4:3, gera outro e mantem o
     1920x320". Nao precisa de logo nem de catalogo — os dois ja estao gravados
     na pasta desde o `gerar_pecas`, e reabri-los daria a chance de divergirem.
+
+    `feedback` e {peca: texto} e aceita comentario de peca que NAO esta em
+    `quais`: elogiar a peca aprovada e a forma de dirigir a que vai ser refeita.
     """
     if not quais:
         return None, "regerar sem dizer o que: seria refazer tudo"
     comando = [sys.executable, str(GERADOR), "regerar", str(pasta),
                "--formatos", ",".join(quais), "--candidatas", str(candidatas)]
+    for peca, texto in sorted((feedback or {}).items()):
+        if str(texto or "").strip():
+            comando += ["--feedback", f"{peca}={str(texto).strip()}"]
+    if cor:
+        comando += ["--cor", str(cor)]
     return _rodar_gerador(comando, Path(pasta).parent.name)
 
 

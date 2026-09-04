@@ -314,6 +314,42 @@ Dá para uns dez clientes por dia contando as regerações. Passou disso, a gera
 falha e a peça sai pelo fallback determinístico — que é o piso e nunca fica feio,
 mas é o piso.
 
+## O feedback do executivo: dizer o que está errado, e não torcer
+
+`regerar` sem feedback é a máquina chutando de novo. A ação aceita dois campos
+opcionais, e eles mudam coisas diferentes:
+
+```json
+{"pedido_id": "...", "acao": "regerar", "pecas": ["login"],
+ "feedback": {"login": "odiei essa paleta, muito escura",
+              "cabecalho": "esse ficou ótimo, mantém a pegada"},
+ "cor": "#1F6FEB"}
+```
+
+**O `feedback` pode falar de peça que não está em `pecas`, e isso é o ponto.**
+Elogiar a peça aprovada é a forma de dirigir a que vai ser refeita — as duas vão
+para o mesmo portal e precisam parecer da mesma leva. Quando cada peça só via o
+próprio comentário, a instrução mais útil das duas se perdia inteira.
+
+O texto vai **cru** para o prompt, sem classificação de humor: "odiei a paleta"
+e "pode manter essa pegada" são a mesma frase para nós, e adivinhar qual é qual
+erraria mais do que passar a frase e deixar o modelo ler.
+
+**`cor` é um caso à parte, e o mais importante de entender.** A paleta sai da
+**logo**, e quem pinta o painel, o título e os ícones é o Pillow — não a IA.
+Regerar a cena com "odiei a paleta" no prompt muda a foto e devolve **o mesmo
+painel na mesma cor**: o executivo pede de novo, e de novo, sem nunca chegar lá.
+Queixa de cor só tem efeito com um hex em `cor`. Por isso o campo de feedback na
+tela devia vir acompanhado de um **seletor de cor**.
+
+Consequência a não estranhar: trocar a cor de uma peça deixa **a outra com a
+paleta anterior**. Duas cores no mesmo portal é pior que a cor errada, então
+mande as duas em `pecas` quando mudar `cor`.
+
+Erros próprios da ação: `400 FEEDBACK_INVALIDO` (peça que não existe — recusar é
+melhor que rodar sem o único dado que a pessoa se deu ao trabalho de escrever) e
+`400 COR_INVALIDA` (não é `#RRGGBB`).
+
 ## Nunca mande o callback para outro endereço
 
 Se o `callback_url` não responder, **não tente outra porta nem outro host**. Em

@@ -1010,6 +1010,38 @@ def test_regra_zero_abre_o_prompt():
     assert prompt_gem.FIXO.lstrip().startswith("REGRA ZERO")
 
 
+def _prompt_com_feedback(chave, notas):
+    import formatos
+    import prompt_gem
+    contexto = {"segmento": "autopecas", "ambiente": "galpao",
+                "objetos": ["correia"], "feedback": notas}
+    paleta = {"principal": "#123456", "destaque": "#abcdef", "neutra": "#ffffff"}
+    return prompt_gem.montar(formatos.POR_CHAVE[chave], paleta, contexto)
+
+
+def test_feedback_da_peca_entra_no_proprio_prompt():
+    texto = _prompt_com_feedback("login", {"login": "odiei a paleta"})
+    assert "odiei a paleta" in texto
+
+
+def test_feedback_de_uma_peca_dirige_a_outra():
+    """Elogiar o cabecalho e a forma de dizer "faz o login parecido com aquele".
+
+    Quando cada peca so via o proprio comentario, essa instrucao — a mais util
+    das duas — se perdia inteira.
+    """
+    texto = _prompt_com_feedback("login", {"cabecalho": "ficou otimo, mantem"})
+    assert "ficou otimo, mantem" in texto and "cabecalho" in texto
+
+
+def test_prompt_sem_feedback_nao_ganha_bloco_vazio():
+    """Sem comentario, o prompt tem que sair identico ao de antes: linha em
+    branco a mais no meio muda o peso dos blocos de graca."""
+    com = _prompt_com_feedback("login", {})
+    sem = _prompt_com_feedback("login", {"login": "   "})
+    assert com == sem and "\n\n\n" not in com
+
+
 def test_url_de_arquivo_vai_assinada_e_com_validade(monkeypatch):
     """A URL de resource-file e assinada (CloudFront). Sem a query ela responde
     403 — e foi assim que a tela de curadoria do Mitra nasceu com as duas

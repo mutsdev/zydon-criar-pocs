@@ -106,6 +106,35 @@ def _nome_arquivo(poc, pedido_id):
     return f"{limpo}_poc.json"
 
 
+LIMITE_FEEDBACK = 600
+
+
+def _feedback_do_corpo(bruto):
+    """{peca: texto} -> (limpo, peca_ruim). Peca desconhecida vira 400.
+
+    Engolir a chave errada seria pior que recusar: a regeracao rodaria sem o
+    unico dado que o executivo se deu ao trabalho de escrever, e ele receberia
+    outra peca igualmente errada sem entender por que.
+
+    O texto e cortado em 600 caracteres porque vai para a linha de comando do
+    gerador — nao e censura, e limite de argv.
+    """
+    if not isinstance(bruto, dict):
+        return {}, None
+    limpo = {}
+    for peca, texto in bruto.items():
+        if peca not in atendimento.DESTINOS_BANNER:
+            return {}, peca
+        if isinstance(texto, str) and texto.strip():
+            limpo[peca] = texto.strip()[:LIMITE_FEEDBACK]
+    return limpo, None
+
+
+def _e_hex(valor):
+    return (isinstance(valor, str) and len(valor) == 7 and valor[0] == "#"
+            and all(c in "0123456789abcdefABCDEF" for c in valor[1:]))
+
+
 def trabalhar(args):
     """Consome a fila, um pedido por vez, para sempre."""
     while True:
@@ -314,11 +343,17 @@ def trabalhar_banner():
 def _regerar(tarefa):
     """Gera cenas novas dos formatos pedidos e avisa o Mitra com as URLs."""
     estado, pecas, args = tarefa["estado"], tarefa["pecas"], tarefa["args"]
+    feedback, cor = tarefa.get("feedback") or {}, tarefa.get("cor")
     pedido_id = estado["pedido_id"]
     print(f"\n  REGERAR {pedido_id}: {', '.join(pecas)}")
+    for peca, texto in sorted(feedback.items()):
+        print(f'    feedback de {peca}: "{texto}"')
+    if cor:
+        print(f"    cor nova: {cor}")
 
     pasta, saida = atendimento.regerar_pecas(estado["pasta_banners"], pecas,
-                                             candidatas=args.candidatas)
+                                             candidatas=args.candidatas,
+                                             feedback=feedback, cor=cor)
 
     # `url` e `status` viajam de novo, embora este callback nao seja sobre o
     # portal. Sem eles o outro lado recebe um callback sem URL e pode concluir
@@ -596,7 +631,21 @@ class Manipulador(BaseHTTPRequestHandler):
                 return self._responder(409, {
                     "ok": False, "erro": "SEM_PECAS",
                     "detalhe": "este pedido nao gerou banner nenhum"})
-            FILA_BANNER.put({"estado": estado, "pecas": pecas, "args": self.args})
+            # O feedback pode ser de peca que NAO esta em `pecas`, e isso e o
+            # ponto: elogiar a que ele aprovou dirige a que vai ser refeita.
+            feedback, ruim = _feedback_do_corpo(corpo.get("feedback"))
+            if ruim:
+                return self._responder(400, {
+                    "ok": False, "erro": "FEEDBACK_INVALIDO",
+                    "detalhe": f"peca desconhecida no feedback: {ruim}",
+                    "pecas_validas": list(atendimento.DESTINOS_BANNER)})
+            cor = corpo.get("cor")
+            if cor is not None and not _e_hex(cor):
+                return self._responder(400, {
+                    "ok": False, "erro": "COR_INVALIDA",
+                    "detalhe": "'cor' e hex, no formato #RRGGBB"})
+            FILA_BANNER.put({"estado": estado, "pecas": pecas, "cor": cor,
+                             "feedback": feedback, "args": self.args})
             print(f"  [BANNER] {pedido_id} regerar {pecas} — "
                   f"{FILA_BANNER.qsize()} na fila.")
             return self._responder(202, {"ok": True, "aceito": True,

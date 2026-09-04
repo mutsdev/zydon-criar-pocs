@@ -138,15 +138,50 @@ def _bloco_cliente(contexto):
     return "\n".join(linhas)
 
 
+def _bloco_feedback(formato, contexto):
+    """O que o executivo escreveu na curadoria, por peca.
+
+    Nao classifico o texto em elogio ou critica. O executivo escreve na lingua
+    dele — "odiei a paleta" e "pode manter essa pegada" — e adivinhar o humor da
+    frase erraria mais do que passar a frase inteira e deixar o modelo ler.
+
+    O feedback de uma peca entra no prompt da OUTRA de proposito: as duas vao
+    para o mesmo portal. Elogiar o 1920x320 e mandar refazer o 4:3 e, na
+    pratica, dizer "faz o 4:3 parecido com aquele" — e essa instrucao se perdia
+    inteira quando cada peca so via o proprio comentario.
+    """
+    notas = contexto.get("feedback") or {}
+    linhas = []
+    meu = (notas.get(formato.chave) or "").strip()
+    if meu:
+        linhas.append(
+            f'O EXECUTIVO VIU A VERSAO ANTERIOR DESTA IMAGEM e escreveu: '
+            f'"{meu}". Isto e a razao de a imagem estar sendo refeita: atenda '
+            f'o que ele disse. Se o comentario for elogio, mantenha o que ele '
+            f'elogiou e varie o resto.')
+    for chave, texto in sorted(notas.items()):
+        texto = (texto or "").strip()
+        if chave == formato.chave or not texto:
+            continue
+        linhas.append(
+            f'Sobre a OUTRA peca da mesma campanha ("{chave}"), ele escreveu: '
+            f'"{texto}". Use como direcao — as duas ficam no mesmo portal e '
+            f'precisam parecer da mesma leva.')
+    return "\n".join(linhas)
+
+
 def montar(formato, paleta, contexto):
     """O prompt de uma cena. `contexto` traz segmento, objetos e ambiente."""
     if formato.chave == "minimalista":
         raise ValueError("o minimalista e 100% Pillow — nao tem prompt de cena")
-    return "\n\n".join([
+    return "\n\n".join(bloco for bloco in [
         FIXO,
         _bloco_cor(paleta),
         _bloco_enquadramento(formato),
         _bloco_cliente(contexto),
+        # Depois dos blocos derivados: e a unica parte escrita por alguem que
+        # VIU a peca anterior, e ela precisa poder contrariar o resto.
+        _bloco_feedback(formato, contexto),
         "ANTES DE ENTREGAR, confira a imagem inteira: se houver qualquer "
         "letra, palavra ou numero — num rotulo, numa etiqueta, numa placa, "
         "numa embalagem, num equipamento ao fundo — refaca sem eles. Texto "
@@ -154,7 +189,7 @@ def montar(formato, paleta, contexto):
         "inteira. Zero caracteres.",
         "Gere UMA imagem. Pode arrastar direto para a pasta cenas/ com o "
         "nome que vier — o script identifica a cena pelo formato dela.",
-    ])
+    ] if bloco)
 
 
 def folha(paleta, contexto):
