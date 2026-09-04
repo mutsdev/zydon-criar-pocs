@@ -1,0 +1,519 @@
+{
+  "empresa": "JF Distribuidora",
+  "descricao_empresa": "Distribuidora de peças e acessórios para celular — frontais/módulos de display, vidros e cola OCA, películas, cabos e eletrônicos, atendendo assistências técnicas e lojas de varejo.",
+  "gerado_em": "2026-09-04",
+  "setor": "Tecnologia — Distribuição de peças e acessórios para celular",
+  "portal_name": "JF Distribuidora POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca JF Distribuidora",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "JF Distribuidora", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Frontal e Módulo",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Frontal e Módulo", "active": true, "images": [] }
+        },
+        {
+          "label": "Vidros e Cola OCA",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Vidros e Cola OCA", "active": true, "images": [] }
+        },
+        {
+          "label": "Películas e Acessórios",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Películas e Acessórios", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "M1046 — Frontal iPhone 11 Preto",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/1-788b7ab20c7d64b3a217511225439529-480-0.webp",
+          "payload": {
+            "name": "Frontal iPhone 11 Preto",
+            "description": "Módulo frontal completo para iPhone 11, na cor preta, com display e touch montados. Item de alto giro em assistência técnica.",
+            "sku": "M1046",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 75.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "M2063 — Frontal Samsung A32 4G Preto com Aro LCD",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/1-ff3566f2015e6c8e6617383409187355-480-0.webp",
+          "payload": {
+            "name": "Frontal Samsung A32 4G Preto com Aro LCD",
+            "description": "Módulo frontal LCD com aro para Samsung Galaxy A32 4G, cor preta. Aro já montado para agilizar a troca no balcão.",
+            "sku": "M2063",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 75.00,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "M2323 — Frontal Samsung A15 4G/5G Preto com Aro OLED",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/e55e38782347cd530364735328a5f8a4-1b7480434e256c214217383658980326-480-0.webp",
+          "payload": {
+            "name": "Frontal Samsung A15 4G/5G Preto com Aro OLED",
+            "description": "Módulo frontal OLED com aro para Samsung Galaxy A15 4G e A15 5G, cor preta. Tela OLED com fidelidade de cor próxima à original.",
+            "sku": "M2323",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 165.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "M2245 — Frontal Samsung S20 FE Azul Escuro com Aro OLED",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/1-abc3273b93a01f815817522570139219-480-0.webp",
+          "payload": {
+            "name": "Frontal Samsung S20 FE Azul Escuro com Aro OLED",
+            "description": "Módulo frontal OLED com aro para Samsung Galaxy S20 FE, cor azul escuro. Peça de linha premium, para reparo de aparelho topo de gama.",
+            "sku": "M2245",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 190.00,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "7899883 — Vidro Samsung A05 Preto com OCA",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/6b21d6ea355719591190e4d2d11c579f-e247a1fbd1aea8b56417506527358777-480-0.webp",
+          "payload": {
+            "name": "Vidro Samsung A05 Preto com OCA",
+            "description": "Vidro frontal para Samsung Galaxy A05, cor preta, já com camada OCA aplicada para recolagem de display.",
+            "sku": "7899883",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 10.00,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "7899696 — Vidro iPhone 8 Plus Branco com OCA",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/280831176e98441af42bb8a66a21f948-fc93a426955d531fb617506524515013-480-0.webp",
+          "payload": {
+            "name": "Vidro iPhone 8 Plus Branco com OCA",
+            "description": "Vidro frontal para iPhone 8 Plus, cor branca, com camada OCA aplicada. Para serviço de troca de vidro sem substituir o display.",
+            "sku": "7899696",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 17.00,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "7890911 — Cola OCA 5.5 Polegadas",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/28aa338e5021150ee27518c66a38eb5e-347279607fda49bfc217506515536285-480-0.webp",
+          "payload": {
+            "name": "Cola OCA 5.5 Polegadas",
+            "description": "Filme adesivo OCA universal de 5,5 polegadas para recolagem de display. Consumível de bancada, vendido em pacote fechado.",
+            "sku": "7890911",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.50,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "7890942 — Cola OCA Samsung A30/A50/M30/M21/M31",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/5aa0a3224ce0ccfcef8c561a320b77ab-802fc2817dfa732c5317506516653157-480-0.webp",
+          "payload": {
+            "name": "Cola OCA Samsung A30/A50/M30/M21/M31",
+            "description": "Filme adesivo OCA recortado para Samsung A30, A50, M30, M21, M21S e M31. Consumível de bancada com recorte exato do modelo.",
+            "sku": "7890942",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 3.50,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "PF08 — Película Fina Samsung A02/A02S/A03 Core/A12/A32 3D",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/6c0256f60b47229c61956c96f2b32d6c-2fdb1aefa5f7e2d04c17529623843174-480-0.webp",
+          "payload": {
+            "name": "Película Fina Samsung A02/A02S/A03 Core/A12/A32 3D",
+            "description": "Película de vidro 3D fina compatível com Samsung A02, A02S, A03S, A03 Core, A12 e A32. Item de altíssimo giro, vendido em pacote de revenda.",
+            "sku": "PF08",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 2.00,
+            "minimum_for_sale": 50,
+            "multiple_for_sale": 50
+          }
+        },
+        {
+          "label": "78999012 — Película iPhone 15 Cerâmica Privacidade",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/df11c0f22d7ed2bc5bb21e36882d0fbf-fdb41542b51f38fcec17380001336529-480-0.webp",
+          "payload": {
+            "name": "Película iPhone 15 Cerâmica Privacidade",
+            "description": "Película cerâmica com filtro de privacidade para iPhone 15. Flexível, não estilhaça e bloqueia a visão lateral da tela.",
+            "sku": "78999012",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4.00,
+            "minimum_for_sale": 25,
+            "multiple_for_sale": 25
+          }
+        },
+        {
+          "label": "H8879 — Película Hidrogel 8 Polegadas Lisa Premium",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/3d8ee5eb406b2d76e000d9de84c1571d-527ad2f2264ce236aa17528827297256-480-0.webp",
+          "payload": {
+            "name": "Película Hidrogel 8 Polegadas Lisa Premium",
+            "description": "Folha de hidrogel liso premium de 8 polegadas para recorte em plotter. Base para aplicação sob medida em qualquer modelo.",
+            "sku": "H8879",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 6.00,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 20
+          }
+        },
+        {
+          "label": "40714 — Cabo HDMI/V8 1,5 m KAP-HV054",
+          "temp_image_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/products/442468651f815d3a1d58c726420f4053-1e75e1393f4833d09b17544031551319-480-0.webp",
+          "payload": {
+            "name": "Cabo HDMI/V8 1,5 m KAP-HV054",
+            "description": "Cabo adaptador HDMI para micro USB V8 com 1,5 metro, modelo KAP-HV054. Acessório de bancada e de revenda no balcão.",
+            "sku": "40714",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - JF Distribuidora",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "JF Distribuidora — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - JF Distribuidora",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "JF Distribuidora — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Películas e Acessórios",
+          "salvar_id_como": "criteria_cat_peliculas_id",
+          "payload": {
+            "name": "JF Distribuidora — Películas e Acessórios (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_2}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Vidros e Cola OCA",
+          "salvar_id_como": "criteria_cat_vidros_id",
+          "payload": {
+            "name": "JF Distribuidora — Vidros e Cola OCA (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_1}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | JF Distribuidora",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | JF Distribuidora",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | JF Distribuidora",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | JF Distribuidora",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | JF Distribuidora",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | JF Distribuidora",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Películas e Acessórios | JF Distribuidora",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | JF Distribuidora",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume JF Distribuidora",
+                "criteria_id": "{{criteria_cat_peliculas_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 100, "type": "PERCENTAGE", "value": 5, "is_product_value": false },
+                  { "minimum_quantity": 250, "type": "PERCENTAGE", "value": 9, "is_product_value": false },
+                  { "minimum_quantity": 500, "type": "PERCENTAGE", "value": 14, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Vidros e Cola OCA | JF Distribuidora",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF JF Distribuidora — Vidros e Cola OCA",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF JF Distribuidora",
+                "criteria_id": "{{criteria_cat_vidros_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 7, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

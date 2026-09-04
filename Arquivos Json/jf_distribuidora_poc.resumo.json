@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-04-003",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/jf_distribuidora_poc.json",
+  "logo_url": "https://acdn-us.mitiendanube.com/stores/003/181/143/themes/common/logo-953737273-1737583464-562484b0ed6f1a4e4e3dbac87032df071737583465.png?0",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "publico",
+    "imagens_substituidas": 0,
+    "observacoes": "Loja Nuvemshop com ~10 mil SKUs; nome, SKU, preco e imagem saíram do LD+JSON das paginas de categoria, sem estimativa. Categorias escolhidas: Frontal e Modulo, Vidros e Cola OCA, Peliculas e Acessorios. Sem grade de variacoes: a cor vem embutida em SKU proprio de fabricante e a pagina de produto nao tem seletor. Todas as 12 imagens sao do proprio site do cliente (varias com a marca d'agua da JF, nao de concorrente). Callback pulado: a rotina roda na nuvem e o egresso so aceita CONNECT na 443, enquanto o Mitra atende na 8080 — a entrega saiu pelo repositorio, como manda o ENTREGA.md. POST /previa nao foi chamado: este ambiente nao tem o X-Token do receptor; a logo validada esta neste resumo para quem for gerar a arte. Branch usada: claude/amazing-edison-35gwd9 (branch designada da sessao) em vez de claude/poc-<cliente>-<pedido_id>; a correlacao vale pelo pedido_id deste arquivo."
+  },
+  "sessao_url": "https://claude.ai/code/session_012iV5QfAEAwfmY2hZXnVdTJ"
+}
