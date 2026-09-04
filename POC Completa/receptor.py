@@ -86,6 +86,11 @@ FILA = queue.Queue()
 # mesma pasta ao mesmo tempo.
 FILA_BANNER = queue.Queue()
 
+# A previa roda antes do disparo: o executivo esta OLHANDO a tela esperando as
+# duas imagens. Ela nao pode ficar atras de uma POC de 90 minutos nem de uma
+# regeracao, e nao disputa nada com nenhuma das duas — nao toca a Zydon.
+FILA_PREVIA = queue.Queue()
+
 # O que esta sendo criado AGORA. Sem isto o /saude diz "fila: 0" enquanto uma
 # execucao trava ha horas — foi o que aconteceu em 01/09/2026 com a Witop: o
 # item ja tinha saido da fila, o Mitra mostrava "na fila ha 2h20" e nada, de
@@ -136,7 +141,17 @@ def processar(pedido, args):
     # publicacao, la embaixo, porque subir arquivo usa o JWT dele.
     banner = {}
     linha = None
-    if not args.sem_banner and not args.simular:
+
+    # Se a previa ja gerou as pecas deste pedido, elas sao REAPROVEITADAS. Gerar
+    # de novo custaria neuron para produzir uma arte diferente da que o
+    # executivo acabou de aprovar na curadoria — o pior resultado possivel, pior
+    # que nao gerar.
+    anterior = atendimento.estado_do_pedido(pedido_id) or {}
+    ja_geradas = anterior.get("pasta_banners")
+    if ja_geradas and Path(ja_geradas).exists() and not args.sem_banner:
+        banner["pasta"] = Path(ja_geradas)
+        print(f"  banners: reaproveitando a previa — {ja_geradas}")
+    elif not args.sem_banner and not args.simular:
         def _gerar():
             banner["pasta"], banner["saida"] = atendimento.gerar_pecas(
                 caminho, logo, poc.get("empresa", ""), pedido.get("segmento"),
@@ -211,6 +226,61 @@ def _publicar_para_curadoria(resultado, pasta, args, quais=None, motivo=None):
         return {"fase": "concluido", "banners": {}}
     print(f"  banners: {len(publicadas)} peca(s) publicada(s) para curadoria")
     return {"fase": "curadoria", "banners": publicadas}
+
+
+def trabalhar_previa():
+    """Gera as pecas ANTES de o pedido virar POC.
+
+    Existe porque a identidade e parte da curadoria, e nao um segundo momento:
+    o executivo escolhe produtos e arte na mesma tela. Nada aqui toca a Zydon —
+    so precisa da logo e do catalogo, que o Mitra ja tem antes do disparo.
+    """
+    while True:
+        tarefa = FILA_PREVIA.get()
+        if tarefa is None:
+            return
+        try:
+            _previa(tarefa)
+        except Exception as e:
+            print(f"  [ERRO] previa: {type(e).__name__}: {e}")
+        finally:
+            FILA_PREVIA.task_done()
+
+
+def _previa(pedido, args):
+    pedido_id = pedido.get("pedido_id")
+    poc = pedido.get("catalogo") or pedido.get("poc") or {}
+    print(f"\n  PREVIA {pedido_id}")
+
+    caminho = atendimento.DESTINO_JSON / _nome_arquivo(poc, pedido_id)
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(json.dumps(poc, ensure_ascii=False, indent=2),
+                       encoding="utf-8")
+    logo = atendimento.baixar_logo(pedido.get("logo_url"),
+                                   atendimento.prefixo(caminho.name))
+
+    pasta, saida = atendimento.gerar_pecas(
+        caminho, logo, poc.get("empresa", ""), pedido.get("segmento"),
+        candidatas=args.candidatas)
+
+    token = secrets.token_urlsafe(16)
+    corpo = {"pedido_id": pedido_id, "acao": "previa"}
+    if pasta:
+        atendimento.anotar({"pedido_id": pedido_id, "fase": "previa",
+                            "pasta_banners": str(pasta), "token_peca": token})
+        corpo["fase"] = "previa"
+        corpo["banners"] = atendimento.urls_da_previa(pedido_id, token, pasta)
+        print(f"  previa: {len(corpo['banners'])} peca(s) em {pasta}")
+    else:
+        corpo["fase"] = "previa"
+        corpo["banners"] = {}
+        corpo["banners_erro"] = str(saida)[-500:]
+        print(f"  previa: nao saiu — {str(saida)[-200:]}")
+
+    ok, detalhe = atendimento.avisar_mitra(
+        pedido.get("callback_url") or args.callback,
+        pedido.get("callback_token") or args.callback_token, corpo)
+    print(f"  callback: {'entregue' if ok else 'NAO entregue'} — {detalhe}")
 
 
 # --------------------------------------------------------------------- banner
@@ -293,6 +363,7 @@ class Manipulador(BaseHTTPRequestHandler):
         if self.path.rstrip("/") in ("/saude", "/health"):
             corpo = {"ok": True, "fila": FILA.qsize(),
                      "fila_banner": FILA_BANNER.qsize(),
+                     "fila_previa": FILA_PREVIA.qsize(),
                      "criando": EM_CURSO["pedido_id"],
                      # O commit que ESTE processo carregou, capturado na
                      # subida. Comparado com o HEAD do disco, denuncia
@@ -302,7 +373,37 @@ class Manipulador(BaseHTTPRequestHandler):
             if EM_CURSO["desde"]:
                 corpo["criando_ha_segundos"] = int(time.time() - EM_CURSO["desde"])
             return self._responder(200, corpo)
+        if self.path.startswith("/peca/"):
+            return self.servir_peca()
         self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
+
+    def servir_peca(self):
+        """GET /peca/<pedido_id>/<token>/<formato> — a imagem da previa.
+
+        O token vai no CAMINHO, e nao num cabecalho: a URL entra num `<img>` do
+        outro lado, e tag de imagem nao manda cabecalho. Ele e comparado com
+        `compare_digest`, como o X-Token.
+        """
+        partes = self.path.strip("/").split("/")
+        if len(partes) != 4:
+            return self._responder(404, {"ok": False, "erro": "CAMINHO_INVALIDO"})
+        _, pedido_id, token, chave = partes
+        caminho = atendimento.caminho_da_peca(pedido_id, token, chave)
+        if caminho is None:
+            # Mesma resposta para token errado e peca inexistente: distinguir os
+            # dois ajuda quem estiver tentando adivinhar.
+            return self._responder(404, {"ok": False, "erro": "NAO_ENCONTRADO"})
+        dados = Path(caminho).read_bytes()
+        mime = "image/png" if str(caminho).lower().endswith(".png") else "image/jpeg"
+        self.send_response(200)
+        self.send_header("Content-Type", mime)
+        self.send_header("Content-Length", str(len(dados)))
+        # A peca muda quando o executivo pede outra e o nome do arquivo nao muda
+        # junto: cache aqui mostraria a imagem velha depois do "Gerar outra",
+        # que le como "o botao nao fez nada".
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(dados)
 
     def _corpo(self):
         """(corpo, erro). Autentica, mede e decodifica. `erro` ja foi respondido."""
@@ -333,6 +434,8 @@ class Manipulador(BaseHTTPRequestHandler):
         rota = self.path.rstrip("/")
         if rota == "/banner":
             return self.banner()
+        if rota == "/previa":
+            return self.previa()
         if rota not in ("/pedido", ""):
             return self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
 
@@ -370,6 +473,39 @@ class Manipulador(BaseHTTPRequestHandler):
         # 202: aceito, ainda nao feito. O resultado vai pelo callback.
         self._responder(202, {"ok": True, "aceito": True, "pedido_id": pedido_id,
                               "fila": FILA.qsize()})
+
+    def previa(self):
+        """Gera as pecas ANTES do disparo, para elas entrarem na curadoria.
+
+            POST /previa  {"pedido_id","catalogo":{...},"logo_url","segmento"?}
+
+        Responde 202; as URLs voltam pelo callback com `acao: "previa"`. Elas
+        sao servidas por ESTE receptor (`/peca/...`), porque antes do disparo
+        nao existe portal — e sem portal nao ha resource-file, ja que o arquivo
+        nasce preso a um `solution_id`. Sao efemeras, o que basta para a
+        curadoria da hora; depois do `/pedido` as mesmas pecas ganham URL de
+        CDN e `file_id` de verdade.
+        """
+        corpo, erro = self._corpo()
+        if erro:
+            return
+        pedido_id = corpo.get("pedido_id")
+        catalogo = corpo.get("catalogo") or corpo.get("poc")
+        if not pedido_id or not isinstance(catalogo, dict):
+            return self._responder(400, {"ok": False, "erro": "CAMPOS_FALTANDO",
+                                         "detalhe": "exijo pedido_id e catalogo{}"})
+        if not atendimento.base_publica():
+            # Sem tunel publicado nao ha endereco que o Mitra consiga abrir, e
+            # gerar para devolver URL quebrada seria gastar cota a toa.
+            return self._responder(503, {
+                "ok": False, "erro": "SEM_ENDERECO_PUBLICO",
+                "detalhe": "o tunel nao esta publicado; a previa nao teria de "
+                           "onde servir as imagens"})
+        FILA_PREVIA.put((corpo, self.args))
+        print(f"  [PREVIA] {pedido_id} — {FILA_PREVIA.qsize()} na fila.")
+        return self._responder(202, {"ok": True, "aceito": True,
+                                     "pedido_id": pedido_id, "acao": "previa",
+                                     "fila": FILA_PREVIA.qsize()})
 
     # ---------------------------------------------------------------- banner
     def banner(self):
@@ -590,10 +726,11 @@ def main(argv=None):
     Manipulador.args = args
     threading.Thread(target=trabalhar, args=(args,), daemon=True).start()
     threading.Thread(target=trabalhar_banner, daemon=True).start()
+    threading.Thread(target=trabalhar_previa, daemon=True).start()
 
     servidor = ThreadingHTTPServer(("127.0.0.1", args.porta), Manipulador)
     print(f"[INFO] Receptor em http://127.0.0.1:{args.porta}  "
-          f"(POST /pedido, POST /banner, GET /saude)")
+          f"(POST /pedido, POST /previa, POST /banner, GET /saude)")
     atual = atendimento.versao_do_codigo()
     print(f"[INFO] codigo: {VERSAO or 'fora de um clone git'}")
     if atual and VERSAO and atual != VERSAO:

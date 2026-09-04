@@ -461,6 +461,70 @@ class GravacaoPelaMetade(RuntimeError):
         self.faltou = faltou
 
 
+ENDERECO = RAIZ / "endereco-receptor.json"
+
+
+def base_publica():
+    """A URL do tunel, lida do arquivo que o `tunel.py` publica. None se nao ha.
+
+    A previa serve as pecas por AQUI, e nao pelo Zydon: antes do disparo nao
+    existe portal, e sem portal nao ha resource-file — o `solution_id` do
+    arquivo e do portal. E um endereco efemero, o que basta para uma curadoria
+    feita na hora; depois do disparo as pecas ganham URL de CDN de verdade.
+    """
+    try:
+        return json.loads(ENDERECO.read_text(encoding="utf-8")).get("url")
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def urls_da_previa(pedido_id, token, pasta):
+    """{peca: {url, dimensao, arquivo}} servidas por este receptor.
+
+    O token vai no CAMINHO porque a URL entra num `<img>`, e cabecalho nao se
+    manda de dentro de uma tag. Sem ele, quem descobrisse o endereco do tunel
+    listaria a arte de todos os clientes.
+    """
+    import subir_banners
+    base = base_publica()
+    if not base:
+        return {}
+    try:
+        pecas, _ = subir_banners.pecas_da_pasta(pasta)
+    except (OSError, ValueError) as erro:
+        print(f"  [AVISO] previa sem pecas: {erro}")
+        return {}
+    saida = {}
+    for chave, caminho in pecas.items():
+        formato = subir_banners.DESTINOS[chave]
+        saida[chave] = {
+            "url": f"{base}/peca/{pedido_id}/{token}/{chave}",
+            "dimensao": list(formato["dimensao"]),
+            "arquivo": Path(caminho).name,
+            "previa": True,   # ainda nao e resource-file: nao serve para aplicar
+        }
+    return saida
+
+
+def caminho_da_peca(pedido_id, token, chave):
+    """O arquivo em disco que a previa serve, ou None se algo nao confere."""
+    import hmac as _hmac
+
+    import subir_banners
+    estado = estado_do_pedido(pedido_id) or {}
+    guardado = estado.get("token_peca")
+    if not guardado or not _hmac.compare_digest(str(token), str(guardado)):
+        return None
+    pasta = estado.get("pasta_banners")
+    if not pasta:
+        return None
+    try:
+        pecas, _ = subir_banners.pecas_da_pasta(pasta)
+    except (OSError, ValueError):
+        return None
+    return pecas.get(chave)
+
+
 def _abrir_portal(org, portal_id):
     """(headers_da_org, jwt_do_portal). Os dois sao credenciais diferentes."""
     import credenciais

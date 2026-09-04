@@ -239,6 +239,69 @@ def _gravar_cache(dados):
                      encoding="utf-8")
 
 
+
+# O modelo de imagem ESCREVE o que voce lhe da por nome. Medido em 04/09/2026
+# na Rema Tip Top: o prompt levava "Manchao Radial Eco Plus, Adesivo" e proibia
+# texto duas vezes, no topo e no fim — e a lata saiu escrita "MANCHAO",
+# "Maanchaa Ecco Plus" e "Adesivo". Nenhuma proibicao vence a propria string
+# estar na entrada.
+#
+# A saida e nao dar o nome. Este passo troca o nome do produto por uma
+# DESCRICAO FISICA — forma, material, cor, como o objeto se apresenta — e e
+# isso que vai para o gerador. "Manchao Radial Eco Plus" vira "disco de
+# borracha preta vulcanizada, com textura fosca"; nao ha palavra para copiar.
+DESCREVER = """Voce recebe nomes de produtos de uma empresa brasileira.
+Para cada um, devolva uma DESCRICAO FISICA de como o objeto se parece numa
+fotografia: forma, material, cor, textura, tamanho relativo.
+
+REGRAS:
+- Nunca repita o nome do produto nem nenhuma palavra dele.
+- Nao use nome de marca, sigla, codigo nem numero.
+- Descreva o objeto NU, fora de embalagem, quando isso for possivel.
+- Portugues, minusculas, no maximo 12 palavras cada.
+
+Devolva JSON: {{"descricoes": ["...", "..."]}}
+
+Produtos: {produtos}"""
+
+
+def descrever_fisicamente(nomes, modelo, maximo=4):
+    """Nomes de produto -> descricoes fisicas. Devolve [] se nao der.
+
+    Falhar aqui nao e fatal: sem descricao o chamador cai nos nomes, que e o
+    comportamento antigo — cena com rotulo inventado, mas cena. Uma cota
+    estourada nao pode derrubar a peca inteira.
+    """
+    nomes = [n for n in nomes if n][:maximo]
+    if not nomes:
+        return []
+    try:
+        corpo = {
+            "contents": [{"role": "user", "parts": [
+                {"text": DESCREVER.format(produtos=", ".join(nomes))}]}],
+            "generationConfig": {"response_mime_type": "application/json",
+                                 "temperature": 0},
+        }
+        resposta = requests.post(f"{juiz.BASE}/models/{modelo}:generateContent",
+                                 params={"key": juiz.chave()}, json=corpo,
+                                 timeout=120)
+        resposta.raise_for_status()
+        texto = "".join(p.get("text", "") for p in
+                        resposta.json()["candidates"][0]["content"]["parts"])
+        descricoes = [str(d).strip() for d in
+                      json.loads(texto).get("descricoes", []) if str(d).strip()]
+    except (requests.RequestException, juiz.SemChave, KeyError, ValueError,
+            json.JSONDecodeError):
+        return []
+
+    # Cinto de seguranca: se a descricao repetir uma palavra do nome, ela
+    # reintroduz exatamente o que este passo existe para tirar.
+    proibidas = {p.lower() for n in nomes for p in n.split() if len(p) > 3}
+    limpas = [d for d in descricoes
+              if not any(p in d.lower() for p in proibidas)]
+    return limpas
+
+
 def resolver(segmento, modelo, usar_rede=True, catalogo=None):
     """Devolve {'objetos': [...], 'ambiente': str, 'origem': str}.
 
@@ -256,9 +319,18 @@ def resolver(segmento, modelo, usar_rede=True, catalogo=None):
             ambiente = ((cache.get(chave) or {}).get("ambiente")
                         or ambiente_por_palavra(segmento)
                         or GENERICO["ambiente"])
-            return {"objetos": do_arquivo["objetos"], "ambiente": ambiente,
-                    "origem": "catalogo",
-                    "categorias": do_arquivo.get("categorias", [])}
+            contexto = {"objetos": do_arquivo["objetos"], "ambiente": ambiente,
+                        "origem": "catalogo",
+                        "categorias": do_arquivo.get("categorias", [])}
+            # A descricao fisica substitui o nome no prompt do gerador — ver
+            # `descrever_fisicamente`. Os nomes ficam no contexto para o juiz e
+            # para quem for ler depois; o que NAO vai para o modelo de imagem
+            # e a palavra.
+            if usar_rede:
+                fisicas = descrever_fisicamente(do_arquivo["objetos"], modelo)
+                if fisicas:
+                    contexto["descricoes"] = fisicas
+            return contexto
 
     if chave in cache:
         registro = dict(cache[chave])

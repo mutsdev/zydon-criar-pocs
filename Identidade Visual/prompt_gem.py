@@ -46,6 +46,9 @@ PROIBIDO, e isto e o mais importante do pedido:
 - Nenhum logotipo. Se a cena pedir uma fachada, uma placa ou um uniforme, use
   uma FORMA SOLIDA e lisa na cor principal, sem nada escrito dentro.
 - Nada de colagem, moldura, borda decorativa ou faixa de cor sobreposta.
+- NENHUMA PESSOA, nem parte de pessoa: sem rosto, sem mao, sem braco, sem
+  manequim. Pessoa nao foi pedida e chega sozinha, trazendo junto mao com dedo
+  a mais e logotipo bordado em uniforme. A cena e dos produtos.
 - Nenhum elemento importante cortado pela margem.
 - Nada de foto de banco de imagens com filtro de cor por cima."""
 
@@ -62,22 +65,47 @@ def _bloco_enquadramento(formato):
     if formato.chave == "login":
         return f"""Enquadramento: proporcao {formato.proporcao_pedida} (retrato).
 Composicao vertical, com o assunto no terco central. Peca em 2K.
-A imagem sera usada inteira, sem recorte — enquadre para o formato retrato."""
+A imagem sera usada inteira, sem recorte — enquadre para o formato retrato.
+MARGEM ESQUERDA CALMA: a faixa dos 10% da esquerda e so ambiente desfocado.
+Nenhum objeto encosta nela nem e cortado por ela. Isso e enquadramento, nao
+elemento grafico: NAO desenhe faixa, barra, tarja nem bloco de cor ali — so o
+fundo continuando."""
     return f"""Enquadramento: proporcao {formato.proporcao_pedida} (panoramico).
 Peca em 2K. IMPORTANTE: a imagem sera RECORTADA numa faixa horizontal central,
 mais estreita que o que voce vai gerar. Ponha tudo que importa na faixa central
-da altura; o topo e a base serao descartados e devem conter so ambiente."""
+da altura; o topo e a base serao descartados e devem conter so ambiente.
+MARGEM ESQUERDA CALMA: a faixa dos 10% da esquerda e so ambiente desfocado.
+Nenhum objeto encosta nela nem e cortado por ela. Isso e enquadramento, nao
+elemento grafico: NAO desenhe faixa, barra, tarja nem bloco de cor ali — so o
+fundo continuando."""
 
 
 def _bloco_cliente(contexto):
-    objetos = ", ".join(contexto["objetos"])
+    objetos = ", ".join(contexto.get("objetos") or [])
     linhas = [f"Cliente: empresa do segmento de {contexto['segmento']}."]
 
     # Quando os objetos vem do catalogo real, dizer isso muda o pedido: nao sao
     # sugestoes de ambientacao, sao os produtos que a empresa vende, e a cena
     # existe para mostra-los. O contrario foi o defeito da Aroca Mercearia —
     # cena bonita de galpao para quem vende queijo.
-    if contexto.get("origem") == "catalogo":
+    if contexto.get("descricoes"):
+        descricoes = chr(10).join("- " + d for d in contexto["descricoes"])
+        linhas.append(
+            "Os objetos que a cena mostra, descritos pela APARENCIA:" + chr(10)
+            + descricoes + chr(10) +
+            "Escolha DOIS e ponha em primeiro plano, no centro do quadro e "
+            "longe das bordas. Sao os produtos que esta empresa vende — a cena "
+            "SO presta se mostrar objetos assim; cenario de galpao, caixas ou "
+            "paletes no lugar deles e recusado.")
+        linhas.append(
+            "COMO FOTOGRAFAR, e isto define a imagem:" + chr(10) +
+            "- Os objetos aparecem NUS, sobre bancada ou superficie limpa." + chr(10) +
+            "- Toda superficie visivel e LISA, FOSCA E NUA: metal escovado, "
+            "vidro, borracha crua, madeira. Superficie limpa, sem nada "
+            "aplicado sobre ela." + chr(10) +
+            "- Enquadramento FECHADO, em angulo de tres quartos, profundidade "
+            "de campo rasa. Nada de vitrine frontal alinhada.")
+    elif contexto.get("origem") == "catalogo":
         linhas.append(
             f"O que ela vende de verdade, tirado do catalogo dela: {objetos}.\n"
             f"Escolha 2 ou 3 e ponha em primeiro plano. A cena SO presta se "

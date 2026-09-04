@@ -93,37 +93,26 @@ def montar(formato, paleta, logo_img, nome_cliente="", limiares=None):
     desenho = ImageDraw.Draw(peca)
 
     if formato.chave == "login":
-        margem = 96
-        util = int(formato.largura * 0.52)
-        encaixada = mod_logo.encaixar(logo_img, util, 220)
-        peca.paste(encaixada, (margem, 300), encaixada)
-        _registrar_logo(relato, encaixada, logo_img, margem, 300)
+        # O MESMO layout do `compor`, ocupando a peca inteira em vez de um
+        # painel de 960px. Ate 04/09/2026 o fallback tinha desenho proprio, do
+        # tempo em que o login era "Bem-vindo ao Portal do Cliente" — e ele
+        # ficou para tras quando o painel foi refeito no padrao dos portais no
+        # ar. O resultado e o que mais aparece na tela do executivo, porque
+        # fallback e o que sai sempre que a cena reprova, e estava feio.
+        #
+        # Layout duplicado nao sobrevive a uma segunda mudanca de design. Aqui
+        # nao ha duplicata: e a mesma funcao, com o painel do tamanho da peca.
+        import dataclasses
 
-        y = 640
-        linha1, linha2 = formatos.TITULO
-        f, linhas, coube = tipo.ajustar(desenho, linha1, util, 72, 44, "Bold", 1)
-        desenho.text((margem, y), linhas[0], font=f, fill=tinta)
-        relato["caixas"].append({"tipo": "titulo_1", "corpo": f.size, "coube": coube,
-                                 "caixa": [margem, y, margem + util, y + int(f.size * 1.2)],
-                                 "tinta": cor.para_hex(tinta)})
-        y += int(f.size * 1.18)
-        f, linhas, coube = tipo.ajustar(desenho, linha2, util, 72, 44, "Bold", 1)
-        desenho.text((margem, y), linhas[0], font=f, fill=destaque)
-        relato["caixas"].append({"tipo": "titulo_2", "corpo": f.size, "coube": coube,
-                                 "caixa": [margem, y, margem + util, y + int(f.size * 1.2)],
-                                 "tinta": cor.para_hex(destaque)})
-        y += int(f.size * 1.5)
-
-        f, linhas, coube = tipo.ajustar(desenho, formatos.SUBTITULO, util, 28, 19,
-                                        "Regular", 3)
-        for i, linha in enumerate(linhas):
-            desenho.text((margem, y + i * int(f.size * 1.45)), linha, font=f, fill=tinta)
-        relato["caixas"].append({"tipo": "subtitulo", "corpo": f.size, "coube": coube,
-                                 "caixa": [margem, y, margem + util,
-                                           y + int(f.size * 1.45) * len(linhas)],
-                                 "tinta": cor.para_hex(tinta)})
-        desenho.line([margem, formato.altura - 150, margem + 160, formato.altura - 150],
-                     fill=destaque, width=5)
+        import compor
+        # 58% e nao 100%: o `painel_login` pinta um retangulo solido ate a
+        # largura do painel, e cobrir a peca inteira apagaria a marca d'agua
+        # desenhada logo acima — a peca ficava com metade direita vazia. Com
+        # 58%, o texto ocupa a esquerda e a silhueta da logo continua visivel a
+        # direita, que e a composicao das referencias.
+        cheio = dataclasses.replace(formato, painel=int(formato.largura * 0.58))
+        compor.painel_login(peca, cheio, paleta, logo_img, relato, limiares)
+        relato["painel"]["largura"] = formato.largura
         return peca, relato
 
     # Faixas 1920x320: cabecalho e minimalista partilham a pauta e divergem no
