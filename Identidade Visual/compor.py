@@ -217,12 +217,16 @@ def painel_login(peca, formato, paleta, logo_img, relato, limiares=None):
     nenhuma outra edicao.
     """
     desenho = ImageDraw.Draw(peca)
-    fundo = cor.de_hex(paleta["principal"])
+    # O painel usa a cor da marca AJUSTADA para o texto caber na regua — ver
+    # `cor.fundo_legivel`. O matiz fica; so o brilho muda, e so quando precisa.
+    # Sem isso, marca de brilho medio poe as dez caixas miudas deste painel
+    # exatamente no piso da WCAG e reprova a peca inteira de uma vez.
+    fundo, laudo_fundo = cor.fundo_legivel(cor.de_hex(paleta["principal"]))
     destaque = cor.de_hex(paleta["destaque"])
     tinta = cor.texto_sobre(fundo)
     desenho.rectangle([0, 0, formato.painel, formato.altura], fill=fundo)
-    relato["painel"] = {"fundo": paleta["principal"], "tinta": cor.para_hex(tinta),
-                        "largura": formato.painel}
+    relato["painel"] = {"fundo": cor.para_hex(fundo), "tinta": cor.para_hex(tinta),
+                        "largura": formato.painel, "ajuste": laudo_fundo}
 
     altura = formato.altura
     margem = int(formato.painel * 0.085)
@@ -274,11 +278,14 @@ def painel_login(peca, formato, paleta, logo_img, relato, limiares=None):
 
 def painel_cabecalho(peca, formato, paleta, logo_img, relato, limiares=None):
     desenho = ImageDraw.Draw(peca)
-    fundo = cor.de_hex(paleta["principal"])
+    # Mesmo ajuste do login: o cabecalho tem menos texto, mas a frase e miuda e
+    # cai na mesma regua. Duas pecas da mesma leva com fundos diferentes seriam
+    # pior que qualquer uma das duas.
+    fundo, laudo_fundo = cor.fundo_legivel(cor.de_hex(paleta["principal"]))
     tinta = cor.texto_sobre(fundo)
     desenho.rectangle([0, 0, formato.painel, formato.altura], fill=fundo)
-    relato["painel"] = {"fundo": paleta["principal"], "tinta": cor.para_hex(tinta),
-                        "largura": formato.painel}
+    relato["painel"] = {"fundo": cor.para_hex(fundo), "tinta": cor.para_hex(tinta),
+                        "largura": formato.painel, "ajuste": laudo_fundo}
 
     margem = 48
     _colar_logo(peca, logo_img, margem, 46, 260, 74, relato, fundo, limiares)

@@ -154,6 +154,32 @@ def atualizar_aparencia(jwt, aparencia_atual, mudancas):
     return corpo
 
 
+# A URL de um resource-file e ASSINADA (CloudFront: Expires + Signature +
+# Key-Pair-Id na query). Duas consequencias que custaram uma tela quebrada em
+# 03/09/2026, quando eu guardava so a parte antes do "?":
+#
+#   1. **Sem a query ela responde 403.** A assinatura E a autorizacao. Cortar o
+#      "?" para deixar a URL "limpa" e cortar justamente o que faz ela abrir.
+#   2. **Ela expira.** Medido: ~2h10 de validade. Serve para a curadoria da
+#      sessao; nao serve para a tela ser reaberta amanha. Por isso o `expira_em`
+#      viaja junto, e existe uma acao para pedir URL nova.
+def _expira_em(url):
+    """O `Expires` da URL assinada, em epoch. None se nao houver."""
+    from urllib.parse import parse_qsl, urlparse
+    for chave, valor in parse_qsl(urlparse(url).query):
+        if chave == "Expires" and valor.isdigit():
+            return int(valor)
+    return None
+
+
+def metadados_do_arquivo(jwt, file_id):
+    """Os metadados do resource-file, com a URL assinada INTEIRA."""
+    meta = requests.get(f"{BASE_FILES}/{file_id}", headers=_cabecalho(jwt),
+                        timeout=60)
+    _levantar(meta, "ler metadados do arquivo")
+    return meta.json()
+
+
 def conferir_no_ar(jwt, file_id, caminho_local):
     """Baixa o arquivo que o portal aponta e compara com o que foi enviado.
 
@@ -161,10 +187,7 @@ def conferir_no_ar(jwt, file_id, caminho_local):
     nao trocava nada. Confiar no status da resposta nao basta — o unico teste
     honesto e buscar o byte que esta servido e comparar.
     """
-    meta = requests.get(f"{BASE_FILES}/{file_id}", headers=_cabecalho(jwt),
-                        timeout=60)
-    _levantar(meta, "ler metadados do arquivo")
-    dados = meta.json()
+    dados = metadados_do_arquivo(jwt, file_id)
     baixado = requests.get(dados["url"], timeout=120)
     _levantar(baixado, "baixar arquivo servido")
     local = Path(caminho_local).read_bytes()
@@ -173,7 +196,11 @@ def conferir_no_ar(jwt, file_id, caminho_local):
                      == hashlib.sha256(local).hexdigest()),
         "content_type": dados.get("content_type"),
         "bytes": dados.get("content_length"),
-        "url": dados.get("url", "").split("?")[0],
+        # `url` e a assinada, que ABRE. A outra fica ao lado, sem assinatura,
+        # para log e comparacao — ela e estavel e a assinada muda a cada leitura.
+        "url": dados.get("url", ""),
+        "url_sem_assinatura": dados.get("url", "").split("?")[0],
+        "expira_em": _expira_em(dados.get("url", "")),
     }
 
 
@@ -285,17 +312,17 @@ def atualizar_banner(jwt, banner_id, banner_atual, imagens):
 
 
 def url_do_arquivo(jwt, file_id):
-    """A URL publica e permanente de um resource-file.
+    """(url_assinada, expira_em) de um resource-file.
 
-    E o que o Mitra consegue exibir na tela de curadoria. Servir a peca pelo
-    tunel nao serve: o endereco do cloudflared e efemero e morre junto com o
-    processo, entao o executivo abriria a tela no dia seguinte e veria tres
-    imagens quebradas.
+    E o que o Mitra exibe na tela de curadoria. Servir a peca pelo tunel nao
+    serve: o endereco do cloudflared e efemero e morre junto com o processo.
+
+    A URL vem **inteira, com a assinatura** — ver o comentario acima. Ela vale
+    ~2h; peca outra por aqui quando vencer, que o arquivo continua o mesmo.
     """
-    resposta = requests.get(f"{BASE_FILES}/{file_id}", headers=_cabecalho(jwt),
-                            timeout=60)
-    _levantar(resposta, "ler metadados do arquivo")
-    return (resposta.json().get("url") or "").split("?")[0]
+    dados = metadados_do_arquivo(jwt, file_id)
+    url = dados.get("url") or ""
+    return url, _expira_em(url)
 
 
 def salvar_backup(aparencia, destino):

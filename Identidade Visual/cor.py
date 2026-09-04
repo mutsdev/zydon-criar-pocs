@@ -111,3 +111,42 @@ def girar_matiz(rgb, graus):
     s = min(1.0, max(s, 0.65))
     v = min(1.0, max(v, 0.75))
     return tuple(int(round(c * 255)) for c in colorsys.hsv_to_rgb(h, s, v))
+
+
+def fundo_legivel(fundo, alvo=5.2, passos=40):
+    """Ajusta o fundo — mantendo o MATIZ — ate o texto sobre ele ser legivel.
+
+    Devolve (rgb, laudo). O matiz da marca fica; o que muda e o brilho.
+
+    Existe porque cor de marca de brilho medio poe o texto exatamente no piso
+    da WCAG. Medido em 04/09/2026 com o vermelho da Rema Tip Top (#E82028):
+    branco da 4,50 e preto da 4,20 — o piso de texto pequeno e 4,5, entao
+    **nenhuma das duas tintas passa**, e as dez caixas miudas do painel de
+    login foram reprovadas de uma vez. Nao e caso raro: todo vermelho, laranja
+    e verde-medio de marca cai nessa faixa.
+
+    O alvo e 5,2 e nao 4,5 de proposito: parar no piso deixa a peca a um
+    arredondamento de reprovar, e foi assim que ela reprovou.
+
+    Escurecer ou clarear sai de qual lado ja esta mais longe — marca escura vai
+    para o escuro, marca clara vai para o claro. Empurrar para o lado errado
+    atravessaria o meio, onde nao ha contraste nenhum.
+    """
+    fundo = tuple(int(c) for c in fundo[:3])
+    if contraste(texto_sobre(fundo), fundo) >= alvo:
+        return fundo, {"ajustado": False, "razao": round(
+            contraste(texto_sobre(fundo), fundo), 2)}
+
+    # Para o lado que ja e o dele: se o texto legivel e branco, o fundo e
+    # escuro, e escurecer mais e o caminho curto.
+    escurecer = texto_sobre(fundo) == BRANCO
+    atual = fundo
+    for _ in range(passos):
+        if escurecer:
+            atual = tuple(max(0, int(c * 0.92)) for c in atual)
+        else:
+            atual = tuple(min(255, int(c + (255 - c) * 0.10) + 1) for c in atual)
+        if contraste(texto_sobre(atual), atual) >= alvo:
+            break
+    return atual, {"ajustado": True, "de": para_hex(fundo), "para": para_hex(atual),
+                   "razao": round(contraste(texto_sobre(atual), atual), 2)}

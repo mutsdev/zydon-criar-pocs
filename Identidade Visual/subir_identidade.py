@@ -74,9 +74,11 @@ def main(argv=None):
                         "inteira: encaixa a logo toda (some na aba a 16px se a "
                         "logo for larga). inicial: sempre a letra.")
     p.add_argument("--cor", help="cor primaria em hex; manda sobre a extraida")
-    p.add_argument("--cor-portal", default="#000000",
-                   help="cor primaria do portal. Padrao: #000000, o preto do "
-                        "padrao Zydon. Use --cor-portal '' para nao mexer nela.")
+    p.add_argument("--cor-portal", default="auto",
+                   help="cor primaria do portal. Padrao 'auto': a PRINCIPAL da "
+                        "paleta extraida da logo, a mesma que pinta o painel "
+                        "dos banners. Aceita um hex para forcar, ou '' para "
+                        "nao mexer na cor.")
     p.add_argument("--fundo-portal", default="#FFFFFF",
                    help="cor do fundo do cabecalho, onde a logo aparece. "
                         "Padrao: #FFFFFF. Nao e a --cor-portal: aquela e a cor "
@@ -169,7 +171,8 @@ def main(argv=None):
         print(f"  POST /sales/resource-files      <- {caminho_logo.name}")
         print(f"  POST /sales/resource-files      <- {caminho_favicon.name}")
         print("  PUT  /b2b/portals/appearance    brand_image + favicon_image"
-              + (f" + color {args.cor_portal}" if args.cor_portal else ""))
+              + (f" + color {pal['principal'] if args.cor_portal == 'auto' else args.cor_portal}"
+                 if args.cor_portal else ""))
         print("\nOlhe os dois arquivos acima. Para gravar, repita com --gravar.")
         return 0
 
@@ -189,9 +192,17 @@ def main(argv=None):
     print("Gravando a aparencia...")
     mudancas = {"brand_image": id_logo, "favicon_image": id_favicon}
     if args.cor_portal:
+        # 'auto' e o padrao desde 04/09/2026: a cor primaria do portal passa a
+        # ser a MESMA principal que pinta o painel dos banners. Com #000000
+        # fixo, o portal saia preto ao lado de uma tela de login verde ou
+        # vermelha — duas identidades no mesmo lugar, e a que o cliente ve
+        # primeiro era a que nao era dele.
+        escolhida = pal["principal"] if args.cor_portal == "auto" else args.cor_portal
         # O GET devolve a cor SEM "#" (ex.: "4A90D9"). Mandar com # gravaria um
         # valor de formato diferente do que o portal ja usa.
-        mudancas["color"] = args.cor_portal.lstrip("#").upper()
+        mudancas["color"] = escolhida.lstrip("#").upper()
+        print(f"Cor do portal: {escolhida}"
+              f"{'  (da paleta da logo)' if args.cor_portal == 'auto' else ''}")
     mod_portal.atualizar_aparencia(jwt, antes, mudancas)
 
     # Passo 3: conferir o que ficou NO AR. O status da resposta nao basta — o

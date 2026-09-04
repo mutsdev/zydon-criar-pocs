@@ -407,10 +407,19 @@ def gerar_pecas(caminho_json, logo, nome_cliente, segmento=None, candidatas=2,
     """Gera as pecas de um cliente novo. Devolve (pasta, saida)."""
     if not logo:
         return None, "sem logo: nao ha de onde tirar a paleta nem a marca"
+    # A regua `portal` (200 no MAIOR lado, 48 no menor), e nao a `banner` (200
+    # no menor). Marca horizontal e comum — Rema Tip Top 376x70, Cobra 205x58,
+    # Benenutri 598x173 — e a regua dura recusa a logo, o que aqui nao gera uma
+    # peca pior: gera **zero** pecas, e o executivo abre a tela sem secao de
+    # identidade nenhuma. Em 04/09/2026 foi exatamente isso que aconteceu.
+    #
+    # Logo pequena num painel de 960px fica discreta; o `encaixar` nunca amplia,
+    # entao ela nao deforma. Discreta e melhor que ausente.
     comando = [sys.executable, str(GERADOR), "auto",
                "--logo", str(logo), "--nome", nome_cliente,
                "--segmento", segmento or SEGMENTO_PADRAO,
                "--catalogo", str(caminho_json),
+               "--regua-logo", "portal",
                "--candidatas", str(candidatas)]
     if quais:
         comando += ["--formatos", ",".join(quais)]
@@ -477,6 +486,26 @@ def publicar_pecas(org, portal_id, pasta, quais=None):
     return subir_banners.publicar(headers, jwt, pecas, ecoar=print)
 
 
+def renovar_urls(org, portal_id, banners):
+    """URLs assinadas novas para pecas JA publicadas. Nao sobe nada.
+
+    A URL de resource-file vale ~2h; o `file_id` e para sempre. Quando o
+    executivo reabre a tela no dia seguinte, o que falta e assinatura, e nao
+    arquivo — regerar ali seria gastar neuron para resolver um problema de
+    validade.
+    """
+    import portal as mod_portal
+    _, jwt = _abrir_portal(org, portal_id)
+    renovadas = {}
+    for peca, dados in (banners or {}).items():
+        file_id = (dados or {}).get("file_id")
+        if not file_id:
+            continue
+        url, expira = mod_portal.url_do_arquivo(jwt, file_id)
+        renovadas[peca] = dict(dados, url=url, expira_em=expira)
+    return renovadas
+
+
 def aplicar_pecas(org, portal_id, ids):
     """Aponta o portal para os ids escolhidos. Devolve o relato do GET."""
     import subir_banners
@@ -517,6 +546,41 @@ def ids_publicados(pedido_id):
             if isinstance(dados, dict) and dados.get("file_id"):
                 conhecidos[dados["file_id"]] = peca
     return conhecidos
+
+
+def banners_publicados(pedido_id):
+    """{peca: dados} de todas as pecas publicadas, a MAIS NOVA de cada uma.
+
+    O `estado_do_pedido` funde por substituicao: o `banners` de um registro
+    novo troca o anterior inteiro. Como a regeracao publica so o formato
+    pedido, o registro seguinte carrega uma peca so — e a outra, que continua
+    aplicada no portal, sumia do estado.
+
+    O efeito, achado pelo time do Mitra em 04/09/2026: `acao: "urls"` devolvia
+    uma peca so. A URL da outra vencia sem ninguem conseguir renova-la, e a
+    unica saida aparente virava regerar — trocar a peca aprovada para resolver
+    um problema de validade, que e exatamente o que nao se deve fazer.
+
+    Aqui a fusao e PECA A PECA, na ordem do arquivo: cada formato fica com a
+    ultima publicacao dele, e nenhum desaparece porque o outro foi mexido.
+    """
+    achados = {}
+    if not REGISTRO.exists():
+        return achados
+    for linha in REGISTRO.read_text(encoding="utf-8").splitlines():
+        linha = linha.strip()
+        if not linha:
+            continue
+        try:
+            reg = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if reg.get("pedido_id") != pedido_id:
+            continue
+        for peca, dados in (reg.get("banners") or {}).items():
+            if isinstance(dados, dict) and dados.get("file_id"):
+                achados[peca] = dados
+    return achados
 
 
 def estado_do_pedido(pedido_id):

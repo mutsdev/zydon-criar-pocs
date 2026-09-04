@@ -69,13 +69,16 @@ def _registrar_logo(relato, encaixada, logo_img, x, y):
 
 def montar(formato, paleta, logo_img, nome_cliente="", limiares=None):
     """Devolve (peca RGB, relato) no formato pedido. Nunca levanta por conteudo."""
-    fundo = cor.de_hex(paleta["principal"])
+    # O mesmo ajuste de legibilidade do `compor` — ver `cor.fundo_legivel`. O
+    # fallback e o piso do pipeline: ele nao pode ser o unico caminho que
+    # reprova na propria regua por causa da cor da marca.
+    fundo, laudo_fundo = cor.fundo_legivel(cor.de_hex(paleta["principal"]))
     destaque = cor.de_hex(paleta["destaque"])
     tinta = cor.texto_sobre(fundo)
 
     relato = {"formato": formato.chave, "caixas": [], "logo": None,
-              "painel": {"fundo": paleta["principal"], "tinta": cor.para_hex(tinta),
-                         "largura": formato.largura},
+              "painel": {"fundo": cor.para_hex(fundo), "tinta": cor.para_hex(tinta),
+                         "largura": formato.largura, "ajuste": laudo_fundo},
               "tem_cena": False, "origem": "fallback"}
 
     # O fundo aqui e a cor principal, quase sempre extraida da propria logo:

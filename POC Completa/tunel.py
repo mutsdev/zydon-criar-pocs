@@ -39,15 +39,28 @@ ARQUIVO = RAIZ / "endereco-receptor.json"
 
 CLOUDFLARED = Path(r"C:\Program Files (x86)\cloudflared\cloudflared.exe")
 GIT = Path(r"C:\Program Files\Git\cmd\git.exe")
-PADRAO_URL = re.compile(r"https://[a-z0-9-]+\.trycloudflare\.com")
+# Tres palavras separadas por hifen, no minimo. O nome de um quick tunnel e
+# sempre assim ("arc-sophisticated-basename-kilometers"); a INFRAESTRUTURA da
+# Cloudflare no mesmo dominio nao e — e `api.trycloudflare.com` aparece nas
+# mensagens de ERRO do proprio cloudflared. Em 03/09/2026 o padrao antigo
+# ([a-z0-9-]+) casou com ela quatro voltas seguidas: o vigia anunciava
+# "Tunel: https://api.trycloudflare.com" e desistia, sem nunca ter lido o
+# endereco de verdade. Casar o endereco errado e pior que nao casar nenhum.
+PADRAO_URL = re.compile(
+    r"https://[a-z0-9]+(?:-[a-z0-9]+){2,}\.trycloudflare\.com")
 PADRAO_PRONTO = "Registered tunnel connection"
 
 # O DNS de um nome recem-criado leva de 10 segundos a mais de dois minutos para
 # propagar. Medido em 01/09/2026, na mesma tarde: uma subida passou na terceira
 # sondagem e outra na vigesima quarta — exatamente no limite de uma janela de
 # 24. Janela curta aqui reprova um tunel que estava subindo bem, e o custo de
-# esperar e so tempo, entao ela e folgada de proposito: 3 minutos.
-TENTATIVAS_SAUDE = 36
+# esperar e so tempo, entao ela e folgada de proposito.
+#
+# De 36 para 72 em 03/09/2026: uma subida passou na tentativa **35 de 36**. Ela
+# funcionou, mas so por um fio, e a anterior tinha estourado as 36 — duas vezes
+# seguidas raspando o teto e uma delas reprovando um tunel que estava bom. Seis
+# minutos custa esperar; publicar endereco morto custa o pedido do cliente.
+TENTATIVAS_SAUDE = 72
 ESPERA_SAUDE = 5
 
 # De quanto em quanto tempo o tunel confere a si mesmo, e quantas falhas
@@ -86,8 +99,27 @@ def esperar_url(processo, limite=90):
     return url
 
 
+def _limpar_cache_dns():
+    """Esvazia o cache do resolvedor do Windows. Best-effort, e de proposito.
+
+    Sem isto o laco de `conferir` nao consegue escapar de um NXDOMAIN. O nome do
+    tunel e criado no instante em que o cloudflared registra a conexao, e a
+    primeira consulta costuma chegar antes disso; a resposta negativa entra no
+    cache com o TTL negativo da zona, e **todas as tentativas seguintes sao
+    respondidas pelo cache**, nao pelo DNS. Medido em 03/09/2026: 32 tentativas
+    de ConnectionError seguidas enquanto o `1.1.1.1` ja resolvia o mesmo nome.
+    As tentativas pareciam propagacao lenta e eram um cache envenenado.
+    """
+    try:
+        subprocess.run(["ipconfig", "/flushdns"], capture_output=True,
+                       timeout=10, check=False)
+    except (OSError, subprocess.SubprocessError):
+        pass  # noutro sistema operacional isto nao existe, e nao faz falta
+
+
 def conferir(url):
     """O /saude responde atraves do tunel? Devolve (ok, detalhe)."""
+    detalhe = "nenhuma tentativa"
     for tentativa in range(1, TENTATIVAS_SAUDE + 1):
         try:
             r = requests.get(f"{url}/saude", timeout=20)
@@ -97,6 +129,9 @@ def conferir(url):
         except (requests.RequestException, ValueError) as e:
             detalhe = type(e).__name__
         print(f"  [saude] tentativa {tentativa}/{TENTATIVAS_SAUDE}: {detalhe}")
+        # Antes de dormir, e nao depois: a proxima tentativa precisa de um
+        # cache limpo para ter chance de ver o nome que acabou de nascer.
+        _limpar_cache_dns()
         time.sleep(ESPERA_SAUDE)
     return False, detalhe
 
@@ -178,9 +213,22 @@ def main(argv=None):
 
     ok, detalhe = conferir(url)
     if not ok:
+        nome = url.split("//", 1)[-1]
         print(f"[ERRO] O tunel subiu mas o /saude nao respondeu ({detalhe}). "
               f"NAO publiquei: endereco que nao responde e pior que nenhum.",
               file=sys.stderr)
+        if detalhe == "ConnectionError":
+            # A distincao que importa, e que custou uma tarde: nome que nao
+            # existe versus nome que existe e o seu resolvedor nao ve.
+            print(f"\n       ConnectionError e o cliente nao conseguindo "
+                  f"CONECTAR — quase sempre DNS, e nao o receptor.\n"
+                  f"       Pergunte a um resolvedor de fora antes de culpar "
+                  f"a maquina:\n"
+                  f"         Resolve-DnsName {nome} -Server 1.1.1.1\n"
+                  f"       Se ELE responder e a sua maquina nao, e cache. "
+                  f"Rode 'ipconfig /flushdns' e suba de novo.\n"
+                  f"       Se nem ele responder, o nome nao nasceu: suba de "
+                  f"novo e voce ganha outro.", file=sys.stderr)
         processo.terminate()
         return 1
     print(f"[OK] /saude atraves do tunel: {detalhe}")

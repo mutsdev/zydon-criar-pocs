@@ -158,8 +158,9 @@ def processar(pedido, args):
         else:
             print(f"  banners: nao saiu — {str(banner.get('saida'))[-300:]}")
 
-    resultado.update(_publicar_para_curadoria(resultado, banner.get("pasta"),
-                                              args))
+    resultado.update(_publicar_para_curadoria(
+        resultado, banner.get("pasta"), args,
+        motivo=None if banner.get("pasta") else banner.get("saida")))
 
     url_callback = pedido.get("callback_url") or args.callback
     token_callback = pedido.get("callback_token") or args.callback_token
@@ -178,7 +179,7 @@ def processar(pedido, args):
     print(f"  RESULTADO: {resultado['status']}  {resultado.get('url') or ''}")
 
 
-def _publicar_para_curadoria(resultado, pasta, args, quais=None):
+def _publicar_para_curadoria(resultado, pasta, args, quais=None, motivo=None):
     """Sobe as pecas e devolve os campos de banner do callback.
 
     Publicar **nao muda o portal**: e so upload de arquivo, para o executivo
@@ -186,7 +187,14 @@ def _publicar_para_curadoria(resultado, pasta, args, quais=None):
     portal e a entrega, o banner e o acessorio.
     """
     if not pasta or resultado.get("status") != "concluido":
-        return {"fase": resultado.get("status", "falhou"), "banners": {}}
+        # O MOTIVO viaja. Sem ele o Mitra so ve a secao de identidade sumir, e
+        # "nao gerou" e indistinguivel de "nao tentou" — foi o que aconteceu
+        # com a Rema Tip Top em 04/09/2026, cuja logo de 376x70 foi recusada
+        # por uma regua que nem se aplicava.
+        recado = {"fase": resultado.get("status", "falhou"), "banners": {}}
+        if motivo:
+            recado["banners_erro"] = str(motivo)[-500:]
+        return recado
     if not resultado.get("portal_id"):
         # Sem portal_id nao ha JWT, e sem JWT nao ha upload. Acontece quando o
         # runner cria o portal e a linha de [OK] nao sai como esperado.
@@ -206,7 +214,7 @@ def _publicar_para_curadoria(resultado, pasta, args, quais=None):
 
 
 # --------------------------------------------------------------------- banner
-ACOES = ("regerar", "aplicar", "dispensar")
+ACOES = ("regerar", "aplicar", "dispensar", "urls")
 
 
 def trabalhar_banner():
@@ -396,6 +404,32 @@ class Manipulador(BaseHTTPRequestHandler):
             return self._responder(409, {
                 "ok": False, "erro": "SEM_PORTAL", "pedido_id": pedido_id,
                 "detalhe": "este pedido nao criou portal; nao ha onde aplicar"})
+
+        if acao == "urls":
+            # URLs novas para as MESMAS pecas. Existe porque a URL assinada
+            # vale ~2h e o file_id e para sempre: tela reaberta no dia seguinte
+            # precisa de assinatura, nao de peca nova. Regerar ali gastaria
+            # neuron para resolver um problema de validade.
+            # Peca a peca, e nao o `banners` do ultimo registro: aquele traz
+            # so o que a regeracao mais recente tocou, e a outra peca — que
+            # continua aplicada no portal — ficava sem como ser renovada.
+            estado_banners = atendimento.banners_publicados(pedido_id)
+            if not estado_banners:
+                return self._responder(409, {
+                    "ok": False, "erro": "SEM_PECAS", "pedido_id": pedido_id})
+            try:
+                renovadas = atendimento.renovar_urls(
+                    estado.get("org") or self.args.org, estado["portal_id"],
+                    estado_banners)
+            except Exception as e:  # noqa: BLE001
+                return self._responder(502, {
+                    "ok": False, "erro": "ZYDON_RECUSOU",
+                    "detalhe": f"{type(e).__name__}: {e}"})
+            print(f"  [BANNER] {pedido_id} URLs renovadas: "
+                  f"{', '.join(sorted(renovadas))}")
+            return self._responder(200, {"ok": True, "pedido_id": pedido_id,
+                                         "fase": estado.get("fase"),
+                                         "banners": renovadas})
 
         if acao == "dispensar":
             # Nao subir nada e uma decisao legitima, e precisa ficar gravada:

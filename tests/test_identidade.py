@@ -1008,3 +1008,27 @@ def test_regra_zero_abre_o_prompt():
     """Instrucao no topo pesa mais. No meio do bloco ela era ignorada."""
     import prompt_gem
     assert prompt_gem.FIXO.lstrip().startswith("REGRA ZERO")
+
+
+def test_url_de_arquivo_vai_assinada_e_com_validade(monkeypatch):
+    """A URL de resource-file e assinada (CloudFront). Sem a query ela responde
+    403 — e foi assim que a tela de curadoria do Mitra nasceu com as duas
+    imagens quebradas em 03/09/2026: eu cortava o "?" para deixar a URL
+    "limpa", cortando justamente o que a faz abrir.
+    """
+    assinada = ("https://files.zydon.com.br/production/abc"
+                "?Expires=1788480687&Signature=xyz&Key-Pair-Id=K2DXR2VPCR1GUQ")
+
+    class Resposta:
+        status_code = 200
+        text = ""
+
+        @staticmethod
+        def json():
+            return {"url": assinada, "content_type": "IMAGE_PNG",
+                    "content_length": 74211}
+
+    monkeypatch.setattr(portal.requests, "get", lambda *a, **k: Resposta())
+    url, expira = portal.url_do_arquivo("jwt", "abc")
+    assert url == assinada, "a assinatura tem que viajar junto"
+    assert expira == 1788480687, "sem validade, ninguem sabe quando renovar"

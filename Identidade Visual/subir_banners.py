@@ -156,7 +156,12 @@ def publicar(headers_org, jwt, pecas, ecoar=None):
                 f"({laudo['bytes']} bytes). Nada foi apontado no portal.")
         publicadas[chave] = {
             "file_id": file_id,
+            # A URL vai ASSINADA e inteira: sem a query ela responde 403, e foi
+            # assim que a tela de curadoria do Mitra nasceu com as duas imagens
+            # quebradas em 03/09/2026. `expira_em` viaja junto porque ela vale
+            # ~2h — o file_id e que e para sempre.
             "url": laudo["url"],
+            "expira_em": laudo.get("expira_em"),
             "dimensao": list(DESTINOS[chave]["dimensao"]),
             "arquivo": Path(caminho).name,
         }

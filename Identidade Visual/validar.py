@@ -155,11 +155,18 @@ def checar_peca(img, relato, formato, limiares, kb_gravado=None):
         # nao consegue aspecto melhor que ~0,7% por construcao, e cobrar
         # porcentagem reprovaria logo pequena que esta perfeita.
         desvio_px = abs(largura - altura * logo["aspecto_original"])
-        if desvio_px > limiares["folga_arredondamento_logo_px"]:
+        # A folga cresce com o ASPECTO, e nao e um numero fixo. Arredondar a
+        # altura para inteiro move a largura em ate `aspecto/2` px: uma marca de
+        # 5,4:1 nao consegue ficar abaixo de ~2,7px por construcao, e cobrar
+        # 1,0px dela reprova uma logo que esta perfeita. Foi o que aconteceu com
+        # o cabecalho da Rema Tip Top (376x70) em 04/09/2026 — a peca inteira
+        # caiu no fallback por um arredondamento inevitavel.
+        folga = max(limiares["folga_arredondamento_logo_px"],
+                    logo["aspecto_original"] / 2 + 0.5)
+        if desvio_px > folga:
             falhas.append(_falha("logo_esticada",
                                  "a logo foi distorcida ao ser encaixada",
-                                 round(desvio_px, 3),
-                                 limiares["folga_arredondamento_logo_px"]))
+                                 round(desvio_px, 3), round(folga, 3)))
         if x0 < 0 or y0 < 0 or x1 > formato.largura or y1 > formato.altura:
             falhas.append(_falha("logo_fora", "a logo saiu da area da peca",
                                  logo["caixa"], None))
