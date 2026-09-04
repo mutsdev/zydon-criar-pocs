@@ -1,0 +1,17 @@
+{
+  "pedido_id": "mitra-2026-09-04-002",
+  "status": "falhou",
+  "arquivo": null,
+  "logo_url": null,
+  "logo_motivo": "a unica candidata e o avatar do perfil, e o CDN do Instagram so entrega a versao assinada de 100x100 (as variantes s320/s1080 e a URL sem o parametro stp respondem 403); o minimo da regua e 200px no maior lado. A arte e um mascote de cartola segurando um pote de conserva com a palavra Gentleman. Peca ao cliente o vetor dessa logo, ou uma exportacao PNG com pelo menos 200px no maior lado.",
+  "resumo": {
+    "produtos": 0,
+    "categorias": 0,
+    "fonte": "site",
+    "preco": "ausente",
+    "imagens_substituidas": 0,
+    "observacoes": "Nao foi possivel extrair catalogo. O site do pedido e um perfil do Instagram (@conservasgentleman, 89 posts, 233 seguidores) e o Instagram exige login: o HTML redireciona para /accounts/login e a API web_profile_info responde 401 require_login; o Chromium do ambiente nao alcanca o instagram.com e os espelhos publicos (imginn, picuki, iganony, storiesig) estao 403 ou desativados. Fora do Instagram a marca quase nao tem pegada: a unica referencia de produto encontrada foi um item na Amazon, 'Ovos de Codorna em Conserva Gentleman 295g Pronto para Consumo' (ASIN B0H1JBF32P), sem preco acessivel — a busca da Amazon responde 503 para o ambiente. O Mercado Livre repetiu o muro de login ja conhecido. O pedido nao trouxe anexo, entao nao havia fonte de preco nem de catalogo. Com um unico produto confirmado nao da para chegar aos 5 minimos da skill, e completar a lista significaria inventar itens e ilustra-los com fotos de conservas de outras marcas — exatamente o erro que aparece na frente do cliente. Para destravar: um PDF ou planilha de produtos do cliente, ou o site/loja dele se existir. Confirmado apenas o ramo: conservas e aperitivos artesanais em pote de vidro, com comunicacao de harmonizacao. O callback_url foi pulado por topologia (a rotina na nuvem so tem CONNECT na 443 e o Mitra atende na 8080), conforme ENTREGA.md; a entrega saiu pelo repositorio.",
+    "callback": "pulado"
+  },
+  "sessao_url": "https://claude.ai/code/session_01KoJXoq6mDjy6Lzw42sbtA3"
+}
