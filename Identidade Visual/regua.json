@@ -57,5 +57,9 @@
     "_comentario": "Regua do cabecalho do portal, onde a logo aparece com ~120x29. Mais folgada que a do banner de proposito: la ela e composta em peca grande, aqui nao.",
     "lado_maior_minimo_px": 200,
     "lado_menor_minimo_px": 48
+  },
+  "portal": {
+    "_comentario": "Piso de contraste do BRANCO sobre a cor primaria do portal. A plataforma escreve em branco por cima dela, entao cor clara demais deixa o texto ilegivel. Abaixo disto o portal vai de PRETO, e nao de uma versao escurecida da marca: preto le como decisao, tom inventado le como erro. Em 3.0 (piso WCAG de texto grande) viram preto 6 das 17 paletas em disco — jf #F8F8F8, cliente-teste #C8F800, cobra #F8B800, poupa-agora #20C868, aroca #50B028, primetek #E87800. Baixe para 1.6 se so os quase-brancos devem virar.",
+    "contraste_minimo_cor": 3.0
   }
 }

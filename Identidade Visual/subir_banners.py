@@ -44,6 +44,7 @@ for _fluxo in (sys.stdout, sys.stderr):
 
 from PIL import Image  # noqa: E402
 
+import cor as mod_cor  # noqa: E402
 import formatos  # noqa: E402
 import portal as mod_portal  # noqa: E402
 from subir_identidade import _carregar_env  # noqa: E402
@@ -223,7 +224,14 @@ def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None, cor=None):
         if ids.get("login"):
             mudancas["login_image"] = ids["login"]
         if cor:
-            mudancas["color"] = str(cor).lstrip("#").upper()
+            # Mesma regra da criacao do portal: cor clara demais vira preto,
+            # porque a plataforma escreve em branco por cima dela. Aplicada aqui
+            # tambem, senao a curadoria seria a porta de entrada para o portal
+            # ilegivel que o `subir_identidade` recusa.
+            escolhida, motivo = mod_cor.cor_de_portal(cor)
+            mudancas["color"] = escolhida.lstrip("#").upper()
+            if motivo and ecoar:
+                ecoar(f"  [AVISO] {motivo}")
         if mudancas:
             mod_portal.atualizar_aparencia(jwt, aparencia, mudancas)
             gravados.append("login" if ids.get("login") else "cor")
@@ -252,9 +260,9 @@ def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None, cor=None):
         if ids.get("login"):
             relato["confere"]["login"] = depois.get("login_image") == ids["login"]
         if cor:
+            esperada = mod_cor.cor_de_portal(cor)[0].lstrip("#").upper()
             relato["confere"]["cor"] = (
-                str(depois.get("color") or "").lstrip("#").upper()
-                == str(cor).lstrip("#").upper())
+                str(depois.get("color") or "").lstrip("#").upper() == esperada)
     if "cabecalho" in gravados:
         identificador = banner.get("id") or banner.get("bannerId")
         agora = mod_portal.obter_banner(jwt, identificador)

@@ -1119,6 +1119,27 @@ def test_prompt_sem_feedback_nao_ganha_bloco_vazio():
     assert com == sem and "\n\n\n" not in com
 
 
+def test_cor_clara_demais_vira_preto_no_portal(limiares):
+    """A plataforma escreve em BRANCO por cima da cor primaria.
+
+    #F8F8F8 e uma paleta real em disco (jf-distribuidora) e deixa o branco em
+    1.06 de contraste: e um portal branco no branco.
+    """
+    minimo = limiares["portal"]["contraste_minimo_cor"]
+    for clara in ("#F8F8F8", "#C8F800", "#F8B800"):
+        final, motivo = cor.cor_de_portal(clara, minimo)
+        assert final == cor.para_hex(cor.PRETO)
+        assert motivo and clara in motivo   # o motivo diz qual cor foi trocada
+
+
+def test_cor_escura_o_bastante_passa_intacta(limiares):
+    """Trocar cor boa por preto custaria a identidade do cliente."""
+    minimo = limiares["portal"]["contraste_minimo_cor"]
+    for boa in ("#E82028", "#088050", "#081858"):
+        final, motivo = cor.cor_de_portal(boa, minimo)
+        assert final == boa and motivo is None
+
+
 def test_url_de_arquivo_vai_assinada_e_com_validade(monkeypatch):
     """A URL de resource-file e assinada (CloudFront). Sem a query ela responde
     403 — e foi assim que a tela de curadoria do Mitra nasceu com as duas

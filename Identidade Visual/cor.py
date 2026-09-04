@@ -150,3 +150,30 @@ def fundo_legivel(fundo, alvo=5.2, passos=40):
             break
     return atual, {"ajustado": True, "de": para_hex(fundo), "para": para_hex(atual),
                    "razao": round(contraste(texto_sobre(atual), atual), 2)}
+
+
+# Piso de contraste do BRANCO sobre a cor primaria do portal. A plataforma
+# escreve em branco por cima dela (botao, cabecalho), entao cor clara demais
+# deixa o texto ilegivel — e o portal "fica horrivel", que foi o relato de
+# 04/09/2026. 3.0 e o piso WCAG de texto grande: linha principiada, e nao gosto.
+CONTRASTE_MINIMO_COR_PORTAL = 3.0
+
+
+def cor_de_portal(hexa, contraste_minimo=CONTRASTE_MINIMO_COR_PORTAL):
+    """(hex_final, motivo) para a cor primaria do portal.
+
+    Cor clara demais vira PRETO, e nao uma versao escurecida da marca. Escurecer
+    preservando matiz seria mais bonito, mas devolveria um tom que a marca nao
+    tem — e quem olha nao sabe se aquilo e a cor do cliente ou invencao nossa.
+    Preto le como decisao; verde-escuro inventado le como erro.
+
+    Medido nas 17 paletas em disco: `#F8F8F8` (jf-distribuidora) da contraste
+    1.06 com o branco — e um portal branco no branco.
+    """
+    rgb = de_hex(hexa)
+    achado = contraste(BRANCO, rgb)
+    if achado >= contraste_minimo:
+        return para_hex(rgb), None
+    return para_hex(PRETO), (
+        f"a cor {para_hex(rgb)} deixa o branco em {achado:.2f} de contraste, "
+        f"abaixo de {contraste_minimo:.1f}: o portal vai de preto")

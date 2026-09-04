@@ -198,11 +198,16 @@ def main(argv=None):
         # vermelha — duas identidades no mesmo lugar, e a que o cliente ve
         # primeiro era a que nao era dele.
         escolhida = pal["principal"] if args.cor_portal == "auto" else args.cor_portal
+        escolhida, motivo = mod_cor.cor_de_portal(
+            escolhida, limiares.get("portal", {}).get(
+                "contraste_minimo_cor", mod_cor.CONTRASTE_MINIMO_COR_PORTAL))
         # O GET devolve a cor SEM "#" (ex.: "4A90D9"). Mandar com # gravaria um
         # valor de formato diferente do que o portal ja usa.
         mudancas["color"] = escolhida.lstrip("#").upper()
         print(f"Cor do portal: {escolhida}"
               f"{'  (da paleta da logo)' if args.cor_portal == 'auto' else ''}")
+        if motivo:
+            print(f"  [AVISO] {motivo}")
     mod_portal.atualizar_aparencia(jwt, antes, mudancas)
 
     # Passo 3: conferir o que ficou NO AR. O status da resposta nao basta — o
