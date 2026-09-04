@@ -1,8 +1,8 @@
 {
-  "url": "https://asin-expense-synthetic-imports.trycloudflare.com",
-  "pedido": "https://asin-expense-synthetic-imports.trycloudflare.com/pedido",
-  "saude": "https://asin-expense-synthetic-imports.trycloudflare.com/saude",
+  "url": "https://contrary-philips-dramatically-praise.trycloudflare.com",
+  "pedido": "https://contrary-philips-dramatically-praise.trycloudflare.com/pedido",
+  "saude": "https://contrary-philips-dramatically-praise.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-04T15:30:25-03:00",
+  "atualizado_em": "2026-09-04T17:21:22-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
