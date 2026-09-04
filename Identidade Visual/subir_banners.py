@@ -190,8 +190,15 @@ class GravacaoPelaMetade(RuntimeError):
         self.faltou = faltou
 
 
-def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None):
+def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None, cor=None):
     """Aponta o portal para os ids ja publicados. Devolve o relato do GET.
+
+    `cor` e a principal com que as pecas foram PINTADAS, e vai junto na
+    aparencia. Sem ela o executivo troca a cor base na curadoria, ve os banners
+    mudarem e o portal continuar na cor antiga — duas identidades no mesmo lugar,
+    e a que o cliente ve primeiro nao e a que ele escolheu. Como a cor sai do
+    `paleta.json` da propria pasta, mandar sempre e idempotente: quem nao trocou
+    nada regrava o valor que ja estava la.
 
     `ids` e {"login": file_id, "cabecalho": file_id} — qualquer um dos dois
     pode faltar, e o que faltar nao e tocado. E assim que o executivo aplica
@@ -202,19 +209,26 @@ def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None):
     falha, isto levanta `GravacaoPelaMetade` dizendo o que ja ficou gravado,
     em vez de deixar o portal num estado que ninguem sabe qual e.
     """
-    if aparencia is None and "login" in ids:
+    if aparencia is None and ("login" in ids or cor):
         aparencia = mod_portal.obter_aparencia(jwt)
     if banner is None and "cabecalho" in ids:
         banner = _banner_alvo(jwt)
 
     gravados = []
     try:
+        # Um PUT so com os dois campos: dois seriam duas chances de deixar a
+        # aparencia pela metade. O GET devolve a cor SEM "#", e mandar com ele
+        # gravaria um formato diferente do que o portal ja usa.
+        mudancas = {}
         if ids.get("login"):
-            mod_portal.atualizar_aparencia(jwt, aparencia,
-                                           {"login_image": ids["login"]})
-            gravados.append("login")
+            mudancas["login_image"] = ids["login"]
+        if cor:
+            mudancas["color"] = str(cor).lstrip("#").upper()
+        if mudancas:
+            mod_portal.atualizar_aparencia(jwt, aparencia, mudancas)
+            gravados.append("login" if ids.get("login") else "cor")
             if ecoar:
-                ecoar("  [OK] aparencia.login_image")
+                ecoar("  [OK] aparencia: " + ", ".join(sorted(mudancas)))
         if ids.get("cabecalho") and banner:
             identificador = banner.get("id") or banner.get("bannerId")
             mod_portal.atualizar_banner(jwt, identificador, banner,
@@ -233,9 +247,14 @@ def aplicar(jwt, ids, aparencia=None, banner=None, ecoar=None):
 
     # Conferencia pelo GET, nunca pela resposta do PUT.
     relato = {"gravados": gravados, "confere": {}}
-    if "login" in gravados:
+    if "login" in gravados or "cor" in gravados:
         depois = mod_portal.obter_aparencia(jwt)
-        relato["confere"]["login"] = depois.get("login_image") == ids["login"]
+        if ids.get("login"):
+            relato["confere"]["login"] = depois.get("login_image") == ids["login"]
+        if cor:
+            relato["confere"]["cor"] = (
+                str(depois.get("color") or "").lstrip("#").upper()
+                == str(cor).lstrip("#").upper())
     if "cabecalho" in gravados:
         identificador = banner.get("id") or banner.get("bannerId")
         agora = mod_portal.obter_banner(jwt, identificador)

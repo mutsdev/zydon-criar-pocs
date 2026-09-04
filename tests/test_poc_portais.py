@@ -622,6 +622,58 @@ def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
     assert status == 409 and corpo["erro"] == "SEM_PORTAL"
 
 
+def test_cor_das_pecas_sai_do_paleta_json(tmp_path):
+    """A cor do portal tem que ser a MESMA com que as pecas foram pintadas.
+
+    Sai do paleta.json — que o `regerar --cor` reescreve — e nao de um campo
+    guardado a parte, que poderia divergir da arte que o executivo esta vendo.
+    """
+    atendimento = _carregar_atendimento()
+    assert atendimento.cor_das_pecas(None) is None
+    assert atendimento.cor_das_pecas(tmp_path) is None       # sem paleta.json
+    (tmp_path / "paleta.json").write_text(
+        json.dumps({"principal": "#33415B", "destaque": "#FFF"}), encoding="utf-8")
+    assert atendimento.cor_das_pecas(tmp_path) == "#33415B"
+
+
+def test_aplicar_grava_a_cor_junto_da_tela_de_login(monkeypatch):
+    """Um PUT so com os dois campos, e a cor sem '#'.
+
+    Sem isto o executivo troca a cor base na curadoria, ve os banners mudarem e
+    o portal continuar na cor antiga.
+    """
+    import importlib.util
+    caminho = os.path.join(POC_PORTAIS, "Identidade Visual", "subir_banners.py")
+    spec = importlib.util.spec_from_file_location("subir_banners_teste", caminho)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    enviados = []
+    monkeypatch.setattr(mod.mod_portal, "obter_aparencia",
+                        lambda jwt: {"color": "AABBCC", "login_image": "velho"})
+    monkeypatch.setattr(mod.mod_portal, "atualizar_aparencia",
+                        lambda jwt, antes, mudancas: enviados.append(mudancas))
+    relato = mod.aplicar("jwt", {"login": "id-novo"}, cor="#33415b")
+
+    assert len(enviados) == 1, "dois PUTs seriam duas chances de meia gravacao"
+    assert enviados[0] == {"login_image": "id-novo", "color": "33415B"}
+    assert relato["gravados"] == ["login"]
+
+
+def test_pedido_sem_segmento_avisa_em_vez_de_substituir_calado():
+    """A arte generica e a dirigida chegam identicas ao executivo sem isto.
+
+    Em 04/09/2026 os tres pedidos de rede social vieram sem segmento — o campo
+    era opcional na tela do Mitra — e as cenas foram desenhadas para
+    "distribuicao B2B" em vez do ramo do cliente, sem nada dizendo isso.
+    """
+    atendimento = _carregar_atendimento()
+    assert atendimento.aviso_de_segmento("conservas artesanais") is None
+    for vazio in (None, "", "   "):
+        aviso = atendimento.aviso_de_segmento(vazio)
+        assert aviso and atendimento.SEGMENTO_PADRAO in aviso
+
+
 def test_versao_ignora_o_commit_de_endereco(monkeypatch):
     """`versao` diz que CODIGO esta rodando, e nao pode andar sozinha.
 

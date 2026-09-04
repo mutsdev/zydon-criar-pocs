@@ -410,6 +410,19 @@ def _rodar_gerador(comando, rotulo):
     return achada, saida
 
 
+def aviso_de_segmento(segmento):
+    """Frase para o callback quando o pedido nao trouxe segmento, ou None.
+
+    Existe porque `SEGMENTO_PADRAO` e uma substituicao silenciosa: sem isto, a
+    arte generica e a arte dirigida chegam identicas ao executivo, e ele nao tem
+    como saber qual das duas esta olhando.
+    """
+    if str(segmento or "").strip():
+        return None
+    return (f"o pedido nao trouxe segmento: a cena foi desenhada para "
+            f"'{SEGMENTO_PADRAO}', e nao para o ramo do cliente")
+
+
 def gerar_pecas(caminho_json, logo, nome_cliente, segmento=None, candidatas=2,
                 quais=None):
     """Gera as pecas de um cliente novo. Devolve (pasta, saida)."""
@@ -423,6 +436,13 @@ def gerar_pecas(caminho_json, logo, nome_cliente, segmento=None, candidatas=2,
     #
     # Logo pequena num painel de 960px fica discreta; o `encaixar` nunca amplia,
     # entao ela nao deforma. Discreta e melhor que ausente.
+    # Substituir em silencio e o defeito, nao o padrao: a arte sai generica e
+    # nada no callback diz por que. Em 04/09/2026 os TRES pedidos de rede social
+    # vieram sem segmento — o campo era opcional na tela do Mitra — e as cenas
+    # foram desenhadas para "distribuicao B2B" em vez do ramo do cliente.
+    if not str(segmento or "").strip():
+        print(f"  [AVISO] pedido sem segmento: a cena vai ser desenhada para "
+              f"'{SEGMENTO_PADRAO}', e nao para o ramo do cliente.")
     comando = [sys.executable, str(GERADOR), "auto",
                "--logo", str(logo), "--nome", nome_cliente,
                "--segmento", segmento or SEGMENTO_PADRAO,
@@ -586,12 +606,28 @@ def renovar_urls(org, portal_id, banners):
     return renovadas
 
 
-def aplicar_pecas(org, portal_id, ids):
+def cor_das_pecas(pasta):
+    """A principal com que as pecas daquela pasta foram pintadas, ou None.
+
+    Sai do `paleta.json` e nao de um campo guardado a parte: ele e reescrito
+    pelo `regerar --cor`, entao e a unica fonte que nao pode divergir da arte
+    que o executivo esta olhando.
+    """
+    if not pasta:
+        return None
+    try:
+        dados = json.loads((Path(pasta) / "paleta.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return dados.get("principal") or None
+
+
+def aplicar_pecas(org, portal_id, ids, cor=None):
     """Aponta o portal para os ids escolhidos. Devolve o relato do GET."""
     import subir_banners
     _, jwt = _abrir_portal(org, portal_id)
     try:
-        return subir_banners.aplicar(jwt, ids, ecoar=print)
+        return subir_banners.aplicar(jwt, ids, ecoar=print, cor=cor)
     except subir_banners.GravacaoPelaMetade as erro:
         raise GravacaoPelaMetade(erro, erro.gravados, erro.faltou) from erro
 

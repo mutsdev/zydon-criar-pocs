@@ -346,6 +346,19 @@ Consequência a não estranhar: trocar a cor de uma peça deixa **a outra com a
 paleta anterior**. Duas cores no mesmo portal é pior que a cor errada, então
 mande as duas em `pecas` quando mudar `cor`.
 
+**A cor escolhida vai para o portal, não só para os banners.** No `aplicar`, a
+mesma principal que pintou as peças é gravada em `appearance.color`, no mesmo PUT
+da tela de login. Sem isso o executivo trocaria a cor base, veria os banners
+mudarem e o portal continuar na cor antiga — duas identidades no mesmo lugar, e a
+que o cliente vê primeiro não é a que ele escolheu. Vocês não mandam nada a mais:
+a cor sai do `paleta.json` da própria pasta, então quem não trocou nada regrava o
+valor que já estava lá.
+
+**Segmento vazio agora volta dito.** Quando o pedido não traz `segmento`, a cena é
+desenhada para "distribuicao B2B" em vez do ramo do cliente, e o callback passa a
+carregar `banners_aviso` explicando isso. Substituir em silêncio fazia a arte
+genérica e a dirigida chegarem idênticas na tela.
+
 Erros próprios da ação: `400 FEEDBACK_INVALIDO` (peça que não existe — recusar é
 melhor que rodar sem o único dado que a pessoa se deu ao trabalho de escrever) e
 `400 COR_INVALIDA` (não é `#RRGGBB`).

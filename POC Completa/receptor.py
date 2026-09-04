@@ -205,6 +205,9 @@ def processar(pedido, args):
     resultado.update(_publicar_para_curadoria(
         resultado, banner.get("pasta"), args,
         motivo=None if banner.get("pasta") else banner.get("saida")))
+    aviso = atendimento.aviso_de_segmento(pedido.get("segmento"))
+    if aviso and resultado.get("banners"):
+        resultado["banners_aviso"] = aviso
 
     url_callback = pedido.get("callback_url") or args.callback
     token_callback = pedido.get("callback_token") or args.callback_token
@@ -308,6 +311,9 @@ def _previa(pedido, args):
                             "pasta_banners": str(pasta), "token_peca": token})
         corpo["fase"] = "previa"
         corpo["banners"] = atendimento.urls_da_previa(pedido_id, token, pasta)
+        aviso = atendimento.aviso_de_segmento(pedido.get("segmento"))
+        if aviso:
+            corpo["banners_aviso"] = aviso
         print(f"  previa: {len(corpo['banners'])} peca(s) em {pasta}")
     else:
         corpo["fase"] = "previa"
@@ -686,9 +692,15 @@ class Manipulador(BaseHTTPRequestHandler):
             return self._responder(200, {"ok": True, "simulado": True,
                                          "pedido_id": pedido_id,
                                          "escolhas": escolhas})
+        # A cor sai da pasta das pecas, e nao do corpo do pedido: e a mesma
+        # com que elas foram PINTADAS. Se o executivo trocou a cor base na
+        # curadoria, o portal muda junto aqui — sem isto ele veria os banners
+        # novos e o portal na cor antiga, que e o que a tela dele promete.
+        cor = atendimento.cor_das_pecas(estado.get("pasta_banners"))
         try:
             relato = atendimento.aplicar_pecas(
-                estado.get("org") or self.args.org, estado["portal_id"], escolhas)
+                estado.get("org") or self.args.org, estado["portal_id"], escolhas,
+                cor=cor)
         except atendimento.GravacaoPelaMetade as e:
             # O estado real do portal e a informacao que importa aqui, e ela
             # nao esta na mensagem da API: uma peca ficou no ar e a outra nao.
