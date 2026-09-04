@@ -20,6 +20,7 @@ import importlib.util
 import inspect
 import json
 import os
+import pathlib
 import sys
 
 import pytest
@@ -459,6 +460,9 @@ def receptor_no_ar(tmp_path):
             sys.path.insert(0, caminho)
     import receptor as mod
 
+    # ENDERECO e FILA_PREVIA.put sao de modulo: sem restaurar, um teste que os
+    # troca contamina os seguintes.
+    endereco_antes, put_antes = mod.atendimento.ENDERECO, mod.FILA_PREVIA.put
     mod.atendimento.REGISTRO = tmp_path / "pedidos.jsonl"
     mod.Manipulador.args = argparse.Namespace(
         token="segredo-de-teste", org="pocs", gravar=False, simular=True,
@@ -468,6 +472,7 @@ def receptor_no_ar(tmp_path):
     threading.Thread(target=servidor.serve_forever, daemon=True).start()
     yield servidor.server_address[1], mod
     servidor.shutdown()
+    mod.atendimento.ENDERECO, mod.FILA_PREVIA.put = endereco_antes, put_antes
 
 
 def _postar(porta, rota, corpo, token="segredo-de-teste"):
@@ -611,6 +616,49 @@ def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
     status, corpo = _postar(porta, "/banner", {"pedido_id": "p3",
                                                "acao": "dispensar"})
     assert status == 409 and corpo["erro"] == "SEM_PORTAL"
+
+
+def test_previa_sem_tunel_avisa_em_vez_de_gerar(receptor_no_ar):
+    """Gerar para devolver URL que o Mitra nao abre e gastar cota a toa."""
+    porta, mod = receptor_no_ar
+    mod.atendimento.ENDERECO = pathlib.Path("nao-existe-endereco.json")
+    status, corpo = _postar(porta, "/previa", {"pedido_id": "pv0",
+                                               "logo_url": "http://x/l.png"})
+    assert status == 503 and corpo["erro"] == "SEM_ENDERECO_PUBLICO"
+
+
+def test_previa_aceita_pedido_sem_catalogo(receptor_no_ar, tmp_path):
+    """A razao de ser da rota: a arte so precisa da logo.
+
+    Se a previa exigisse o catalogo, ela teria de esperar a varredura de
+    produtos — que e exatamente o encadeamento que ela desfaz.
+    """
+    porta, mod = receptor_no_ar
+    endereco = tmp_path / "endereco.json"
+    endereco.write_text(json.dumps({"url": "https://a-b-c.trycloudflare.com"}),
+                        encoding="utf-8")
+    mod.atendimento.ENDERECO = endereco
+
+    recebidas = []
+    mod.FILA_PREVIA.put = lambda tarefa: recebidas.append(tarefa)
+    status, corpo = _postar(porta, "/previa", {
+        "pedido_id": "pv1", "logo_url": "http://x/l.png", "empresa": "Acme"})
+
+    assert status == 202 and corpo["acao"] == "previa"
+    # A tarefa e uma TUPLA (corpo, args), e o trabalhador desempacota com *.
+    # Sem isso a rota respondia 202 e a linha morria com TypeError, sem
+    # callback nenhum — a previa parecia aceita e nunca voltava.
+    assert len(recebidas[0]) == 2 and recebidas[0][0]["pedido_id"] == "pv1"
+
+
+def test_previa_sem_logo_e_recusada(receptor_no_ar, tmp_path):
+    porta, mod = receptor_no_ar
+    endereco = tmp_path / "endereco.json"
+    endereco.write_text(json.dumps({"url": "https://a-b-c.trycloudflare.com"}),
+                        encoding="utf-8")
+    mod.atendimento.ENDERECO = endereco
+    status, corpo = _postar(porta, "/previa", {"pedido_id": "pv2"})
+    assert status == 400 and corpo["erro"] == "CAMPOS_FALTANDO"
 
 
 def test_registro_de_fase_nao_envenena_o_pedido_id(tmp_path):

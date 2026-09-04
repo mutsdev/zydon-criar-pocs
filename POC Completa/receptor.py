@@ -240,7 +240,7 @@ def trabalhar_previa():
         if tarefa is None:
             return
         try:
-            _previa(tarefa)
+            _previa(*tarefa)
         except Exception as e:
             print(f"  [ERRO] previa: {type(e).__name__}: {e}")
         finally:
@@ -249,8 +249,17 @@ def trabalhar_previa():
 
 def _previa(pedido, args):
     pedido_id = pedido.get("pedido_id")
+    # O catalogo e OPCIONAL aqui, e essa e a razao de ser desta rota: a arte so
+    # precisa da logo. Ela da a paleta e a marca; o produto entra na cena como
+    # objeto, e sem catalogo o `segmento.resolver` cai no cache/inferencia sem
+    # erro nenhum. Exigir o catalogo obrigaria a previa a esperar a varredura de
+    # produtos terminar — que e exatamente o encadeamento que ela existe para
+    # desfazer.
     poc = pedido.get("catalogo") or pedido.get("poc") or {}
-    print(f"\n  PREVIA {pedido_id}")
+    if not poc.get("empresa") and pedido.get("empresa"):
+        poc = dict(poc, empresa=pedido["empresa"])
+    print(f"\n  PREVIA {pedido_id}"
+          f"{'' if poc.get('etapas') else '  (sem catalogo: so a logo)'}")
 
     caminho = atendimento.DESTINO_JSON / _nome_arquivo(poc, pedido_id)
     caminho.parent.mkdir(parents=True, exist_ok=True)
@@ -477,7 +486,7 @@ class Manipulador(BaseHTTPRequestHandler):
     def previa(self):
         """Gera as pecas ANTES do disparo, para elas entrarem na curadoria.
 
-            POST /previa  {"pedido_id","catalogo":{...},"logo_url","segmento"?}
+            POST /previa  {"pedido_id","logo_url","empresa","segmento"?,"catalogo"?}
 
         Responde 202; as URLs voltam pelo callback com `acao: "previa"`. Elas
         sao servidas por ESTE receptor (`/peca/...`), porque antes do disparo
@@ -490,10 +499,9 @@ class Manipulador(BaseHTTPRequestHandler):
         if erro:
             return
         pedido_id = corpo.get("pedido_id")
-        catalogo = corpo.get("catalogo") or corpo.get("poc")
-        if not pedido_id or not isinstance(catalogo, dict):
+        if not pedido_id or not corpo.get("logo_url"):
             return self._responder(400, {"ok": False, "erro": "CAMPOS_FALTANDO",
-                                         "detalhe": "exijo pedido_id e catalogo{}"})
+                                         "detalhe": "exijo pedido_id e logo_url"})
         if not atendimento.base_publica():
             # Sem tunel publicado nao ha endereco que o Mitra consiga abrir, e
             # gerar para devolver URL quebrada seria gastar cota a toa.

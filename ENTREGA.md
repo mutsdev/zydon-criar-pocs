@@ -133,6 +133,46 @@ minutos em retentativa, porque o tempo da rotina é o recurso escasso.
 endpoint de logo do portal, que respondia 200 e não trocava a imagem. Confira o
 efeito, não a resposta.
 
+## `POST /previa`: a arte na mesma tela dos produtos
+
+**A arte só precisa da logo.** Não precisa dos produtos, não precisa do portal,
+não precisa da Zydon. Quem espera a varredura de produtos terminar para só então
+pensar em banner está encadeando duas coisas independentes — e é por isso que,
+até 04/09/2026, o executivo chegava na tela de curadoria com produtos e sem arte.
+
+Chame esta rota **assim que a logo estiver resolvida**, em paralelo com a
+varredura de produtos:
+
+```
+POST /previa   (X-Token, igual ao /pedido)
+{"pedido_id": "...", "logo_url": "https://...", "empresa": "Acme",
+ "segmento": "distribuição de autopeças",   // opcional
+ "catalogo": {...}}                          // OPCIONAL: mande se já tiver
+```
+
+Responde **202** na hora; a arte leva de um a dois minutos e volta pelo callback:
+
+```json
+{"pedido_id": "...", "acao": "previa", "fase": "previa",
+ "banners": {"login": {"url": "https://<túnel>/peca/...", "dimensao": [2400,1800]}}}
+```
+
+Sem arte, vem `"banners": {}` e `banners_erro` dizendo por quê — a seção some da
+tela **com motivo**, que é diferente de sumir em silêncio.
+
+Duas coisas para não tropeçar:
+
+* **As URLs da prévia são efêmeras**, servidas por este receptor pelo túnel.
+  Antes do disparo não existe portal, e sem portal não há resource-file — o
+  arquivo nasce preso ao `solution_id`. Exiba, não guarde. Depois do `/pedido`
+  as **mesmas peças** ganham URL de CDN e `file_id` de verdade.
+* **`503 SEM_ENDERECO_PUBLICO`** quer dizer que o túnel não está no ar. Não é
+  erro do seu lado, e a resposta certa é avisar o João Pedro, não repetir.
+
+A peça gerada na prévia é **reaproveitada** pelo `/pedido` do mesmo `pedido_id`.
+Gerar de novo produziria arte diferente da que o executivo acabou de aprovar —
+o pior resultado possível, pior que não gerar.
+
 ## O ciclo de banner: gerar, curar, aplicar
 
 Depois que o portal existe, ele ainda está com a **arte do portal de
