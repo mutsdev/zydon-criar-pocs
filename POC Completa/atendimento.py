@@ -248,11 +248,19 @@ def versao_do_codigo():
     vespera, o commit e63d723 tinha apagado a copia do runner, e a falha
     chegou como "can't open file", que parece problema de caminho e nao de
     processo desatualizado.
+
+    O commit do CODIGO, e nao o HEAD: o proprio `tunel.py` commita
+    `endereco-receptor.json` a cada rotacao, entao o HEAD anda varias vezes por
+    dia sem uma linha de codigo mudar. Em 04/09/2026 o time do Mitra leu
+    `versao: 9ef1eba` num /saude e reportou como versao nova — era um commit de
+    endereco, e o codigo continuava no 05098b5. Um campo que existe para dizer
+    "que codigo esta rodando" nao pode mudar sozinho.
     """
     try:
-        pronto = subprocess.run(["git", "rev-parse", "--short", "HEAD"],
-                                cwd=str(RAIZ), capture_output=True, text=True,
-                                timeout=10)
+        pronto = subprocess.run(
+            ["git", "log", "-1", "--format=%h", "--",
+             ".", f":(exclude){ENDERECO.name}"],
+            cwd=str(RAIZ), capture_output=True, text=True, timeout=10)
     except (OSError, subprocess.SubprocessError):
         return None
     return pronto.stdout.strip() or None if pronto.returncode == 0 else None

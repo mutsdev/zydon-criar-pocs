@@ -622,6 +622,28 @@ def test_pedido_sem_portal_nao_aceita_curadoria(receptor_no_ar):
     assert status == 409 and corpo["erro"] == "SEM_PORTAL"
 
 
+def test_versao_ignora_o_commit_de_endereco(monkeypatch):
+    """`versao` diz que CODIGO esta rodando, e nao pode andar sozinha.
+
+    O `tunel.py` commita o endereco-receptor.json a cada rotacao, varias vezes
+    por dia. Em 04/09/2026 o time do Mitra leu `versao: 9ef1eba` num /saude e
+    reportou como versao nova — era commit de endereco, e o codigo continuava
+    no 05098b5.
+    """
+    import subprocess
+    atendimento = _carregar_atendimento()
+    visto = {}
+
+    def falso(comando, **kw):
+        visto["comando"] = comando
+        return subprocess.CompletedProcess(comando, 0, "05098b5\n", "")
+
+    monkeypatch.setattr(atendimento.subprocess, "run", falso)
+    assert atendimento.versao_do_codigo() == "05098b5"
+    assert f":(exclude){atendimento.ENDERECO.name}" in visto["comando"]
+    assert "rev-parse" not in visto["comando"]
+
+
 def test_feedback_viaja_ate_a_regeracao(receptor_no_ar):
     """O feedback do executivo tem que chegar no comando do gerador.
 
