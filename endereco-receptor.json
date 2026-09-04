@@ -1,8 +1,8 @@
 {
-  "url": "https://tension-ace-pirates-techniques.trycloudflare.com",
-  "pedido": "https://tension-ace-pirates-techniques.trycloudflare.com/pedido",
-  "saude": "https://tension-ace-pirates-techniques.trycloudflare.com/saude",
+  "url": "https://voting-inkjet-spy-poems.trycloudflare.com",
+  "pedido": "https://voting-inkjet-spy-poems.trycloudflare.com/pedido",
+  "saude": "https://voting-inkjet-spy-poems.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-04T11:01:04-03:00",
+  "atualizado_em": "2026-09-04T14:01:18-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
