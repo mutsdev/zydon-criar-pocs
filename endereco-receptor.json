@@ -1,8 +1,8 @@
 {
-  "url": "https://brands-hostel-retain-sci.trycloudflare.com",
-  "pedido": "https://brands-hostel-retain-sci.trycloudflare.com/pedido",
-  "saude": "https://brands-hostel-retain-sci.trycloudflare.com/saude",
+  "url": "https://essentially-event-breach-cdna.trycloudflare.com",
+  "pedido": "https://essentially-event-breach-cdna.trycloudflare.com/pedido",
+  "saude": "https://essentially-event-breach-cdna.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-04T09:08:20-03:00",
+  "atualizado_em": "2026-09-04T09:31:26-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
