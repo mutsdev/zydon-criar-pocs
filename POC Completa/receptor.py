@@ -5,6 +5,14 @@
 
     cloudflared tunnel --url http://127.0.0.1:8787      # noutro terminal
 
+NOVO FLUXO (sem rotina, desde 10/09/2026): a rotina do Claude Code na web nao
+existe mais, entao a EXTRACAO tambem entra por aqui. O Mitra manda
+POST /extracao {pedido_id, cliente, site, anexos?, segmento?, callback_url?,
+callback_token?} e recebe 202 na hora; o Barroso monta o <cliente>_poc.json
+pela SKILL (site, imagens, logo, validar_poc.py com 0 erros) e devolve o
+catalogo no callback do pedido (SF3), com o JSON inteiro em `catalogo`.
+O POST /pedido continua igual — criacao com catalogo pronto.
+
 Existe porque tempo real so sai de um jeito: o Mitra chamando esta maquina no
 instante em que o executivo salva a curadoria. A pasta do Drive nao serve — o
 acesso do Mitra ao Google vive na conversa, entao "sempre que confirmar" viraria
@@ -90,6 +98,42 @@ FILA_BANNER = queue.Queue()
 # duas imagens. Ela nao pode ficar atras de uma POC de 90 minutos nem de uma
 # regeracao, e nao disputa nada com nenhuma das duas — nao toca a Zydon.
 FILA_PREVIA = queue.Queue()
+
+# Extracao (novo fluxo sem rotina): o Mitra pede, eu (Barroso) monto o catalogo.
+# Fila em DISCO, nao em memoria: se o receptor reiniciar, o pedido continua la.
+# Cada pedido vira extracoes_pendentes/<pedido_id>.json; quando o catalogo e
+# entregue no callback SF3, o arquivo e movido para extracoes_feitas/.
+DIR_EXTRACAO = AQUI / "extracoes_pendentes"
+DIR_EXTRACAO_FEITA = AQUI / "extracoes_feitas"
+
+
+def _extracoes_pendentes():
+    """Ids com pedido de extracao ainda nao entregue."""
+    if not DIR_EXTRACAO.exists():
+        return []
+    return sorted(p.stem for p in DIR_EXTRACAO.glob("*.json"))
+
+
+def _pedido_ja_atendido(pedido_id):
+    """True se o pedido_id ja tem linha em pedidos-atendidos.jsonl."""
+    registro = AQUI.parent / "pedidos-atendidos.jsonl"
+    if not registro.exists():
+        return False
+    try:
+        for linha in registro.read_text(encoding="utf-8").splitlines():
+            linha = linha.strip()
+            if not linha:
+                continue
+            try:
+                reg = json.loads(linha)
+            except json.JSONDecodeError:
+                continue
+            if reg.get("pedido_id") == pedido_id:
+                return True
+    except OSError:
+        return False
+    return False
+
 
 # O que esta sendo criado AGORA. Sem isto o /saude diz "fila: 0" enquanto uma
 # execucao trava ha horas — foi o que aconteceu em 01/09/2026 com a Witop: o
@@ -448,6 +492,7 @@ class Manipulador(BaseHTTPRequestHandler):
             corpo = {"ok": True, "fila": FILA.qsize(),
                      "fila_banner": FILA_BANNER.qsize(),
                      "fila_previa": FILA_PREVIA.qsize(),
+                     "fila_extracao": len(_extracoes_pendentes()),
                      "criando": EM_CURSO["pedido_id"],
                      # O commit que ESTE processo carregou, capturado na
                      # subida. Comparado com o HEAD do disco, denuncia
@@ -520,6 +565,8 @@ class Manipulador(BaseHTTPRequestHandler):
             return self.banner()
         if rota == "/previa":
             return self.previa()
+        if rota == "/extracao":
+            return self.extracao()
         if rota not in ("/pedido", ""):
             return self._responder(404, {"ok": False, "erro": "ROTA_DESCONHECIDA"})
 
@@ -589,6 +636,62 @@ class Manipulador(BaseHTTPRequestHandler):
         return self._responder(202, {"ok": True, "aceito": True,
                                      "pedido_id": pedido_id, "acao": "previa",
                                      "fila": FILA_PREVIA.qsize()})
+
+    def extracao(self):
+        """POST /extracao — pede a montagem do catalogo (fluxo sem rotina).
+
+        Corpo: {"pedido_id", "cliente", "site", "anexos"?[], "segmento"?,
+                "callback_url"?, "callback_token"?}.
+        Responde 202 na hora; o catalogo (<cliente>_poc.json + .resumo.json)
+        volta pelo callback do pedido (SF3), com o JSON inteiro em `catalogo`.
+        Reenvio do mesmo pedido_id devolve `duplicado: true` sem refazer nada.
+        """
+        pedido, erro = self._corpo()
+        if erro:
+            return
+        pedido_id = pedido.get("pedido_id")
+        cliente = pedido.get("cliente")
+        site = pedido.get("site")
+        if (not isinstance(pedido_id, str) or not pedido_id.strip()
+                or not isinstance(cliente, str) or not cliente.strip()
+                or not isinstance(site, str) or not site.strip()):
+            return self._responder(400, {"ok": False, "erro": "CAMPOS_FALTANDO",
+                                         "detalhe": "exijo pedido_id, cliente e site"})
+        pedido_id, cliente, site = pedido_id.strip(), cliente.strip(), site.strip()
+        if "/" in pedido_id or "\\" in pedido_id or ".." in pedido_id:
+            return self._responder(400, {"ok": False, "erro": "PEDIDO_ID_INVALIDO",
+                                         "detalhe": "pedido_id nao pode conter /, \\ ou .."})
+        if _pedido_ja_atendido(pedido_id):
+            print(f"  [EXTRACAO-DUPLICADA] {pedido_id} — ja atendido.")
+            return self._responder(200, {
+                "ok": True, "duplicado": True, "pedido_id": pedido_id,
+                "detalhe": "este pedido_id ja foi atendido; "
+                             "nao gero catalogo duplicado"})
+        DIR_EXTRACAO.mkdir(parents=True, exist_ok=True)
+        alvo = DIR_EXTRACAO / f"{pedido_id}.json"
+        if alvo.exists():
+            print(f"  [EXTRACAO-DUPLICADA] {pedido_id} — ja enfileirada.")
+            return self._responder(200, {
+                "ok": True, "duplicado": True, "pedido_id": pedido_id,
+                "detalhe": "extracao ja enfileirada; o catalogo sai pelo callback"})
+        anexos = pedido.get("anexos") or []
+        if not isinstance(anexos, list):
+            anexos = [anexos]
+        registro = {
+            "pedido_id": pedido_id, "cliente": cliente, "site": site,
+            "anexos": [a for a in anexos if isinstance(a, str) and a.strip()],
+            "segmento": pedido.get("segmento"),
+            "callback_url": pedido.get("callback_url"),
+            "callback_token": pedido.get("callback_token"),
+            "recebido_em": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        }
+        alvo.write_text(json.dumps(registro, ensure_ascii=False, indent=2),
+                        encoding="utf-8")
+        pendentes = len(_extracoes_pendentes())
+        print(f"  [EXTRACAO] {pedido_id} — {cliente} — {site} "
+              f"({pendentes} na fila).")
+        self._responder(202, {"ok": True, "aceito": True, "pedido_id": pedido_id,
+                              "fila_extracao": pendentes})
 
     # ---------------------------------------------------------------- banner
     def banner(self):
@@ -856,7 +959,7 @@ def main(argv=None):
 
     servidor = ThreadingHTTPServer(("127.0.0.1", args.porta), Manipulador)
     print(f"[INFO] Receptor em http://127.0.0.1:{args.porta}  "
-          f"(POST /pedido, POST /previa, POST /banner, GET /saude)")
+          f"(POST /pedido, POST /extracao, POST /previa, POST /banner, GET /saude)")
     atual = atendimento.versao_do_codigo()
     print(f"[INFO] codigo: {VERSAO or 'fora de um clone git'}")
     if atual and VERSAO and atual != VERSAO:

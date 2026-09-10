@@ -140,6 +140,7 @@ def publicar(url, porta):
     ARQUIVO.write_text(json.dumps({
         "url": url,
         "pedido": f"{url}/pedido",
+        "extracao": f"{url}/extracao",
         "saude": f"{url}/saude",
         "porta_local": porta,
         "atualizado_em": _agora(),
