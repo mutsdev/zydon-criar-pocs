@@ -21,6 +21,7 @@ Sai com codigo 1 se qualquer uma reprovar, para servir de portao.
 import argparse
 import json
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -33,6 +34,19 @@ CABECALHOS = {
 }
 BYTES_MINIMOS = 1024
 PARALELISMO = 12
+
+
+def obter(url, **kw):
+    """GET com uma segunda tentativa. CDN de construtor de landing (GreatPages,
+    14/09/2026) devolve 404 sob rajada de 12 pedidos paralelos e 200 um segundo
+    depois — a mesma URL, sequencial, nunca falha. Uma espera curta resolve;
+    baixar o paralelismo puniria os CDNs que aguentam."""
+    r = requests.get(url, headers=CABECALHOS, timeout=30, **kw)
+    if r.status_code in (403, 404, 429) or r.status_code >= 500:
+        r.close()
+        time.sleep(1.5)
+        r = requests.get(url, headers=CABECALHOS, timeout=30, **kw)
+    return r
 
 
 def urls_do_json(caminho):
@@ -56,7 +70,7 @@ def conferir(par):
     try:
         # stream=True: le o cabecalho e so o comeco do corpo. Baixar a imagem
         # inteira so para saber se ela existe seria desperdicio numa POC de 15.
-        with requests.get(url, headers=CABECALHOS, timeout=30, stream=True) as r:
+        with obter(url, stream=True) as r:
             tipo = (r.headers.get("Content-Type") or "").split(";")[0].strip()
             tamanho = int(r.headers.get("Content-Length") or 0)
             if not tamanho:

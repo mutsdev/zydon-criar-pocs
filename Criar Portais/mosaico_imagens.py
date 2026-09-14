@@ -32,7 +32,7 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from verificar_imagens import CABECALHOS, urls_do_json  # noqa: E402
+from verificar_imagens import obter, urls_do_json  # noqa: E402
 
 CELULA = 320
 COLUNAS = 4
@@ -55,7 +55,7 @@ def baixar(par):
     """(rotulo, url) -> (rotulo, url, Image|None, motivo)."""
     rotulo, url = par
     try:
-        r = requests.get(url, headers=CABECALHOS, timeout=30)
+        r = obter(url)
     except requests.RequestException as e:
         return rotulo, url, None, type(e).__name__
     if r.status_code != 200:

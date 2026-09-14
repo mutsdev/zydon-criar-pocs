@@ -5,259 +5,135 @@ description: Monta o JSON declarativo de uma POC de portal B2B Zydon a partir do
 
 # Criar POC de portal Zydon
 
-Você monta o **JSON declarativo** que o `criar_poc.py` executa contra a API da
-Zydon. Sua entrega é um `{empresa}_poc.json` salvo em `Arquivos Json/` que
-passa no `validar_poc.py` com **0 erros**. Quem executa contra a API é o
-usuário, em lote (`executar_lote.py`) — **você não entrega comando de
-execução**, só avisa que a POC está pronta para o próximo lote.
+Entrega: `Arquivos Json/{empresa}_poc.json` que passa no `validar_poc.py` com
+**0 erros**. Quem executa contra a API é o usuário (`executar_lote.py` ou
+`POC Completa/criar_poc_completo.py`) — **você não executa nem entrega comando
+de execução**. Naming: `{empresa}_poc.json` (nunca `poc_{empresa}.json`).
 
-Fonte da verdade da estrutura: **`Criar Portais/template_poc.json`** — copiar
-e adaptar, NUNCA recriar do zero. Grade de variações: bloco pronto em
-**`Criar Portais/template_variacoes.json`**. Formato documentado em
-**`ESTRUTURA-JSON.md`** (na raiz desta pasta); o que estiver em dúvida, o
-`validar_poc.py` decide.
+Fonte da estrutura: **`Criar Portais/template_poc.json`** — copiar e adaptar,
+nunca recriar. Grade: `Criar Portais/template_variacoes.json`. Formato:
+`ESTRUTURA-JSON.md`. Na dúvida, o `validar_poc.py` decide — **não leia o
+validador nem POCs antigas**; rode e corrija.
 
-## Fluxo (nesta ordem)
+Tarefa mecânica: em subagente, rode em **Sonnet** (`model: sonnet`).
 
-**Gatilho: o usuário manda o site da empresa.** Daí você faz tudo sozinho:
+## Fluxo — 5 comandos, nesta ordem
 
-1. **Visitar o site** (navegador) — nunca inferir setor/segmento pelo nome da
-   empresa. Coletar: ramo real, **5 a 12 produtos** (máximo 12), **3
-   categorias** e as **URLs das imagens de produto do próprio site** (extrair
-   o `src` enquanto navega; se renderizam na página, são válidas). No mesmo
-   passo, decidir se a POC pede **grade de variações** (ver abaixo) — o sinal
-   é seletor de cor/tamanho/voltagem/sabor/volume na página de produto.
-2. **Completar as imagens que faltaram ANTES de entregar** — TODO produto
-   deve ter `temp_image_url`. Ordem de preferência: site da marca → **catálogo
-   VTEX público de um varejista do setor** → Mercado Livre.
-   **O Mercado Livre é o último da fila, não o segundo**, e uma tentativa só:
-   ele estava fechado nas três vias em 28/08/2026, duas POCs seguidas, e
-   insistir custou minutos nas duas. Se for tentar,
-   `https://lista.mercadolivre.com.br/NOME-DO-PRODUTO`, pegando `-E.webp` dos
-   cards ou `-V.webp` das thumbs; nunca `-OO.webp`/`-A.webp`, que são banners.
-3. **Copiar `template_poc.json` → `{empresa}_poc.json`** e preencher, com
-   todas as imagens inline via `temp_image_url`.
-4. **Validar**: `python "Criar Portais/validar_poc.py" "Arquivos Json/{empresa}_poc.json"`
-   — corrigir até **0 erros**. O lote não executa POC que não valida: ela
-   fica parada e volta para você. Entregar sem validar só adia o erro.
-5. **Entregar**: JSON salvo em `Arquivos Json/`, avisar que está pronto.
-   **Não mover arquivos, não inventar pasta "rodados", sem comando de
-   execução.** O estado "já rodou" é a existência de
-   `Arquivos Json/saidas/{base}_ids.json`, gerada pelo runner.
+1. **Coletar** (uma ida):
+   ```
+   python "Criar Portais/coletar_site.py" https://site.do.cliente/ --saida "<scratch>/coleta.json"
+   ```
+   Detecta Shopify / WooCommerce (centavos já convertidos) / VTEX / sitemap
+   (Irroba, Loja Virtual, Wix…) / imagens da home, e devolve nome, preço,
+   categoria, imagem e variantes por item. Leia esse arquivo e escolha.
+   Só abra Playwright se ele voltar `nenhuma` ou vazio (site JS-rendered);
+   aí uma aba nova, e feche ao terminar. **Ramo real sai do site, nunca do
+   nome.** Site institucional + "loja online" em outro domínio: colete da loja.
+2. **Escolher 5–12 produtos** cobrindo **3 categorias** (ver regras). Foto do
+   próprio site: pode ir a 12. Foto caçada fora: fique perto de 5.
+   Sem foto no site → catálogo VTEX público de varejista do setor
+   (`/api/catalog_system/pub/products/search?ft=<codigo>`) → Mercado Livre por
+   último e uma tentativa só (`lista.mercadolivre.com.br/NOME`, `-E.webp` /
+   `-V.webp`; nunca `-OO`/`-A`). CDN que serve `application/octet-stream`
+   reprova: troque de fonte.
+3. **Olhar as imagens num mosaico só** e trocar as erradas:
+   ```
+   python "Criar Portais/mosaico_imagens.py" --urls <u1> <u2> ... --rotulos <r1> <r2> ...
+   ```
+   Sai em `Identidade Visual/saidas/mosaico.png`. Abra uma vez, decida todas.
+4. **Montar o JSON** — o script escreve, você só decide:
+   ```
+   python "Criar Portais/montar_poc.py" --coleta "<scratch>/coleta.json" \
+       --empresa "Nome" --setor "Setor — Sub" --descricao "Uma frase do site" \
+       --cats "Cat A;Cat B;Cat C" --itens "3:0,7:0,12:1,15:1,18:2,22:2" \
+       --core 4 [--grade "15:Tamanho=P,M,G"]
+   ```
+   `--itens` = `idx:cat[:Nome[:preco]]` — índice na coleta, índice da
+   categoria; Nome e preço só quando a coleta veio sem (landing sem `alt`,
+   site sem preço público — aí você estima um preço plausível por item, nunca
+   deixe todos iguais). `--core` = perfil com maior desconto (2 Indústria,
+   3 Distribuidor, 4 Varejo). Preço ausente na coleta fica marcado
+   `_preco_estimado: true` no request. Se a coleta voltar `plataforma: home`
+   (imagens cruas, sem nome), o mosaico é quem nomeia: rótulo = índice.
+   `lojas_externas` na coleta (ex.: loja no Mercado Livre) é fonte de preço
+   se precisar. Ele já roda o
+   validador; depois:
+   ```
+   python "Criar Portais/verificar_imagens.py" "Arquivos Json/{empresa}_poc.json"
+   ```
+   Até 100% das imagens OK e 0 erros. Só edite o JSON à mão para descrição
+   comercial melhor ou item que a coleta não trouxe.
+5. **Entregar**: JSON salvo, nº de produtos, preços públicos ou **estimados**
+   (dizer explicitamente), pendências. Nada movido, sem comando de execução.
 
-## Naming — obrigatório
+Alvo: menos de 5 min por POC. Quem manda no tempo é o número de idas: junte
+buscas num comando (`xargs -P`, laço), nunca uma página por chamada.
 
-`{empresa}_poc.json` (ex.: `florese_poc.json`). **Nunca** `poc_{empresa}.json`
-(padrão antigo, o validador bloqueia).
+## Instagram (cliente sem site)
 
-## Tempo: menos idas, cada uma fazendo mais
-
-O alvo é **menos de 5 minutos por POC**. Medido em 28/08/2026: 11 minutos para
-13 produtos com imagem do próprio site, 20 para 14 com imagem caçada fora, 12
-para o Tudo do Mar. O custo não está em pensar — está no número de idas e
-voltas, e **abrir uma imagem é uma ida e volta como qualquer outra**. No Tudo do
-Mar foram sete imagens abertas em quatro rodadas, e essa foi a maior fatia dos
-12 minutos.
-
-**Olhe as imagens candidatas num mosaico só, nunca uma por uma:**
-
-```
-python "Criar Portais/mosaico_imagens.py" --urls <u1> <u2> ... --rotulos <n1> <n2> ...
-```
-
-Ele baixa em paralelo e devolve **uma imagem numerada** com todas — 14 candidatas
-em 1,8 segundo. Aí você abre uma vez e decide todas. O que não abre vira célula
-vermelha com o motivo, em vez de sumir, para a numeração continuar batendo com a
-lista impressa.
-
-Isso **não** substitui o `verificar_imagens.py`: o mosaico é o olho (marca de
-concorrente, embalagem errada, produto trocado) e o verificador é o portão
-mecânico. Mosaico para escolher, verificador no JSON pronto.
-
-**Verifique as imagens num comando só, nunca uma por uma:**
-
-```
-python "Criar Portais/verificar_imagens.py" "Arquivos Json/<cliente>_poc.json"
-```
-
-Ele confere todas em paralelo — 15 imagens em 1,4 segundo — e sai com código 1
-se alguma reprovar, dizendo qual e por quê. É o PASSO 3 inteiro num comando.
-
-**Não leia o `validar_poc.py` para descobrir as regras.** Ele tem centenas de
-linhas e as regras que importam já estão aqui e no `ESTRUTURA-JSON.md`. Rode o
-validador: ele diz exatamente o que está errado, em um segundo. Ler o validador
-para se preparar custa mais do que errar e corrigir.
-
-**Não inspecione POCs anteriores como referência.** O `template_poc.json` é a
-referência, e é o que a skill manda copiar. Abrir um `<cliente>_poc.json` antigo
-para "conferir a estrutura" é um arquivo grande lido à toa.
-
-**Junte as buscas de página.** Se precisar de N páginas de produto, busque-as num
-comando só (um laço no shell, ou `xargs -P`), não uma por comando.
-
-**Descubra se o site tem catálogo num comando só.** No Tudo do Mar foram sete
-comandos em sequência — Store API, outras rotas do `wp-json`, a home, o REST de
-páginas — para chegar em "é landing page, não tem catálogo". Todas essas rotas
-são independentes: peça as quatro ou cinco de uma vez e leia o resultado junto.
-Descobrir que **não** há catálogo é um resultado válido e tem que custar uma ida,
-não sete.
-
-## Coletar do site: procure a API antes de ler a página
-
-**Se o site for WordPress, teste a Store API do WooCommerce antes de raspar
-HTML:**
-
-```
-GET https://<site>/wp-json/wc/store/v1/products?per_page=100
-```
-
-Ela é pública e devolve o catálogo estruturado — nome, descrição, preço,
-categoria e imagem — sem depender de como a página foi marcada. Na Aroca
-Mercearia (27/08/2026) trouxe os 38 produtos de uma vez. Vale o teste sempre:
-muito cliente B2B roda WooCommerce.
-
-**A armadilha: a Store API devolve preço em CENTAVOS.** Confira
-`prices.currency_minor_unit` (vale `2`) e divida por 100 antes de escrever no
-JSON. O balde de Petit Fromage chega como `24600` e vale R$ 246,00. O validador
-tenta pegar isso pela mediana dos preços, mas **a mediana não dispara quando o
-catálogo tem muito item barato** — foi o caso ali. Converta na origem; não
-conte com a rede de proteção.
-
-Se o preço não for público — o caso mais comum em B2B — diga isso
-explicitamente na entrega, em vez de estimar em silêncio.
-
-### Quantos produtos: 5 a 12, e quem decide é a foto
-
-A faixa é **5 a 12**, e o validador barra acima de 12. Onde cair dentro dela não
-depende do tamanho do catálogo do cliente — depende de **onde vem a imagem**:
-
-- **Foto do próprio site do cliente**: pode ir a 12. Custa quase nada por item.
-- **Foto caçada em fonte de terceiro** (site sem imagem, ou pedido com anexo em
-  PDF/planilha): fique perto de **5**. Cada item custa busca, download e
-  julgamento. A Danda Peças levou 20 minutos para 14, o Tudo do Mar 12 para 13
-  — quase tudo nisso.
-
-Cinco produtos bem escolhidos, com imagem boa, valem mais numa demonstração que
-doze com foto ruim. Escolha cobrindo as 3 categorias e as linhas principais.
-
-### Quando o site do cliente não tem foto nenhuma
-
-Medido em 28/08/2026, num distribuidor de autopeças com site one-page:
-
-- **O Mercado Livre pode estar fechado**, e por três vias ao mesmo tempo: muro
-  anti-bot na busca, `403` na API pública e `ERR_CONNECTION_RESET` no Chromium.
-  Não insista nas três; troque de fonte.
-- **Catálogo VTEX público de um varejista do setor funciona bem**, casando por
-  código de fabricante:
-  `GET https://<varejista>/api/catalog_system/pub/products/search?ft=<codigo>`.
-  Casamento por código é muito mais confiável que por nome.
-- **Cuidado com CDN que devolve `application/octet-stream`.** O do Canal da Peça
-  serve JPEG de verdade com MIME errado: os bytes prestam, mas reprova no passo
-  de verificação e tende a quebrar upload que valide MIME. Não force — troque de
-  fonte, como foi feito ali (seis imagens refeitas na VTEX).
-
-Foto vinda de varejista é o último recurso, e tem um custo que vale dizer na
-entrega: pode trazer marca d'água ou identidade de um concorrente do canal do
-cliente. Se notar isso na imagem, diga qual e por quê.
+Não precisa de login nem Playwright para a imagem:
+`https://www.instagram.com/p/<code>/embed/captioned/` serve `img.EmbeddedMediaImage`
+e a legenda via curl. Use Playwright só para listar os códigos dos posts do
+perfil. Foto de perfil vem em 150px (pequena para o pipeline, mínimo 200 no
+menor lado): recorte a logo de um post limpo. URLs do CDN expiram em semanas —
+rodar o lote logo. Segmento pelo que os posts mostram, nunca pelo nome.
 
 ## Regras que o template não expressa sozinho
 
-### Produtos (9–15, nunca mais de 15)
+### Produtos
 - `sku` obrigatório e único; `standard_unit_id: 2`; `stock: 100`;
   `minimum_stock: 0`; `active: true`; `images: []` sempre.
-- `price` em **reais decimais** (`219.90` = R$ 219,90) — **NUNCA centavos**.
-  O runner não converte: o valor vai direto para a API.
-- `minimum_for_sale`/`multiple_for_sale` **variados** entre produtos e
-  coerentes com a embalagem; ~30% podem ser 1/1; sempre `multiple >= minimum`;
-  consumíveis podem ter múltiplo alto (50/100).
+- `temp_image_url` **no nível do request** (fora do payload), em todo produto.
+  URL em `payload.images` causa 500.
+- `price` em **reais decimais** (`219.90`) — nunca centavos. Store API do
+  WooCommerce devolve centavos (o `coletar_site.py` já divide).
+- `minimum_for_sale`/`multiple_for_sale` variados e coerentes com a
+  embalagem; ~30% em 1/1; `multiple >= minimum`.
 - `highlight: true` só nos principais.
 
-### Critérios — sempre separados por finalidade
-Nunca compartilhar critério entre finalidades: apagar uma entidade apaga o
-critério vinculado e deixa as outras sem filtro (efeito cascata). Um critério
-por finalidade:
-- `criteria_preco_id` — por **marca** (`config.brands`,
-  `this.CODIGOMARCA` = `{{brand_id}}`) → tabelas de preço;
-- `criteria_listagem_id` — por **marca** → `portal_listing_rule_id`;
-- `criteria_cat_<slug>_id` — por **categoria** (`config.categories`,
-  `this.CODCATEGORIA` = `{{cat_ids_N}}`), um por categoria com desconto →
-  usados exclusivamente pelos descontos.
+### Critérios — um por finalidade, nunca compartilhado
+- `criteria_preco_id` — marca (`config.brands`, `this.CODIGOMARCA`) → tabelas;
+- `criteria_listagem_id` — marca → `portal_listing_rule_id`;
+- `criteria_cat_<slug>_id` — categoria (`config.categories`,
+  `this.CODCATEGORIA` = `{{cat_ids_N}}`), um por categoria com desconto.
+  `salvar_id_como` sem colchetes (`cat_ids_0`).
 
 ### Descontos — sempre por categoria
-Cada desconto referencia um `criteria_cat_<slug>_id` próprio — **nunca**
-`criteria_preco_id`/`criteria_listagem_id`. Pelo menos 1 progressivo
-(`is_profile: true`, 1 segmento) + 1 fixo (`is_profile: false`). O fixo
-começa em `minimum_quantity: 0` (nunca 1). Atenção: o endpoint `discounts`
-usa `is_profile`/`is_partner`/… (**sem** `_specific`), diferente de
-`price-tables`.
+Cada um com seu `criteria_cat_<slug>_id`. Mínimo 1 progressivo
+(`is_profile: true`, 1 segmento) + 1 fixo (`is_profile: false`,
+`minimum_quantity: 0`). Endpoint `discounts` usa `is_profile`/`is_partner`
+(sem `_specific`).
 
 ### Tabelas de preço
+Perfis são **tipos de comprador**, iguais em toda POC: `2` Indústria, `3`
+Distribuidor, `4` Varejo — sempre 3 TPs, nomes "Tabela 1/2/3 | Empresa".
+Desconto em `criteria[0].value` (nunca `discount_percentage`), `profiles`
+como `{"profile_id": "N"}`, `end_date: "2060-01-01"`. Maior desconto no perfil
+mais aderente ao core do cliente; spread agressivo, ≥15 pontos entre menor e
+maior (5/15/30 ✅, 8/10/12 ❌).
 
-**Os perfis são tipos de COMPRADOR, não segmentos do cliente.** Na org de POC:
-`2` = Indústria/Manufatura, `3` = Distribuidor, `4` = Varejo — uma tabela para
-cada, e é isso que o validador exige. Não procure um perfil "do ramo do
-cliente": ele não existe, e uma mercearia fina vende para varejo e distribuidor
-como qualquer outra empresa. Perfis são **por organização**, como `database_id`
-e `portal_origem_id`; listar numa org nova:
-`GET /api/sales/profiles?perPage=100`.
-
-Sempre **3 TPs, segmentos 2, 3 e 4**, nomeadas "Tabela 1/2/3 | Empresa" (sem
-nome de segmento). Desconto em `criteria[0].value` — **nunca**
-`discount_percentage` ou `minimum_order_value` (400). `profiles` sempre
-objetos `{"profile_id": "N"}`. O segmento mais aderente ao core da empresa
-recebe o maior desconto, e o spread é **agressivo**: valores distintos com
-diferença ≥ 15 pontos entre menor e maior (5/15/30 ✅, 8/10/12 ❌).
-
-Segmentos da org pocs: 2 Material de Construção · 3 Indústria/Manufatura ·
-4 Suprimentos Industriais · 5 Autopeças · 6 Saúde · 7 Agronegócio ·
-8 Alimentos · 9 Equipamentos · 10 Embalagens · 11 Tecnologia.
-
-### Variações (etapa opcional — você decide sozinho, no passo 1)
-**Usar grade quando** o eixo é uma escolha do comprador sobre o MESMO produto
-(cor, tamanho, voltagem, sabor, volume, medida de confecção). **Não usar**
-quando o "eixo" é outro produto: peça por aplicação, SKU de fabricante,
-medida com código próprio. Na dúvida, **sem grade**.
-
-Dosagem: 2–4 produtos com grade por POC, máximo 2 eixos, grade completa
-(produto cartesiano); acima de ~24 variantes por produto o painel pesa.
-
-Estrutura em dois níveis (copiar de `template_variacoes.json`):
-1. Etapa `variations` **antes** de `products` (renumerar os `nome` das
-   etapas seguintes) — cria os eixos com `salvar_id_como: variation_<slug>_id`;
-2. Array `variations` dentro do `payload` de cada produto com grade — cada
-   variante com SKU próprio derivado do pai (`KRI-CAM-001-BRA-P`), `price`,
-   `stock`, `images: []`, dimensões, e `values` referenciando
-   `{{variation_*_id}}` com `name` igual ao do eixo e `value` existente no
-   `values[]` do eixo.
-
-**Eixo Cor**: copiar o bloco `variacao_cor` **inteiro** do template (27 cores
-com hex) — `display_type: "COLOR"` + `variant_options[].display_value` em
-`#RRGGBB` é o que faz o swatch aparecer. Não inventar paleta nova; cor que
-faltar, acrescentar ao template (nome + hex). Eixos que não são cor vão sem
-`display_type` e sem `variant_options`.
-
-### Imagens
-URL em `temp_image_url` **no nível do request** (fora do payload);
-`payload.images` sempre `[]` — URL direta em `images` causa 500 NPE.
+### Variações (opcional — decida no passo 1)
+Grade quando o eixo é escolha do comprador sobre o MESMO produto (cor,
+tamanho, voltagem, sabor, volume). Não é grade quando o "eixo" é outro produto
+(peça por aplicação, código de fabricante). Na dúvida, sem grade.
+2–4 produtos com grade, máx. 2 eixos, grade completa, até ~24 variantes.
+Etapa `variations` **antes** de `products` (renumerar as seguintes); array
+`variations` no payload com SKU derivado (`KRI-CAM-001-BRA-P`), `price`,
+`stock`, `images: []`, dimensões e `values` com `{{variation_*_id}}`.
+Eixo Cor: copiar o bloco `variacao_cor` inteiro (hex + `display_type: "COLOR"`).
 
 ## Erros conhecidos da API
 
 | Erro | Causa | Solução |
 |---|---|---|
-| 500 NPE `LocalDate` | `end_date` ausente | sempre `"2060-01-01"` |
-| 500 NPE em produto | URL em `images[]` | usar `temp_image_url` |
-| 400 em TP | `discount_percentage` / profiles inteiros | desconto em `criteria[0].value`; profiles objetos |
-| 404 categoria | `salvar_id_como` com colchetes | underscore: `cat_ids_0` |
-| 404 em `units` | tentar criar unidade | não criar; `standard_unit_id: 2` |
-| TP sem critério ao apagar desconto | critério compartilhado (cascata) | desconto com `criteria_cat_<slug>_id` próprio |
-| Cor sem swatch | falta `display_type`/`variant_options` | copiar `variacao_cor` do template |
-| Grade não aparece | etapa `variations` depois de `products` | etapa antes; rodar o validador |
+| 500 NPE `LocalDate` | `end_date` ausente | `"2060-01-01"` |
+| 500 NPE em produto | URL em `images[]` | `temp_image_url` |
+| 400 em TP | `discount_percentage` / profiles inteiros | `criteria[0].value`; profiles objetos |
+| 404 categoria | `salvar_id_como` com colchetes | `cat_ids_0` |
+| 404 em `units` | tentar criar unidade | `standard_unit_id: 2` |
+| TP sem critério ao apagar desconto | critério compartilhado | `criteria_cat_<slug>_id` próprio |
+| Cor sem swatch | falta `display_type`/`variant_options` | copiar `variacao_cor` |
+| Grade não aparece | `variations` depois de `products` | etapa antes; validar |
 
-## Pré-entrega
-
-`python "Criar Portais/validar_poc.py" "Arquivos Json/{empresa}_poc.json"` →
-**0 erros**. JSON salvo em `Arquivos Json/`, nada movido, nenhum comando de
-execução entregue. Só isso.
-
-Exemplos de referência que validam: `exemplos/benenutri_poc.json` (sem
-variações) e `exemplos/studiodasfestas_poc.json` (com grade de cor).
+Exemplos que validam: `exemplos/benenutri_poc.json` (sem grade),
+`exemplos/studiodasfestas_poc.json` (com grade de cor).

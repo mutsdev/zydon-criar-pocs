@@ -1,5 +1,5 @@
 {
-  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
+  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: sku obrigatorio e unico em cada payload de produto, 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
   "empresa": "EMPRESA",
   "descricao_empresa": "Descricao curta da empresa.",
   "gerado_em": "YYYY-MM-DD",
@@ -47,6 +47,7 @@
           "label": "SKU-001 — Produto Exemplo Destaque",
           "temp_image_url": "https://exemplo.com/imagem-do-site-da-marca.jpg",
           "payload": {
+            "sku": "SKU-001",
             "name": "Produto Exemplo Destaque",
             "description": "Descricao comercial do produto.",
             "active": true,
@@ -68,6 +69,7 @@
           "label": "SKU-002 — Produto Exemplo Caixa",
           "temp_image_url": "https://exemplo.com/imagem-obrigatoria-todo-produto.jpg",
           "payload": {
+            "sku": "SKU-002",
             "name": "Produto Exemplo Caixa",
             "description": "Produto vendido em caixas — min/mult coerentes com a embalagem.",
             "active": true,
