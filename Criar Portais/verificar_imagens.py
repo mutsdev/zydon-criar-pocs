@@ -21,7 +21,6 @@ Sai com codigo 1 se qualquer uma reprovar, para servir de portao.
 import argparse
 import json
 import sys
-import time
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -37,16 +36,14 @@ PARALELISMO = 12
 
 
 def obter(url, **kw):
-    """GET com uma segunda tentativa. CDN de construtor de landing (GreatPages,
-    14/09/2026) devolve 404 sob rajada de 12 pedidos paralelos e 200 um segundo
-    depois — a mesma URL, sequencial, nunca falha. Uma espera curta resolve;
-    baixar o paralelismo puniria os CDNs que aguentam."""
-    r = requests.get(url, headers=CABECALHOS, timeout=30, **kw)
-    if r.status_code in (403, 404, 429) or r.status_code >= 500:
-        r.close()
-        time.sleep(1.5)
-        r = requests.get(url, headers=CABECALHOS, timeout=30, **kw)
-    return r
+    """GET com os cabecalhos da casa. Seam unico para mosaico e verificador.
+
+    Ja teve retry com backoff aqui (14/09/2026) por "CDN recusa rajada":
+    diagnostico errado. O 400/404 vinha de URL com \r no fim — arquivo
+    gravado em modo texto no Windows e lido com $(cat) no bash. Sequencial
+    "funcionava" porque o teste em processo fazia .split(). Nao e o CDN.
+    """
+    return requests.get(url, headers=CABECALHOS, timeout=30, **kw)
 
 
 def urls_do_json(caminho):
