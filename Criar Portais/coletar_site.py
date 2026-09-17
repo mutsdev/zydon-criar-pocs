@@ -136,7 +136,10 @@ def _urls_sitemap(base, limite):
     if not raiz:
         return []
     filhos = _RE_SITEMAP.findall(raiz.text) or [urljoin(base, "/sitemap.xml")]
-    filhos = [f for f in filhos if not re.search(r"blog|categor|pages|image|post", f, re.I)] or filhos
+    # Indice com sitemap de produto separado (Seara: produto-sitemap.xml ao
+    # lado de 200 noticias): so ele interessa. Sem ele, tira os que nao sao.
+    so_produto = [f for f in filhos if re.search(r"produ|product", f, re.I)]
+    filhos = so_produto or [f for f in filhos if not re.search(r"blog|categor|pages|image|post|notic", f, re.I)] or filhos
     urls = []
     for f in filhos:
         r = _get(f)
@@ -161,6 +164,12 @@ def _pagina_produto(url):
     nome = re.split(r"\s[|\-–]\s", nome or "", maxsplit=1)[0]  # "PRODUTO | Loja X" -> "PRODUTO"
     # imagem: a principal da pagina antes da og:image (Irroba serve a logo no og)
     m = re.search(r'class="[^"]*product-image-area[^"]*"[^>]*src="([^"]+)"', h)
+    if not m:
+        # Bloco de imagem do produto com lazy-load (Seara: slider-product-img +
+        # data-lazy-src; o src e um SVG vazio). Primeira URL http dentro dele.
+        bloco = re.search(r'class="[^"]*(?:product|produto)[^"]*(?:img|image)[^"]*"(.{0,3000})', h, re.S)
+        if bloco:
+            m = re.search(r'(?:data-lazy-src|data-src|src)="(https?://[^"]+)"', bloco.group(1))
     img = m.group(1) if m else meta("og:image")
     if img:
         img = re.sub(r"fit-in/\d+x\d+/", "fit-in/1000x1000/", img)
