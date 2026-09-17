@@ -101,6 +101,31 @@ def vtex(base):
     return "vtex", out
 
 
+def wordpress_cpt(base):
+    """WordPress institucional sem WooCommerce, mas com post type de produto
+    (Grupo Setta 'produto', Roto Fermax 'produtos' — 15-17/09/2026). O REST
+    entrega titulo, imagem destacada e termos de taxonomia; sem preco."""
+    tipos = _json(urljoin(base, "/wp-json/wp/v2/types"))
+    if not isinstance(tipos, dict):
+        return None
+    rest = next((v.get("rest_base") for k, v in tipos.items()
+                 if re.search(r"produ|product", k) and v.get("rest_base")), None)
+    if not rest:
+        return None
+    out = []
+    for pagina in (1, 2):
+        d = _json(urljoin(base, f"/wp-json/wp/v2/{rest}?per_page=100&page={pagina}&_embed=1"))
+        if not isinstance(d, list) or not d:
+            break
+        for p in d:
+            emb = p.get("_embedded") or {}
+            img = ((emb.get("wp:featuredmedia") or [{}])[0]).get("source_url")
+            termos = [t.get("name") for grupo in (emb.get("wp:term") or []) for t in grupo if t.get("name")]
+            out.append(_item(html_mod.unescape((p.get("title") or {}).get("rendered", "")), None,
+                             termos[0] if termos else None, img, p.get("link"), variantes=termos[1:4]))
+    return ("wordpress-cpt", out) if out else None
+
+
 _RE_LOC = re.compile(r"<loc>\s*([^<\s]+)\s*</loc>")
 _RE_SITEMAP = re.compile(r"<sitemap>.*?<loc>\s*([^<\s]+)\s*</loc>", re.S)
 
@@ -133,7 +158,7 @@ def _pagina_produto(url):
             or re.search(r'<meta[^>]+content="([^"]+)"[^>]+(?:property|name)="%s"' % prop, h)
         return html_mod.unescape(m.group(1)) if m else None
     nome = meta("og:title") or (re.search(r"<title>([^<]+)", h) or [None, None])[1]
-    nome = re.split(r"\s[|\-–]\s", nome or "", 1)[0]  # "PRODUTO | Loja X" -> "PRODUTO"
+    nome = re.split(r"\s[|\-–]\s", nome or "", maxsplit=1)[0]  # "PRODUTO | Loja X" -> "PRODUTO"
     # imagem: a principal da pagina antes da og:image (Irroba serve a logo no og)
     m = re.search(r'class="[^"]*product-image-area[^"]*"[^>]*src="([^"]+)"', h)
     img = m.group(1) if m else meta("og:image")
@@ -198,8 +223,8 @@ def coletar(base, limite):
     if home:
         m = re.search(r'<meta name="generator" content="([^"]+)"', home.text)
         gerador = m.group(1) if m else ""
-    with ThreadPoolExecutor(3) as ex:
-        sondas = list(ex.map(lambda f: f(base), (shopify, woocommerce, vtex)))
+    with ThreadPoolExecutor(4) as ex:
+        sondas = list(ex.map(lambda f: f(base), (shopify, woocommerce, vtex, wordpress_cpt)))
     achado = (next((s for s in sondas if s), None) or sitemap_generico(base, limite)
               or imagens_home(base, home))
     plataforma, itens = achado if achado else ("nenhuma", [])

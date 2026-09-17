@@ -62,6 +62,18 @@ def urls_do_json(caminho):
     return achados
 
 
+def _tipo_pelos_bytes(b):
+    if b[:3] == bytes.fromhex("ffd8ff"):
+        return "image/jpeg"
+    if b[:8] == bytes.fromhex("89504e470d0a1a0a"):
+        return "image/png"
+    if b[:6] in (b"GIF87a", b"GIF89a"):
+        return "image/gif"
+    if b[:4] == b"RIFF" and b[8:12] == b"WEBP":
+        return "image/webp"
+    return None
+
+
 def conferir(par):
     rotulo, url = par
     try:
@@ -70,12 +82,19 @@ def conferir(par):
         with obter(url, stream=True) as r:
             tipo = (r.headers.get("Content-Type") or "").split(";")[0].strip()
             tamanho = int(r.headers.get("Content-Length") or 0)
+            inicio = next(r.iter_content(BYTES_MINIMOS + 1), b"")
             if not tamanho:
-                tamanho = len(next(r.iter_content(BYTES_MINIMOS + 1), b""))
+                tamanho = len(inicio)
             if r.status_code != 200:
                 return (rotulo, url, False, f"HTTP {r.status_code}")
             if not tipo.startswith("image/"):
-                return (rotulo, url, False, f"Content-Type '{tipo or 'ausente'}'")
+                # Header ausente ou octet-stream: o que vale e o byte. O runner
+                # decide o MIME pela extensao e converte para JPEG, entao um
+                # webp real sem Content-Type (Roto Fermax, 17/09/2026) sobe bem.
+                farejado = _tipo_pelos_bytes(inicio)
+                if not farejado:
+                    return (rotulo, url, False, f"Content-Type '{tipo or 'ausente'}' e bytes nao sao imagem")
+                tipo = f"{farejado} (farejado; header '{tipo or 'ausente'}')"
             if tamanho < BYTES_MINIMOS:
                 return (rotulo, url, False, f"so {tamanho} bytes")
             return (rotulo, url, True, f"{tipo}  {tamanho} bytes")
