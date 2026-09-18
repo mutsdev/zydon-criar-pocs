@@ -1,9 +1,9 @@
 {
-  "url": "https://orientation-involvement-der-direct.trycloudflare.com",
-  "pedido": "https://orientation-involvement-der-direct.trycloudflare.com/pedido",
-  "extracao": "https://orientation-involvement-der-direct.trycloudflare.com/extracao",
-  "saude": "https://orientation-involvement-der-direct.trycloudflare.com/saude",
+  "url": "https://underground-headlines-listen-recommend.trycloudflare.com",
+  "pedido": "https://underground-headlines-listen-recommend.trycloudflare.com/pedido",
+  "extracao": "https://underground-headlines-listen-recommend.trycloudflare.com/extracao",
+  "saude": "https://underground-headlines-listen-recommend.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-14T18:46:32-03:00",
+  "atualizado_em": "2026-09-18T16:31:57-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
