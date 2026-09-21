@@ -70,6 +70,18 @@ TIMEOUT_PADRAO = 30
 TIMEOUT_UPLOAD = 180
 
 
+def _sobre_branco(img):
+    """RGBA/LA/P-com-alpha -> RGB sobre branco. JPEG nao tem alpha; sem isto
+    o fundo transparente vira preto."""
+    from PIL import Image
+    if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+        img = img.convert("RGBA")
+        fundo = Image.new("RGB", img.size, (255, 255, 255))
+        fundo.paste(img, mask=img.split()[3])
+        return fundo
+    return img.convert("RGB")
+
+
 def request_with_retry(method, url, **kwargs):
     """Requisicao com retry/backoff no 429 (rate limit) e em falha de conexao."""
     kwargs.setdefault("timeout", TIMEOUT_PADRAO)
@@ -331,9 +343,12 @@ def baixar_imagem(image_url):
     else:
         fname, mime = "image.jpg", "image/jpeg"
     if CONVERTER_PARA_JPEG and mime != "image/jpeg":
+        # Foto com alpha (WNF, 21/09/2026: webp/png de frasco sobre fundo
+        # transparente) vira fundo PRETO num convert("RGB") direto. JPEG nao
+        # tem alpha: o certo e compor sobre branco antes.
         try:
             from PIL import Image
-            img = Image.open(BytesIO(content)).convert("RGB")
+            img = _sobre_branco(Image.open(BytesIO(content)))
             buf = BytesIO()
             img.save(buf, format="JPEG", quality=90)
             content, fname, mime = buf.getvalue(), "image.jpg", "image/jpeg"

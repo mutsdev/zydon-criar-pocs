@@ -71,6 +71,13 @@ def baixar(par):
         img.load()
     except Exception as e:
         return rotulo, url, None, f"nao e imagem ({type(e).__name__}) [{tipo}]"
+    if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+        # compor sobre branco: e o que o runner faz ao gravar JPEG, entao o
+        # mosaico mostra o que vai para o portal, nao um fundo preto falso
+        img = img.convert("RGBA")
+        fundo = Image.new("RGB", img.size, (255, 255, 255))
+        fundo.paste(img, mask=img.split()[3])
+        return rotulo, url, fundo, ""
     return rotulo, url, img.convert("RGB"), ""
 
 
