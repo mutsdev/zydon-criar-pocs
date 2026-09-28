@@ -1,9 +1,9 @@
 {
-  "url": "https://moon-commit-housewares-random.trycloudflare.com",
-  "pedido": "https://moon-commit-housewares-random.trycloudflare.com/pedido",
-  "extracao": "https://moon-commit-housewares-random.trycloudflare.com/extracao",
-  "saude": "https://moon-commit-housewares-random.trycloudflare.com/saude",
+  "url": "https://person-detector-mls-elections.trycloudflare.com",
+  "pedido": "https://person-detector-mls-elections.trycloudflare.com/pedido",
+  "extracao": "https://person-detector-mls-elections.trycloudflare.com/extracao",
+  "saude": "https://person-detector-mls-elections.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-28T16:50:24-03:00",
+  "atualizado_em": "2026-09-28T20:40:10-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
