@@ -1,9 +1,9 @@
 {
-  "url": "https://several-wooden-deaf-california.trycloudflare.com",
-  "pedido": "https://several-wooden-deaf-california.trycloudflare.com/pedido",
-  "extracao": "https://several-wooden-deaf-california.trycloudflare.com/extracao",
-  "saude": "https://several-wooden-deaf-california.trycloudflare.com/saude",
+  "url": "https://moon-commit-housewares-random.trycloudflare.com",
+  "pedido": "https://moon-commit-housewares-random.trycloudflare.com/pedido",
+  "extracao": "https://moon-commit-housewares-random.trycloudflare.com/extracao",
+  "saude": "https://moon-commit-housewares-random.trycloudflare.com/saude",
   "porta_local": 8787,
-  "atualizado_em": "2026-09-18T19:03:15-03:00",
+  "atualizado_em": "2026-09-28T16:50:24-03:00",
   "aviso": "Tunel efemero: este endereco muda quando o tunel reinicia. Leia este arquivo antes de cada POST, e confira /saude se der erro de conexao — nao guarde a URL."
 }
