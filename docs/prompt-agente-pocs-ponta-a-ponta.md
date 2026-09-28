@@ -1,12 +1,12 @@
-# Prompt — agente do Mitra: aplicação de POCs para executivos, de ponta a ponta
+# Prompt — agente de ponta a ponta: aplicação de POCs para executivos
 
-Você vai construir e operar, neste projeto Mitra, a aplicação que os executivos
+Você vai construir e operar, no seu ambiente, a aplicação inteira que os executivos
 comerciais da Zydon usam para criar um portal de POC. Quem pediu é o João Pedro
 (pré-vendas). Fale com ele em português.
 
-Tudo roda do seu lado: coleta dos produtos, banners, curadoria, criação do
-portal na API da Zydon, link de volta e relatórios. Não há mais máquina local
-nem túnel no fluxo.
+Tudo roda do seu lado: a tela do executivo, a coleta dos produtos, os
+banners, a curadoria, a criação do portal na API da Zydon, o link de volta e
+os relatórios. Não existe mais Mitra, máquina local nem túnel no fluxo.
 
 ## O código que já existe
 
@@ -22,8 +22,8 @@ nesta ordem:
 3. `ESTRUTURA-JSON.md` e `skills/criar-pocs/SKILL.md` — o formato do catálogo
    (`etapas[]`).
 4. `POC Completa/receptor.py` e `POC Completa/extracao.py` — o orquestrador
-   atual (extração, prévia, criação, banner). É o fluxo que você vai trazer
-   para o Mitra.
+   atual (extração, prévia, criação, banner). É o fluxo que você vai
+   orquestrar; as menções a Mitra e callback eram da interface antiga.
 5. `Identidade Visual/README.md` e `PRODUCT.md` — geração e validação dos
    banners.
 
@@ -33,7 +33,7 @@ Ignore `ROTINA.md` (routine que não existe mais) e as partes de túnel
 ## Credenciais
 
 As variáveis estão nomeadas no `.env.example` do repositório. **O João Pedro
-cadastra os valores direto no cofre / variáveis seguras do Mitra.** Nunca peça
+cadastra os valores direto nas variáveis seguras / secrets do seu ambiente.** Nunca peça
 chave no chat, nunca grave em tabela, código, log ou commit. A chave da Zydon é
 de escrita e cria portal em produção.
 
@@ -43,7 +43,7 @@ Use sempre a org `pocs`, que é a de demonstração.
 
 1. **Pedido.** Escolhe o próprio nome numa lista, informa nome do cliente e
    site. Segmento e anexo (catálogo em PDF/planilha) são opcionais.
-2. **Extração.** Gere um `pedido_id` (`mitra-AAAA-MM-DD-NNN`). Colete os
+2. **Extração.** Gere um `pedido_id` (`poc-AAAA-MM-DD-NNN`). Colete os
    produtos (site primeiro; busca na web quando o site não tem catálogo), ache
    a logo e monte o catálogo. Rode o `validar_poc.py`: só segue com 0 erros.
    Em paralelo, assim que houver logo, gere a prévia dos banners.
