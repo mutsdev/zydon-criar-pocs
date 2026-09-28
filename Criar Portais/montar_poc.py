@@ -102,6 +102,8 @@ def montar(coleta, empresa, setor, descricao, cats, itens, core=4, tps=None, gra
                  category_id=f"{{{{cat_ids_{ci}}}}}", highlight=n <= 3,
                  price=float(it["preco"] or estimado), minimum_for_sale=mn, multiple_for_sale=ml)
         p["sku"] = sku
+        if it.get("video"):
+            p["video_url"] = it["video"]
         r = {"label": f"{sku} — {it['nome']}", "temp_image_url": it["imagem"], "payload": p}
         if not coleta["itens"][idx].get("preco"):
             r["_preco_estimado"] = True
@@ -221,4 +223,8 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.path.insert(0, str(RAIZ))
+    import cronometro
+    with cronometro.etapa(cronometro.do_argv("--empresa", sys.argv), "Montar JSON"):
+        codigo = main()
+    sys.exit(codigo)

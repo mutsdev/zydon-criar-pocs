@@ -1,0 +1,595 @@
+{
+  "empresa": "Primetek",
+  "descricao_empresa": "Distribuidora de tecnologia com catalogo de notebooks, monitores, nobreaks, perifericos, redes e automacao comercial para empresas e revendas.",
+  "gerado_em": "2026-09-04",
+  "setor": "Tecnologia — Distribuicao de TI e Automacao Comercial",
+  "portal_name": "Primetek POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Primetek",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Primetek",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Categoria 1 — Computadores e Monitores",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Computadores e Monitores",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 2 — Energia e Protecao Eletrica",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Energia e Protecao Eletrica",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Categoria 3 — Perifericos e Acessorios",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Perifericos e Acessorios",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "PTK-NB-LAT3540 — Notebook Dell Latitude 3540 i5 16GB SSD 512GB W11 Pro",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/notebook_dell_latitude_3540_i5_16gb_ssd_512gb_w11_pro_61_1_831ec02566a67f52791db99050d3e9e4.jpg",
+          "payload": {
+            "name": "Notebook Dell Latitude 3540 i5 16GB SSD 512GB W11 Pro",
+            "description": "Notebook corporativo Dell Latitude 3540, Intel Core i5, 16GB de memoria, SSD de 512GB e Windows 11 Pro.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 7999,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PTK-NB-LAT3540"
+          }
+        },
+        {
+          "label": "PTK-MON-E2225HS — Monitor Dell 21.5\" Full HD E2225HS HDMI DisplayPort VGA LED",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/monitor_dell_21_5_full_hd_e2225hs_hdmi_displayport_vga_led_247_1_0bb369f69ec8ce4a3ed056bca512a2e6.jpg",
+          "payload": {
+            "name": "Monitor Dell 21.5\" Full HD E2225HS HDMI DisplayPort VGA LED",
+            "description": "Monitor Dell de 21,5 polegadas Full HD com HDMI, DisplayPort e VGA, indicado para estacoes de trabalho.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 999,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "PTK-MON-E2225HS"
+          }
+        },
+        {
+          "label": "PTK-MON-P2725H — Monitor Dell 27\" Full HD IPS P2725H 210-BMFL",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/monitor_27_fhd_vga_hdmi_ips_dell_p2725h_210_bmfl_213_1_3d4f94f89b7d96e154eb926f0cb9af1e.jpg",
+          "payload": {
+            "name": "Monitor Dell 27\" Full HD IPS P2725H 210-BMFL",
+            "description": "Monitor Dell Professional de 27 polegadas, painel IPS Full HD com VGA e HDMI e ajuste de altura.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 1949,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PTK-MON-P2725H"
+          }
+        },
+        {
+          "label": "PTK-MON-22B3HMF — Monitor AOC 22\" LED Full HD 75Hz VGA HDMI 22B3HMF Preto",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/monitor_22_led_full_hd_aoc_com_ajuste_de_altura_75hz_vga_hdmi_22b3hmf_preto_217_1_8a7d314aa248410e2e53fea4b4ee9585.jpg",
+          "payload": {
+            "name": "Monitor AOC 22\" LED Full HD 75Hz VGA HDMI 22B3HMF Preto",
+            "description": "Monitor AOC de 22 polegadas Full HD 75Hz com ajuste de altura, VGA e HDMI.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 579,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "PTK-MON-22B3HMF"
+          }
+        },
+        {
+          "label": "PTK-NBK-29501 — Nobreak SMS Premium 1500VA Bivolt 8 Tomadas 0029501",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/nobreak_sms_premium_1500va_bivolt_8tomadas_0029501_179_1_c5eec379ddcaf8856cf6ae2b759f95a5.jpg",
+          "payload": {
+            "name": "Nobreak SMS Premium 1500VA Bivolt 8 Tomadas 0029501",
+            "description": "Nobreak SMS Premium de 1500VA, entrada bivolt e 8 tomadas, para servidores e estacoes criticas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 2267.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PTK-NBK-29501"
+          }
+        },
+        {
+          "label": "PTK-NBK-29300 — Nobreak SMS Tech 600VA 6 Tomadas Entrada Bivolt Saida 115V 29300",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/nobreak_sms_tech_600va_6_tomadas_entrada_bivolt_e_saida_115v_29300_161_1_69fc0e89be57efd0bdc17b738d6be1a7.jpg",
+          "payload": {
+            "name": "Nobreak SMS Tech 600VA 6 Tomadas Entrada Bivolt Saida 115V 29300",
+            "description": "Nobreak SMS Tech de 600VA com 6 tomadas, entrada bivolt e saida 115V, para desktops e PDVs.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 554.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 4,
+            "sku": "PTK-NBK-29300"
+          }
+        },
+        {
+          "label": "PTK-EST-16218 — Estabilizador SMS Progressive III 2000VA Bivolt 0016218",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/estabilizador_sms_progressive_lll_2000va_bivolt_0016218_159_1_d8f86415f2e3ac213567ddd530195fe5.jpg",
+          "payload": {
+            "name": "Estabilizador SMS Progressive III 2000VA Bivolt 0016218",
+            "description": "Estabilizador SMS Progressive III de 2000VA bivolt, protecao contra variacao de rede eletrica.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 911.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "PTK-EST-16218"
+          }
+        },
+        {
+          "label": "PTK-BAT-EN00 — Bateria Powertek 12V 2,3Ah EN00",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/bateria_powertek_12v_2_3ah_en00_151_1_007d61f05b396b6c29f6458ba89193ad.jpg",
+          "payload": {
+            "name": "Bateria Powertek 12V 2,3Ah EN00",
+            "description": "Bateria selada Powertek 12V 2,3Ah para reposicao em nobreaks e centrais de alarme.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 45.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "PTK-BAT-EN00"
+          }
+        },
+        {
+          "label": "PTK-KIT-MK270 — Teclado e Mouse Logitech MK270 Sem Fio ABNT2 Preto",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/teclado_e_mouse_logitech_mk270_s_fio_abnt2_preto_139_1_b6d2f4e74de42616632a57f02d290598.jpg",
+          "payload": {
+            "name": "Teclado e Mouse Logitech MK270 Sem Fio ABNT2 Preto",
+            "description": "Kit sem fio Logitech MK270 com teclado ABNT2 e mouse, receptor USB unico.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 179.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "PTK-KIT-MK270"
+          }
+        },
+        {
+          "label": "PTK-MOU-BM4049 — Mouse Redragon Office 1200 DPI Com Fio BM-4049 Preto",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/mouse_redragon_office_1200_dpi_com_fio_bm_4049_preto_115_1_b09ee6b3b4338898589006e0ee9d1e64.jpg",
+          "payload": {
+            "name": "Mouse Redragon Office 1200 DPI Com Fio BM-4049 Preto",
+            "description": "Mouse com fio Redragon Office de 1200 DPI, tres botoes, para uso corporativo em volume.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 20,
+            "sku": "PTK-MOU-BM4049"
+          }
+        },
+        {
+          "label": "PTK-HST-H510PRO — Headset Sem Fio Redragon Zeus H510-PRO Preto",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/headset_gamer_sem_fio_redragon_pro_zeus_h510_pro_preto_103_1_a918368f3c2bbebc0f5eed0aa209144b.jpg",
+          "payload": {
+            "name": "Headset Sem Fio Redragon Zeus H510-PRO Preto",
+            "description": "Headset sem fio Redragon Zeus H510-PRO com microfone removivel e som surround.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 499,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "PTK-HST-H510PRO"
+          }
+        },
+        {
+          "label": "PTK-MAL-TSS995 — Maleta para Notebook Targus 15.6\" Slipskin TSS995 Preta",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1416572/maleta_para_notebook_targus_15_6_slipskin_tss995_preto_117_1_2a3e6e13748ce854aa8fbc071dbe00d6.jpg",
+          "payload": {
+            "name": "Maleta para Notebook Targus 15.6\" Slipskin TSS995 Preta",
+            "description": "Maleta Targus Slipskin para notebooks de ate 15,6 polegadas, com compartimento acolchoado.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 142.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12,
+            "sku": "PTK-MAL-TSS995"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Primetek",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Primetek — Marca (Tabela de Preco)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Primetek",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Primetek — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Perifericos e Acessorios",
+          "salvar_id_como": "criteria_cat_perifericos_id",
+          "payload": {
+            "name": "Primetek — Perifericos e Acessorios (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Energia e Protecao Eletrica",
+          "salvar_id_como": "criteria_cat_energia_id",
+          "payload": {
+            "name": "Primetek — Energia e Protecao Eletrica (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Primetek",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Primetek",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Primetek",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Primetek",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Primetek",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Primetek",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Primetek",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Primetek",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Primetek — Perifericos",
+                "criteria_id": "{{criteria_cat_perifericos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Energia e Protecao Eletrica | Primetek",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Primetek — Energia e Protecao Eletrica",
+            "start_date": "2026-09-04",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Primetek — Energia",
+                "criteria_id": "{{criteria_cat_energia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

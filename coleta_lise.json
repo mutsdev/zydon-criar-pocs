@@ -1,0 +1,141 @@
+{
+ "site": "https://fise.com.br/",
+ "gerador": "WordPress / WooCommerce",
+ "plataforma": "woocommerce",
+ "lojas_externas": [],
+ "total": 12,
+ "itens": [
+  {
+   "nome": "VED400 — KIT DE VEDAÇÃO P/ SISTEMA FS A",
+   "preco": null,
+   "categoria": "Linha Vértice — Sistema FS A",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/VED400-SITE.png",
+   "url": "https://fise.com.br/produto/ved400/",
+   "codigo": "VED400",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=1_soZiRmC6g",
+   "descricao": "Kit de vedação para esquadria com sistema oscilo-deslizante Vértice FS A. Conjunto de perfis e vedações que fecham as folgas entre folha e marco, reduzindo infiltração de ar e água.\n\nReferência cruzada: aplicável ao sistema Vértice FS A (oscilo-deslizante) da FISE; usar em conjunto com o kit de movimentação BRA410 e o kit de folha fixa CON410 da mesma linha.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4a0hMMmE5Zm1QTG8/view\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf"
+  },
+  {
+   "nome": "CON410 — KIT P/ FOLHA FIXA P/ SISTEMA FS A",
+   "preco": null,
+   "categoria": "Linha Vértice — Sistema FS A",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/CON410-SITE.png",
+   "url": "https://fise.com.br/produto/con410-3/",
+   "codigo": "CON410",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=1_soZiRmC6g",
+   "descricao": "Kit de conexão para folha fixa em esquadria com sistema oscilo-deslizante Vértice FS A. Fixa e alinha a folha estática ao marco, mantendo o plano da folha móvel.\n\nReferência cruzada: aplicável ao sistema Vértice FS A (oscilo-deslizante) da FISE; complementa o kit de vedação VED400 e o kit de movimentação BRA410.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4c2R0NzFtMnR6M1k/view\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf"
+  },
+  {
+   "nome": "CHA410 — CHAVE P/ REGULAGEM DO BRAÇO DO SISTEMA FS A",
+   "preco": null,
+   "categoria": "Linha Vértice — Sistema FS A",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/CHA-410.jpg",
+   "url": "https://fise.com.br/produto/cha410-3/",
+   "codigo": "CHA410",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=30JeBlj5A8k",
+   "descricao": "Chave de regulagem do braço do sistema oscilo-deslizante Vértice FS A. Ferramenta de instalação e manutenção, usada para ajustar a altura e o esquadro da folha depois de montada.\n\nReferência cruzada: usar com os kits de movimentação da série BRA400 a BRA419 do sistema Vértice FS A.\n\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf\nBoletins técnicos: https://drive.google.com/drive/folders/1vyJT_u9w2HEAjFqvwvBBz7Vu6HVw106G"
+  },
+  {
+   "nome": "FEC508 - MACANETA DUPLA P/ FECHADURA MULTIPONTO",
+   "preco": null,
+   "categoria": "Fechos e Ferragens",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/FEC508.png",
+   "url": "https://fise.com.br/produto/fec508/",
+   "codigo": "FEC508",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+   "descricao": "Macaneta dupla para fechadura multiponto. Aciona os pontos de trancamento pelos dois lados da folha, em porta de abrir com fechadura multiponto.\n\nReferencia cruzada: compativel com ASA - Linha Mega 32, CDA - Linha Renoir 3.3 e CDA - Linha Renoir 4.4. Para esquadria com cremona, usar FEC150 (centrada) ou FEC152 (deslocada direita).\n\nFicha tecnica ASA Linha Mega 32 (PDF): https://drive.google.com/file/d/1FnelDfPsv1vSPPqpjiKmHFBLl2QAdKV5/view\nFicha tecnica CDA Renoir 3.3 (PDF): https://drive.google.com/file/d/1n41GbWpPUoBhQejP0Yhx-2FLn1ULiV4t/view\nFicha tecnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/1wgK_4RtvSD2Kfxn7N2CHxmaCl2PW-fos/view"
+  },
+  {
+   "nome": "SUP742 — SUPORTE CENTR. 212MM P/ PERSIANA DE ENROLAR",
+   "preco": null,
+   "categoria": "Persianas e Recolhedores",
+   "imagem": "https://fise.com.br/wp-content/uploads/2024/04/SUP-742-743-744.jpg",
+   "url": "https://fise.com.br/produto/sup742/",
+   "codigo": "SUP742",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/@FISEBR",
+   "descricao": "Suporte central de 212 mm para persiana de enrolar. Sustenta o eixo da persiana no vão intermediário e distribui a carga do conjunto.\n\nReferência cruzada: mesma família dos suportes SUP742 (212 mm), SUP743 (180 mm) e SUP744 — a escolha é pela distância do eixo à face de fixação. Usar com os recolhedores REC721 e REC722.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4WmJ1X2N4OGdNUjg/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf"
+  },
+  {
+   "nome": "SUP743 — SUPORTE CENTR. 180MM P/ PERSIANA DE ENROLAR",
+   "preco": null,
+   "categoria": "Persianas e Recolhedores",
+   "imagem": "https://fise.com.br/wp-content/uploads/2024/04/SUP-742-743-744.jpg",
+   "url": "https://fise.com.br/produto/sup743/",
+   "codigo": "SUP743",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/@FISEBR",
+   "descricao": "Suporte central de 180 mm para persiana de enrolar. Versão de menor distância entre o eixo e a face de fixação, para caixas mais rasas.\n\nReferência cruzada: substitui o SUP742 (212 mm) quando a caixa não comporta o afastamento maior; mesma família do SUP744. Usar com os recolhedores REC721 e REC722.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4MnR4S2FDM2VBb1U/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf"
+  },
+  {
+   "nome": "REC722 — RECOLHEDOR S/ FIX. APARENTE C/ REDUTOR P/ TUBO DE 40MM",
+   "preco": null,
+   "categoria": "Persianas e Recolhedores",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/REC722_REC723-SITE.png",
+   "url": "https://fise.com.br/produto/rec722/",
+   "codigo": "REC722",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/@FISEBR",
+   "descricao": "Recolhedor de fita sem fixação aparente, com redutor para tubo de 40 mm. Recolhe a fita da persiana de enrolar sem parafuso à vista na face interna do ambiente.\n\nReferência cruzada: compatível com CDA — Linha Renoir 2.2 e CDA — Linha Renoir 4.4. Mesma família do REC723; para tubo de 60 mm usar o REC721.\n\nFicha técnica CDA Renoir 2.2 (PDF): https://drive.google.com/file/d/1iPM0LRv4VP2pTSsTJX5b0EJY0DlH73QA/view\nFicha técnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/1u4jC-jzORt7g4dj_L-gnxVlpoymx69dW/view"
+  },
+  {
+   "nome": "REC721 — RECOLHEDOR S/ FIX. APARENTE P/ TUBO DE 60MM",
+   "preco": null,
+   "categoria": "Persianas e Recolhedores",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/REC720_721-SITE.png",
+   "url": "https://fise.com.br/produto/rec721/",
+   "codigo": "REC721",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/@FISEBR",
+   "descricao": "Recolhedor de fita sem fixação aparente para tubo de 60 mm. Mesma solução sem parafuso à vista, dimensionada para o tubo maior.\n\nReferência cruzada: compatível com CDA — Linha Renoir 2.2 e CDA — Linha Renoir 4.4. Mesma família do REC720; para tubo de 40 mm usar o REC722 (com redutor).\n\nFicha técnica CDA Renoir 2.2 (PDF): https://drive.google.com/file/d/1m67YBz7mcnQIhIRiAoQfl83kIT4eeB_B/view\nFicha técnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/11bAqrsaPS_J00wwZ6CwV7btvgGkRhc3e/view"
+  },
+  {
+   "nome": "ROL464 — ROLDANA SIMPLES P/ JANELA S/ REGUL. LINHA DOMUS",
+   "preco": null,
+   "categoria": "Fechos e Ferragens",
+   "imagem": "https://fise.com.br/wp-content/uploads/2024/04/ROL-464.jpg",
+   "url": "https://fise.com.br/produto/rol464-2/",
+   "codigo": "ROL464",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/@FISEBR",
+   "descricao": "Roldana simples sem regulagem para janela de correr da Linha Domus. Corpo em material técnico e rodízio único, para folhas leves.\n\nReferência cruzada: compatível com ALCOA — Linha Domus. Quando a obra exigir ajuste de altura da folha, usar roldana com regulagem da mesma linha.\n\nFicha técnica ALCOA Linha Domus (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4aTVldXNVcU5XWjg/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf"
+  },
+  {
+   "nome": "DOB856 — DOBRADIÇA GIRO OU TOMBAR LINHA ÚNICA",
+   "preco": null,
+   "categoria": "Fechos e Ferragens",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/DOB856-SITE.png",
+   "url": "https://fise.com.br/produto/dob856-3/",
+   "codigo": "DOB856",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+   "descricao": "Dobradiça para tipologia giro ou tombar da Linha Única. Permite as duas aberturas na mesma folha, conforme o acionamento da cremona.\n\nReferência cruzada: compatível com sistemas de Câmara Europeia. Trabalha em conjunto com as cremonas da linha Unique (FEC150, FEC152).\n\nFicha técnica Câmara Europeia (PDF): https://drive.google.com/file/d/1A7ZThBRl7jFL_SoKSXHowXQKM6eeM1BJ/view\nTermo de garantia e manual de limpeza (PDF): https://fise.com.br/wp-content/uploads/2023/12/Termo-de-Garantia_Manual-de-Limpeza-e-Conservacao-FISE.pdf"
+  },
+  {
+   "nome": "FEC150 — CREMONA UNIQUE P/ FACHADAS",
+   "preco": null,
+   "categoria": "Fechos e Ferragens",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC150.jpg",
+   "url": "https://fise.com.br/produto/fec150-3/",
+   "codigo": "FEC150",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+   "descricao": "Cremona da linha Unique para esquadrias de fachada. Aciona os pontos de trancamento da folha em um único movimento da maçaneta.\n\nReferência cruzada: linha Unique, aplicação em sistemas de fachada. Versões deslocadas disponíveis: FEC152 (direita) e equivalente à esquerda. Usar com a dobradiça DOB856 em tipologia giro ou tombar.\n\nFicha técnica Fachada (PDF): https://drive.google.com/file/d/1EiUUWrXkGXU1gFDnLf9PlJpylwC9OXA8/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf"
+  },
+  {
+   "nome": "FEC152 — CREMONA UNIQUE DESLOCADA DIREITA",
+   "preco": null,
+   "categoria": "Fechos e Ferragens",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC152-SITE.png",
+   "url": "https://fise.com.br/produto/fec152-3/",
+   "codigo": "FEC152",
+   "marca": "FISE",
+   "video": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+   "descricao": "Cremona da linha Unique com eixo deslocado para a direita. O deslocamento afasta a maçaneta do centro da folha, para perfis em que o eixo central não é possível.\n\nReferência cruzada: compatível com BELMETAL — Linha Imperial 3.5. Versão centrada para fachadas: FEC150. Usar com a dobradiça DOB856 em tipologia giro ou tombar.\n\nFicha técnica BELMETAL Linha Imperial 3.5 (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4WFZLTjFFZWNjZms/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf"
+  }
+ ]
+}

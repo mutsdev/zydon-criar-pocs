@@ -1,0 +1,808 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-21 a partir de https://rickparts.com.br/loja/ (woocommerce).",
+  "empresa": "Rick Parts",
+  "descricao_empresa": "Distribuidora de autopeças em Recife com mais de 20 anos: faróis, lanternas, retrovisores, parabarros, grades e acessórios para oficinas e lojistas.",
+  "gerado_em": "2026-09-21",
+  "setor": "Autopeças — Distribuição atacadista de iluminação, carroceria e acessórios automotivos",
+  "portal_name": "Rick Parts POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Rick Parts",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Rick Parts",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Faróis",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Faróis",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Lanternas",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Lanternas",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Peças e Acessórios",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Peças e Acessórios",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Lado",
+          "salvar_id_como": "variation_lado_id",
+          "payload": {
+            "name": "Lado",
+            "active": true,
+            "values": [
+              "Lado Direito",
+              "Lado Esquerdo"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "RIC-001 — Farol Peugeot 207 2007 a 2015 Máscara Cromada",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/PG0410-LDX-1.jpg",
+          "payload": {
+            "sku": "RIC-001",
+            "name": "Farol Peugeot 207 2007 a 2015 Máscara Cromada",
+            "description": "Farol Peugeot 207 2007 a 2015 Máscara Cromada — Faróis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 381.1,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "RIC-001-LD",
+                "price": 381.1,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Direito"
+                  }
+                ]
+              },
+              {
+                "sku": "RIC-001-LE",
+                "price": 381.1,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Esquerdo"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "RIC-002 — Farol L200 Triton 2017 a 2021 Máscara Negra Pisca Âmbar",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/MIT32988-LDX.jpg",
+          "payload": {
+            "sku": "RIC-002",
+            "name": "Farol L200 Triton 2017 a 2021 Máscara Negra Pisca Âmbar",
+            "description": "Farol L200 Triton 2017 a 2021 Máscara Negra Pisca Âmbar — Faróis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 621.78,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "RIC-002-LD",
+                "price": 621.78,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Direito"
+                  }
+                ]
+              },
+              {
+                "sku": "RIC-002-LE",
+                "price": 621.78,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Esquerdo"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "RIC-003 — Farol Pajero Dakar 2009 a 2013 Máscara Cromada",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/MIT32680-LDX.jpg",
+          "payload": {
+            "sku": "RIC-003",
+            "name": "Farol Pajero Dakar 2009 a 2013 Máscara Cromada",
+            "description": "Farol Pajero Dakar 2009 a 2013 Máscara Cromada — Faróis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 701.55,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "RIC-004 — Farol Tucson 2005 a 2016 Pisca Âmbar",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/HYD16748-LDX.jpg",
+          "payload": {
+            "sku": "RIC-004",
+            "name": "Farol Tucson 2005 a 2016 Pisca Âmbar",
+            "description": "Farol Tucson 2005 a 2016 Pisca Âmbar — Faróis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 410.35,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "RIC-005 — Lanterna Traseira Corolla 2020/ com LED (Canto)",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/TY90010-LDX-1.jpg",
+          "payload": {
+            "sku": "RIC-005",
+            "name": "Lanterna Traseira Corolla 2020/ com LED (Canto)",
+            "description": "Lanterna Traseira Corolla 2020/ com LED (Canto) — Lanternas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 656.49,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "variations": [
+              {
+                "sku": "RIC-005-LD",
+                "price": 656.49,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Direito"
+                  }
+                ]
+              },
+              {
+                "sku": "RIC-005-LE",
+                "price": 656.49,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Esquerdo"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "RIC-006 — Lanterna Traseira Idea 2010 a 2016 com LED Grade Vermelha",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/FIAT17532-LDX.jpg",
+          "payload": {
+            "sku": "RIC-006",
+            "name": "Lanterna Traseira Idea 2010 a 2016 com LED Grade Vermelha",
+            "description": "Lanterna Traseira Idea 2010 a 2016 com LED Grade Vermelha — Lanternas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 456.18,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "variations": [
+              {
+                "sku": "RIC-006-LD",
+                "price": 456.18,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Direito"
+                  }
+                ]
+              },
+              {
+                "sku": "RIC-006-LE",
+                "price": 456.18,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_lado_id}}",
+                    "name": "Lado",
+                    "value": "Lado Esquerdo"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "RIC-007 — Lanterna Traseira Idea 2005 a 2009 Grade Preta",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/FIAT18508-LDX.jpg",
+          "payload": {
+            "sku": "RIC-007",
+            "name": "Lanterna Traseira Idea 2005 a 2009 Grade Preta",
+            "description": "Lanterna Traseira Idea 2005 a 2009 Grade Preta — Lanternas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 227.58,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "RIC-008 — Lanterna Traseira Palio 2008 a 2009 sem Grade Fumê",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/FIAT26196-LDX.jpg",
+          "payload": {
+            "sku": "RIC-008",
+            "name": "Lanterna Traseira Palio 2008 a 2009 sem Grade Fumê",
+            "description": "Lanterna Traseira Palio 2008 a 2009 sem Grade Fumê — Lanternas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 132.36,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "RIC-009 — Parabarro Onix / Onix Plus 2020/ Dianteiro Direito",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/GM32096-LDX.jpg",
+          "payload": {
+            "sku": "RIC-009",
+            "name": "Parabarro Onix / Onix Plus 2020/ Dianteiro Direito",
+            "description": "Parabarro Onix / Onix Plus 2020/ Dianteiro Direito — Peças e Acessórios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 98.68,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "RIC-010 — Cárter Novo Onix 1.0 Aspirado 2020 a 2025",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/541-ON-2.jpg",
+          "payload": {
+            "sku": "RIC-010",
+            "name": "Cárter Novo Onix 1.0 Aspirado 2020 a 2025",
+            "description": "Cárter Novo Onix 1.0 Aspirado 2020 a 2025 — Peças e Acessórios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 151.01,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "RIC-011 — Jogo de Tapete Automotivo Universal 5 Peças 100% Borracha",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/BRB-101011.9.jpg",
+          "payload": {
+            "sku": "RIC-011",
+            "name": "Jogo de Tapete Automotivo Universal 5 Peças 100% Borracha",
+            "description": "Jogo de Tapete Automotivo Universal 5 Peças 100% Borracha — Peças e Acessórios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 89.06,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "RIC-012 — Maçaneta Externa Porta com Chave Gol 94/00 Dianteira D/E",
+          "temp_image_url": "https://rickparts.com.br/loja/wp-content/uploads/20834-7.jpg",
+          "payload": {
+            "sku": "RIC-012",
+            "name": "Maçaneta Externa Porta com Chave Gol 94/00 Dianteira D/E",
+            "description": "Maçaneta Externa Porta com Chave Gol 94/00 Dianteira D/E — Peças e Acessórios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 46.23,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Rick Parts",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Rick Parts — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Rick Parts",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Rick Parts — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Faróis",
+          "salvar_id_como": "criteria_cat_farois_id",
+          "payload": {
+            "name": "Rick Parts — Faróis (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Lanternas",
+          "salvar_id_como": "criteria_cat_lanternas_id",
+          "payload": {
+            "name": "Rick Parts — Lanternas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Peças e Acessórios",
+          "salvar_id_como": "criteria_cat_pecas_e_acessorios_id",
+          "payload": {
+            "name": "Rick Parts — Peças e Acessórios (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Rick Parts",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Rick Parts",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Rick Parts",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Rick Parts",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Rick Parts",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Rick Parts",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Rick Parts",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Rick Parts",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Rick Parts",
+                "criteria_id": "{{criteria_cat_farois_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Lanternas | Rick Parts",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Rick Parts — Lanternas",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Rick Parts",
+                "criteria_id": "{{criteria_cat_lanternas_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

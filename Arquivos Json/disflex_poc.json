@@ -1,0 +1,613 @@
+{
+  "descricao_empresa": "Comércio de abrasivos, discos, brocas e ferramentas industriais para corte, desbaste, perfuração e acabamento profissional. Atende metalurgia, serralheria, construção civil, marcenaria e manutenção industrial.",
+  "empresa": "Disflex",
+  "etapas": [
+    {
+      "endpoint": "brands",
+      "nome": "1. MARCA",
+      "requests": [
+        {
+          "label": "Criar Marca Disflex",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Disflex"
+          },
+          "salvar_id_como": "brand_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "categories",
+      "nome": "2. CATEGORIAS",
+      "requests": [
+        {
+          "label": "Corte e Desbaste",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Corte e Desbaste"
+          },
+          "salvar_id_como": "cat_ids_0"
+        },
+        {
+          "label": "Lixamento e Acabamento",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Lixamento e Acabamento"
+          },
+          "salvar_id_como": "cat_ids_1"
+        },
+        {
+          "label": "Perfuracao e Soldagem",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Perfuracao e Soldagem"
+          },
+          "salvar_id_como": "cat_ids_2"
+        }
+      ]
+    },
+    {
+      "endpoint": "products",
+      "nome": "3. PRODUTOS",
+      "requests": [
+        {
+          "label": "DIS-001 — Disco de Corte Extra Fino Performance Inox 115mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Disco de corte extra fino linha Performance para inox e aço, corte rápido com baixo rebarbamento. 115mm x 1,0mm, furo 22,23mm.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 10,
+            "minimum_stock": 0,
+            "multiple_for_sale": 10,
+            "name": "Disco de Corte Extra Fino Performance Inox 115mm",
+            "price": 14.9,
+            "sku": "DIS-001",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/disco-de-corte-1.webp"
+        },
+        {
+          "label": "DIS-002 — Disco de Corte Ferro Standard 230mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Disco de corte para ferro e aço carbono, linha Standard para uso geral em esmerilhadeira. 230mm x 3,0mm.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 10,
+            "minimum_stock": 0,
+            "multiple_for_sale": 20,
+            "name": "Disco de Corte Ferro Standard 230mm",
+            "price": 22.5,
+            "sku": "DIS-002",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/FOTOS-PRODUTOS-2-8-1.png"
+        },
+        {
+          "label": "DIS-003 — Disco de Desbaste Ferro 115mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Disco de desbaste para ferro, remoção de solda e rebarbas em metalurgia e serralheria. 115mm x 6,0mm.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 10,
+            "minimum_stock": 0,
+            "multiple_for_sale": 10,
+            "name": "Disco de Desbaste Ferro 115mm",
+            "price": 16.9,
+            "sku": "DIS-003",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/FOTOS-PRODUTOS-2-5-4.png"
+        },
+        {
+          "label": "DIS-004 — Disco Diamantado Turbo Profissional Porcelanato 110mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Disco diamantado turbo profissional para corte de porcelanato, cerâmica e mármore. Corte seco ou refrigerado, 110mm.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 1,
+            "name": "Disco Diamantado Turbo Profissional Porcelanato 110mm",
+            "price": 48.9,
+            "sku": "DIS-004",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/Disco-Diamantado-Standard-Turbo-Porcelanato.webp"
+        },
+        {
+          "label": "DIS-005 — Serra Circular Widia Madeira 185mm 40 Dentes",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Lâmina de serra circular widia para madeira, 185mm com 40 dentes, furo 20mm. Corte limpo para marcenaria e carpintaria.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 1,
+            "name": "Serra Circular Widia Madeira 185mm 40 Dentes",
+            "price": 89.9,
+            "sku": "DIS-005",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/FOTOS-PRODUTOS-2-5-2.png"
+        },
+        {
+          "label": "DIS-006 — Disco Flap Performance Oxido de Aluminio 115mm Gr100",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Disco flap performance em óxido de alumínio para desbaste e acabamento de inox e aço. Grão 100, 115mm.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 12,
+            "name": "Disco Flap Performance Oxido de Aluminio 115mm Gr100",
+            "price": 18.9,
+            "sku": "DIS-006",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/09.039_disco-flap-performance_180mm_gr100.webp"
+        },
+        {
+          "label": "DIS-007 — Disco Flap Standard Oxido de Aluminio 115mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Disco flap standard para lixamento e acabamento geral em metal e madeira. 115mm.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 24,
+            "name": "Disco Flap Standard Oxido de Aluminio 115mm",
+            "price": 12.5,
+            "sku": "DIS-007",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/disco-flap-standard.webp"
+        },
+        {
+          "label": "DIS-008 — Folha de Lixa Madeira Gr120 Pacote",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Folha de lixa para madeira grão 120, para lixamento manual em marcenaria e reformas. Pacote com 50 folhas.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 50,
+            "minimum_stock": 0,
+            "multiple_for_sale": 50,
+            "name": "Folha de Lixa Madeira Gr120 Pacote",
+            "price": 89,
+            "sku": "DIS-008",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/FOLHA-DE-LIXA-MADEIRA.webp"
+        },
+        {
+          "label": "DIS-009 — Broca Aco Rapido HSS 8mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Broca em aço rápido HSS 8mm para perfuração de metal, madeira e plástico. Haste cilíndrica.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 10,
+            "minimum_stock": 0,
+            "multiple_for_sale": 10,
+            "name": "Broca Aco Rapido HSS 8mm",
+            "price": 9.9,
+            "sku": "DIS-009",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/BROCA-ACO-RAPIDO-HSS-1.png"
+        },
+        {
+          "label": "DIS-010 — Broca Concreto Widia SDS Plus 10x160mm",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Broca widia SDS Plus para concreto e alvenaria, 10x160mm, para martelete. Pastilha de metal duro.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 1,
+            "name": "Broca Concreto Widia SDS Plus 10x160mm",
+            "price": 24.9,
+            "sku": "DIS-010",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/BROCA-CONCRETO-WIDIA-SDS-PLUS-1.webp"
+        },
+        {
+          "label": "DIS-011 — Eletrodo Revestido Aco E6013 3,25mm 5kg",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Eletrodo revestido E6013 para solda de aço carbono, 3,25mm. Pacote 5kg, arco estável para serralheria e manutenção.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 2,
+            "name": "Eletrodo Revestido Aco E6013 3,25mm 5kg",
+            "price": 119.9,
+            "sku": "DIS-011",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/41.001_ELETRODO-REVESTIDO-PARA-ACO_E6013-Editado-1-Editado.webp"
+        },
+        {
+          "label": "DIS-012 — Arame MIG com Gas ER70S-6 0,8mm 15kg",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Arame MIG ER70S-6 com gás para solda de aço carbono, 0,8mm. Rolo 15kg para indústria metalmecânica e serralheria.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 1,
+            "name": "Arame MIG com Gas ER70S-6 0,8mm 15kg",
+            "price": 289.9,
+            "sku": "DIS-012",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://disflex.com.br/meus-uploads/2025/11/ARAME-MIG-COM-GAS-ER70S-6-1.webp"
+        }
+      ]
+    },
+    {
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Disflex",
+          "payload": {
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Disflex — Marca (Tabela de Preço)"
+          },
+          "salvar_id_como": "criteria_preco_id"
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Disflex",
+          "payload": {
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Disflex — Marca (Regra de Listagem)"
+          },
+          "salvar_id_como": "criteria_listagem_id"
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Corte e Desbaste",
+          "payload": {
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_0}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Disflex — Corte e Desbaste (Desconto)"
+          },
+          "salvar_id_como": "criteria_cat_corte_id"
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Lixamento e Acabamento",
+          "payload": {
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_1}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Disflex — Lixamento e Acabamento (Desconto)"
+          },
+          "salvar_id_como": "criteria_cat_lixamento_id"
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Perfuracao e Soldagem",
+          "payload": {
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_2}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Disflex — Perfuracao e Soldagem (Desconto)"
+          },
+          "salvar_id_como": "criteria_cat_perfuracao_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "price-tables",
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "requests": [
+        {
+          "label": "Tabela 1 | Disflex",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 5,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 1 | Disflex",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "start_date": "2026-09-11"
+          },
+          "salvar_id_como": "tp_1_id"
+        },
+        {
+          "label": "Tabela 2 | Disflex",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 20,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 2 | Disflex",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "start_date": "2026-09-11"
+          },
+          "salvar_id_como": "tp_2_id"
+        },
+        {
+          "label": "Tabela 3 | Disflex",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 35,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 3 | Disflex",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "start_date": "2026-09-11"
+          },
+          "salvar_id_como": "tp_3_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "discounts",
+      "nome": "6. DESCONTOS",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Corte e Desbaste",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_cat_corte_id}}",
+                "criteria_type": "FILTER",
+                "name": "Progressivo Volume Corte e Desbaste",
+                "ranges": [
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5
+                  },
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 30,
+                    "type": "PERCENTAGE",
+                    "value": 9
+                  },
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 14
+                  }
+                ],
+                "type": "PROGRESSIVE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_active": true,
+            "is_company": false,
+            "is_discount_over_discount": false,
+            "is_partner": false,
+            "is_payment_method": false,
+            "is_profile": true,
+            "name": "Progressivo Volume | Disflex — Corte e Desbaste",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "start_date": "2026-09-11"
+          },
+          "salvar_id_como": "desconto_progressivo_id"
+        },
+        {
+          "label": "Desconto Fixo 8% — Lixamento e Acabamento | Disflex",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_cat_lixamento_id}}",
+                "criteria_type": "FILTER",
+                "name": "8% OFF Lixamento e Acabamento",
+                "ranges": [
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8
+                  }
+                ],
+                "type": "FIXED"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_active": true,
+            "is_company": false,
+            "is_discount_over_discount": false,
+            "is_partner": false,
+            "is_payment_method": false,
+            "is_profile": false,
+            "name": "8% OFF Disflex — Lixamento e Acabamento",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [],
+            "start_date": "2026-09-11"
+          },
+          "salvar_id_como": "desconto_fixo_id"
+        }
+      ]
+    }
+  ],
+  "gerado_em": "2026-09-11",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "portal_name": "DISFLEX POC",
+  "setor": "Suprimentos Industriais — Abrasivos e Ferramentas Industriais"
+}

@@ -1,0 +1,626 @@
+{
+ "_instrucoes": "Gerado por montar_poc.py em 2026-09-27 a partir de https://masterfoodlp.lovable.app/ (lovable).",
+ "empresa": "Master Food",
+ "descricao_empresa": "Distribuidora de laticinios, frios, charcutaria e bebidas em Sergipe, atendendo supermercados, emporios e food service.",
+ "gerado_em": "2026-09-27",
+ "setor": "Distribuidora de laticinios, frios e charcutaria",
+ "portal_name": "Master Food POC",
+ "portal_listing_rule_id": "{{criteria_listagem_id}}",
+ "etapas": [
+  {
+   "nome": "1. MARCA",
+   "endpoint": "brands",
+   "requests": [
+    {
+     "label": "Criar Marca Master Food",
+     "salvar_id_como": "brand_id",
+     "payload": {
+      "name": "Master Food",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "2. CATEGORIAS",
+   "endpoint": "categories",
+   "requests": [
+    {
+     "label": "Laticinios e Queijos",
+     "salvar_id_como": "cat_ids_0",
+     "payload": {
+      "name": "Laticinios e Queijos",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Frios e Food Service",
+     "salvar_id_como": "cat_ids_1",
+     "payload": {
+      "name": "Frios e Food Service",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Mercearia e Bebidas",
+     "salvar_id_como": "cat_ids_2",
+     "payload": {
+      "name": "Mercearia e Bebidas",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "3. PRODUTOS",
+   "endpoint": "products",
+   "requests": [
+    {
+     "label": "MAS-001 — Ricota Fresca Alvorada Zero Lactose",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/596f4178-7657-4894-bf1d-4dbdc8156caf/produto03.png",
+     "payload": {
+      "sku": "MAS-001",
+      "name": "Ricota Fresca Alvorada Zero Lactose",
+      "description": "Ricota fresca Laticínio Alvorada, zero lactose, sem glúten e sem conservantes. Distribuição oficial exclusiva Masterfood em Sergipe, com garantia diária de frescor na vitrine de empórios e supermercados.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 18.9,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-002 — Queijo Tipo Gouda Quatá Fatiado 170g",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/fe45e146-fefa-4701-813b-135f33c0ee4e/produto02.png",
+     "payload": {
+      "sku": "MAS-002",
+      "name": "Queijo Tipo Gouda Quatá Fatiado 170g",
+      "description": "Queijo tipo gouda fatiado Quatá, embalagem de 170g. Linha de queijos especiais de uma das marcas mais tradicionais de laticínios do Brasil.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 14.9,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-003 — Creme de Queijo Tradicional Quatá 180g",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/430654ba-8066-4332-a6d9-8acc6a1b42b1/produto01.png",
+     "payload": {
+      "sku": "MAS-003",
+      "name": "Creme de Queijo Tradicional Quatá 180g",
+      "description": "Creme de queijo tradicional Quatá, copo de 180g. Item de alto giro para supermercados, mercearias e padarias.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 9.8,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-004 — Queijo Mussarela Pampa Cheese — Peça",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/ef06e31a-e380-4329-bd78-36792fddae5c/mussarela.jpeg",
+     "payload": {
+      "sku": "MAS-004",
+      "name": "Queijo Mussarela Pampa Cheese — Peça",
+      "description": "Queijo mussarela Pampa Cheese em peça para pizzarias, lanchonetes e restaurantes. Derretimento uniforme, padronização de lote e alto rendimento.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 38.9,
+      "minimum_for_sale": 10,
+      "multiple_for_sale": 10
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-005 — Carne Seca Litoral 500g",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/0e42d176-c655-4a05-a167-64e69dafb631/prod-carne-seca.jpeg",
+     "payload": {
+      "sku": "MAS-005",
+      "name": "Carne Seca Litoral 500g",
+      "description": "Carne seca Litoral embalada a vácuo. Textura, sabor e dessecação padronizados para varejo e cozinhas profissionais.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 32.9,
+      "minimum_for_sale": 2,
+      "multiple_for_sale": 2
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-006 — Batata Palito Pré-Frita Finíssima 2kg",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/04d84434-93bf-4d75-aadd-ebb75552f227/batata.jpeg",
+     "payload": {
+      "sku": "MAS-006",
+      "name": "Batata Palito Pré-Frita Finíssima 2kg",
+      "description": "Batata palito pré-frita congelada Finíssima, pacote de 2kg. Crocância e padronização para lanchonetes, hamburguerias e restaurantes.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 29.9,
+      "minimum_for_sale": 12,
+      "multiple_for_sale": 12
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-007 — Azeite de Oliva Extra Virgem Nucete Bombona 2L",
+     "temp_image_url": "https://acdn-us.mitiendanube.com/stores/006/676/307/products/diseno-sin-titulo-20-d5ca62a70d9a25132317606095217668-640-0.webp",
+     "payload": {
+      "sku": "MAS-007",
+      "name": "Azeite de Oliva Extra Virgem Nucete Bombona 2L",
+      "description": "Azeite de oliva extra virgem Nucete em bombona de 2 litros, formato para cozinhas profissionais e food service.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 129.9,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-008 — Azeitonas Pretas Nucete Pote 3kg",
+     "temp_image_url": "https://acdn-us.mitiendanube.com/stores/006/676/307/products/diseno-sin-titulo-5-d2532d5dd7eb880ccb17604915682597-640-0.webp",
+     "payload": {
+      "sku": "MAS-008",
+      "name": "Azeitonas Pretas Nucete Pote 3kg",
+      "description": "Azeitonas pretas Nucete em pote de 3kg, embalagem industrial para pizzarias, restaurantes e produção.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 89.9,
+      "minimum_for_sale": 5,
+      "multiple_for_sale": 5
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-009 — Azeitonas Verdes Premium Nucete",
+     "temp_image_url": "https://masterfoodlp.lovable.app/__l5e/assets-v1/c3866852-b5fa-4b5e-bbc8-5407677a61c7/nucete.jpeg",
+     "payload": {
+      "sku": "MAS-009",
+      "name": "Azeitonas Verdes Premium Nucete",
+      "description": "Azeitonas verdes selecionadas Nucete Premium em frasco de vidro. Conserva de alto giro e alto valor agregado para gôndola de empórios e supermercados.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 21.9,
+      "minimum_for_sale": 3,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-010 — Azeitonas Verdes Fatiadas Nucete Doypack 300g",
+     "temp_image_url": "https://acdn-us.mitiendanube.com/stores/006/676/307/products/diseno-sin-titulo-9-532a2bf8321349c78617606089484565-640-0.webp",
+     "payload": {
+      "sku": "MAS-010",
+      "name": "Azeitonas Verdes Fatiadas Nucete Doypack 300g",
+      "description": "Azeitonas verdes fatiadas Nucete em embalagem doypack de 300g, prática para cozinha e varejo.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 14.5,
+      "minimum_for_sale": 4,
+      "multiple_for_sale": 4
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-011 — Espumante Salton Brut 750ml",
+     "temp_image_url": "https://cdn.shopify.com/s/files/1/0307/0384/5511/files/SaltonBrut.png?v=1762776608",
+     "payload": {
+      "sku": "MAS-011",
+      "name": "Espumante Salton Brut 750ml",
+      "description": "Espumante Salton Brut, garrafa de 750ml. Bebida de alto giro para supermercados, empórios e adegas.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 42.0,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-012 — Espumante Salton Prosecco 750ml",
+     "temp_image_url": "https://cdn.shopify.com/s/files/1/0307/0384/5511/files/SaltonProsecconovo.png?v=1762776108",
+     "payload": {
+      "sku": "MAS-012",
+      "name": "Espumante Salton Prosecco 750ml",
+      "description": "Espumante Salton Prosecco, garrafa de 750ml. Complementa a linha de bebidas da Masterfood para varejo.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 42.0,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    }
+   ]
+  },
+  {
+   "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+   "base_url": "https://api.zydon.com.br/api/database",
+   "endpoint": "criteria",
+   "requests": [
+    {
+     "label": "Criterio Marca (TABELA DE PRECO) - Master Food",
+     "salvar_id_como": "criteria_preco_id",
+     "payload": {
+      "name": "Master Food — Marca (Tabela de Preço)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Marca (REGRA DE LISTAGEM) - Master Food",
+     "salvar_id_como": "criteria_listagem_id",
+     "payload": {
+      "name": "Master Food — Marca (Regra de Listagem)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Laticinios e Queijos",
+     "salvar_id_como": "criteria_cat_laticinios_e_queijos_id",
+     "payload": {
+      "name": "Master Food — Laticinios e Queijos (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_0}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Frios e Food Service",
+     "salvar_id_como": "criteria_cat_frios_e_food_service_id",
+     "payload": {
+      "name": "Master Food — Frios e Food Service (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_1}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Mercearia e Bebidas",
+     "salvar_id_como": "criteria_cat_mercearia_e_bebidas_id",
+     "payload": {
+      "name": "Master Food — Mercearia e Bebidas (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_2}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+   "endpoint": "price-tables",
+   "requests": [
+    {
+     "label": "Tabela 1 | Master Food",
+     "salvar_id_como": "tp_1_id",
+     "payload": {
+      "name": "Tabela 1 | Master Food",
+      "start_date": "2026-09-27",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 5
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "2"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 2 | Master Food",
+     "salvar_id_como": "tp_2_id",
+     "payload": {
+      "name": "Tabela 2 | Master Food",
+      "start_date": "2026-09-27",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 15
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "3"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 3 | Master Food",
+     "salvar_id_como": "tp_3_id",
+     "payload": {
+      "name": "Tabela 3 | Master Food",
+      "start_date": "2026-09-27",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 30
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "6. DESCONTOS",
+   "endpoint": "discounts",
+   "requests": [
+    {
+     "label": "Desconto Progressivo — Volume Master Food",
+     "salvar_id_como": "desconto_progressivo_id",
+     "payload": {
+      "name": "Progressivo Volume | Master Food",
+      "start_date": "2026-09-27",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "Progressivo Volume Master Food",
+        "criteria_id": "{{criteria_cat_laticinios_e_queijos_id}}",
+        "type": "PROGRESSIVE",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 10,
+          "type": "PERCENTAGE",
+          "value": 5,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 20,
+          "type": "PERCENTAGE",
+          "value": 8,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 50,
+          "type": "PERCENTAGE",
+          "value": 12,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Desconto Fixo 7% — Frios e Food Service | Master Food",
+     "salvar_id_como": "desconto_fixo_id",
+     "payload": {
+      "name": "7% OFF Master Food — Frios e Food Service",
+      "start_date": "2026-09-27",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "7% OFF Master Food",
+        "criteria_id": "{{criteria_cat_frios_e_food_service_id}}",
+        "type": "FIXED",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 0,
+          "type": "PERCENTAGE",
+          "value": 7,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": false,
+      "profiles": [],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  }
+ ]
+}

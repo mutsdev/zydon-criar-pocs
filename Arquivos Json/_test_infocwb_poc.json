@@ -1,0 +1,613 @@
+{
+  "empresa": "Info CWB",
+  "descricao_empresa": "Maior importador de placas de vídeo da América Latina, com distribuição B2B de tecnologia e informática nos segmentos gamer, corporativo e profissional.",
+  "gerado_em": "2026-09-11",
+  "setor": "Infocwb | Distribuidor B2B de Tecnologia e Informática",
+  "portal_name": "INFO CWB POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Info CWB",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Info CWB",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Gabinetes",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Gabinetes",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Mid Tower",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Mid Tower",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Full Tower",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Full Tower",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "INFO_CWB-001 — HD 22TB MG11 3.5\" 7200RPM SAS TOSHIBA MG11SCA22TE",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/h/d/hd-22tb-mg11-3-5--7200rpm-sas-toshiba-01_6a5f829092b1b.jpg",
+          "payload": {
+            "name": "HD 22TB MG11 3.5\" 7200RPM SAS TOSHIBA MG11SCA22TE",
+            "sku": "INFO_CWB-001",
+            "description": "O HD corporativo Toshiba MG11 22TB, possui inferface SAS, rotação de 7200RPM para servidores e storages, operação 24x7 e workload de 550TB por ano. Confira!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 57.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "INFO_CWB-002 — GABINETE TT VIEW 600 TG TRANSFORMATIVE TEAL (VERDE-AZULADO) FULL TOWER 4*TEMPGLASS CA-11H-00FTWN-00",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/a/gabinete-tt-view-600-tg-transformative-teal-_verde-azulado_-full-tower-4_6a60d343c69ea.jpg",
+          "payload": {
+            "name": "GABINETE TT VIEW 600 TG TRANSFORMATIVE TEAL (VERDE-AZULADO) FULL TOWER 4*TEMPGLASS CA-11H-00FTWN-00",
+            "sku": "INFO_CWB-002",
+            "description": "Gabinete Thermaltake View 600 TG Transformative Teal Full Tower com paineis de vidro temperado, suporte para placas-mãe E-ATX e até 10 fans. Acesse e confira!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 74.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-003 — GPU NV RTX5060 8GB GDDR7 128BITS WINDFORCE MAX OC V2 GIGABYTE GV-N5060WF2MAXOCV2-8GD",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-rtx5060-8gb-gddr7-128bits-windforce-max-oc-v2-gigabyte-01_6a60eb56ceeb0.jpg",
+          "payload": {
+            "name": "GPU NV RTX5060 8GB GDDR7 128BITS WINDFORCE MAX OC V2 GIGABYTE GV-N5060WF2MAXOCV2-8GD",
+            "sku": "INFO_CWB-003",
+            "description": "Placa de vídeo Gigabyte RTX 5060 WINDFORCE MAX OC V2 8G com memória GDDR7, DLSS 4.5, arquitetura Blackwell e refrigeração WINDFORCE. Garanta em seu estoque!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 92.4,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "INFO_CWB-004 — GABINETE TT THE TOWER 600 TRANSFORMATIVE TEAL (VERDE-AZULADO) MID TOWER 3*TEMPGLASS/2*CT140 CA-1Z1-0",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/a/gabinete-tt-the-tower-600-transformative-teal-mid-tower-1_6a60e132e2b1f.jpg",
+          "payload": {
+            "name": "GABINETE TT THE TOWER 600 TRANSFORMATIVE TEAL (VERDE-AZULADO) MID TOWER 3*TEMPGLASS/2*CT140 CA-1Z1-0",
+            "sku": "INFO_CWB-004",
+            "description": "Gabinete Thermaltake View 600 TG Transformative Teal Full Tower com paineis de vidro temperado, suporte para placas-mãe E-ATX e até 10 fans. Acesse e confira!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 109.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-005 — HD EXT 5TB EXPANSION DESKTOP 2.5\" USB 3.0 PRETO SEAGATE STGX5000400",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/h/d/hd-ext-5tb-expansion-desktop-2-5--usb-3-0-preto-seagate-04_6a5f70b045960.jpg",
+          "payload": {
+            "name": "HD EXT 5TB EXPANSION DESKTOP 2.5\" USB 3.0 PRETO SEAGATE STGX5000400",
+            "sku": "INFO_CWB-005",
+            "description": "O HD Externo Seagate Expansion Desktop 5TB oferece instalação Plug and Play, porta USB 3.0e recursos como Rescue Data Recovery Services. Abasteça seu estoque!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 127.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "INFO_CWB-006 — GPU NV RTX5080 16GB GDDR7 256BITS WINDFORCE OC SFF GIGABYTE GV-N5080WF3OC-16GD",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-rtx5080-16gb-gddr7-256bits-windforce-oc-sff-gigabyte-01_6a61019a40dac.jpg",
+          "payload": {
+            "name": "GPU NV RTX5080 16GB GDDR7 256BITS WINDFORCE OC SFF GIGABYTE GV-N5080WF3OC-16GD",
+            "sku": "INFO_CWB-006",
+            "description": "Meta Description: Placa de Vídeo Gigabyte RTX 5080 WINDFORCE OC SFF 16G com GDDR7, DLSS 4.5, formato compacto, Dual BIOS e refrigeração WINDFORCE. Abasteça seu estoque!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 144.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "INFO_CWB-007 — HD 14TB X300 3.5\" 7200RPM SATA III TOSHIBA HDWR51EXZSTA",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/h/d/hd-14tb-x300-3-5--7200rpm-sata-iii-toshiba-01_6a8706d56e8bb.jpg",
+          "payload": {
+            "name": "HD 14TB X300 3.5\" 7200RPM SATA III TOSHIBA HDWR51EXZSTA",
+            "sku": "INFO_CWB-007",
+            "description": "HD Toshiba X300 14TB 3,5” oferece com 7200 RPM, alta capacidade e tecnologias que garantem desempenho e proteção dos dados. Confira condições para seu negócio!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 162.4,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-008 — GPU NV RTX5070TI 16GB GDDR7 256BITS FRIEREN EDITION OC MSI 912-V531-682",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-rtx5070ti-16gb-gddr7-256bits-frieren-edition-oc-msi-01_6a85f728e9ee1.jpg",
+          "payload": {
+            "name": "GPU NV RTX5070TI 16GB GDDR7 256BITS FRIEREN EDITION OC MSI 912-V531-682",
+            "sku": "INFO_CWB-008",
+            "description": "A GPU MSI RTX 5070 Ti FRIEREN EDITION OC traz DLSS 4.5, TRI FROZR 4 e backplate termocrômico com arte exclusiva inspirada em Frieren. Abasteça seu estoque!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 179.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-009 — GPU NV RTX5080 16GB GDDR7 256BITS VENTUS 3X OC MSI 912-V531-676",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-rtx5080-16gb-gddr7-256bits-ventus-3x-oc-msi-01_6a85fbfb1762a.jpg",
+          "payload": {
+            "name": "GPU NV RTX5080 16GB GDDR7 256BITS VENTUS 3X OC MSI 912-V531-676",
+            "sku": "INFO_CWB-009",
+            "description": "A placa de vídeo MSI RTX 5080 VENTUS 3X OC traz arquitetura Blackwell, DLSS 4, três fans TORX 5.0 e refrigeração reforçada para alto desempenho. Confira!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 197.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "INFO_CWB-010 — PLACA DE VIDEO PNY NVIDIA QUADRO RTX A4500 GDDR6 20GB - VCNRTXA4500-PB",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-quadro-rtx-a4500-20gb-gddr6-pny.jpg",
+          "payload": {
+            "name": "PLACA DE VIDEO PNY NVIDIA QUADRO RTX A4500 GDDR6 20GB - VCNRTXA4500-PB",
+            "sku": "INFO_CWB-010",
+            "description": "A placa de vídeo Quadro RTX A4500 da PNY oferece 20GB e Ray Tracing em tempo real, sendo ideal para projetos avançados. Acesse para garantir o melhor em desempenho!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 214.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-011 — COMBO TECLADO+MOUSE+MOUSEPAD MSI FORGE TKL FRIEREN EDITION 952-8Z0Z-001",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/c/o/combo-teclado_mouse_mousepad-msi-forge-tkl-frieren-edition-01_6a85f15a73a70.jpg",
+          "payload": {
+            "name": "COMBO TECLADO+MOUSE+MOUSEPAD MSI FORGE TKL FRIEREN EDITION 952-8Z0Z-001",
+            "sku": "INFO_CWB-011",
+            "description": "O MSI Gaming Gear Bundle FRIEREN Edition conta com teclado TKL, mouse de 26.000 DPI e mousepad temático inspirado no anime Frieren. Garanta em seu estoque!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 232.4,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "INFO_CWB-012 — PLACA DE VIDEO PNY NVIDIA QUADRO RTX 6000 ADA GENERATION GDDR6 48GB 384BITS - VCNRTX6000ADA-PB",
+          "temp_image_url": "https://www.infocwb.com.br/media/catalog/product/cache/ff2cc0e668ae0ea9cb048889897d698a/g/p/gpu-nv-quadro-rtx-6000-ada-generation-48gb-gddr6-384bits-pny.jpg",
+          "payload": {
+            "name": "PLACA DE VIDEO PNY NVIDIA QUADRO RTX 6000 ADA GENERATION GDDR6 48GB 384BITS - VCNRTX6000ADA-PB",
+            "sku": "INFO_CWB-012",
+            "description": "A placa de vídeo profissional Quadro RTX 6000 Ada Generation da PNY oferece 48 GB de memória e recursos avançados. Acesse para conferir mais informações!",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{{{brand_id}}}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 249.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "endpoint": "criteria",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Info CWB",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Info CWB — Marca (TABELA DE PRECO)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Info CWB",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Info CWB — Marca (REGRA DE LISTAGEM)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Gabinetes - Info CWB",
+          "salvar_id_como": "criteria_cat_0_id",
+          "payload": {
+            "name": "Info CWB — Categoria (DESCONTO) - Gabinetes",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_0}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Mid Tower - Info CWB",
+          "salvar_id_como": "criteria_cat_1_id",
+          "payload": {
+            "name": "Info CWB — Categoria (DESCONTO) - Mid Tower",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_1}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Full Tower - Info CWB",
+          "salvar_id_como": "criteria_cat_2_id",
+          "payload": {
+            "name": "Info CWB — Categoria (DESCONTO) - Full Tower",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_2}}"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Info CWB",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Info CWB",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Info CWB",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Info CWB",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 20
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Info CWB",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Info CWB",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 35
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Gabinetes",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Info CWB — Gabinetes",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Gabinetes",
+                "criteria_id": "{{criteria_cat_0_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 30,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Mid Tower | Info CWB",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF Info CWB — Mid Tower",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Mid Tower",
+                "criteria_id": "{{criteria_cat_1_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -40,5 +40,101 @@
       "Palete de madeira reforçado"
     ],
     "ambiente": "Corredor amplo de um grande galpão logístico de abastecimento com prateleiras industriais verticais e iluminação forte."
+  },
+  "distribuicao-de-produtos-de-limpeza-e-higiene": {
+    "objetos": [
+      "Mop de limpeza profissional",
+      "Galão plástico neutro sem rótulo",
+      "Rolo de papel toalha industrial",
+      "Luvas de borracha amarelas",
+      "Panos de microfibra coloridos"
+    ],
+    "ambiente": "Corredores organizados de um centro de distribuição logístico com prateleiras altas e caixas empilhadas."
+  },
+  "fabricante-de-refrigerantes-e-bebidas-nao-alcoolicas": {
+    "objetos": [
+      "Garrafas de vidro transparentes sem rótulo",
+      "Latas de alumínio lisas e prateadas sem impressão",
+      "Copo de vidro com bebida gaseificada, bolhas e pedras de gelo",
+      "Tampas metálicas tipo coroa para garrafas",
+      "Fatias de frutas frescas como limão e laranja"
+    ],
+    "ambiente": "Uma moderna linha industrial de engarrafamento e envase automatizado com esteiras e tanques de aço inoxidável."
+  },
+  "epi-e-seguranca-do-trabalho": {
+    "objetos": [
+      "Capacete de proteção amarelo",
+      "Óculos de segurança transparentes",
+      "Luvas de proteção de couro",
+      "Protetor auricular tipo concha",
+      "Cinto de segurança tipo paraquedista para trabalho em altura",
+      "Bota de segurança de couro com solado emborrachado"
+    ],
+    "ambiente": "Um galpão industrial amplo com estruturas metálicas e iluminação natural."
+  },
+  "perfumes-importados-e-cosmeticos-para-revenda": {
+    "objetos": [
+      "Frasco de perfume em vidro lapidado transparente sem rótulo",
+      "Conjunto de pincéis de maquiagem com cabos elegantes",
+      "Pote de vidro neutro com creme facial denso",
+      "Batom aberto em embalagem metálica dourada e lisa",
+      "Pipeta de vidro dosando uma gota de sérum facial",
+      "Paleta de sombras compacta aberta com tons variados"
+    ],
+    "ambiente": "Showroom de uma distribuidora de cosméticos com prateleiras de vidro bem iluminadas ao fundo."
+  },
+  "rolamentos-industriais": {
+    "objetos": [
+      "Rolamento de esferas em aço inox polido",
+      "Rolamento de rolos cônicos desmontado",
+      "Mancal de ferro fundido verde",
+      "Paquímetro metálico de precisão",
+      "Anel de vedação industrial de borracha",
+      "Eixo metálico usinado"
+    ],
+    "ambiente": "Chão de fábrica de uma indústria metalmecânica com máquinas CNC e iluminação industrial."
+  },
+  "bobinas-de-papel-e-etiquetas-adesivas": {
+    "objetos": [
+      "Bobina de papel térmico branco sem impressão",
+      "Rolo de etiquetas adesivas brancas cortadas",
+      "Rolo de fita ribbon preta para transferência térmica",
+      "Aplicador manual de etiquetas adesivas",
+      "Tubete de papelão industrial para rebobinamento",
+      "Impressora térmica de etiquetas de bancada"
+    ],
+    "ambiente": "Galpão logístico de um centro de distribuição com prateleiras altas e caixas empilhadas."
+  },
+  "materiais-e-equipamentos-eletricos-industriais": {
+    "objetos": [
+      "Disjuntor industrial de caixa moldada",
+      "Multímetro digital com pontas de prova",
+      "Rolo de cabo elétrico flexível de alta bitola",
+      "Barramento elétrico de cobre maciço",
+      "Alicate prensa-terminal para crimpagem",
+      "Plugue e tomada industrial trifásica"
+    ],
+    "ambiente": "Galpão de uma fábrica moderna com um grande painel elétrico de comando aberto ao fundo."
+  },
+  "distribuicao-de-produtos-de-informatica": {
+    "objetos": [
+      "Placa-mãe de computador",
+      "Módulo de memória RAM",
+      "Processador de computador",
+      "Cabo de rede com conector RJ45",
+      "Unidade de disco SSD interno",
+      "Coletor de dados portátil para logística"
+    ],
+    "ambiente": "Galpão logístico moderno com altas prateleiras de estoque e caixas organizadas ao fundo."
+  },
+  "oleos-essenciais-e-aromaterapia": {
+    "objetos": [
+      "Frascos de vidro âmbar com conta-gotas",
+      "Difusor elétrico de aromas em cerâmica",
+      "Ramos frescos de lavanda e folhas de eucalipto",
+      "Pilão de pedra maciça com ervas medicinais",
+      "Vela aromática artesanal em vaso de cerâmica"
+    ],
+    "ambiente": "Um estúdio de bem-estar bem iluminado, com prateleiras de madeira clara, plantas ornamentais e frascos organizados ao fundo."
   }
 }

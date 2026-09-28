@@ -1,0 +1,1231 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-17 a partir de https://www.rotofermax.com.br/ (wordpress-cpt).",
+  "empresa": "Roto Fermax",
+  "descricao_empresa": "Roto Fermax: ferragens para esquadrias de alumínio, PVC e madeira — sistemas de correr, maxim-ar, camarão, oscilobatente, persianas integradas e portas — fabricadas no Brasil com tecnologia Roto (Alemanha) para serralherias, esquadristas e sistemistas.",
+  "gerado_em": "2026-09-17",
+  "setor": "Material de Construção — Ferragens para Esquadrias",
+  "portal_name": "Roto Fermax POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Roto Fermax",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Roto Fermax",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Sistemas de Correr e Paralelos",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Sistemas de Correr e Paralelos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Maxim-ar, Camarão e Oscilobatente",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Maxim-ar, Camarão e Oscilobatente",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Persianas, Portas e Motorização",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Persianas, Portas e Motorização",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Cor",
+          "salvar_id_como": "variation_cor_id",
+          "payload": {
+            "name": "Cor",
+            "active": true,
+            "is_searchable": false,
+            "display_type": "COLOR",
+            "values": [
+              "Branco",
+              "Azul Claro",
+              "Preto",
+              "Marrom",
+              "Azul Marinho",
+              "Verde Militar",
+              "Off White",
+              "Bege",
+              "Areia",
+              "Caqui",
+              "Cinza Claro",
+              "Cinza",
+              "Grafite",
+              "Chumbo",
+              "Prata",
+              "Azul Royal",
+              "Azul Jeans",
+              "Verde",
+              "Verde Oliva",
+              "Vermelho",
+              "Vinho",
+              "Terracota",
+              "Laranja",
+              "Amarelo",
+              "Dourado",
+              "Rosa",
+              "Roxo"
+            ],
+            "variant_options": [
+              {
+                "name": "Branco",
+                "display_value": "#FFFFFF"
+              },
+              {
+                "name": "Azul Claro",
+                "display_value": "#A8C8E8"
+              },
+              {
+                "name": "Preto",
+                "display_value": "#000000"
+              },
+              {
+                "name": "Marrom",
+                "display_value": "#6B4A2F"
+              },
+              {
+                "name": "Azul Marinho",
+                "display_value": "#1B2A4A"
+              },
+              {
+                "name": "Verde Militar",
+                "display_value": "#4B5320"
+              },
+              {
+                "name": "Off White",
+                "display_value": "#F2EFE6"
+              },
+              {
+                "name": "Bege",
+                "display_value": "#D9C6A5"
+              },
+              {
+                "name": "Areia",
+                "display_value": "#E0D5C0"
+              },
+              {
+                "name": "Caqui",
+                "display_value": "#9C8A5F"
+              },
+              {
+                "name": "Cinza Claro",
+                "display_value": "#C0C0C0"
+              },
+              {
+                "name": "Cinza",
+                "display_value": "#808080"
+              },
+              {
+                "name": "Grafite",
+                "display_value": "#4A4A4A"
+              },
+              {
+                "name": "Chumbo",
+                "display_value": "#3A3F44"
+              },
+              {
+                "name": "Prata",
+                "display_value": "#BFC1C2"
+              },
+              {
+                "name": "Azul Royal",
+                "display_value": "#1F4FA3"
+              },
+              {
+                "name": "Azul Jeans",
+                "display_value": "#4A6D8C"
+              },
+              {
+                "name": "Verde",
+                "display_value": "#2E7D48"
+              },
+              {
+                "name": "Verde Oliva",
+                "display_value": "#6B7A3A"
+              },
+              {
+                "name": "Vermelho",
+                "display_value": "#C0272D"
+              },
+              {
+                "name": "Vinho",
+                "display_value": "#6E1423"
+              },
+              {
+                "name": "Terracota",
+                "display_value": "#B5533C"
+              },
+              {
+                "name": "Laranja",
+                "display_value": "#E8701A"
+              },
+              {
+                "name": "Amarelo",
+                "display_value": "#F2C230"
+              },
+              {
+                "name": "Dourado",
+                "display_value": "#C9A227"
+              },
+              {
+                "name": "Rosa",
+                "display_value": "#E8A0B4"
+              },
+              {
+                "name": "Roxo",
+                "display_value": "#5B3A8E"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "ROT-001 — Soleira Roto Patio Inowa",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1cfd6693e6-inowa_imagem_ferragens_1.webp",
+          "payload": {
+            "sku": "ROT-001",
+            "name": "Soleira Roto Patio Inowa",
+            "description": "Soleira Roto Patio Inowa — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 189.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-002 — Contrafecho Roto Patio Inowa",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1c4cd9ef6b-inowa_imagem_ferragens_482260.webp",
+          "payload": {
+            "sku": "ROT-002",
+            "name": "Contrafecho Roto Patio Inowa",
+            "description": "Contrafecho Roto Patio Inowa — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 42.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-003 — Maçaneta Roto Patio Inowa",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1cfd621739-inowa_imagem_ferragens_4.webp",
+          "payload": {
+            "sku": "ROT-003",
+            "name": "Maçaneta Roto Patio Inowa",
+            "description": "Maçaneta Roto Patio Inowa — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 98.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "ROT-003-BRANCO",
+                "price": 98.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "ROT-003-PRETO",
+                "price": 98.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  }
+                ]
+              },
+              {
+                "sku": "ROT-003-MARROM",
+                "price": 98.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Marrom"
+                  }
+                ]
+              },
+              {
+                "sku": "ROT-003-PRATA",
+                "price": 98.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Prata"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-004 — Roldana Roto Patio Inowa",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1cfd601357-inowa_imagem_ferragens_2.webp",
+          "payload": {
+            "sku": "ROT-004",
+            "name": "Roldana Roto Patio Inowa",
+            "description": "Roldana Roto Patio Inowa — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 74.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-005 — Vedação RotoSil Nano Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc30bc8449b5-img_ferragens_06.webp",
+          "payload": {
+            "sku": "ROT-005",
+            "name": "Vedação RotoSil Nano Multiponto",
+            "description": "Vedação RotoSil Nano Multiponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 36.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-006 — Cremona de Correr Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc30ba177fa1-img_ferragens_04.webp",
+          "payload": {
+            "sku": "ROT-006",
+            "name": "Cremona de Correr Multiponto",
+            "description": "Cremona de Correr Multiponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 129.0,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-007 — Fecho Pop-up Correr Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc30ba16570b-img_ferragens_02.webp",
+          "payload": {
+            "sku": "ROT-007",
+            "name": "Fecho Pop-up Correr Multiponto",
+            "description": "Fecho Pop-up Correr Multiponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 58.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-008 — Pino Antielevação Correr Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc30c2e58d02-img_ferragens_01.webp",
+          "payload": {
+            "sku": "ROT-008",
+            "name": "Pino Antielevação Correr Multiponto",
+            "description": "Pino Antielevação Correr Multiponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 12.4,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-009 — Puxador Correr Monoponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc3001976abf-img_ferragens_03.webp",
+          "payload": {
+            "sku": "ROT-009",
+            "name": "Puxador Correr Monoponto",
+            "description": "Puxador Correr Monoponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-010 — Fecho Correr Monoponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc3006632050-img_ferragens_01.webp",
+          "payload": {
+            "sku": "ROT-010",
+            "name": "Fecho Correr Monoponto",
+            "description": "Fecho Correr Monoponto — Sistemas de Correr e Paralelos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-011 — Maçaneta Acodada Roto PS Aintree",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc316a6630e7-img_ferragens_02.webp",
+          "payload": {
+            "sku": "ROT-011",
+            "name": "Maçaneta Acodada Roto PS Aintree",
+            "description": "Maçaneta Acodada Roto PS Aintree — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 86.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-012 — Braço Paralelo Roto PS Aintree",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc316a64fa3c-img_ferragens_01.webp",
+          "payload": {
+            "sku": "ROT-012",
+            "name": "Braço Paralelo Roto PS Aintree",
+            "description": "Braço Paralelo Roto PS Aintree — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 164.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-013 — Braço Limitador Maxim-ar Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc33bdb241ca-img_ferragens_04.webp",
+          "payload": {
+            "sku": "ROT-013",
+            "name": "Braço Limitador Maxim-ar Multiponto",
+            "description": "Braço Limitador Maxim-ar Multiponto — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 79.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-014 — Braço em Alumínio Maxim-ar Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc33bdb11167-img_ferragens_06.webp",
+          "payload": {
+            "sku": "ROT-014",
+            "name": "Braço em Alumínio Maxim-ar Multiponto",
+            "description": "Braço em Alumínio Maxim-ar Multiponto — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 112.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-015 — Braço em Aço Inox Maxim-ar Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc33bdade8bb-img_ferragens_03.webp",
+          "payload": {
+            "sku": "ROT-015",
+            "name": "Braço em Aço Inox Maxim-ar Multiponto",
+            "description": "Braço em Aço Inox Maxim-ar Multiponto — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 148.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-016 — Fecho Armoni Maxim-ar Monoponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc33ace2cf02-img_ferragens_02.webp",
+          "payload": {
+            "sku": "ROT-016",
+            "name": "Fecho Armoni Maxim-ar Monoponto",
+            "description": "Fecho Armoni Maxim-ar Monoponto — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 52.0,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-017 — Maçaneta Extraplana Roto Patio Fold",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1d718ee831-fold_imagem_ferragens_6.webp",
+          "payload": {
+            "sku": "ROT-017",
+            "name": "Maçaneta Extraplana Roto Patio Fold",
+            "description": "Maçaneta Extraplana Roto Patio Fold — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 118.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-018 — Dobradiça Roto Patio Fold",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1d718dd2bd-fold_imagem_ferragens_4.webp",
+          "payload": {
+            "sku": "ROT-018",
+            "name": "Dobradiça Roto Patio Fold",
+            "description": "Dobradiça Roto Patio Fold — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 96.0,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "variations": [
+              {
+                "sku": "ROT-018-BRANCO",
+                "price": 96.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "ROT-018-MARROM",
+                "price": 96.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Marrom"
+                  }
+                ]
+              },
+              {
+                "sku": "ROT-018-CINZA_",
+                "price": 96.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza Claro"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-019 — Carro Roto Patio Fold",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dc1d718ca44b-fold_imagem_ferragens_5.webp",
+          "payload": {
+            "sku": "ROT-019",
+            "name": "Carro Roto Patio Fold",
+            "description": "Carro Roto Patio Fold — Maxim-ar, Camarão e Oscilobatente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 212.0,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-020 — Motor Tubular Persiana Integrada",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dcc95dd1bc9b-img_ferragens_04.webp",
+          "payload": {
+            "sku": "ROT-020",
+            "name": "Motor Tubular Persiana Integrada",
+            "description": "Motor Tubular Persiana Integrada — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 489.0,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-021 — Acionamento Motorizado Persiana Integrada",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dcc93847c479-acionamento.webp",
+          "payload": {
+            "sku": "ROT-021",
+            "name": "Acionamento Motorizado Persiana Integrada",
+            "description": "Acionamento Motorizado Persiana Integrada — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 139.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-022 — Esteira Persiana Integrada (m)",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dcc92085c650-esteira.webp",
+          "payload": {
+            "sku": "ROT-022",
+            "name": "Esteira Persiana Integrada (m)",
+            "description": "Esteira Persiana Integrada (m) — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 68.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-023 — Recolhedor Persiana Integrada",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/570x420-5dcc95dd098d3-img_ferragens_03.webp",
+          "payload": {
+            "sku": "ROT-023",
+            "name": "Recolhedor Persiana Integrada",
+            "description": "Recolhedor Persiana Integrada — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 57.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-024 — Fechadura Porta Multiponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/original-20191114132618-porta_multi_imagem_principal.webp",
+          "payload": {
+            "sku": "ROT-024",
+            "name": "Fechadura Porta Multiponto",
+            "description": "Fechadura Porta Multiponto — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 329.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "ROT-025 — Fechadura Porta Monoponto",
+          "temp_image_url": "https://www.rotofermax.com.br/wp-content/uploads/2026/06/original-20191114125832-porta_mono_imagem_principal.webp",
+          "payload": {
+            "sku": "ROT-025",
+            "name": "Fechadura Porta Monoponto",
+            "description": "Fechadura Porta Monoponto — Persianas, Portas e Motorização.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 186.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Roto Fermax",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Roto Fermax — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Roto Fermax",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Roto Fermax — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Sistemas de Correr e Paralelos",
+          "salvar_id_como": "criteria_cat_sistemas_de_correr_e_paralelos_id",
+          "payload": {
+            "name": "Roto Fermax — Sistemas de Correr e Paralelos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Maxim-ar, Camarão e Oscilobatente",
+          "salvar_id_como": "criteria_cat_maxim_ar_camarao_e_oscilobatente_id",
+          "payload": {
+            "name": "Roto Fermax — Maxim-ar, Camarão e Oscilobatente (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Persianas, Portas e Motorização",
+          "salvar_id_como": "criteria_cat_persianas_portas_e_motorizacao_id",
+          "payload": {
+            "name": "Roto Fermax — Persianas, Portas e Motorização (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Roto Fermax",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Roto Fermax",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Roto Fermax",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Roto Fermax",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Roto Fermax",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Roto Fermax",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Roto Fermax",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Roto Fermax",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Roto Fermax",
+                "criteria_id": "{{criteria_cat_sistemas_de_correr_e_paralelos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Maxim-ar, Camarão e Oscilobatente | Roto Fermax",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Roto Fermax — Maxim-ar, Camarão e Oscilobatente",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Roto Fermax",
+                "criteria_id": "{{criteria_cat_maxim_ar_camarao_e_oscilobatente_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -35,6 +35,7 @@ from urllib.parse import urlparse
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import cronometro  # noqa: E402
 from credenciais import (  # noqa: E402
     ACCOUNT_BASE_URL,
     APPCENTER_BASE_URL,
@@ -601,7 +602,9 @@ def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
     # 1) Etapas (marca, categorias, produtos, criterios, ...)
     for etapa in poc.get("etapas", []):
         endpoint = etapa.get("endpoint")
-        print(f"\nEtapa: {etapa.get('nome', endpoint)}")
+        nome_etapa = etapa.get("nome", endpoint)
+        print(f"\nEtapa: {nome_etapa}")
+        t_etapa, falhas_antes = time.perf_counter(), falhas
         base_url = etapa.get("base_url", BASE_URL)
         for req in etapa.get("requests", []):
             label = req.get("label", "Requisicao")
@@ -634,8 +637,11 @@ def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
                     print("  [INFO] Interrompendo — os proximos passos dependem deste objeto.")
                     salvar_saidas_pos_execucao(file_path, id_map, produtos_criados, criados)
                     rollback(criados, headers)
+                    cronometro.anotar(empresa, nome_etapa, time.perf_counter() - t_etapa, ok=False)
                     return False
             time.sleep(1)
+        cronometro.anotar(empresa, nome_etapa, time.perf_counter() - t_etapa,
+                          ok=falhas == falhas_antes)
 
     # Salva IDs + esqueleto de imagens (mesmo com falhas parciais / falha no portal).
     salvar_saidas_pos_execucao(file_path, id_map, produtos_criados, criados)
@@ -659,7 +665,10 @@ def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
     portal_nome = resolve_placeholders(poc.get("portal_name") or poc.get("empresa", "Novo Portal"), id_map)
     portal_cor = poc.get("portal_color") or org.get("portal_cor", "#4A90D9")
     print(f"\nEtapa: Duplicar portal '{portal_nome}'")
+    t_portal = time.perf_counter()
     novo_portal_id = duplicar_portal(portal_origem_id, portal_nome, portal_cor, headers)
+    cronometro.anotar(empresa, "Duplicar portal", time.perf_counter() - t_portal,
+                      ok=bool(novo_portal_id))
     if not novo_portal_id:
         print("[AVISO] Duplicacao falhou - categorias e regra de listagem nao aplicadas.")
         if rollback_on_error:
@@ -674,11 +683,13 @@ def run_poc(file_path, headers, org, rollback_on_error=True, saida=None):
     # 3) Associar categorias
     if categorias_criadas:
         print("\nEtapa: Associar categorias ao portal")
-        associar_categorias_ao_portal(categorias_criadas, novo_portal_id, headers)
+        with cronometro.etapa(empresa, "Associar categorias"):
+            associar_categorias_ao_portal(categorias_criadas, novo_portal_id, headers)
 
     # 4) Regra de listagem (Cliente, Vendedor, Vitrine)
     print("\nEtapa: Configurar regra de listagem (Cliente, Vendedor, Vitrine)")
-    regra_ok = configurar_regra_da_poc(poc, novo_portal_id, headers, id_map)
+    with cronometro.etapa(empresa, "Regra de listagem"):
+        regra_ok = configurar_regra_da_poc(poc, novo_portal_id, headers, id_map)
 
     print("\n" + "=" * 52)
     print("CONCLUIDO")

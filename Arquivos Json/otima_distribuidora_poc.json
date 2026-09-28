@@ -1,0 +1,698 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-23 a partir de https://www.otimadistribuidora.com.br/ (sitemap).",
+  "empresa": "Ótima Distribuidora",
+  "descricao_empresa": "Distribuidora de nutrição clínica, enteral e fórmulas infantis Danone/Nutricia para farmácias, clínicas e home care.",
+  "gerado_em": "2026-09-23",
+  "setor": "Saúde — Nutrição Clínica e Infantil",
+  "portal_name": "Ótima Distribuidora POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Ótima Distribuidora",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Ótima Distribuidora",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Nutrição Enteral",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Nutrição Enteral",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Fórmulas Infantis",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Fórmulas Infantis",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Suplementos Orais",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Suplementos Orais",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Sabor",
+          "salvar_id_como": "variation_sabor_id",
+          "payload": {
+            "name": "Sabor",
+            "active": true,
+            "values": [
+              "Baunilha",
+              "Chocolate",
+              "Morango"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "OTI-001 — Nutri Enteral 1.5 1000mL",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/nutri_enteral_1_5_baunilha_1000ml_tp_danone_21_1_db3e76261067fe7ff31f568339aabe93.png",
+          "payload": {
+            "sku": "OTI-001",
+            "name": "Nutri Enteral 1.5 1000mL",
+            "description": "Nutri Enteral 1.5 1000mL — Nutrição Enteral.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 39.3,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "OTI-002 — Nutri Enteral Soya Fiber 1.2",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/nutri_enteral_soya_fiber_1_2_1000ml_tp_danone_25_1_994c48fb348e52be62e97e2f17db3695.jpg",
+          "payload": {
+            "sku": "OTI-002",
+            "name": "Nutri Enteral Soya Fiber 1.2",
+            "description": "Nutri Enteral Soya Fiber 1.2 — Nutrição Enteral.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 34.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "OTI-003 — Nutrison Protein Plus Energy 1000mL Pack DANONE",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/nutrison_protein_plus_energy_1000ml_pack_danone_75_1_c9e2b1e83f7b1de7ff775436254bda81.jpg",
+          "payload": {
+            "sku": "OTI-003",
+            "name": "Nutrison Protein Plus Energy 1000mL Pack DANONE",
+            "description": "Nutrison Protein Plus Energy 1000mL Pack DANONE — Nutrição Enteral.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 75.8,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "OTI-004 — Nutri Renal 2.0",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/nutri_renal_2_0_1000ml_tp_danone_83_1_97195efe75d3a622efa41c58f55420e3.png",
+          "payload": {
+            "sku": "OTI-004",
+            "name": "Nutri Renal 2.0",
+            "description": "Nutri Renal 2.0 — Nutrição Enteral.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 68.5,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "OTI-005 — Aptamil 1 Profutura 800g Danone",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/formula_aptamil_profutura_1_800g_danone_9_2_5b7365217a842b8d5e08328da0699ce9.png",
+          "payload": {
+            "sku": "OTI-005",
+            "name": "Aptamil 1 Profutura 800g Danone",
+            "description": "Aptamil 1 Profutura 800g Danone — Fórmulas Infantis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 87.3,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "OTI-006 — Milnutri Premium 800g",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/formula_milnutri_premium_800gr_danone_1_20260113172035_99fa714ce44f.png",
+          "payload": {
+            "sku": "OTI-006",
+            "name": "Milnutri Premium 800g",
+            "description": "Milnutri Premium 800g — Fórmulas Infantis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 67.0,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "OTI-007 — Neocate LCP Upgrade 400g",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/neocate_lcp_400g_danone_1_20260114083706_76629e0c7fa6.png",
+          "payload": {
+            "sku": "OTI-007",
+            "name": "Neocate LCP Upgrade 400g",
+            "description": "Neocate LCP Upgrade 400g — Fórmulas Infantis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 274.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "OTI-008 — Aptamil Pepti 800g",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/formula_aptamil_pepti_800g_danone_119_1_f45f6809979bba38ee9fea3d5639cc27.png",
+          "payload": {
+            "sku": "OTI-008",
+            "name": "Aptamil Pepti 800g",
+            "description": "Aptamil Pepti 800g — Fórmulas Infantis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 239.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "OTI-009 — Nutridrink Compact Protein Danone",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/nutridrink_compact_capuccino_4_x_125ml_danone_89_1_e858865a73d0f1c0ed5a3e0243c4d3f2.png",
+          "payload": {
+            "sku": "OTI-009",
+            "name": "Nutridrink Compact Protein Danone",
+            "description": "Nutridrink Compact Protein Danone — Suplementos Orais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 86.0,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "OTI-009-BAUNIL",
+                "price": 86.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Baunilha"
+                  }
+                ]
+              },
+              {
+                "sku": "OTI-009-CHOCOL",
+                "price": 86.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Chocolate"
+                  }
+                ]
+              },
+              {
+                "sku": "OTI-009-MORANG",
+                "price": 86.0,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_sabor_id}}",
+                    "name": "Sabor",
+                    "value": "Morango"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "OTI-010 — Fortini Plus Sem Sabor 400g",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/fortini_plus_sem_sabor_400g_danone_1_20260113174817_9d0e3b0aa632.png",
+          "payload": {
+            "sku": "OTI-010",
+            "name": "Fortini Plus Sem Sabor 400g",
+            "description": "Fortini Plus Sem Sabor 400g — Suplementos Orais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 79.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "OTI-011 — Cubitan Baunilha PB 200ml",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/cubitan_baunilha_pb_200ml_danone_1_20260113143420_cb714b05e9de.png",
+          "payload": {
+            "sku": "OTI-011",
+            "name": "Cubitan Baunilha PB 200ml",
+            "description": "Cubitan Baunilha PB 200ml — Suplementos Orais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 23.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "OTI-012 — Souvenaid Danone",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1109462/souvenaid_baunilha_4und_x_125ml_danone_1_20260114095943_79f16d3817fa.png",
+          "payload": {
+            "sku": "OTI-012",
+            "name": "Souvenaid Danone",
+            "description": "Souvenaid Danone — Suplementos Orais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 95.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Ótima Distribuidora",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Ótima Distribuidora — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Ótima Distribuidora",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Ótima Distribuidora — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Nutrição Enteral",
+          "salvar_id_como": "criteria_cat_nutricao_enteral_id",
+          "payload": {
+            "name": "Ótima Distribuidora — Nutrição Enteral (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Fórmulas Infantis",
+          "salvar_id_como": "criteria_cat_formulas_infantis_id",
+          "payload": {
+            "name": "Ótima Distribuidora — Fórmulas Infantis (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Suplementos Orais",
+          "salvar_id_como": "criteria_cat_suplementos_orais_id",
+          "payload": {
+            "name": "Ótima Distribuidora — Suplementos Orais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Ótima Distribuidora",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Ótima Distribuidora",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Ótima Distribuidora",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Ótima Distribuidora",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Ótima Distribuidora",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Ótima Distribuidora",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Ótima Distribuidora",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Ótima Distribuidora",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Ótima Distribuidora",
+                "criteria_id": "{{criteria_cat_nutricao_enteral_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Fórmulas Infantis | Ótima Distribuidora",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Ótima Distribuidora — Fórmulas Infantis",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Ótima Distribuidora",
+                "criteria_id": "{{criteria_cat_formulas_infantis_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

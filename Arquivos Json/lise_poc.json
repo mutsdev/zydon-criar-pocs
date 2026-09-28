@@ -1,0 +1,626 @@
+{
+ "_instrucoes": "Gerado por montar_poc.py em 2026-09-23 a partir de https://fise.com.br/ (woocommerce).",
+ "empresa": "Lise",
+ "descricao_empresa": "Distribuidora de ferragens, acessorios e sistemas para esquadrias de aluminio, persianas e fachadas.",
+ "gerado_em": "2026-09-23",
+ "setor": "Ferragens e acessorios para esquadrias",
+ "portal_name": "Lise POC",
+ "portal_listing_rule_id": "{{criteria_listagem_id}}",
+ "etapas": [
+  {
+   "nome": "1. MARCA",
+   "endpoint": "brands",
+   "requests": [
+    {
+     "label": "Criar Marca Lise",
+     "salvar_id_como": "brand_id",
+     "payload": {
+      "name": "Lise",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "2. CATEGORIAS",
+   "endpoint": "categories",
+   "requests": [
+    {
+     "label": "Linha Vertice - Sistema FS A",
+     "salvar_id_como": "cat_ids_0",
+     "payload": {
+      "name": "Linha Vertice - Sistema FS A",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Persianas e Recolhedores",
+     "salvar_id_como": "cat_ids_1",
+     "payload": {
+      "name": "Persianas e Recolhedores",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Fechos e Ferragens",
+     "salvar_id_como": "cat_ids_2",
+     "payload": {
+      "name": "Fechos e Ferragens",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "3. PRODUTOS",
+   "endpoint": "products",
+   "requests": [
+    {
+     "label": "LIS-001 — FEC508 - MACANETA DUPLA P/ FECHADURA MULTIPONTO",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2025/06/FEC508.png",
+     "payload": {
+      "sku": "LIS-001",
+      "name": "FEC508 - MACANETA DUPLA P/ FECHADURA MULTIPONTO",
+      "description": "Macaneta dupla para fechadura multiponto. Aciona os pontos de trancamento pelos dois lados da folha, em porta de abrir com fechadura multiponto.\n\nReferencia cruzada: compativel com ASA - Linha Mega 32, CDA - Linha Renoir 3.3 e CDA - Linha Renoir 4.4. Para esquadria com cremona, usar FEC150 (centrada) ou FEC152 (deslocada direita).\n\nFicha tecnica ASA Linha Mega 32 (PDF): https://drive.google.com/file/d/1FnelDfPsv1vSPPqpjiKmHFBLl2QAdKV5/view\nFicha tecnica CDA Renoir 3.3 (PDF): https://drive.google.com/file/d/1n41GbWpPUoBhQejP0Yhx-2FLn1ULiV4t/view\nFicha tecnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/1wgK_4RtvSD2Kfxn7N2CHxmaCl2PW-fos/view",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+      "highlight": true,
+      "price": 132.4,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-002 — DOB856 — DOBRADIÇA GIRO OU TOMBAR LINHA ÚNICA",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2025/06/DOB856-SITE.png",
+     "payload": {
+      "sku": "LIS-002",
+      "name": "DOB856 — DOBRADIÇA GIRO OU TOMBAR LINHA ÚNICA",
+      "description": "Dobradiça para tipologia giro ou tombar da Linha Única. Permite as duas aberturas na mesma folha, conforme o acionamento da cremona.\n\nReferência cruzada: compatível com sistemas de Câmara Europeia. Trabalha em conjunto com as cremonas da linha Unique (FEC150, FEC152).\n\nFicha técnica Câmara Europeia (PDF): https://drive.google.com/file/d/1A7ZThBRl7jFL_SoKSXHowXQKM6eeM1BJ/view\nTermo de garantia e manual de limpeza (PDF): https://fise.com.br/wp-content/uploads/2023/12/Termo-de-Garantia_Manual-de-Limpeza-e-Conservacao-FISE.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+      "highlight": true,
+      "price": 98.7,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-003 — FEC150 — CREMONA UNIQUE P/ FACHADAS",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2023/12/FEC150.jpg",
+     "payload": {
+      "sku": "LIS-003",
+      "name": "FEC150 — CREMONA UNIQUE P/ FACHADAS",
+      "description": "Cremona da linha Unique para esquadrias de fachada. Aciona os pontos de trancamento da folha em um único movimento da maçaneta.\n\nReferência cruzada: linha Unique, aplicação em sistemas de fachada. Versões deslocadas disponíveis: FEC152 (direita) e equivalente à esquerda. Usar com a dobradiça DOB856 em tipologia giro ou tombar.\n\nFicha técnica Fachada (PDF): https://drive.google.com/file/d/1EiUUWrXkGXU1gFDnLf9PlJpylwC9OXA8/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+      "highlight": true,
+      "price": 172.0,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-004 — VED400 — KIT DE VEDAÇÃO P/ SISTEMA FS A",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2023/12/VED400-SITE.png",
+     "payload": {
+      "sku": "LIS-004",
+      "name": "VED400 — KIT DE VEDAÇÃO P/ SISTEMA FS A",
+      "description": "Kit de vedação para esquadria com sistema oscilo-deslizante Vértice FS A. Conjunto de perfis e vedações que fecham as folgas entre folha e marco, reduzindo infiltração de ar e água.\n\nReferência cruzada: aplicável ao sistema Vértice FS A (oscilo-deslizante) da FISE; usar em conjunto com o kit de movimentação BRA410 e o kit de folha fixa CON410 da mesma linha.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4a0hMMmE5Zm1QTG8/view\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=1_soZiRmC6g",
+      "highlight": false,
+      "price": 214.9,
+      "minimum_for_sale": 10,
+      "multiple_for_sale": 10
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-005 — CON410 — KIT P/ FOLHA FIXA P/ SISTEMA FS A",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2025/06/CON410-SITE.png",
+     "payload": {
+      "sku": "LIS-005",
+      "name": "CON410 — KIT P/ FOLHA FIXA P/ SISTEMA FS A",
+      "description": "Kit de conexão para folha fixa em esquadria com sistema oscilo-deslizante Vértice FS A. Fixa e alinha a folha estática ao marco, mantendo o plano da folha móvel.\n\nReferência cruzada: aplicável ao sistema Vértice FS A (oscilo-deslizante) da FISE; complementa o kit de vedação VED400 e o kit de movimentação BRA410.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4c2R0NzFtMnR6M1k/view\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=1_soZiRmC6g",
+      "highlight": false,
+      "price": 186.5,
+      "minimum_for_sale": 2,
+      "multiple_for_sale": 2
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-006 — CHA410 — CHAVE P/ REGULAGEM DO BRAÇO DO SISTEMA FS A",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2025/06/CHA-410.jpg",
+     "payload": {
+      "sku": "LIS-006",
+      "name": "CHA410 — CHAVE P/ REGULAGEM DO BRAÇO DO SISTEMA FS A",
+      "description": "Chave de regulagem do braço do sistema oscilo-deslizante Vértice FS A. Ferramenta de instalação e manutenção, usada para ajustar a altura e o esquadro da folha depois de montada.\n\nReferência cruzada: usar com os kits de movimentação da série BRA400 a BRA419 do sistema Vértice FS A.\n\nCatálogo técnico Vértice FS A (PDF): https://fise.com.br/wp-content/uploads/2023/05/catalogo_tecnico_Vertice_FSA-ATUALIZADO.pdf\nBoletins técnicos: https://drive.google.com/drive/folders/1vyJT_u9w2HEAjFqvwvBBz7Vu6HVw106G",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=30JeBlj5A8k",
+      "highlight": false,
+      "price": 74.9,
+      "minimum_for_sale": 12,
+      "multiple_for_sale": 12
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-007 — SUP742 — SUPORTE CENTR. 212MM P/ PERSIANA DE ENROLAR",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2024/04/SUP-742-743-744.jpg",
+     "payload": {
+      "sku": "LIS-007",
+      "name": "SUP742 — SUPORTE CENTR. 212MM P/ PERSIANA DE ENROLAR",
+      "description": "Suporte central de 212 mm para persiana de enrolar. Sustenta o eixo da persiana no vão intermediário e distribui a carga do conjunto.\n\nReferência cruzada: mesma família dos suportes SUP742 (212 mm), SUP743 (180 mm) e SUP744 — a escolha é pela distância do eixo à face de fixação. Usar com os recolhedores REC721 e REC722.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4WmJ1X2N4OGdNUjg/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/@FISEBR",
+      "highlight": false,
+      "price": 38.9,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-008 — SUP743 — SUPORTE CENTR. 180MM P/ PERSIANA DE ENROLAR",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2024/04/SUP-742-743-744.jpg",
+     "payload": {
+      "sku": "LIS-008",
+      "name": "SUP743 — SUPORTE CENTR. 180MM P/ PERSIANA DE ENROLAR",
+      "description": "Suporte central de 180 mm para persiana de enrolar. Versão de menor distância entre o eixo e a face de fixação, para caixas mais rasas.\n\nReferência cruzada: substitui o SUP742 (212 mm) quando a caixa não comporta o afastamento maior; mesma família do SUP744. Usar com os recolhedores REC721 e REC722.\n\nFicha técnica (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4MnR4S2FDM2VBb1U/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/@FISEBR",
+      "highlight": false,
+      "price": 36.5,
+      "minimum_for_sale": 5,
+      "multiple_for_sale": 5
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-009 — REC722 — RECOLHEDOR S/ FIX. APARENTE C/ REDUTOR P/ TUBO DE 40MM",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2023/12/REC722_REC723-SITE.png",
+     "payload": {
+      "sku": "LIS-009",
+      "name": "REC722 — RECOLHEDOR S/ FIX. APARENTE C/ REDUTOR P/ TUBO DE 40MM",
+      "description": "Recolhedor de fita sem fixação aparente, com redutor para tubo de 40 mm. Recolhe a fita da persiana de enrolar sem parafuso à vista na face interna do ambiente.\n\nReferência cruzada: compatível com CDA — Linha Renoir 2.2 e CDA — Linha Renoir 4.4. Mesma família do REC723; para tubo de 60 mm usar o REC721.\n\nFicha técnica CDA Renoir 2.2 (PDF): https://drive.google.com/file/d/1iPM0LRv4VP2pTSsTJX5b0EJY0DlH73QA/view\nFicha técnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/1u4jC-jzORt7g4dj_L-gnxVlpoymx69dW/view",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/@FISEBR",
+      "highlight": false,
+      "price": 52.4,
+      "minimum_for_sale": 3,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-010 — REC721 — RECOLHEDOR S/ FIX. APARENTE P/ TUBO DE 60MM",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2023/12/REC720_721-SITE.png",
+     "payload": {
+      "sku": "LIS-010",
+      "name": "REC721 — RECOLHEDOR S/ FIX. APARENTE P/ TUBO DE 60MM",
+      "description": "Recolhedor de fita sem fixação aparente para tubo de 60 mm. Mesma solução sem parafuso à vista, dimensionada para o tubo maior.\n\nReferência cruzada: compatível com CDA — Linha Renoir 2.2 e CDA — Linha Renoir 4.4. Mesma família do REC720; para tubo de 40 mm usar o REC722 (com redutor).\n\nFicha técnica CDA Renoir 2.2 (PDF): https://drive.google.com/file/d/1m67YBz7mcnQIhIRiAoQfl83kIT4eeB_B/view\nFicha técnica CDA Renoir 4.4 (PDF): https://drive.google.com/file/d/11bAqrsaPS_J00wwZ6CwV7btvgGkRhc3e/view",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/@FISEBR",
+      "highlight": false,
+      "price": 57.9,
+      "minimum_for_sale": 4,
+      "multiple_for_sale": 4
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-011 — ROL464 — ROLDANA SIMPLES P/ JANELA S/ REGUL. LINHA DOMUS",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2024/04/ROL-464.jpg",
+     "payload": {
+      "sku": "LIS-011",
+      "name": "ROL464 — ROLDANA SIMPLES P/ JANELA S/ REGUL. LINHA DOMUS",
+      "description": "Roldana simples sem regulagem para janela de correr da Linha Domus. Corpo em material técnico e rodízio único, para folhas leves.\n\nReferência cruzada: compatível com ALCOA — Linha Domus. Quando a obra exigir ajuste de altura da folha, usar roldana com regulagem da mesma linha.\n\nFicha técnica ALCOA Linha Domus (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4aTVldXNVcU5XWjg/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/@FISEBR",
+      "highlight": false,
+      "price": 14.8,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "LIS-012 — FEC152 — CREMONA UNIQUE DESLOCADA DIREITA",
+     "temp_image_url": "https://fise.com.br/wp-content/uploads/2023/12/FEC152-SITE.png",
+     "payload": {
+      "sku": "LIS-012",
+      "name": "FEC152 — CREMONA UNIQUE DESLOCADA DIREITA",
+      "description": "Cremona da linha Unique com eixo deslocado para a direita. O deslocamento afasta a maçaneta do centro da folha, para perfis em que o eixo central não é possível.\n\nReferência cruzada: compatível com BELMETAL — Linha Imperial 3.5. Versão centrada para fachadas: FEC150. Usar com a dobradiça DOB856 em tipologia giro ou tombar.\n\nFicha técnica BELMETAL Linha Imperial 3.5 (PDF): https://drive.google.com/file/d/0BwPX2jAk54w4WFZLTjFFZWNjZms/view\nCatálogo geral de produtos (PDF): https://fise.com.br/wp-content/uploads/2023/05/Catalogo-Geral-de-Produtos.pdf",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "https://www.youtube.com/watch?v=4oQnD2evTYA",
+      "highlight": false,
+      "price": 164.3,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    }
+   ]
+  },
+  {
+   "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+   "base_url": "https://api.zydon.com.br/api/database",
+   "endpoint": "criteria",
+   "requests": [
+    {
+     "label": "Criterio Marca (TABELA DE PRECO) - Lise",
+     "salvar_id_como": "criteria_preco_id",
+     "payload": {
+      "name": "Lise — Marca (Tabela de Preço)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Marca (REGRA DE LISTAGEM) - Lise",
+     "salvar_id_como": "criteria_listagem_id",
+     "payload": {
+      "name": "Lise — Marca (Regra de Listagem)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Linha Vertice - Sistema FS A",
+     "salvar_id_como": "criteria_cat_linha_vertice_sistema_fs_a_id",
+     "payload": {
+      "name": "Lise — Linha Vertice - Sistema FS A (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_0}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Persianas e Recolhedores",
+     "salvar_id_como": "criteria_cat_persianas_e_recolhedores_id",
+     "payload": {
+      "name": "Lise — Persianas e Recolhedores (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_1}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Fechos e Ferragens",
+     "salvar_id_como": "criteria_cat_fechos_e_ferragens_id",
+     "payload": {
+      "name": "Lise — Fechos e Ferragens (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_2}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+   "endpoint": "price-tables",
+   "requests": [
+    {
+     "label": "Tabela 1 | Lise",
+     "salvar_id_como": "tp_1_id",
+     "payload": {
+      "name": "Tabela 1 | Lise",
+      "start_date": "2026-09-23",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 5
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "2"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 2 | Lise",
+     "salvar_id_como": "tp_2_id",
+     "payload": {
+      "name": "Tabela 2 | Lise",
+      "start_date": "2026-09-23",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 15
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "3"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 3 | Lise",
+     "salvar_id_como": "tp_3_id",
+     "payload": {
+      "name": "Tabela 3 | Lise",
+      "start_date": "2026-09-23",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 30
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "6. DESCONTOS",
+   "endpoint": "discounts",
+   "requests": [
+    {
+     "label": "Desconto Progressivo — Volume Lise",
+     "salvar_id_como": "desconto_progressivo_id",
+     "payload": {
+      "name": "Progressivo Volume | Lise",
+      "start_date": "2026-09-23",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "Progressivo Volume Lise",
+        "criteria_id": "{{criteria_cat_linha_vertice_sistema_fs_a_id}}",
+        "type": "PROGRESSIVE",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 10,
+          "type": "PERCENTAGE",
+          "value": 5,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 20,
+          "type": "PERCENTAGE",
+          "value": 8,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 50,
+          "type": "PERCENTAGE",
+          "value": 12,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Desconto Fixo 7% — Persianas e Recolhedores | Lise",
+     "salvar_id_como": "desconto_fixo_id",
+     "payload": {
+      "name": "7% OFF Lise — Persianas e Recolhedores",
+      "start_date": "2026-09-23",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "7% OFF Lise",
+        "criteria_id": "{{criteria_cat_persianas_e_recolhedores_id}}",
+        "type": "FIXED",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 0,
+          "type": "PERCENTAGE",
+          "value": 7,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": false,
+      "profiles": [],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  }
+ ]
+}

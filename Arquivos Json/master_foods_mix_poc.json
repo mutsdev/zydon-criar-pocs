@@ -1,0 +1,626 @@
+{
+ "_instrucoes": "Gerado por montar_poc.py em 2026-09-28 a partir de https://www.masterfoodsmix.com.br/ (wix).",
+ "empresa": "Master Foods Mix",
+ "descricao_empresa": "Distribuidora de peixes, frutos do mar, aves, frutas e legumes congelados em Osasco e todo o estado de Sao Paulo.",
+ "gerado_em": "2026-09-28",
+ "setor": "Distribuidora de alimentos congelados",
+ "portal_name": "Master Foods Mix POC",
+ "portal_listing_rule_id": "{{criteria_listagem_id}}",
+ "etapas": [
+  {
+   "nome": "1. MARCA",
+   "endpoint": "brands",
+   "requests": [
+    {
+     "label": "Criar Marca Master Foods Mix",
+     "salvar_id_como": "brand_id",
+     "payload": {
+      "name": "Master Foods Mix",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "2. CATEGORIAS",
+   "endpoint": "categories",
+   "requests": [
+    {
+     "label": "Peixes e Frutos do Mar",
+     "salvar_id_como": "cat_ids_0",
+     "payload": {
+      "name": "Peixes e Frutos do Mar",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Aves Congeladas",
+     "salvar_id_como": "cat_ids_1",
+     "payload": {
+      "name": "Aves Congeladas",
+      "active": true,
+      "images": []
+     }
+    },
+    {
+     "label": "Frutas, Legumes e Vegetais",
+     "salvar_id_como": "cat_ids_2",
+     "payload": {
+      "name": "Frutas, Legumes e Vegetais",
+      "active": true,
+      "images": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "3. PRODUTOS",
+   "endpoint": "products",
+   "requests": [
+    {
+     "label": "MAS-001 — Filé de Tilápia Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_124259415df349bdb08d6faa9012c645~mv2.png",
+     "payload": {
+      "sku": "MAS-001",
+      "name": "Filé de Tilápia Congelado",
+      "description": "Filé de tilápia congelado, limpo e sem espinhas, com controle rigoroso de temperatura. Ideal para restaurantes, mercados e food service.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 32.9,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-002 — Salmão Porcionado Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_6c718c1ff6cc440aba2ecc20d883aebd~mv2.png",
+     "payload": {
+      "sku": "MAS-002",
+      "name": "Salmão Porcionado Congelado",
+      "description": "Salmão porcionado congelado em postas selecionadas. Conservação adequada da pesca à entrega.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 89.9,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-003 — Camarão Limpo Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_7fe3231983444d218139b507dda47f1d~mv2.png",
+     "payload": {
+      "sku": "MAS-003",
+      "name": "Camarão Limpo Congelado",
+      "description": "Camarão limpo congelado, qualidade selecionada para restaurantes, bares e varejo.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": true,
+      "price": 64.9,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-004 — Anéis de Lula e Lula Tubo Congelados",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_d0a51792e34243a49e24cecec4a0e5a4~mv2.png",
+     "payload": {
+      "sku": "MAS-004",
+      "name": "Anéis de Lula e Lula Tubo Congelados",
+      "description": "Anéis de lula e lula em tubo congelados, prontos para preparo. Frutos do mar com procedência controlada.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_0}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 42.5,
+      "minimum_for_sale": 10,
+      "multiple_for_sale": 10
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-005 — Frango Inteiro Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_87a0399b99cd48aeb3ebe0998fbb6b31~mv2.png",
+     "payload": {
+      "sku": "MAS-005",
+      "name": "Frango Inteiro Congelado",
+      "description": "Frango inteiro congelado, armazenado com controle de temperatura para garantir qualidade e conservação.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 14.9,
+      "minimum_for_sale": 2,
+      "multiple_for_sale": 2
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-006 — Peito de Frango Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_fb4d56bbae4749228b726bda9a033aba~mv2.png",
+     "payload": {
+      "sku": "MAS-006",
+      "name": "Peito de Frango Congelado",
+      "description": "Peito de frango congelado, corte de alto giro para varejo, restaurantes e cozinhas industriais.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 21.9,
+      "minimum_for_sale": 12,
+      "multiple_for_sale": 12
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-007 — Coxa e Sobrecoxa de Frango Congeladas",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_40552648f2be4c4d849784456d920be7~mv2.png",
+     "payload": {
+      "sku": "MAS-007",
+      "name": "Coxa e Sobrecoxa de Frango Congeladas",
+      "description": "Coxa e sobrecoxa de frango congeladas, conservação ideal para food service e comércio.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 15.4,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-008 — Meio da Asa de Frango Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_4b68ea05d8e1470e9313574e06ae6de0~mv2.png",
+     "payload": {
+      "sku": "MAS-008",
+      "name": "Meio da Asa de Frango Congelado",
+      "description": "Meio da asa de frango congelado, corte muito procurado por bares, lanchonetes e restaurantes.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_1}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 26.8,
+      "minimum_for_sale": 5,
+      "multiple_for_sale": 5
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-009 — Morango Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_c179923efec1409f8667a31c03c97092~mv2.png",
+     "payload": {
+      "sku": "MAS-009",
+      "name": "Morango Congelado",
+      "description": "Morango congelado selecionado, preserva sabor e textura. Ideal para sucos, sobremesas e confeitaria.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 24.9,
+      "minimum_for_sale": 3,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-010 — Brócolis Congelado",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_455c4f02c1b045f395e09f59e2495858~mv2.png",
+     "payload": {
+      "sku": "MAS-010",
+      "name": "Brócolis Congelado",
+      "description": "Brócolis congelado em floretes, prático e com qualidade nutricional preservada.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 18.7,
+      "minimum_for_sale": 4,
+      "multiple_for_sale": 4
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-011 — Batata Pré-Frita Congelada",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_a63513b4fd9b4e24b3877623449538a8~mv2.png",
+     "payload": {
+      "sku": "MAS-011",
+      "name": "Batata Pré-Frita Congelada",
+      "description": "Batata pré-frita congelada para lanchonetes, restaurantes e hamburguerias.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 16.5,
+      "minimum_for_sale": 1,
+      "multiple_for_sale": 1
+     },
+     "_preco_estimado": true
+    },
+    {
+     "label": "MAS-012 — Couve-Flor Congelada",
+     "temp_image_url": "https://static.wixstatic.com/media/362d49_5688d014768940a490d580b3851ea79d~mv2.png",
+     "payload": {
+      "sku": "MAS-012",
+      "name": "Couve-Flor Congelada",
+      "description": "Couve-flor congelada em floretes, pronta para preparo, com conservação adequada.",
+      "active": true,
+      "stock": 100,
+      "minimum_stock": 0,
+      "standard_unit_id": 2,
+      "images": [],
+      "category_id": "{{cat_ids_2}}",
+      "brand_id": "{{brand_id}}",
+      "ean_gtin": "",
+      "video_url": "",
+      "highlight": false,
+      "price": 17.9,
+      "minimum_for_sale": 6,
+      "multiple_for_sale": 6
+     },
+     "_preco_estimado": true
+    }
+   ]
+  },
+  {
+   "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+   "base_url": "https://api.zydon.com.br/api/database",
+   "endpoint": "criteria",
+   "requests": [
+    {
+     "label": "Criterio Marca (TABELA DE PRECO) - Master Foods Mix",
+     "salvar_id_como": "criteria_preco_id",
+     "payload": {
+      "name": "Master Foods Mix — Marca (Tabela de Preço)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Marca (REGRA DE LISTAGEM) - Master Foods Mix",
+     "salvar_id_como": "criteria_listagem_id",
+     "payload": {
+      "name": "Master Foods Mix — Marca (Regra de Listagem)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "brands": {
+        "key": "this.CODIGOMARCA",
+        "values": [
+         "{{brand_id}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Peixes e Frutos do Mar",
+     "salvar_id_como": "criteria_cat_peixes_e_frutos_do_mar_id",
+     "payload": {
+      "name": "Master Foods Mix — Peixes e Frutos do Mar (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_0}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Aves Congeladas",
+     "salvar_id_como": "criteria_cat_aves_congeladas_id",
+     "payload": {
+      "name": "Master Foods Mix — Aves Congeladas (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_1}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    },
+    {
+     "label": "Criterio Categoria (DESCONTO) - Frutas, Legumes e Vegetais",
+     "salvar_id_como": "criteria_cat_frutas_legumes_e_vegetais_id",
+     "payload": {
+      "name": "Master Foods Mix — Frutas, Legumes e Vegetais (Desconto)",
+      "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+      "config": {
+       "categories": {
+        "key": "this.CODCATEGORIA",
+        "values": [
+         "{{cat_ids_2}}"
+        ],
+        "type": "FIELD",
+        "config": null
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+   "endpoint": "price-tables",
+   "requests": [
+    {
+     "label": "Tabela 1 | Master Foods Mix",
+     "salvar_id_como": "tp_1_id",
+     "payload": {
+      "name": "Tabela 1 | Master Foods Mix",
+      "start_date": "2026-09-28",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 5
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "2"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 2 | Master Foods Mix",
+     "salvar_id_como": "tp_2_id",
+     "payload": {
+      "name": "Tabela 2 | Master Foods Mix",
+      "start_date": "2026-09-28",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 15
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "3"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Tabela 3 | Master Foods Mix",
+     "salvar_id_como": "tp_3_id",
+     "payload": {
+      "name": "Tabela 3 | Master Foods Mix",
+      "start_date": "2026-09-28",
+      "end_date": "2060-01-01",
+      "criteria": [
+       {
+        "criteria_id": "{{criteria_preco_id}}",
+        "rate_type": "DECREASE",
+        "value_type": "PERCENTAGE",
+        "criteria_type": "FILTER",
+        "value": 30
+       }
+      ],
+      "is_profile_specific": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner_specific": false,
+      "partners": [],
+      "is_company_specific": false,
+      "companies": [],
+      "is_payment_method_specific": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  },
+  {
+   "nome": "6. DESCONTOS",
+   "endpoint": "discounts",
+   "requests": [
+    {
+     "label": "Desconto Progressivo — Volume Master Foods Mix",
+     "salvar_id_como": "desconto_progressivo_id",
+     "payload": {
+      "name": "Progressivo Volume | Master Foods Mix",
+      "start_date": "2026-09-28",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "Progressivo Volume Master Foods Mix",
+        "criteria_id": "{{criteria_cat_peixes_e_frutos_do_mar_id}}",
+        "type": "PROGRESSIVE",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 10,
+          "type": "PERCENTAGE",
+          "value": 5,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 20,
+          "type": "PERCENTAGE",
+          "value": 8,
+          "is_product_value": false
+         },
+         {
+          "minimum_quantity": 50,
+          "type": "PERCENTAGE",
+          "value": 12,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": true,
+      "profiles": [
+       {
+        "profile_id": "4"
+       }
+      ],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    },
+    {
+     "label": "Desconto Fixo 7% — Aves Congeladas | Master Foods Mix",
+     "salvar_id_como": "desconto_fixo_id",
+     "payload": {
+      "name": "7% OFF Master Foods Mix — Aves Congeladas",
+      "start_date": "2026-09-28",
+      "end_date": "2060-01-01",
+      "is_discount_over_discount": false,
+      "is_active": true,
+      "criteria": [
+       {
+        "name": "7% OFF Master Foods Mix",
+        "criteria_id": "{{criteria_cat_aves_congeladas_id}}",
+        "type": "FIXED",
+        "criteria_type": "FILTER",
+        "ranges": [
+         {
+          "minimum_quantity": 0,
+          "type": "PERCENTAGE",
+          "value": 7,
+          "is_product_value": false
+         }
+        ]
+       }
+      ],
+      "is_profile": false,
+      "profiles": [],
+      "is_partner": false,
+      "partners": [],
+      "is_company": false,
+      "companies": [],
+      "is_payment_method": false,
+      "payment_methods": []
+     }
+    }
+   ]
+  }
+ ]
+}

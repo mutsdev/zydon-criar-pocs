@@ -1,0 +1,563 @@
+{
+  "empresa": "Guaracamp",
+  "descricao_empresa": "Fabricante carioca de refrigerantes de guaraná e bebidas não alcoólicas, com mais de 30 anos de história. Nasceu de uma farmácia em Campo Grande, no Rio de Janeiro, e hoje leva concentrados, prontos para beber, energéticos e água mineral para todo o estado.",
+  "gerado_em": "2026-09-08",
+  "setor": "Indústria e Manufatura — Fabricação de refrigerantes e bebidas não alcoólicas",
+  "portal_name": "Guaracamp POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Guaracamp",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "Guaracamp", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Concentrados",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Concentrados", "active": true, "images": [] }
+        },
+        {
+          "label": "Pronto para Beber",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Pronto para Beber", "active": true, "images": [] }
+        },
+        {
+          "label": "Água e Volumes Grandes",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Água e Volumes Grandes", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "GRC-CON-001 — Guaracamp Concentrado 1L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_195ad1eed45f4094a3b568dbbbc32418~mv2.png",
+          "payload": {
+            "name": "Guaracamp Concentrado 1L",
+            "description": "Concentrado de guaraná Guaracamp, garrafa de 1 litro. Rende até 10 litros de refresco e é o carro-chefe da marca no varejo carioca.",
+            "sku": "GRC-CON-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 8.90,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-CON-002 — Uvacamp Tradicional Concentrado 1L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_f809648f78a54dfca54b7628fd4a6eee~mv2.png",
+          "payload": {
+            "name": "Uvacamp Tradicional Concentrado 1L",
+            "description": "Concentrado sabor uva Uvacamp Tradicional, garrafa de 1 litro. Mesmo rendimento da linha de concentrados, para diluir em água gelada.",
+            "sku": "GRC-CON-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.50,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-CON-003 — Groselhacamp Tradicional Concentrado 1L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_fe0e6fa8b88a45c484de04357587694e~mv2.png",
+          "payload": {
+            "name": "Groselhacamp Tradicional Concentrado 1L",
+            "description": "Concentrado sabor groselha Groselhacamp Tradicional, garrafa de 1 litro. Sabor clássico de lanchonete, usado em refresco e em drinks sem álcool.",
+            "sku": "GRC-CON-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8.50,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-CON-004 — Açaicamp Concentrado 1L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_1583edfc1ed345a0a4683a16b24f4c26~mv2.png",
+          "payload": {
+            "name": "Açaicamp Concentrado 1L",
+            "description": "Concentrado sabor açaí Açaicamp, garrafa de 1 litro. Sabor exclusivo da casa, sem similar direto nas marcas nacionais.",
+            "sku": "GRC-CON-004",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.20,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-PRB-007 — Acerolacamp com Laranja 250ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_16b6427db6874b0faf6d22eb25efae9d~mv2.png",
+          "payload": {
+            "name": "Acerolacamp com Laranja 250ml",
+            "description": "Refresco de acerola com laranja Acerolacamp, garrafa de 250 ml pronta para beber. Fecha a grade de sabores do formato individual.",
+            "sku": "GRC-PRB-007",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.20,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-PRB-001 — Guaracamp Garrafinha 250ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_09341ea1de3543c9927758515e0fdb39~mv2.png",
+          "payload": {
+            "name": "Guaracamp Garrafinha 250ml",
+            "description": "Refrigerante de guaraná Guaracamp pronto para beber, garrafa de 250 ml. Formato individual para padaria, lanchonete e conveniência.",
+            "sku": "GRC-PRB-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 2.20,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-PRB-002 — Guaracamp Ginseng 500ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_37cd8b4276c145ec883e1ff3f7e397d3~mv2.png",
+          "payload": {
+            "name": "Guaracamp Ginseng 500ml",
+            "description": "Guaraná com ginseng Guaracamp, garrafa de 500 ml pronta para beber. Versão premium da linha, com apelo de energia natural.",
+            "sku": "GRC-PRB-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 3.50,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-PRB-003 — Copo Guaracamp Original 285ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_84cbcc3114e54fc5986d2c18bd2b52c5~mv2.png",
+          "payload": {
+            "name": "Copo Guaracamp Original 285ml",
+            "description": "Guaracamp Original em copo lacrado de 285 ml. Embalagem de consumo imediato, forte em escola, quiosque e evento.",
+            "sku": "GRC-PRB-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.10,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "GRC-PRB-004 — Copo Açaicamp 285ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_3228e09584b34d4bbc5ee52947a507e1~mv2.png",
+          "payload": {
+            "name": "Copo Açaicamp 285ml",
+            "description": "Bebida sabor açaí Açaicamp em copo lacrado de 285 ml. Acompanha a linha de copos com o sabor de maior identidade da marca.",
+            "sku": "GRC-PRB-004",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.30,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "GRC-PRB-005 — Maracujacamp Tropical 250ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_1579dbaf519e4de28c66464c7edd944c~mv2.png",
+          "payload": {
+            "name": "Maracujacamp Tropical 250ml",
+            "description": "Refresco tropical de maracujá Maracujacamp, garrafa de 250 ml pronta para beber. Sabor de alto giro no verão e em food service.",
+            "sku": "GRC-PRB-005",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.20,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-PRB-006 — Tron Energy Drink Lata 269ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_3f496b21247b44138d9055b973829ab7~mv2.png",
+          "payload": {
+            "name": "Tron Energy Drink Lata 269ml",
+            "description": "Energético Tron em lata de 269 ml, marca própria da Guaracamp. Item de ticket mais alto e giro rápido em conveniência.",
+            "sku": "GRC-PRB-006",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 4.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "GRC-AGV-001 — Água Cristalina 510ml",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_3a2b7107c2d44dab9420eeedfde9bec3~mv2.png",
+          "payload": {
+            "name": "Água Cristalina 510ml",
+            "description": "Água mineral Cristalina, garrafa de 510 ml. Item de reposição constante, vendido em fardo fechado.",
+            "sku": "GRC-AGV-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1.30,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRC-AGV-002 — Guaracamp Zero Açúcar 1,5L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_24df2ffb9bde431c88fb86f65678c439~mv2.png",
+          "payload": {
+            "name": "Guaracamp Zero Açúcar 1,5L",
+            "description": "Refrigerante de guaraná Guaracamp Zero Açúcar, garrafa família de 1,5 litro. Formato de mesa, para consumo em casa.",
+            "sku": "GRC-AGV-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 6.50,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "GRC-AGV-003 — Guaracamp Bombona 5L",
+          "temp_image_url": "https://static.wixstatic.com/media/0e63ab_7d488b9bf81a454894c4587ab3949e02~mv2.png",
+          "payload": {
+            "name": "Guaracamp Bombona 5L",
+            "description": "Concentrado de guaraná Guaracamp em bombona de 5 litros com alça. Embalagem para food service, lanchonete e festa.",
+            "sku": "GRC-AGV-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 19.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Guaracamp",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Guaracamp — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Guaracamp",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Guaracamp — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Concentrados",
+          "salvar_id_como": "criteria_cat_concentrados_id",
+          "payload": {
+            "name": "Guaracamp — Concentrados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_0}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pronto para Beber",
+          "salvar_id_como": "criteria_cat_prontobeber_id",
+          "payload": {
+            "name": "Guaracamp — Pronto para Beber (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_1}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Guaracamp",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Guaracamp",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Guaracamp",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Guaracamp",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Guaracamp",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Guaracamp",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Guaracamp",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Guaracamp",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Guaracamp",
+                "criteria_id": "{{criteria_cat_concentrados_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 12, "type": "PERCENTAGE", "value": 6, "is_product_value": false },
+                  { "minimum_quantity": 36, "type": "PERCENTAGE", "value": 10, "is_product_value": false },
+                  { "minimum_quantity": 72, "type": "PERCENTAGE", "value": 16, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Pronto para Beber | Guaracamp",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Guaracamp — Pronto para Beber",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Guaracamp",
+                "criteria_id": "{{criteria_cat_prontobeber_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 7, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

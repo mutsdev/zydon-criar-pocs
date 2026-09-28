@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-17 a partir de https://www.instagram.com/fennixbrasil/ (imagens: seara.com.br, biscoitosbelma.com.br) (marcas).",
+  "empresa": "Fennix Brasil",
+  "descricao_empresa": "Fennix Brasil Distribuidora: há 22 anos leva congelados, frios e mercearia das melhores marcas (Seara, Belma e outras) a restaurantes, mercados, padarias e lanchonetes em todo o Amazonas, da capital ao interior.",
+  "gerado_em": "2026-09-17",
+  "setor": "Alimentos — Distribuição para Food Service",
+  "portal_name": "Fennix Brasil POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Fennix Brasil",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Fennix Brasil",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Congelados",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Congelados",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Frios e Embutidos",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Frios e Embutidos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Padaria e Mercearia",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Padaria e Mercearia",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "FEN-001 — Pernil Suíno com Osso Congelado Seara (kg)",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-2045-500.webp",
+          "payload": {
+            "sku": "FEN-001",
+            "name": "Pernil Suíno com Osso Congelado Seara (kg)",
+            "description": "Pernil Suíno com Osso Congelado Seara (kg) — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 24.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-002 — Frango Empanado Chicken Supreme Seara 900g",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-23124-500.webp",
+          "payload": {
+            "sku": "FEN-002",
+            "name": "Frango Empanado Chicken Supreme Seara 900g",
+            "description": "Frango Empanado Chicken Supreme Seara 900g — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 32.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-003 — Empanado Tekitos Tradicional Seara 1kg",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-11804-500.webp",
+          "payload": {
+            "sku": "FEN-003",
+            "name": "Empanado Tekitos Tradicional Seara 1kg",
+            "description": "Empanado Tekitos Tradicional Seara 1kg — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 29.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-004 — Batata Palito Pré-frita Congelada Seara 400g",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-2010-500.webp",
+          "payload": {
+            "sku": "FEN-004",
+            "name": "Batata Palito Pré-frita Congelada Seara 400g",
+            "description": "Batata Palito Pré-frita Congelada Seara 400g — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-005 — Frango Inteiro sem Miúdos Congelado Seara (kg)",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-23136-500.webp",
+          "payload": {
+            "sku": "FEN-005",
+            "name": "Frango Inteiro sem Miúdos Congelado Seara (kg)",
+            "description": "Frango Inteiro sem Miúdos Congelado Seara (kg) — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 13.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-006 — Coxinha da Asa Congelada Seara 1kg",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2024/08/Coxinha-da-Asa-Seara-1kg-1.webp",
+          "payload": {
+            "sku": "FEN-006",
+            "name": "Coxinha da Asa Congelada Seara 1kg",
+            "description": "Coxinha da Asa Congelada Seara 1kg — Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 19.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-007 — Salsicha Hot Dog Seara 5kg",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-6129-500.webp",
+          "payload": {
+            "sku": "FEN-007",
+            "name": "Salsicha Hot Dog Seara 5kg",
+            "description": "Salsicha Hot Dog Seara 5kg — Frios e Embutidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 79.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-008 — Bacon Suíno Defumado Seara (kg)",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-22643-500.webp",
+          "payload": {
+            "sku": "FEN-008",
+            "name": "Bacon Suíno Defumado Seara (kg)",
+            "description": "Bacon Suíno Defumado Seara (kg) — Frios e Embutidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-009 — Presunto Cozido Seara (kg)",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-16232-500.webp",
+          "payload": {
+            "sku": "FEN-009",
+            "name": "Presunto Cozido Seara (kg)",
+            "description": "Presunto Cozido Seara (kg) — Frios e Embutidos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 28.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-010 — Pão de Queijo Seara Gourmet Tradicional 300g",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-2117-500.webp",
+          "payload": {
+            "sku": "FEN-010",
+            "name": "Pão de Queijo Seara Gourmet Tradicional 300g",
+            "description": "Pão de Queijo Seara Gourmet Tradicional 300g — Padaria e Mercearia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-011 — Pão de Queijo Seara 400g",
+          "temp_image_url": "https://www.seara.com.br/wp-content/uploads/2026/09/seara-product-16233-500.webp",
+          "payload": {
+            "sku": "FEN-011",
+            "name": "Pão de Queijo Seara 400g",
+            "description": "Pão de Queijo Seara 400g — Padaria e Mercearia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 12.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FEN-012 — Biscoitos Belma Sortidos (caixa 20 un)",
+          "temp_image_url": "https://belma.com.br/wp-content/uploads/2026/07/Packshot-Belma_2.png",
+          "payload": {
+            "sku": "FEN-012",
+            "name": "Biscoitos Belma Sortidos (caixa 20 un)",
+            "description": "Biscoitos Belma Sortidos (caixa 20 un) — Padaria e Mercearia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 64.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Fennix Brasil",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Fennix Brasil — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Fennix Brasil",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Fennix Brasil — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Congelados",
+          "salvar_id_como": "criteria_cat_congelados_id",
+          "payload": {
+            "name": "Fennix Brasil — Congelados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Frios e Embutidos",
+          "salvar_id_como": "criteria_cat_frios_e_embutidos_id",
+          "payload": {
+            "name": "Fennix Brasil — Frios e Embutidos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Padaria e Mercearia",
+          "salvar_id_como": "criteria_cat_padaria_e_mercearia_id",
+          "payload": {
+            "name": "Fennix Brasil — Padaria e Mercearia (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Fennix Brasil",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Fennix Brasil",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Fennix Brasil",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Fennix Brasil",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Fennix Brasil",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Fennix Brasil",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Fennix Brasil",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Fennix Brasil",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Fennix Brasil",
+                "criteria_id": "{{criteria_cat_congelados_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Frios e Embutidos | Fennix Brasil",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Fennix Brasil — Frios e Embutidos",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Fennix Brasil",
+                "criteria_id": "{{criteria_cat_frios_e_embutidos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

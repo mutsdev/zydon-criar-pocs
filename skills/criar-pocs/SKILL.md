@@ -6,9 +6,10 @@ description: Monta o JSON declarativo de uma POC de portal B2B Zydon a partir do
 # Criar POC de portal Zydon
 
 Entrega: `Arquivos Json/{empresa}_poc.json` que passa no `validar_poc.py` com
-**0 erros**. Quem executa contra a API é o usuário (`executar_lote.py` ou
-`POC Completa/criar_poc_completo.py`) — **você não executa nem entrega comando
-de execução**. Naming: `{empresa}_poc.json` (nunca `poc_{empresa}.json`).
+**0 erros**, e em seguida a POC criada na API (passo 6) — **só na máquina com
+credencial** (existe `.env` na raiz com `ZYDON_POCS_TOKEN`). Sem `.env` (rotina
+na nuvem, `ROTINA.md`), a entrega para no JSON validado: não execute nem tente
+obter credencial. Naming: `{empresa}_poc.json` (nunca `poc_{empresa}.json`).
 
 Fonte da estrutura: **`Criar Portais/template_poc.json`** — copiar e adaptar,
 nunca recriar. Grade: `Criar Portais/template_variacoes.json`. Formato:
@@ -17,7 +18,7 @@ validador nem POCs antigas**; rode e corrija.
 
 Tarefa mecânica: em subagente, rode em **Sonnet** (`model: sonnet`).
 
-## Fluxo — 5 comandos, nesta ordem
+## Fluxo — 7 passos, nesta ordem
 
 1. **Coletar** (uma ida):
    ```
@@ -63,8 +64,39 @@ Tarefa mecânica: em subagente, rode em **Sonnet** (`model: sonnet`).
    ```
    Até 100% das imagens OK e 0 erros. Só edite o JSON à mão para descrição
    comercial melhor ou item que a coleta não trouxe.
-5. **Entregar**: JSON salvo, nº de produtos, preços públicos ou **estimados**
-   (dizer explicitamente), pendências. Nada movido, sem comando de execução.
+5. **Achar a logo**: `python "Identidade Visual/achar_logo.py" <site> --json`
+   (`--extra url…` se voltar vazio). Wix: tire o `/v1/fill/...` da URL para
+   pegar o original. **Olhe a escolhida** — ele já pegou logo do grupo
+   controlador em vez da do cliente. Salve em `Identidade Visual/<empresa>_logo.png`.
+6. **Executar** — só com JSON em 0 erros, 100% das imagens OK e `.env`
+   presente:
+   ```
+   PYTHONIOENCODING=utf-8 python "POC Completa/criar_poc_completo.py" \
+       "Arquivos Json/{empresa}_poc.json" pocs \
+       --logo "Identidade Visual/{empresa}_logo.png" --nome "Empresa" --gravar
+   ```
+   Falha na API tem rollback automático: leia o erro, corrija o JSON,
+   revalide e rode de novo. Sem logo aprovada, não execute: pare e pergunte.
+   Esse script sobe logo, favicon e cor — **não sobe banner**. Emende o 6b.
+6b. **Banners** (login + cabeçalho):
+   ```
+   python "Identidade Visual/gerar_banners.py" auto --logo <logo> --nome "Empresa" \
+       --segmento "<setor>" --catalogo "Arquivos Json/{empresa}_poc.json"
+   ```
+   Abra `aprovados/` e olhe — o juiz aprova ferramenta usada/suja, objeto
+   derretido e texto desenhado. Destaque derivado (`origem_destaque:
+   derivado` no `contexto.json`) sai em cor fora da marca: troque por
+   `#FFFFFF` em `paleta.json` e `contexto.json` e rode `montar <pasta>`.
+   Cena ruim: `regerar <pasta> --formatos login,cabecalho --feedback
+   "login=..."`, mova as reprovadas de `cenas/` e `montar`. Crítica
+   obrigatória (`/impeccable critique`) antes de subir:
+   ```
+   python "Identidade Visual/subir_banners.py" --portal <portal_id> \
+       --pasta "Identidade Visual/saidas/<empresa>/<carimbo>" --gravar
+   ```
+7. **Entregar**: URL do portal, nº de produtos, preços públicos ou
+   **estimados** (dizer explicitamente), avisos da identidade (favicon por
+   inicial etc.), pendências. Nada movido.
 
 Alvo: menos de 5 min por POC. Quem manda no tempo é o número de idas: junte
 buscas num comando (`xargs -P`, laço), nunca uma página por chamada.

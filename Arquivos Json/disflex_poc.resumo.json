@@ -1,0 +1,14 @@
+{
+  "pedido_id": "mitra-2026-09-11-001",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/disflex_poc.json",
+  "logo_url": "https://disflex.com.br/meus-uploads/2025/09/Logotipo-com-slogan-negativo-1.webp",
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 0,
+    "observacoes": "Precos estimados para demonstracao (site B2B sem preco publico). 12 produtos com imagem do proprio site, validados 12/12. Sem grade de variacoes."
+  }
+}

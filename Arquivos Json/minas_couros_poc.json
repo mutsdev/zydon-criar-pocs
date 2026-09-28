@@ -1,0 +1,614 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-24 a partir de https://minascourosvonixx.catalogo.com.br/ (gopage).",
+  "empresa": "Minas Couros",
+  "descricao_empresa": "Distribuidora de produtos de estetica automotiva Vonixx e Vintex: ceras, shampoos, limpadores e cuidados para pneus.",
+  "gerado_em": "2026-09-24",
+  "setor": "Estetica automotiva e cuidados com veiculos",
+  "portal_name": "Minas Couros POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Minas Couros",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Minas Couros",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Ceras e Protecao",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Ceras e Protecao",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Shampoos e Limpadores",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Shampoos e Limpadores",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Pneus e Borrachas",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Pneus e Borrachas",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "MIN-001 — Cera Carnauba Express Ultra 1,5L Vonixx - Cera Rapida",
+          "temp_image_url": "https://img.gopage.bio/page-35886/1024d511-2efd-41c7-9ff9-af9890373c1a.webp",
+          "payload": {
+            "sku": "MIN-001",
+            "name": "Cera Carnauba Express Ultra 1,5L Vonixx - Cera Rapida",
+            "description": "Cera rapida Carnauba Express Ultra Vonixx 1,5L. Brilho e protecao em tempo recorde para estetica automotiva.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 95.66,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MIN-002 — Cera Blend Spray Wax Black Edition 500ml Vonixx - Para Carros Pretos",
+          "temp_image_url": "https://img.gopage.bio/page-35886/0c134fca-9f1d-4881-ac52-627003879801.webp",
+          "payload": {
+            "sku": "MIN-002",
+            "name": "Cera Blend Spray Wax Black Edition 500ml Vonixx - Para Carros Pretos",
+            "description": "Blend Spray Wax Black Edition Vonixx 500ml. Cera spray para carros pretos e cores escuras, brilho profundo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 49.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "MIN-003 — Cera Blend Ceramic & Carnauba Spray Wax 500ml Vonixx",
+          "temp_image_url": "https://img.gopage.bio/page-35886/f9fd2d22-7b0e-4aa3-9280-cae90b5e537c.webp",
+          "payload": {
+            "sku": "MIN-003",
+            "name": "Cera Blend Ceramic & Carnauba Spray Wax 500ml Vonixx",
+            "description": "Blend Ceramic & Carnauba Spray Wax Vonixx 500ml. Une brilho da carnauba com resistencia ceramica.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 49.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MIN-004 — Cera Carnauba Hybrid Wax Vonixx 120ml - Cera Hibrida",
+          "temp_image_url": "https://img.gopage.bio/page-35886/24ffc185-932e-4b69-b8fc-0f27f7ca6d59.webp",
+          "payload": {
+            "sku": "MIN-004",
+            "name": "Cera Carnauba Hybrid Wax Vonixx 120ml - Cera Hibrida",
+            "description": "Cera hibrida em pasta Carnauba Hybrid Wax Vonixx 120ml. Tecnologia hibrida carnauba + selante.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.7,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "MIN-005 — V-Floc Vonixx 5L - Shampoo Automotivo pH Neutro",
+          "temp_image_url": "https://img.gopage.bio/page-35886/0e9b4e91-f12a-47b5-8319-f052260f2ac9.webp",
+          "payload": {
+            "sku": "MIN-005",
+            "name": "V-Floc Vonixx 5L - Shampoo Automotivo pH Neutro",
+            "description": "Shampoo automotivo pH neutro V-Floc Vonixx 5L. Cuidado premium para pintura com ceras e vitrificadores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 138.67,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "MIN-006 — V-Mol Vonixx 5L - Lava Autos Desincrustante",
+          "temp_image_url": "https://img.gopage.bio/page-35886/4c9c5b80-7118-4eb4-9dbd-fa1bbe0eb87f.webp",
+          "payload": {
+            "sku": "MIN-006",
+            "name": "V-Mol Vonixx 5L - Lava Autos Desincrustante",
+            "description": "Lava autos desincrustante V-Mol Vonixx 5L. Remove sujeira pesada, para lavagem pesada e descontaminacao.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 102.18,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "MIN-007 — Vertex 1,5L Vonixx - Limpador de Estofados",
+          "temp_image_url": "https://img.gopage.bio/page-35886/04889a34-9a28-4f5b-b768-bbfe0e1bc528.webp",
+          "payload": {
+            "sku": "MIN-007",
+            "name": "Vertex 1,5L Vonixx - Limpador de Estofados",
+            "description": "Limpador de estofados automotivos e residenciais Vertex Vonixx 1,5L. Alta concentracao de ativos, alto rendimento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 33.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MIN-008 — Impact 1,5L Vonixx - Limpador Universal",
+          "temp_image_url": "https://img.gopage.bio/page-35886/5dbe31aa-3899-4881-8d88-e16507090eb6.webp",
+          "payload": {
+            "sku": "MIN-008",
+            "name": "Impact 1,5L Vonixx - Limpador Universal",
+            "description": "Limpador universal ecologico nao-corrosivo Impact Vonixx 1,5L. Para limpezas dificeis em superficies diversas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 33.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "MIN-009 — Pneu Pretinho Vintex 1,5L",
+          "temp_image_url": "https://img.gopage.bio/page-35886/67091d82-45f1-4c59-8f22-e695e11c02ac.webp",
+          "payload": {
+            "sku": "MIN-009",
+            "name": "Pneu Pretinho Vintex 1,5L",
+            "description": "Pneu Pretinho Vintex 1,5L. Protege, conserva e da brilho intenso e duradouro aos pneus.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 27.85,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "MIN-010 — Darker 500ml Vintex - Renovador de Pneus e Borrachas",
+          "temp_image_url": "https://img.gopage.bio/page-35886/f6e96cf9-03c2-416a-935e-12d77f7d9bbd.webp",
+          "payload": {
+            "sku": "MIN-010",
+            "name": "Darker 500ml Vintex - Renovador de Pneus e Borrachas",
+            "description": "Darker Vintex 500ml. Renova e da brilho em pneus e borrachas, filme preto semiflexivel de alta resistencia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 28.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "MIN-011 — Shiny 500ml Vonixx - Brilho para Pneus",
+          "temp_image_url": "https://img.gopage.bio/page-35886/650a10de-181c-41f7-8c77-5d8421127c3c.webp",
+          "payload": {
+            "sku": "MIN-011",
+            "name": "Shiny 500ml Vonixx - Brilho para Pneus",
+            "description": "Shiny Vonixx 500ml para pneus. Renova, protege e da brilho intenso e duradouro, nao sai com agua.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 64.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "MIN-012 — Revox 500ml Vonixx - Selante Sintetico para Pneus",
+          "temp_image_url": "https://img.gopage.bio/page-35886/9bf017b1-6564-47b3-87b8-92f00add6af1.webp",
+          "payload": {
+            "sku": "MIN-012",
+            "name": "Revox 500ml Vonixx - Selante Sintetico para Pneus",
+            "description": "Selante sintetico para pneus Revox Vonixx 500ml. Protege, da brilho e hidrorrepelencia, livre de solventes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 46.84,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Minas Couros",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Minas Couros — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Minas Couros",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Minas Couros — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Ceras e Protecao",
+          "salvar_id_como": "criteria_cat_ceras_e_protecao_id",
+          "payload": {
+            "name": "Minas Couros — Ceras e Protecao (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Shampoos e Limpadores",
+          "salvar_id_como": "criteria_cat_shampoos_e_limpadores_id",
+          "payload": {
+            "name": "Minas Couros — Shampoos e Limpadores (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pneus e Borrachas",
+          "salvar_id_como": "criteria_cat_pneus_e_borrachas_id",
+          "payload": {
+            "name": "Minas Couros — Pneus e Borrachas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Minas Couros",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Minas Couros",
+            "start_date": "2026-09-24",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Minas Couros",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Minas Couros",
+            "start_date": "2026-09-24",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Minas Couros",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Minas Couros",
+            "start_date": "2026-09-24",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Minas Couros",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Minas Couros",
+            "start_date": "2026-09-24",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Minas Couros",
+                "criteria_id": "{{criteria_cat_ceras_e_protecao_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Shampoos e Limpadores | Minas Couros",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Minas Couros — Shampoos e Limpadores",
+            "start_date": "2026-09-24",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Minas Couros",
+                "criteria_id": "{{criteria_cat_shampoos_e_limpadores_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,614 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-21 a partir de https://www.wnf.com.br/ (sitemap).",
+  "empresa": "WNF",
+  "descricao_empresa": "WNF: óleos essenciais, óleos vegetais, águas termais, aromatizadores e cosméticos veganos para aromaterapia, spas, clínicas, farmácias e lojas naturais.",
+  "gerado_em": "2026-09-21",
+  "setor": "Saúde e Bem-estar — Aromaterapia e Cosméticos Naturais",
+  "portal_name": "WNF POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca WNF",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "WNF",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Óleos Essenciais",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Óleos Essenciais",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Óleos Vegetais e Águas Termais",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Óleos Vegetais e Águas Termais",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Aromatização e Cuidados",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Aromatização e Cuidados",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "WNF-001 — Óleo Essencial Lavanda 10ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514151954_6238993762_D.webp",
+          "payload": {
+            "sku": "WNF-001",
+            "name": "Óleo Essencial Lavanda 10ml",
+            "description": "Óleo Essencial Lavanda 10ml — Óleos Essenciais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 75.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WNF-002 — Óleo Essencial Melaleuca 10ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514170614_8660991340_D.webp",
+          "payload": {
+            "sku": "WNF-002",
+            "name": "Óleo Essencial Melaleuca 10ml",
+            "description": "Óleo Essencial Melaleuca 10ml — Óleos Essenciais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 66.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "WNF-003 — Óleo Essencial Eucalipto 10ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514171008_5907994093_D.webp",
+          "payload": {
+            "sku": "WNF-003",
+            "name": "Óleo Essencial Eucalipto 10ml",
+            "description": "Óleo Essencial Eucalipto 10ml — Óleos Essenciais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 40.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WNF-004 — Óleo Essencial Menta Piperita 10ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514170152_2821997179_D.webp",
+          "payload": {
+            "sku": "WNF-004",
+            "name": "Óleo Essencial Menta Piperita 10ml",
+            "description": "Óleo Essencial Menta Piperita 10ml — Óleos Essenciais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 60.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "WNF-005 — Óleo Essencial Laranja Doce 10ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514150844_4222995778_D.webp",
+          "payload": {
+            "sku": "WNF-005",
+            "name": "Óleo Essencial Laranja Doce 10ml",
+            "description": "Óleo Essencial Laranja Doce 10ml — Óleos Essenciais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "WNF-006 — Óleo Vegetal Amêndoas Doces 50ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514174248_8145991855_D.webp",
+          "payload": {
+            "sku": "WNF-006",
+            "name": "Óleo Vegetal Amêndoas Doces 50ml",
+            "description": "Óleo Vegetal Amêndoas Doces 50ml — Óleos Vegetais e Águas Termais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 45.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "WNF-007 — Óleo Vegetal Coco 150ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514153654_1042998958_D.webp",
+          "payload": {
+            "sku": "WNF-007",
+            "name": "Óleo Vegetal Coco 150ml",
+            "description": "Óleo Vegetal Coco 150ml — Óleos Vegetais e Águas Termais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 45.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WNF-008 — Óleo Vegetal Rosa Mosqueta 20ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514174706_5820994180_D.webp",
+          "payload": {
+            "sku": "WNF-008",
+            "name": "Óleo Vegetal Rosa Mosqueta 20ml",
+            "description": "Óleo Vegetal Rosa Mosqueta 20ml — Óleos Vegetais e Águas Termais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 75.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "WNF-009 — Água Termal Vegetal Lavanda 200ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514175055_3117996883_D.webp",
+          "payload": {
+            "sku": "WNF-009",
+            "name": "Água Termal Vegetal Lavanda 200ml",
+            "description": "Água Termal Vegetal Lavanda 200ml — Óleos Vegetais e Águas Termais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "WNF-010 — Aroma Ambiente Lavanda 200ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250515112009_6711993289_D.webp",
+          "payload": {
+            "sku": "WNF-010",
+            "name": "Aroma Ambiente Lavanda 200ml",
+            "description": "Aroma Ambiente Lavanda 200ml — Aromatização e Cuidados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 53.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "WNF-011 — Difusor Aromático Ultrassônico BM048",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250513151927_5831994169_D.webp",
+          "payload": {
+            "sku": "WNF-011",
+            "name": "Difusor Aromático Ultrassônico BM048",
+            "description": "Difusor Aromático Ultrassônico BM048 — Aromatização e Cuidados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 184.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "WNF-012 — Sabonete Líquido Lavanda 250ml",
+          "temp_image_url": "https://wnf.jetassets.com.br/cdn-cgi/image/width=1200,quality=85,format=webp/https://wnf.jetassets.com.br/produto/20250514175324_8448991552_D.webp",
+          "payload": {
+            "sku": "WNF-012",
+            "name": "Sabonete Líquido Lavanda 250ml",
+            "description": "Sabonete Líquido Lavanda 250ml — Aromatização e Cuidados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 37.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - WNF",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "WNF — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - WNF",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "WNF — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Óleos Essenciais",
+          "salvar_id_como": "criteria_cat_oleos_essenciais_id",
+          "payload": {
+            "name": "WNF — Óleos Essenciais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Óleos Vegetais e Águas Termais",
+          "salvar_id_como": "criteria_cat_oleos_vegetais_e_aguas_termais_id",
+          "payload": {
+            "name": "WNF — Óleos Vegetais e Águas Termais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Aromatização e Cuidados",
+          "salvar_id_como": "criteria_cat_aromatizacao_e_cuidados_id",
+          "payload": {
+            "name": "WNF — Aromatização e Cuidados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | WNF",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | WNF",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | WNF",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | WNF",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | WNF",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | WNF",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume WNF",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | WNF",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume WNF",
+                "criteria_id": "{{criteria_cat_oleos_essenciais_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Óleos Vegetais e Águas Termais | WNF",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF WNF — Óleos Vegetais e Águas Termais",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF WNF",
+                "criteria_id": "{{criteria_cat_oleos_vegetais_e_aguas_termais_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

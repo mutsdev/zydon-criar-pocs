@@ -1,0 +1,129 @@
+{
+ "site": "https://www.masterfoodsmix.com.br/",
+ "gerador": "Wix",
+ "plataforma": "wix",
+ "lojas_externas": [],
+ "total": 12,
+ "itens": [
+  {
+   "nome": "Filé de Tilápia Congelado",
+   "preco": null,
+   "categoria": "Peixes e Frutos do Mar",
+   "imagem": "https://static.wixstatic.com/media/362d49_124259415df349bdb08d6faa9012c645~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/peixesefrutosdomar",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Filé de tilápia congelado, limpo e sem espinhas, com controle rigoroso de temperatura. Ideal para restaurantes, mercados e food service."
+  },
+  {
+   "nome": "Salmão Porcionado Congelado",
+   "preco": null,
+   "categoria": "Peixes e Frutos do Mar",
+   "imagem": "https://static.wixstatic.com/media/362d49_6c718c1ff6cc440aba2ecc20d883aebd~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/peixesefrutosdomar",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Salmão porcionado congelado em postas selecionadas. Conservação adequada da pesca à entrega."
+  },
+  {
+   "nome": "Camarão Limpo Congelado",
+   "preco": null,
+   "categoria": "Peixes e Frutos do Mar",
+   "imagem": "https://static.wixstatic.com/media/362d49_7fe3231983444d218139b507dda47f1d~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/peixesefrutosdomar",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Camarão limpo congelado, qualidade selecionada para restaurantes, bares e varejo."
+  },
+  {
+   "nome": "Anéis de Lula e Lula Tubo Congelados",
+   "preco": null,
+   "categoria": "Peixes e Frutos do Mar",
+   "imagem": "https://static.wixstatic.com/media/362d49_d0a51792e34243a49e24cecec4a0e5a4~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/peixesefrutosdomar",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Anéis de lula e lula em tubo congelados, prontos para preparo. Frutos do mar com procedência controlada."
+  },
+  {
+   "nome": "Frango Inteiro Congelado",
+   "preco": null,
+   "categoria": "Aves Congeladas",
+   "imagem": "https://static.wixstatic.com/media/362d49_87a0399b99cd48aeb3ebe0998fbb6b31~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/aves",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Frango inteiro congelado, armazenado com controle de temperatura para garantir qualidade e conservação."
+  },
+  {
+   "nome": "Peito de Frango Congelado",
+   "preco": null,
+   "categoria": "Aves Congeladas",
+   "imagem": "https://static.wixstatic.com/media/362d49_fb4d56bbae4749228b726bda9a033aba~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/aves",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Peito de frango congelado, corte de alto giro para varejo, restaurantes e cozinhas industriais."
+  },
+  {
+   "nome": "Coxa e Sobrecoxa de Frango Congeladas",
+   "preco": null,
+   "categoria": "Aves Congeladas",
+   "imagem": "https://static.wixstatic.com/media/362d49_40552648f2be4c4d849784456d920be7~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/aves",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Coxa e sobrecoxa de frango congeladas, conservação ideal para food service e comércio."
+  },
+  {
+   "nome": "Meio da Asa de Frango Congelado",
+   "preco": null,
+   "categoria": "Aves Congeladas",
+   "imagem": "https://static.wixstatic.com/media/362d49_4b68ea05d8e1470e9313574e06ae6de0~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/aves",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Meio da asa de frango congelado, corte muito procurado por bares, lanchonetes e restaurantes."
+  },
+  {
+   "nome": "Morango Congelado",
+   "preco": null,
+   "categoria": "Frutas, Legumes e Vegetais",
+   "imagem": "https://static.wixstatic.com/media/362d49_c179923efec1409f8667a31c03c97092~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/frutas-legumes-vegetais",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Morango congelado selecionado, preserva sabor e textura. Ideal para sucos, sobremesas e confeitaria."
+  },
+  {
+   "nome": "Brócolis Congelado",
+   "preco": null,
+   "categoria": "Frutas, Legumes e Vegetais",
+   "imagem": "https://static.wixstatic.com/media/362d49_455c4f02c1b045f395e09f59e2495858~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/frutas-legumes-vegetais",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Brócolis congelado em floretes, prático e com qualidade nutricional preservada."
+  },
+  {
+   "nome": "Batata Pré-Frita Congelada",
+   "preco": null,
+   "categoria": "Frutas, Legumes e Vegetais",
+   "imagem": "https://static.wixstatic.com/media/362d49_a63513b4fd9b4e24b3877623449538a8~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/frutas-legumes-vegetais",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Batata pré-frita congelada para lanchonetes, restaurantes e hamburguerias."
+  },
+  {
+   "nome": "Couve-Flor Congelada",
+   "preco": null,
+   "categoria": "Frutas, Legumes e Vegetais",
+   "imagem": "https://static.wixstatic.com/media/362d49_5688d014768940a490d580b3851ea79d~mv2.png",
+   "url": "https://www.masterfoodsmix.com.br/frutas-legumes-vegetais",
+   "codigo": "",
+   "marca": "Master Foods Mix",
+   "descricao": "Couve-flor congelada em floretes, pronta para preparo, com conservação adequada."
+  }
+ ]
+}

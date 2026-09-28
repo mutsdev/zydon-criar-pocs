@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-28 a partir de https://www.kofel.com.br/ (sitemap).",
+  "empresa": "KOEP Atacadista",
+  "descricao_empresa": "Atacado completo para lojas da construção civil, com mais de 10 mil itens ativos e 12 mil clientes no PR, SC e SP.",
+  "gerado_em": "2026-09-28",
+  "setor": "Material de Construção — Atacado de Ferramentas e Ferragens",
+  "portal_name": "KOEP Atacadista POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca KOEP Atacadista",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "KOEP Atacadista",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Ferramentas Manuais",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Ferramentas Manuais",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Jardinagem",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Jardinagem",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Acessórios para Máquinas",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Acessórios para Máquinas",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "KOE-001 — Alicate Corte Diagonal Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_94184c8eda3c420ca12b1f9b3c0740f3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-001",
+            "name": "Alicate Corte Diagonal Kofel",
+            "description": "Alicate Corte Diagonal Kofel — Ferramentas Manuais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 32.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-002 — Martelo Pedreiro Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_a3b9a10c508f4f0ea6fa3afc84e04e5c~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-002",
+            "name": "Martelo Pedreiro Kofel",
+            "description": "Martelo Pedreiro Kofel — Ferramentas Manuais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 38.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-003 — Alicate Universal Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_3deeafbd3b3943ac93f9d7041ce8b1b0~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-003",
+            "name": "Alicate Universal Kofel",
+            "description": "Alicate Universal Kofel — Ferramentas Manuais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 36.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-004 — Estilete Profissional Emborrachado Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_f5a6dc78d6d247bb9be59a3c5f262db6~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-004",
+            "name": "Estilete Profissional Emborrachado Kofel",
+            "description": "Estilete Profissional Emborrachado Kofel — Ferramentas Manuais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-005 — Caixa de Ferramentas Baú Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_255235e74af2465fa0c6f4080c7a8ea5~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-005",
+            "name": "Caixa de Ferramentas Baú Kofel",
+            "description": "Caixa de Ferramentas Baú Kofel — Ferramentas Manuais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 89.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-006 — Tesoura de Poda Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_05c646ccd1d7433d9acb24c61ee08149~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-006",
+            "name": "Tesoura de Poda Kofel",
+            "description": "Tesoura de Poda Kofel — Jardinagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-007 — Enxada Estreita Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_350141355bc24cd1bd0d4f2d88a93ef6~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-007",
+            "name": "Enxada Estreita Kofel",
+            "description": "Enxada Estreita Kofel — Jardinagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-008 — Cavadeira Articulada Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_293905739ed44900b2bcb6cc865ef5f0~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-008",
+            "name": "Cavadeira Articulada Kofel",
+            "description": "Cavadeira Articulada Kofel — Jardinagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 79.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-009 — Pá Concha Bico Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_df5f0ace317247cf925c12563dc3cad7~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-009",
+            "name": "Pá Concha Bico Kofel",
+            "description": "Pá Concha Bico Kofel — Jardinagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 52.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-010 — Disco de Corte Diamantado Turbo Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_e0ffb6862d1e46aaac71e271b9ebfc67~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-010",
+            "name": "Disco de Corte Diamantado Turbo Kofel",
+            "description": "Disco de Corte Diamantado Turbo Kofel — Acessórios para Máquinas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 24.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-011 — Broca para Madeira Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_8c6af8e607ad47d5aff47f24cfa1d50c~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-011",
+            "name": "Broca para Madeira Kofel",
+            "description": "Broca para Madeira Kofel — Acessórios para Máquinas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "KOE-012 — Disco Flap Cônico Kofel",
+          "temp_image_url": "https://static.wixstatic.com/media/13c5c6_b88f8497090a4e2a932cd53f23ab92fe~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
+          "payload": {
+            "sku": "KOE-012",
+            "name": "Disco Flap Cônico Kofel",
+            "description": "Disco Flap Cônico Kofel — Acessórios para Máquinas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 11.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - KOEP Atacadista",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "KOEP Atacadista — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - KOEP Atacadista",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "KOEP Atacadista — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Ferramentas Manuais",
+          "salvar_id_como": "criteria_cat_ferramentas_manuais_id",
+          "payload": {
+            "name": "KOEP Atacadista — Ferramentas Manuais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Jardinagem",
+          "salvar_id_como": "criteria_cat_jardinagem_id",
+          "payload": {
+            "name": "KOEP Atacadista — Jardinagem (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Acessórios para Máquinas",
+          "salvar_id_como": "criteria_cat_acessorios_para_maquinas_id",
+          "payload": {
+            "name": "KOEP Atacadista — Acessórios para Máquinas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | KOEP Atacadista",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | KOEP Atacadista",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | KOEP Atacadista",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | KOEP Atacadista",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | KOEP Atacadista",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | KOEP Atacadista",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume KOEP Atacadista",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | KOEP Atacadista",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume KOEP Atacadista",
+                "criteria_id": "{{criteria_cat_ferramentas_manuais_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Jardinagem | KOEP Atacadista",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF KOEP Atacadista — Jardinagem",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF KOEP Atacadista",
+                "criteria_id": "{{criteria_cat_jardinagem_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

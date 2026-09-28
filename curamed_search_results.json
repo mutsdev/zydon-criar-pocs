@@ -1,0 +1,107 @@
+[
+  {
+    "query": "site:cremer.net.br luvas produtos",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:cremer.net.br gaze produto",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:missner.com.br curativo produto",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:descarbox.com.br coletor perfurocortante",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:rioquimica.com.br produto hospitalar",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:medixbrasil.com.br luva produto",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  },
+  {
+    "query": "site:technofio.com.br fio hospitalar",
+    "results": [
+      {
+        "engine": "duck",
+        "status": 202,
+        "candidates": []
+      },
+      {
+        "engine": "google",
+        "status": 200,
+        "candidates": []
+      }
+    ]
+  }
+]

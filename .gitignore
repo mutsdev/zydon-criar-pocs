@@ -22,3 +22,8 @@ pedidos-executados.jsonl
 
 # Saida ao vivo das execucoes do receptor. E dado de cliente e ruido de log.
 logs/
+
+graphify-out/
+
+# pedidos do Mitra guardam o callback_token real
+POC Completa/extracoes_*/

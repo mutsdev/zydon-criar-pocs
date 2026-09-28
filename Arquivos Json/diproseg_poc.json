@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-23 a partir de https://www.diproseg.com.br (lojaintegrada).",
+  "empresa": "Diproseg",
+  "descricao_empresa": "Distribuidora de segurança eletrônica, videomonitoramento, redes, alarmes e controle de acesso para integradores e instaladores.",
+  "gerado_em": "2026-09-23",
+  "setor": "Segurança eletrônica — Redes e Controle de Acesso",
+  "portal_name": "Diproseg POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Diproseg",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Diproseg",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Câmeras e Monitoramento",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Câmeras e Monitoramento",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Gravadores e Armazenamento",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Gravadores e Armazenamento",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Redes e Controle de Acesso",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Redes e Controle de Acesso",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "DIP-001 — Câmera Bullet AHD Giga GS0461",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350008060/0cb157abe9fff19e264c9d096037a69b-2hiyl48uut.jpg",
+          "payload": {
+            "sku": "DIP-001",
+            "name": "Câmera Bullet AHD Giga GS0461",
+            "description": "Câmera Bullet AHD Giga GS0461 — Câmeras e Monitoramento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 189.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-002 — Câmera IP Wi-Fi Ezviz H3C 1080p",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350331250/eb7872083d70a9076f3d9ad45a4ead1d-g9z56w2xdr.jpg",
+          "payload": {
+            "sku": "DIP-002",
+            "name": "Câmera IP Wi-Fi Ezviz H3C 1080p",
+            "description": "Câmera IP Wi-Fi Ezviz H3C 1080p — Câmeras e Monitoramento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 299.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-003 — Câmera IP Wi-Fi Ezviz H8C 1080p",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/333644270/1-0cklnis03t.png",
+          "payload": {
+            "sku": "DIP-003",
+            "name": "Câmera IP Wi-Fi Ezviz H8C 1080p",
+            "description": "Câmera IP Wi-Fi Ezviz H8C 1080p — Câmeras e Monitoramento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 429.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-004 — Câmera Wi-Fi 2K com Bateria Ezviz EB8",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/333669045/e670759f5fc1de4677fd5927fe967c3c-awydlrrghi.png",
+          "payload": {
+            "sku": "DIP-004",
+            "name": "Câmera Wi-Fi 2K com Bateria Ezviz EB8",
+            "description": "Câmera Wi-Fi 2K com Bateria Ezviz EB8 — Câmeras e Monitoramento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 899.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-005 — DVR Giga GS0464 4 Canais 1080N",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350015972/d643c7a192710a96af82ef0cf370addf-g08tumjyez.jpg",
+          "payload": {
+            "sku": "DIP-005",
+            "name": "DVR Giga GS0464 4 Canais 1080N",
+            "description": "DVR Giga GS0464 4 Canais 1080N — Gravadores e Armazenamento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 249.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-006 — DVR Giga GS0480 4 Canais 1080p",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350017092/7f33f1edeb69eaa8c16d5977399e9038-isz81nyh7k.jpg",
+          "payload": {
+            "sku": "DIP-006",
+            "name": "DVR Giga GS0480 4 Canais 1080p",
+            "description": "DVR Giga GS0480 4 Canais 1080p — Gravadores e Armazenamento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 389.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-007 — DVR Giga Orion 8 Canais 1080p",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350017654/98da07ef651d6113e6de15dbf7c8fd54-n6nwub0oei.jpg",
+          "payload": {
+            "sku": "DIP-007",
+            "name": "DVR Giga Orion 8 Canais 1080p",
+            "description": "DVR Giga Orion 8 Canais 1080p — Gravadores e Armazenamento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 549.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-008 — NVR Giga GS0384 10 Canais 4K",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/350018335/b4574a7550cd2ff50a0b879f245a5679-6nespog8cn.jpg",
+          "payload": {
+            "sku": "DIP-008",
+            "name": "NVR Giga GS0384 10 Canais 4K",
+            "description": "NVR Giga GS0384 10 Canais 4K — Gravadores e Armazenamento.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1199.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-009 — Access Point TP-Link EAP225 Outdoor AC1200",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/333644243/96cceb629d74a282cbf0e714f818583c-ler3udne3g.png",
+          "payload": {
+            "sku": "DIP-009",
+            "name": "Access Point TP-Link EAP225 Outdoor AC1200",
+            "description": "Access Point TP-Link EAP225 Outdoor AC1200 — Redes e Controle de Acesso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 579.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-010 — Cabo de Rede e Alarme CAT5 300 Metros",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/349215357/fa52df06d412d3aad4334a977888100f-58wtvrjpuf.jpg",
+          "payload": {
+            "sku": "DIP-010",
+            "name": "Cabo de Rede e Alarme CAT5 300 Metros",
+            "description": "Cabo de Rede e Alarme CAT5 300 Metros — Redes e Controle de Acesso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 499.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-011 — Central de Alarme JFL Active Full 32",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/333644688/44cf6352afdbbef3f6dbfceca2e8539a-nt0x7yfd55.png",
+          "payload": {
+            "sku": "DIP-011",
+            "name": "Central de Alarme JFL Active Full 32",
+            "description": "Central de Alarme JFL Active Full 32 — Redes e Controle de Acesso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 649.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIP-012 — Fechadura Inteligente Ezviz DL05",
+          "temp_image_url": "https://cdn.awsli.com.br/800x800/2670/2670904/produto/333668936/c156db0f4f027ec596138482ed70c0ed-ag6jjq0vkk.png",
+          "payload": {
+            "sku": "DIP-012",
+            "name": "Fechadura Inteligente Ezviz DL05",
+            "description": "Fechadura Inteligente Ezviz DL05 — Redes e Controle de Acesso.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 899.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Diproseg",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Diproseg — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Diproseg",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Diproseg — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Câmeras e Monitoramento",
+          "salvar_id_como": "criteria_cat_cameras_e_monitoramento_id",
+          "payload": {
+            "name": "Diproseg — Câmeras e Monitoramento (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Gravadores e Armazenamento",
+          "salvar_id_como": "criteria_cat_gravadores_e_armazenamento_id",
+          "payload": {
+            "name": "Diproseg — Gravadores e Armazenamento (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Redes e Controle de Acesso",
+          "salvar_id_como": "criteria_cat_redes_e_controle_de_acesso_id",
+          "payload": {
+            "name": "Diproseg — Redes e Controle de Acesso (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Diproseg",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Diproseg",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Diproseg",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Diproseg",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Diproseg",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Diproseg",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Diproseg",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Diproseg",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Diproseg",
+                "criteria_id": "{{criteria_cat_cameras_e_monitoramento_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Gravadores e Armazenamento | Diproseg",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Diproseg — Gravadores e Armazenamento",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Diproseg",
+                "criteria_id": "{{criteria_cat_gravadores_e_armazenamento_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

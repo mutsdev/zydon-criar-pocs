@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-23 a partir de https://distribuidorajh.com.br/ (home).",
+  "empresa": "Distribuidora JH",
+  "descricao_empresa": "Distribuidora de alimentos e ingredientes para food service no Paraná",
+  "gerado_em": "2026-09-23",
+  "setor": "Alimentos — Distribuição",
+  "portal_name": "Distribuidora JH POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Distribuidora JH",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Distribuidora JH",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Doces e Sobremesas",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Doces e Sobremesas",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Biscoitos e Confeitos",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Biscoitos e Confeitos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Pizzas e Salgados Congelados",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Pizzas e Salgados Congelados",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "DIS-001 — Churrasco",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/churrasco.webp",
+          "payload": {
+            "sku": "DIS-001",
+            "name": "Churrasco",
+            "description": "Churrasco — Doces e Sobremesas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 45.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-002 — Pizza Calabresa",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/pizza-1.webp",
+          "payload": {
+            "sku": "DIS-002",
+            "name": "Pizza Calabresa",
+            "description": "Pizza Calabresa — Doces e Sobremesas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 38.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-003 — Queijo Mussarela",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/queijo.webp",
+          "payload": {
+            "sku": "DIS-003",
+            "name": "Queijo Mussarela",
+            "description": "Queijo Mussarela — Doces e Sobremesas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 28.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-004 — Fondant Misto",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/fondant-misto.webp",
+          "payload": {
+            "sku": "DIS-004",
+            "name": "Fondant Misto",
+            "description": "Fondant Misto — Biscoitos e Confeitos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 22.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-005 — Riquita",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/riquita.webp",
+          "payload": {
+            "sku": "DIS-005",
+            "name": "Riquita",
+            "description": "Riquita — Biscoitos e Confeitos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 18.5,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-006 — Brigadeiro",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/brigadeiro.webp",
+          "payload": {
+            "sku": "DIS-006",
+            "name": "Brigadeiro",
+            "description": "Brigadeiro — Biscoitos e Confeitos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 15.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-007 — Cocadita",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cocadita.webp",
+          "payload": {
+            "sku": "DIS-007",
+            "name": "Cocadita",
+            "description": "Cocadita — Biscoitos e Confeitos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-008 — Beijinho",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/beijinho.webp",
+          "payload": {
+            "sku": "DIS-008",
+            "name": "Beijinho",
+            "description": "Beijinho — Biscoitos e Confeitos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 13.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-009 — Biscoito Emília",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-emilia.webp",
+          "payload": {
+            "sku": "DIS-009",
+            "name": "Biscoito Emília",
+            "description": "Biscoito Emília — Pizzas e Salgados Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 12.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-010 — Biscoito Passas",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-passas.webp",
+          "payload": {
+            "sku": "DIS-010",
+            "name": "Biscoito Passas",
+            "description": "Biscoito Passas — Pizzas e Salgados Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 11.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-011 — Biscoito Pic Nic",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-pic-nic.webp",
+          "payload": {
+            "sku": "DIS-011",
+            "name": "Biscoito Pic Nic",
+            "description": "Biscoito Pic Nic — Pizzas e Salgados Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 10.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "DIS-012 — Biscoito Coração",
+          "temp_image_url": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-coracao.webp",
+          "payload": {
+            "sku": "DIS-012",
+            "name": "Biscoito Coração",
+            "description": "Biscoito Coração — Pizzas e Salgados Congelados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 10.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Distribuidora JH",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Distribuidora JH — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Distribuidora JH",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Distribuidora JH — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Doces e Sobremesas",
+          "salvar_id_como": "criteria_cat_doces_e_sobremesas_id",
+          "payload": {
+            "name": "Distribuidora JH — Doces e Sobremesas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Biscoitos e Confeitos",
+          "salvar_id_como": "criteria_cat_biscoitos_e_confeitos_id",
+          "payload": {
+            "name": "Distribuidora JH — Biscoitos e Confeitos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pizzas e Salgados Congelados",
+          "salvar_id_como": "criteria_cat_pizzas_e_salgados_congelados_id",
+          "payload": {
+            "name": "Distribuidora JH — Pizzas e Salgados Congelados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Distribuidora JH",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Distribuidora JH",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Distribuidora JH",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Distribuidora JH",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Distribuidora JH",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Distribuidora JH",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Distribuidora JH",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Distribuidora JH",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Distribuidora JH",
+                "criteria_id": "{{criteria_cat_doces_e_sobremesas_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Biscoitos e Confeitos | Distribuidora JH",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Distribuidora JH — Biscoitos e Confeitos",
+            "start_date": "2026-09-23",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Distribuidora JH",
+                "criteria_id": "{{criteria_cat_biscoitos_e_confeitos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,868 @@
+{
+  "_instrucoes": "Gerado pela skill criar-pocs em 2026-09-14 a partir de neobetel.com.br + lojaneobetel.com.br (Irroba). Precos publicos da loja online.",
+  "empresa": "Neobetel",
+  "descricao_empresa": "Distribuidora de EPIs e EPCs (equipamentos de proteção individual e coletiva) para indústria, construção e serviços, com unidades em SP e loja online. Marcas 3M, MSA, Delta Plus, Athenas, Danny, Fujiwara, Bracol.",
+  "gerado_em": "2026-09-14",
+  "setor": "Suprimentos Industriais — EPI / Segurança do Trabalho",
+  "portal_name": "Neobetel POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Neobetel",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Neobetel",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Proteção da Cabeça e Face",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Proteção da Cabeça e Face",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Proteção das Mãos e Pés",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Proteção das Mãos e Pés",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Proteção contra Quedas e Sinalização",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Proteção contra Quedas e Sinalização",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Tamanho",
+          "salvar_id_como": "variation_tamanho_id",
+          "payload": {
+            "name": "Tamanho",
+            "active": true,
+            "values": [
+              "P",
+              "M",
+              "G",
+              "XG"
+            ]
+          }
+        },
+        {
+          "label": "Criar Variacao: Numeracao",
+          "salvar_id_como": "variation_numeracao_id",
+          "payload": {
+            "name": "Numeração",
+            "active": true,
+            "values": [
+              "38",
+              "39",
+              "40",
+              "41",
+              "42",
+              "43",
+              "44"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "NEO-CAP-001 — Capacete Aba Frontal H-700 Branco 3M",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa7e49f242d7.jpg",
+          "payload": {
+            "name": "Capacete Aba Frontal H-700 Branco 3M",
+            "description": "Capacete de segurança 3M H-700, aba frontal, carneira e jugular têxtil. Classe B, NR-6.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 64.12,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "NEO-CAP-001"
+          }
+        },
+        {
+          "label": "NEO-OCU-002 — Óculos Solus 1000 Incolor 3M",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa7fb344d436.jpg",
+          "payload": {
+            "name": "Óculos Solus 1000 Incolor 3M",
+            "description": "Óculos de proteção 3M Solus 1000, lente incolor antiembaçante Scotchgard, hastes ajustáveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 97.72,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-OCU-002"
+          }
+        },
+        {
+          "label": "NEO-ABA-003 — Abafador Concha 23 dB Peltor H9A 3M",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6a938de276aea.jpg",
+          "payload": {
+            "name": "Abafador Concha 23 dB Peltor H9A 3M",
+            "description": "Protetor auricular tipo concha 3M Peltor H9A, atenuação 23 dB, haste de cabeça.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 223.09,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-ABA-003"
+          }
+        },
+        {
+          "label": "NEO-RES-004 — Respirador PFF2 com Válvula 8822 3M",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa45c98c9460.jpg",
+          "payload": {
+            "name": "Respirador PFF2 com Válvula 8822 3M",
+            "description": "Respirador descartável 3M 8822, tipo concha, PFF2 com válvula de exalação. Caixa com 10.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 11.12,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "NEO-RES-004"
+          }
+        },
+        {
+          "label": "NEO-PRO-005 — Protetor Facial Incolor 8 pol Jabre Delta Plus",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa81cfda9493.jpg",
+          "payload": {
+            "name": "Protetor Facial Incolor 8 pol Jabre Delta Plus",
+            "description": "Protetor facial em policarbonato incolor de 8 polegadas com carneira plástica, Delta Plus.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.05,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-PRO-005"
+          }
+        },
+        {
+          "label": "NEO-LUV-006 — Luva Nitrílica Sensiflex Roxa Danny (cx 100)",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/69fc99680af91.jpg",
+          "payload": {
+            "name": "Luva Nitrílica Sensiflex Roxa Danny (cx 100)",
+            "description": "Luva nitrílica Danny Sensiflex DA90400, sem pó, caixa com 100 unidades. Tamanhos P a XG.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 33.97,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "NEO-LUV-006",
+            "variations": [
+              {
+                "sku": "NEO-LUV-006-P",
+                "price": 33.97,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 24.0,
+                "variation_height": 12.0,
+                "variation_depth": 13.0,
+                "packaging_weight": 0.55,
+                "packaging_width": 26.0,
+                "packaging_height": 13.0,
+                "packaging_depth": 15.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "P"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-LUV-006-M",
+                "price": 33.97,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 24.0,
+                "variation_height": 12.0,
+                "variation_depth": 13.0,
+                "packaging_weight": 0.55,
+                "packaging_width": 26.0,
+                "packaging_height": 13.0,
+                "packaging_depth": 15.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "M"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-LUV-006-G",
+                "price": 33.97,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 24.0,
+                "variation_height": 12.0,
+                "variation_depth": 13.0,
+                "packaging_weight": 0.55,
+                "packaging_width": 26.0,
+                "packaging_height": 13.0,
+                "packaging_depth": 15.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "G"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-LUV-006-XG",
+                "price": 33.97,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 24.0,
+                "variation_height": 12.0,
+                "variation_depth": 13.0,
+                "packaging_weight": 0.55,
+                "packaging_width": 26.0,
+                "packaging_height": 13.0,
+                "packaging_depth": 15.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "XG"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "NEO-LUV-007 — Luva Alta Tensão Classe 0 1000V Orion",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6a188e9499507.jpg",
+          "payload": {
+            "name": "Luva Alta Tensão Classe 0 1000V Orion",
+            "description": "Luva isolante de borracha classe 0, 1000 V (5 kVA), NR-10, Orion.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 358.36,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-LUV-007"
+          }
+        },
+        {
+          "label": "NEO-BOT-008 — Botina Eletricista Elástico Bico Composite",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa2e1ec5fc80.jpg",
+          "payload": {
+            "name": "Botina Eletricista Elástico Bico Composite",
+            "description": "Botina de elástico para eletricista, bico composite e palmilha resistente à perfuração, sem componente metálico. Numeração 38 a 44.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 154.12,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "NEO-BOT-008",
+            "variations": [
+              {
+                "sku": "NEO-BOT-008-38",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "38"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-39",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "39"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-40",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "40"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-41",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "41"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-42",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "42"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-43",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "43"
+                  }
+                ]
+              },
+              {
+                "sku": "NEO-BOT-008-44",
+                "price": 154.12,
+                "stock": 100,
+                "variation_weight": 1.2,
+                "variation_width": 32.0,
+                "variation_height": 14.0,
+                "variation_depth": 22.0,
+                "packaging_weight": 1.25,
+                "packaging_width": 34.0,
+                "packaging_height": 15.0,
+                "packaging_depth": 24.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_numeracao_id}}",
+                    "name": "Numeração",
+                    "value": "44"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "NEO-BOT-009 — Bota PVC Preta Cano Longo 34 cm Bico de Aço Bracol",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6a9ff17f2ec14.jpg",
+          "payload": {
+            "name": "Bota PVC Preta Cano Longo 34 cm Bico de Aço Bracol",
+            "description": "Bota de PVC preta com forro, cano longo 34 cm, bico de aço, Bracol.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 68.8,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4,
+            "sku": "NEO-BOT-009"
+          }
+        },
+        {
+          "label": "NEO-CIN-010 — Cinto Paraquedista 4 Pontos AT 7030 EL Athenas",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6a9ff44d08b27.jpg",
+          "payload": {
+            "name": "Cinto Paraquedista 4 Pontos AT 7030 EL Athenas",
+            "description": "Cinturão paraquedista em poliéster, 4 pontos de ancoragem, Athenas AT 7030 EL. NR-35.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 250.63,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-CIN-010"
+          }
+        },
+        {
+          "label": "NEO-TAL-011 — Talabarte Y Fita com ABS Gancho 55 mm Athenas",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6aa403cb2dd44.jpg",
+          "payload": {
+            "name": "Talabarte Y Fita com ABS Gancho 55 mm Athenas",
+            "description": "Talabarte em Y, fita de poliéster 1,35 m com absorvedor de energia e ganchos de 55 mm, Athenas AT YFT ABS 707.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 328.61,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "NEO-TAL-011"
+          }
+        },
+        {
+          "label": "NEO-COL-012 — Colete Sinalização Refletivo com Bolso Vicsa",
+          "temp_image_url": "https://img.irroba.com.br/fit-in/1000x1000/filters:fill(fff):quality(80)/neobaioa/catalog/api/neobaioa_integrac/6a9ff1bfb0156.jpg",
+          "payload": {
+            "name": "Colete Sinalização Refletivo com Bolso Vicsa",
+            "description": "Colete de sinalização refletivo com bolso, Vicsa, tecido leve, faixas refletivas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 18.62,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "NEO-COL-012"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Neobetel",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Neobetel — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Neobetel",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Neobetel — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Proteção da Cabeça e Face",
+          "salvar_id_como": "criteria_cat_cabeca_id",
+          "payload": {
+            "name": "Neobetel — Proteção da Cabeça e Face (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Proteção das Mãos e Pés",
+          "salvar_id_como": "criteria_cat_maos_id",
+          "payload": {
+            "name": "Neobetel — Proteção das Mãos e Pés (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Neobetel",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Neobetel",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Neobetel",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Neobetel",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Neobetel",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Neobetel",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Neobetel",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Neobetel",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Neobetel",
+                "criteria_id": "{{criteria_cat_cabeca_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Proteção das Mãos e Pés | Neobetel",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Neobetel — Proteção das Mãos e Pés",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Neobetel",
+                "criteria_id": "{{criteria_cat_maos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

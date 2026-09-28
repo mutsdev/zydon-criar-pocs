@@ -1,0 +1,289 @@
+{
+ "site": "https://distribuidorajh.com.br/",
+ "gerador": "Elementor 4.3.0; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap",
+ "plataforma": "home",
+ "lojas_externas": [],
+ "total": 35,
+ "itens": [
+  {
+   "nome": "biscoito2",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/slider/cache/b9d824d93f2b3c3d1ed4824e1ece86ca/biscoito2.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "previous arrow",
+   "preco": null,
+   "categoria": null,
+   "imagem": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMS40MzMgMTUuOTkyTDIyLjY5IDUuNzEyYy4zOTMtLjM5LjM5My0xLjAzIDAtMS40Mi0uMzkzLS4zOS0xLjAzLS4zOS0xLjQyMyAwbC0xMS45OCAxMC45NGMtLjIxLjIxLS4zLjQ5LS4yODUuNzYtLjAxNS4yOC4wNzUuNTYuMjg0Ljc3bDExLjk4IDEwLjk0Yy4zOTMuMzkgMS4wMy4zOSAxLjQyNCAwIC4zOTMtLjQuMzkzLTEuMDMgMC0xLjQybC0xMS4yNTctMTAuMjkiCiAgICAgICAgICBmaWxsPSIjOTI3NjU4IiBvcGFjaXR5PSIxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "next arrow",
+   "preco": null,
+   "categoria": null,
+   "imagem": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMC43MjIgNC4yOTNjLS4zOTQtLjM5LTEuMDMyLS4zOS0xLjQyNyAwLS4zOTMuMzktLjM5MyAxLjAzIDAgMS40MmwxMS4yODMgMTAuMjgtMTEuMjgzIDEwLjI5Yy0uMzkzLjM5LS4zOTMgMS4wMiAwIDEuNDIuMzk1LjM5IDEuMDMzLjM5IDEuNDI3IDBsMTIuMDA3LTEwLjk0Yy4yMS0uMjEuMy0uNDkuMjg0LS43Ny4wMTQtLjI3LS4wNzYtLjU1LS4yODYtLjc2TDEwLjcyIDQuMjkzeiIKICAgICAgICAgIGZpbGw9IiM5Mjc2NTgiIG9wYWNpdHk9IjEiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4=",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "churrasco",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/churrasco.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "pizza-1",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/pizza-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "queijo",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/queijo.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "fondant-misto",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/fondant-misto.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "riquita",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/riquita.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "brigadeiro",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/brigadeiro.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "cocadita",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cocadita.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "beijinho",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/beijinho.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "biscoito-emilia",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-emilia.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "biscoito-passas",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-passas.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "biscoito-pic-nic",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-pic-nic.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "biscoito-coracao",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/biscoito-coracao.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "pizza",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/pizza.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "bacon",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/bacon.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "calabresa",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/calabresa.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "cebola",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cebola.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "frango",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/frango.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "salsa-cebola",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/salsa-cebola.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "bacon-1",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/bacon-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "IMG-20181128-WA0006",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/IMG-20181128-WA0006-768x1024.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "IMG-20190411-WA0051-e1556666371681",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/IMG-20190411-WA0051-e1556666371681.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "IMG-20181222-WA0012",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/IMG-20181222-WA0012-768x1024.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "IMG-20181212-WA0022",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/IMG-20181212-WA0022-768x1024.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "Elizandra, Colombo - PR",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/elizandra-180x180-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "Engel, Curitiba - PR",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/engel-180x180-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "Monique, Araucária - PR",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/monique-180x180-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "Luana, São José dos Pinhais - PR",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/louana-180x180-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "Márcia, Fazenda Rio Grande - PR",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/marcia-180x180-1.webp",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cropped-H12-32x32.png",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cropped-H12-192x192.png",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cropped-H12-180x180.png",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  },
+  {
+   "nome": "",
+   "preco": null,
+   "categoria": null,
+   "imagem": "https://distribuidorajh.com.br/wp-content/uploads/2024/07/cropped-H12-270x270.png",
+   "url": "https://distribuidorajh.com.br/",
+   "variantes": []
+  }
+ ]
+}

@@ -40,7 +40,35 @@
             "Amarelo",
             "Dourado",
             "Rosa",
-            "Roxo"
+            "Roxo",
+            "Branco Neve",
+            "Gelo",
+            "Palha",
+            "Pérola",
+            "Algodão Egípcio",
+            "Azul Celeste",
+            "Marfim",
+            "Camurça",
+            "Algodão Doce",
+            "Amarelo Vanilla",
+            "Amêndoa",
+            "Azul Sereno",
+            "Azul Ártico",
+            "Bambu",
+            "Blush",
+            "Cinza Nuvem",
+            "Cinza Urbano",
+            "Concreto",
+            "Creme",
+            "Erva Doce",
+            "Fendi",
+            "Lavanda",
+            "Menta",
+            "Mostarda",
+            "Pêssego",
+            "Rosa Quartzo",
+            "Salmão",
+            "Verde Sálvia"
           ],
           "variant_options": [
             {
@@ -150,6 +178,118 @@
             {
               "name": "Roxo",
               "display_value": "#5B3A8E"
+            },
+            {
+              "name": "Branco Neve",
+              "display_value": "#F8F8F6"
+            },
+            {
+              "name": "Gelo",
+              "display_value": "#EAE6DA"
+            },
+            {
+              "name": "Palha",
+              "display_value": "#E8DBB5"
+            },
+            {
+              "name": "Pérola",
+              "display_value": "#EDE6D6"
+            },
+            {
+              "name": "Algodão Egípcio",
+              "display_value": "#EFE9DC"
+            },
+            {
+              "name": "Azul Celeste",
+              "display_value": "#9CC5E4"
+            },
+            {
+              "name": "Marfim",
+              "display_value": "#F1E9D2"
+            },
+            {
+              "name": "Camurça",
+              "display_value": "#D2B48C"
+            },
+            {
+              "name": "Algodão Doce",
+              "display_value": "#F4D9E1"
+            },
+            {
+              "name": "Amarelo Vanilla",
+              "display_value": "#F5E6B8"
+            },
+            {
+              "name": "Amêndoa",
+              "display_value": "#D9C4A5"
+            },
+            {
+              "name": "Azul Sereno",
+              "display_value": "#A9C6D9"
+            },
+            {
+              "name": "Azul Ártico",
+              "display_value": "#CFE3EE"
+            },
+            {
+              "name": "Bambu",
+              "display_value": "#E2D8B8"
+            },
+            {
+              "name": "Blush",
+              "display_value": "#E8C8C0"
+            },
+            {
+              "name": "Cinza Nuvem",
+              "display_value": "#D3D4D6"
+            },
+            {
+              "name": "Cinza Urbano",
+              "display_value": "#8E9194"
+            },
+            {
+              "name": "Concreto",
+              "display_value": "#9DA3A6"
+            },
+            {
+              "name": "Creme",
+              "display_value": "#F3EBD3"
+            },
+            {
+              "name": "Erva Doce",
+              "display_value": "#C9D9B8"
+            },
+            {
+              "name": "Fendi",
+              "display_value": "#C4B5A1"
+            },
+            {
+              "name": "Lavanda",
+              "display_value": "#C9BEDA"
+            },
+            {
+              "name": "Menta",
+              "display_value": "#BFE3D0"
+            },
+            {
+              "name": "Mostarda",
+              "display_value": "#D9A93C"
+            },
+            {
+              "name": "Pêssego",
+              "display_value": "#F5C6A5"
+            },
+            {
+              "name": "Rosa Quartzo",
+              "display_value": "#E9BFC5"
+            },
+            {
+              "name": "Salmão",
+              "display_value": "#F2A48C"
+            },
+            {
+              "name": "Verde Sálvia",
+              "display_value": "#A9B89A"
             }
           ]
         }

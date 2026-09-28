@@ -1,0 +1,571 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-21 a partir de https://www.instagram.com/fps_powershock/ (instagram).",
+  "empresa": "FPS Power Shock",
+  "descricao_empresa": "Fabricante goiano do Ferrão Elétrico Goiás Power Shock: bastões de choque em vários tamanhos, shock fixo para caminhão e kits para revendas agropecuárias.",
+  "gerado_em": "2026-09-21",
+  "setor": "Agropecuária — Equipamentos para manejo de gado",
+  "portal_name": "FPS Power Shock POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca FPS Power Shock",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "FPS Power Shock",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Ferrões Elétricos",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Ferrões Elétricos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Shock Fixo e Acessórios",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Shock Fixo e Acessórios",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Revenda e Expositores",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Revenda e Expositores",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Tamanho",
+          "salvar_id_como": "variation_tamanho_id",
+          "payload": {
+            "name": "Tamanho",
+            "active": true,
+            "values": [
+              "60 cm",
+              "80 cm",
+              "100 cm",
+              "120 cm"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "FPS-001 — Ferrão Elétrico Power Shock a Pilha",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.71878-15/669656221_959805186589148_952558566325523206_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&_nc_map=urlgen_bucketless&ig_cache_key=Mzg3MTQ5Mjc2MjgyMzI1MTQwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=Zod5PQGENBgQ7kNvwFBLuTp&_nc_oc=AdqcDBertGzOgqCBccr9gl7VH0msmdcsmEOjsoyet8I8eIvQwlMBACsLnmdd96XnTw8&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=DNdUZJHqEF5Ol4VwZ9-Iwg&_nc_ss=7e60f&oh=00_AQJJLVb4Wu5ACngcEjBVI2cGBprVg9Ultss6nQjtg-j4xg&oe=6AB752BC",
+          "payload": {
+            "sku": "FPS-001",
+            "name": "Ferrão Elétrico Power Shock a Pilha",
+            "description": "Ferrão Elétrico Power Shock a Pilha — Ferrões Elétricos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 189.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "FPS-001-60CM",
+                "price": 189.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "60 cm"
+                  }
+                ]
+              },
+              {
+                "sku": "FPS-001-80CM",
+                "price": 189.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "80 cm"
+                  }
+                ]
+              },
+              {
+                "sku": "FPS-001-100CM",
+                "price": 189.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "100 cm"
+                  }
+                ]
+              },
+              {
+                "sku": "FPS-001-120CM",
+                "price": 189.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_tamanho_id}}",
+                    "name": "Tamanho",
+                    "value": "120 cm"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FPS-002 — Ferrão Elétrico Power Shock Recarregável",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t39.30808-6/471159856_122197731086082168_7960104339540530733_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&_nc_map=urlgen_bucketless&ig_cache_key=MzI4NjAwNTQxNDg4NDc0NTkxOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=pQHeSUBFvEMQ7kNvwFM3m7H&_nc_oc=Adpv8TOaB6pL1JzMNZs_dcLkwR11mMkUd2CtLFjKs9C1_ytAPQ7ew7FbUdn6oHl0wf0&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=uWC3UufDVOzmnYvBPMHz6Q&_nc_ss=7e60f&oh=00_AQKp0Wb4vLD1rRGHO40KOCkZvoncqhzeYDXBhRM8ZFBRug&oe=6AB76764",
+          "payload": {
+            "sku": "FPS-002",
+            "name": "Ferrão Elétrico Power Shock Recarregável",
+            "description": "Ferrão Elétrico Power Shock Recarregável — Ferrões Elétricos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 289.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FPS-003 — Shock Fixo Power Shock para Caminhão Boiadeiro",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.71878-15/562003529_804318738963057_7102914037827189960_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=109&_nc_map=urlgen_bucketless&ig_cache_key=Mzc0MDQ3OTAwNjYzOTc1MTUyOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=L3IowR_3ykwQ7kNvwFO2tWL&_nc_oc=Adpc5wliov4r_K9TU4MfyK69d-N8abmfHl1sNXmEWPNOTjuQut34kp-ZSn_iU9ILy1E&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=Euaxyiaw3mGc37h1sOVBMQ&_nc_ss=7e60f&oh=00_AQIPPMkiGiRs9VyoEOnhYDkLLiihwuxnwteVuzulIC7nRg&oe=6AB74BAF",
+          "payload": {
+            "sku": "FPS-003",
+            "name": "Shock Fixo Power Shock para Caminhão Boiadeiro",
+            "description": "Shock Fixo Power Shock para Caminhão Boiadeiro — Shock Fixo e Acessórios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 890.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FPS-004 — Expositor de Balcão para Ferrões Power Shock",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.71878-15/502953444_722112600508128_7085863104483240633_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=106&_nc_map=urlgen_bucketless&ig_cache_key=MzI3NzI2NDg0MzcxODc0Mzg2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjU0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=lJwaxNVvWTcQ7kNvwFj1ilh&_nc_oc=AdqZ0f4z27FYK80jH_xI_hjTMeo-4cQc4mSUIHhi1fZwmKux2sdvDujf8BqAUFa-NfI&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=QLnyoBqhreF2uDGOt6-yPA&_nc_ss=7e60f&oh=00_AQJccgS8Gj7OvwxsoL1igoNsKhJMta9fi3C7C6xGy5Twtw&oe=6AB758C8",
+          "payload": {
+            "sku": "FPS-004",
+            "name": "Expositor de Balcão para Ferrões Power Shock",
+            "description": "Expositor de Balcão para Ferrões Power Shock — Revenda e Expositores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 350.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "FPS-005 — Kit Revenda Ferrão Elétrico Power Shock — 10 unidades",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t39.30808-6/471155839_122197731530082168_8538892084120019219_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&_nc_map=urlgen_bucketless&ig_cache_key=MzI4NzM2OTM1OTE2Nzg4MTg2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=n5A1G6--yVQQ7kNvwGt15fq&_nc_oc=AdpuvHVXT5uyn9QaOMEZwH-kpBelzGWv9ivyUfVNku9GW3WCeebfkP99Ab-qHT9DAvU&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=n4eR4Gkp4H2AFoUbzM9gUg&_nc_ss=7e60f&oh=00_AQIxRv0og8lnlwMUQFSHZfGx2QTOAJlG5eK4zPaO6dE4FQ&oe=6AB74402",
+          "payload": {
+            "sku": "FPS-005",
+            "name": "Kit Revenda Ferrão Elétrico Power Shock — 10 unidades",
+            "description": "Kit Revenda Ferrão Elétrico Power Shock — 10 unidades — Revenda e Expositores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1690.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - FPS Power Shock",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "FPS Power Shock — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - FPS Power Shock",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "FPS Power Shock — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Ferrões Elétricos",
+          "salvar_id_como": "criteria_cat_ferroes_eletricos_id",
+          "payload": {
+            "name": "FPS Power Shock — Ferrões Elétricos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Shock Fixo e Acessórios",
+          "salvar_id_como": "criteria_cat_shock_fixo_e_acessorios_id",
+          "payload": {
+            "name": "FPS Power Shock — Shock Fixo e Acessórios (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Revenda e Expositores",
+          "salvar_id_como": "criteria_cat_revenda_e_expositores_id",
+          "payload": {
+            "name": "FPS Power Shock — Revenda e Expositores (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | FPS Power Shock",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | FPS Power Shock",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | FPS Power Shock",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | FPS Power Shock",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | FPS Power Shock",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | FPS Power Shock",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume FPS Power Shock",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | FPS Power Shock",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume FPS Power Shock",
+                "criteria_id": "{{criteria_cat_ferroes_eletricos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Shock Fixo e Acessórios | FPS Power Shock",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF FPS Power Shock — Shock Fixo e Acessórios",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF FPS Power Shock",
+                "criteria_id": "{{criteria_cat_shock_fixo_e_acessorios_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,613 @@
+{
+  "empresa": "American Rolamentos",
+  "descricao_empresa": "Distribuidora e importadora de rolamentos industriais especiais e de grande porte, sediada em Araraquara/SP, com fornecedores nos EUA e Europa e entrega em até 10 dias.",
+  "gerado_em": "2026-09-14",
+  "setor": "Suprimentos Industriais — Rolamentos e Mancais",
+  "portal_name": "American Rolamentos POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca American Rolamentos",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "American Rolamentos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Rolamentos de Esfera",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Rolamentos de Esfera",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Rolamentos de Rolos",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Rolamentos de Rolos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Rolamentos Axiais e de Giro",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Rolamentos Axiais e de Giro",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "ARO-ESF-001 — Rolamento Rígido de Esferas",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/produto3.png",
+          "payload": {
+            "name": "Rolamento Rígido de Esferas",
+            "description": "Rolamento rígido de esferas, o tipo mais versátil: baixo atrito, baixo ruído, altas rotações; suporta cargas radiais e axiais em ambas as direções.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 185.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ESF-001"
+          }
+        },
+        {
+          "label": "ARO-ESF-002 — Rolamento de Esferas de Contato Angular",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico3.png",
+          "payload": {
+            "name": "Rolamento de Esferas de Contato Angular",
+            "description": "Pistas deslocadas na direção do eixo para acomodar cargas combinadas (axial + radial) atuando simultaneamente.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 420.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "ARO-ESF-002"
+          }
+        },
+        {
+          "label": "ARO-ESF-003 — Rolamento Axial de Esferas Escora Simples",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/Rolamentos-axiais-de-esferas-escora-simples.jpg",
+          "payload": {
+            "name": "Rolamento Axial de Esferas Escora Simples",
+            "description": "Rolamento axial de esferas de escora simples, separável, para cargas axiais em uma direção.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 560.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ESF-003"
+          }
+        },
+        {
+          "label": "ARO-ROL-001 — Rolamento de Rolos Cilíndricos Uma Carreira",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico10.png",
+          "payload": {
+            "name": "Rolamento de Rolos Cilíndricos Uma Carreira",
+            "description": "Rolamento de rolos cilíndricos de uma carreira, disponível em diversos modelos, séries e tamanhos; alta capacidade de carga radial.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 890.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ROL-001"
+          }
+        },
+        {
+          "label": "ARO-ROL-002 — Rolamento de Rolos Cônicos Uma Carreira",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico2.png",
+          "payload": {
+            "name": "Rolamento de Rolos Cônicos Uma Carreira",
+            "description": "Rolamento de rolos cônicos de uma carreira para cargas combinadas radiais e axiais em uma direção.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 650.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "ARO-ROL-002"
+          }
+        },
+        {
+          "label": "ARO-ROL-003 — Rolamento de Rolos Cônicos Quatro Carreiras",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/produto2.png",
+          "payload": {
+            "name": "Rolamento de Rolos Cônicos Quatro Carreiras",
+            "description": "Rolamento de rolos cônicos de quatro carreiras para pescoços de cilindro de laminadores e aplicações de grande porte.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 12800.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ROL-003"
+          }
+        },
+        {
+          "label": "ARO-ROL-004 — Rolamento Autocompensador de Rolos",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico4_.png",
+          "payload": {
+            "name": "Rolamento Autocompensador de Rolos",
+            "description": "Capacidade de carga elevada e acomodação de desalinhamentos; furo cilíndrico ou cônico. Baixo custo de manutenção e longa vida útil.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 1450.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ROL-004"
+          }
+        },
+        {
+          "label": "ARO-ROL-005 — Rolamento de Rolos Cilíndricos Duas Carreiras",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico8.png",
+          "payload": {
+            "name": "Rolamento de Rolos Cilíndricos Duas Carreiras",
+            "description": "Rolamento de rolos cilíndricos de duas carreiras, alta rigidez e precisão para fusos de máquinas-ferramenta.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2300.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-ROL-005"
+          }
+        },
+        {
+          "label": "ARO-AXI-001 — Rolamento Axial de Rolos Cilíndricos",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico7.png",
+          "payload": {
+            "name": "Rolamento Axial de Rolos Cilíndricos",
+            "description": "Rolamento axial de rolos cilíndricos para cargas axiais pesadas em espaço axial reduzido.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 980.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "ARO-AXI-001"
+          }
+        },
+        {
+          "label": "ARO-AXI-002 — Rolamento Axial Autocompensador de Rolos",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/produto4.png",
+          "payload": {
+            "name": "Rolamento Axial Autocompensador de Rolos",
+            "description": "Rolamento axial autocompensador de rolos, acomoda desalinhamento e suporta cargas axiais muito elevadas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 3400.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-AXI-002"
+          }
+        },
+        {
+          "label": "ARO-AXI-003 — Rolamento Axial de Rolos Parafuso para Baixo",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/Rolamento-Parafuso-para-baixo.jpg",
+          "payload": {
+            "name": "Rolamento Axial de Rolos Parafuso para Baixo",
+            "description": "Rolamento axial de rolos tipo parafuso para baixo, para conjuntos de laminação e prensas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 7200.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-AXI-003"
+          }
+        },
+        {
+          "label": "ARO-GIR-001 — Rolamento de Giro Quatro Pontos de Contato",
+          "temp_image_url": "https://www.americanrolamentos.com.br/images/rolocilindrico5.png",
+          "payload": {
+            "name": "Rolamento de Giro Quatro Pontos de Contato",
+            "description": "Rolamento de giro (slewing ring) de esferas de quatro pontos de contato, com ou sem engrenagem, para guindastes, escavadeiras e equipamentos rotativos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 18500.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ARO-GIR-001"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - American Rolamentos",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "American Rolamentos — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - American Rolamentos",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "American Rolamentos — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Rolamentos de Esfera",
+          "salvar_id_como": "criteria_cat_esfera_id",
+          "payload": {
+            "name": "American Rolamentos — Rolamentos de Esfera (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Rolamentos de Rolos",
+          "salvar_id_como": "criteria_cat_rolos_id",
+          "payload": {
+            "name": "American Rolamentos — Rolamentos de Rolos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Rolamentos Axiais e de Giro",
+          "salvar_id_como": "criteria_cat_axiais_id",
+          "payload": {
+            "name": "American Rolamentos — Rolamentos Axiais e de Giro (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | American Rolamentos",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | American Rolamentos",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | American Rolamentos",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | American Rolamentos",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | American Rolamentos",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | American Rolamentos",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Rolamentos de Esfera | American Rolamentos",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume Esferas | American Rolamentos",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume American Rolamentos",
+                "criteria_id": "{{criteria_cat_esfera_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Rolamentos de Rolos | American Rolamentos",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF American Rolamentos — Rolamentos de Rolos",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF American Rolamentos",
+                "criteria_id": "{{criteria_cat_rolos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -74,7 +74,7 @@ MANCHETE = ("PORTAL DO", "CLIENTE")
 RECURSOS = (
     ("pedido", "FAÇA SEU PEDIDO", "Rápido e fácil"),
     ("estoque", "ESTOQUE EM TEMPO REAL", "Informações atualizadas"),
-    ("nota", "NOTA FISCAL E XML", "Emita e consulte"),
+    ("nota", "NOTA FISCAL E XML", "Baixe e consulte"),
     ("boleto", "BOLETOS E PAGAMENTOS", "Mais praticidade"),
 )
 

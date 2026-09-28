@@ -1,0 +1,519 @@
+{
+  "empresa": "JH Distribuidora",
+  "descricao_empresa": "Distribuidora atacadista de produtos de limpeza, higiene pessoal e controle de pragas, presente em todo o Mato Grosso do Sul. Atende o varejo com as marcas Coala, Coperalcool e Kelldrin.",
+  "gerado_em": "2026-09-08",
+  "setor": "Suprimentos Industriais — Distribuição de produtos de limpeza e higiene",
+  "portal_name": "JH Distribuidora POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca JH Distribuidora",
+          "salvar_id_como": "brand_id",
+          "payload": { "name": "JH Distribuidora", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Limpeza e Conservação",
+          "salvar_id_como": "cat_ids_0",
+          "payload": { "name": "Limpeza e Conservação", "active": true, "images": [] }
+        },
+        {
+          "label": "Álcool e Higiene",
+          "salvar_id_como": "cat_ids_1",
+          "payload": { "name": "Álcool e Higiene", "active": true, "images": [] }
+        },
+        {
+          "label": "Controle de Pragas e Ambiente",
+          "salvar_id_como": "cat_ids_2",
+          "payload": { "name": "Controle de Pragas e Ambiente", "active": true, "images": [] }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "JH-LIM-001 — Lava Roupas Líquido Coala 3L Chá Branco",
+          "temp_image_url": "https://cardealdistribuidora.agilecdn.com.br/430277_thumb_1.jpg?v=172-3027673595",
+          "payload": {
+            "name": "Lava Roupas Líquido Coala 3L Chá Branco",
+            "description": "Lava roupas líquido concentrado Coala, galão de 3 litros, fragrância chá branco. Rende alto e não deixa resíduo no tecido — item de giro constante no varejo alimentar e de conveniência.",
+            "sku": "JH-LIM-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 18.90,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "JH-LIM-002 — Lava Roupas Líquido Coala 3L The Queen",
+          "temp_image_url": "https://cardealdistribuidora.agilecdn.com.br/430279_thumb_1.jpg?v=172-3027673595",
+          "payload": {
+            "name": "Lava Roupas Líquido Coala 3L The Queen",
+            "description": "Lava roupas líquido Coala 3 litros na fragrância The Queen, de perfumação prolongada. Vendido em caixa fechada com 6 unidades.",
+            "sku": "JH-LIM-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 19.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "JH-LIM-003 — Limpa Vidros Coala 500ml",
+          "temp_image_url": "https://cardealdistribuidora.agilecdn.com.br/430280_thumb_1.jpg?v=172-3446358165",
+          "payload": {
+            "name": "Limpa Vidros Coala 500ml",
+            "description": "Limpa vidros Coala com gatilho, frasco de 500 ml. Remove gordura e marcas de dedo em vidros, espelhos e superfícies plásticas sem embaçar.",
+            "sku": "JH-LIM-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 7.49,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-LIM-004 — Limpador Multiuso Vinagreen 500ml",
+          "temp_image_url": "https://cdn.awsli.com.br/300x300/1224/1224967/produto/48424870e556badbaa.jpg",
+          "payload": {
+            "name": "Limpador Multiuso Vinagreen 500ml",
+            "description": "Limpador multiuso à base de vinagre, frasco de 500 ml com gatilho. Indicado para cozinha, banheiro e superfícies laváveis em geral.",
+            "sku": "JH-LIM-004",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 6.90,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-ALC-001 — Álcool Líquido 46 INPM Coperalcool Bacfree Chá Branco 1L",
+          "temp_image_url": "https://cdn.awsli.com.br/300x300/1224/1224967/produto/344550734/4f428257c37629bdd9a4a2f6fbb56964-v6htbzbag4.jpg",
+          "payload": {
+            "name": "Álcool Líquido 46 INPM Coperalcool Bacfree Chá Branco 1L",
+            "description": "Álcool líquido 46 INPM Coperalcool com tecnologia Bacfree, fragrância chá branco, frasco de 1 litro. Elimina 99,9% das bactérias e deixa proteção residual na superfície.",
+            "sku": "JH-ALC-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 9.90,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-ALC-002 — Álcool Líquido Bacfree Lavanda Oriental Coperalcool 1L",
+          "temp_image_url": "https://cdn.awsli.com.br/300x300/1224/1224967/produto/309694774/5b5ae2e1a10d83de5ed4208db8c7d69d-6hbz6xds1u.jpg",
+          "payload": {
+            "name": "Álcool Líquido Bacfree Lavanda Oriental Coperalcool 1L",
+            "description": "Álcool líquido perfumado Coperalcool Bacfree na fragrância lavanda oriental, frasco de 1 litro. Limpa e perfuma pisos, bancadas e superfícies laváveis.",
+            "sku": "JH-ALC-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 10.50,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-ALC-003 — Álcool Aerossol Coperalcool 70 360ml Lavanda",
+          "temp_image_url": "https://cdn.awsli.com.br/300x300/1224/1224967/produto/790274557d32d560e3.jpg",
+          "payload": {
+            "name": "Álcool Aerossol Coperalcool 70 360ml Lavanda",
+            "description": "Álcool 70 em aerossol Coperalcool, 360 ml, fragrância lavanda. Aplicação sem contato para higienização rápida de superfícies e ambientes.",
+            "sku": "JH-ALC-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "JH-ALC-004 — Lenço Umedecido Coperalcool 70 Balde 150un",
+          "temp_image_url": "https://cdn.awsli.com.br/300x300/1224/1224967/produto/87641494e11f413d34.jpg",
+          "payload": {
+            "name": "Lenço Umedecido Coperalcool 70 Balde 150un",
+            "description": "Balde com 150 lenços umedecidos Coperalcool 70 para higienização de mãos e superfícies. Formato de balde para uso em balcão, caixa e recepção.",
+            "sku": "JH-ALC-004",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 22.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "JH-PRA-001 — Inseticida Aerossol Poderoso Kelldrin Mata Barata",
+          "temp_image_url": "https://kelldrin.com.br/wp-content/uploads/2023/07/todos-os-produtos-kelldrin-2020-1000x1000px-02-78.jpg",
+          "payload": {
+            "name": "Inseticida Aerossol Poderoso Kelldrin Mata Barata",
+            "description": "Multi inseticida aerossol Poderoso Kelldrin de ação específica contra baratas. Efeito de choque e ação residual em frestas e rodapés.",
+            "sku": "JH-PRA-001",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 13.90,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-PRA-002 — Inseticida Aerossol Poderoso Kelldrin Mata Escorpião",
+          "temp_image_url": "https://kelldrin.com.br/wp-content/uploads/2023/07/todos-os-produtos-kelldrin-2020-1000x1000px-02-81.jpg",
+          "payload": {
+            "name": "Inseticida Aerossol Poderoso Kelldrin Mata Escorpião",
+            "description": "Multi inseticida aerossol Poderoso Kelldrin registrado para escorpiões. Item de alta procura em Mato Grosso do Sul nos meses quentes de reprodução.",
+            "sku": "JH-PRA-002",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 15.90,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "JH-PRA-003 — Inseticida Aerossol Poderoso Kelldrin Óleo de Citronela",
+          "temp_image_url": "https://kelldrin.com.br/wp-content/uploads/2023/07/todos-os-produtos-kelldrin-2020-1000x1000px-02-80.jpg",
+          "payload": {
+            "name": "Inseticida Aerossol Poderoso Kelldrin Óleo de Citronela",
+            "description": "Multi inseticida aerossol Poderoso Kelldrin com óleo de citronela, contra mosquitos e pernilongos. Fragrância natural, indicado para ambientes residenciais.",
+            "sku": "JH-PRA-003",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.50,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "JH-PRA-004 — Evita Mofo Coala 80g Lavanda",
+          "temp_image_url": "https://cardealdistribuidora.agilecdn.com.br/420304_thumb_1.jpg?v=172-1631649877",
+          "payload": {
+            "name": "Evita Mofo Coala 80g Lavanda",
+            "description": "Antimofo Coala 80 g com fragrância lavanda, para armários, closets e ambientes fechados. Absorve umidade e evita odor de mofo em roupas e calçados.",
+            "sku": "JH-PRA-004",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 5.90,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - JH Distribuidora",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "JH Distribuidora — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - JH Distribuidora",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "JH Distribuidora — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": ["{{brand_id}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Limpeza e Conservação",
+          "salvar_id_como": "criteria_cat_limpeza_id",
+          "payload": {
+            "name": "JH Distribuidora — Limpeza e Conservação (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_0}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Álcool e Higiene",
+          "salvar_id_como": "criteria_cat_alcool_id",
+          "payload": {
+            "name": "JH Distribuidora — Álcool e Higiene (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": ["{{cat_ids_1}}"],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | JH Distribuidora",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | JH Distribuidora",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "2" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | JH Distribuidora",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | JH Distribuidora",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "3" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | JH Distribuidora",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | JH Distribuidora",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner_specific": false, "partners": [],
+            "is_company_specific": false, "companies": [],
+            "is_payment_method_specific": false, "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume JH Distribuidora",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | JH Distribuidora",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume JH Distribuidora",
+                "criteria_id": "{{criteria_cat_limpeza_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 12, "type": "PERCENTAGE", "value": 5, "is_product_value": false },
+                  { "minimum_quantity": 24, "type": "PERCENTAGE", "value": 9, "is_product_value": false },
+                  { "minimum_quantity": 60, "type": "PERCENTAGE", "value": 14, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [{ "profile_id": "4" }],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Álcool e Higiene | JH Distribuidora",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF JH Distribuidora — Álcool e Higiene",
+            "start_date": "2026-09-08",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF JH Distribuidora",
+                "criteria_id": "{{criteria_cat_alcool_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  { "minimum_quantity": 0, "type": "PERCENTAGE", "value": 7, "is_product_value": false }
+                ]
+              }
+            ],
+            "is_profile": false, "profiles": [],
+            "is_partner": false, "partners": [],
+            "is_company": false, "companies": [],
+            "is_payment_method": false, "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

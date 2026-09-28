@@ -59,6 +59,7 @@ import hmac
 import json
 import os
 import queue
+import re
 import secrets
 import sys
 import threading
@@ -77,6 +78,7 @@ for _fluxo in (sys.stdout, sys.stderr):
         pass
 
 import atendimento  # noqa: E402
+import extracao  # noqa: E402
 
 PORTA_PADRAO = 8787
 TAMANHO_MAXIMO = 8 * 1024 * 1024   # catalogo grande com imagens inline cabe folgado
@@ -105,6 +107,9 @@ FILA_PREVIA = queue.Queue()
 # entregue no callback SF3, o arquivo e movido para extracoes_feitas/.
 DIR_EXTRACAO = AQUI / "extracoes_pendentes"
 DIR_EXTRACAO_FEITA = AQUI / "extracoes_feitas"
+DIR_EXTRACAO_FALHA = AQUI / "extracoes_falhas"
+EXTRACAO_EM_CURSO = {"pedido_id": None, "desde": None}
+EXTRACAO_LOCK_TTL = 6 * 60 * 60
 
 
 def _extracoes_pendentes():
@@ -112,6 +117,72 @@ def _extracoes_pendentes():
     if not DIR_EXTRACAO.exists():
         return []
     return sorted(p.stem for p in DIR_EXTRACAO.glob("*.json"))
+
+
+def _reivindicar_extracao(caminho):
+    """Cria um lock atomico para impedir dois receptores de consumirem o mesmo pedido."""
+    lock = Path(str(caminho) + ".lock")
+    agora = time.time()
+    for tentativa in range(2):
+        try:
+            fd = os.open(str(lock), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            with os.fdopen(fd, "w", encoding="utf-8") as arquivo:
+                json.dump({"pid": os.getpid(), "desde": agora}, arquivo)
+            return lock
+        except FileExistsError:
+            try:
+                idade = agora - lock.stat().st_mtime
+            except OSError:
+                continue
+            if idade > EXTRACAO_LOCK_TTL:
+                try:
+                    lock.unlink()
+                except OSError:
+                    return None
+                continue
+            return None
+        except OSError as erro:
+            print(f"  [EXTRACAO] nao consegui criar lock de {caminho.name}: {erro}")
+            return None
+    return None
+
+
+def _liberar_extracao(lock):
+    try:
+        Path(lock).unlink()
+    except OSError:
+        pass
+
+
+def _mover_extracao(caminho, destino):
+    destino.mkdir(parents=True, exist_ok=True)
+    alvo = destino / Path(caminho).name
+    try:
+        Path(caminho).replace(alvo)
+    except FileNotFoundError:
+        pass
+
+
+def _escrever_json_atomico(caminho, valor):
+    caminho = Path(caminho)
+    temporario = caminho.with_name(caminho.name + ".tmp")
+    temporario.write_text(json.dumps(valor, ensure_ascii=False, indent=2), encoding="utf-8")
+    temporario.replace(caminho)
+
+
+def _registrar_extracao_entregue(pedido, arquivo, resumo):
+    registro = AQUI.parent / "pedidos-atendidos.jsonl"
+    linha = {
+        "pedido_id": pedido.get("pedido_id"),
+        "cliente": pedido.get("cliente"),
+        "data": time.strftime("%Y-%m-%d"),
+        "arquivo": arquivo,
+        "status": "concluido",
+        "resumo": resumo,
+        "entrega": "callback SF3",
+    }
+    with registro.open("a", encoding="utf-8") as arquivo_registro:
+        arquivo_registro.write(json.dumps(linha, ensure_ascii=False) + "\n")
 
 
 def _pedido_ja_atendido(pedido_id):
@@ -177,6 +248,105 @@ def _feedback_do_corpo(bruto):
 def _e_hex(valor):
     return (isinstance(valor, str) and len(valor) == 7 and valor[0] == "#"
             and all(c in "0123456789abcdefABCDEF" for c in valor[1:]))
+
+
+def _callback_extracao(pedido, corpo, args):
+    url = pedido.get("callback_url") or args.callback
+    token = pedido.get("callback_token") or args.callback_token
+    if not url:
+        return False, "pedido sem callback_url"
+    return atendimento.avisar_mitra(url, token, corpo)
+
+
+def _processar_extracao(caminho, args):
+    pedido = json.loads(Path(caminho).read_text(encoding="utf-8"))
+    pedido_id = pedido.get("pedido_id")
+    cliente = pedido.get("cliente") or pedido_id
+    print(f"\n{'=' * 62}\n  EXTRACAO {pedido_id} ? {cliente}\n{'=' * 62}")
+    try:
+        catalogo, resumo, logo_url = extracao.extrair(pedido)
+        nome = _nome_arquivo(catalogo, pedido_id)
+        destino = atendimento.DESTINO_JSON / nome
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        _escrever_json_atomico(destino, catalogo)
+        valido, saida = atendimento.validar(destino)
+        if not valido:
+            raise extracao.ExtracaoFalhou(
+                "catalogo gerado reprovado no validar_poc.py: " + saida[-1800:])
+        resumo = dict(resumo, status="concluido")
+        resumo_path = destino.with_name(destino.stem + ".resumo.json")
+        resumo_path.write_text(json.dumps({
+            "pedido_id": pedido_id, "status": "concluido",
+            "arquivo": f"Arquivos Json/{nome}", "logo_url": logo_url,
+            "resumo": resumo,
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        corpo = {
+            "pedido_id": pedido_id, "status": "concluido",
+            "fase": "extracao", "arquivo": f"Arquivos Json/{nome}",
+            "logo_url": logo_url, "resumo": resumo, "catalogo": catalogo,
+        }
+        if not logo_url:
+            corpo["logo_motivo"] = "nenhuma logo identificavel foi encontrada no site"
+        ok, detalhe = _callback_extracao(pedido, corpo, args)
+        print(f"  callback extracao: {'entregue' if ok else 'NAO entregue'} ? {detalhe}")
+        if not ok:
+            return False
+        _registrar_extracao_entregue(pedido, f"Arquivos Json/{nome}", resumo)
+        _mover_extracao(caminho, DIR_EXTRACAO_FEITA)
+        print(f"  [EXTRACAO-OK] {pedido_id} ? {len(catalogo.get('etapas', []))} etapas")
+        return True
+    except Exception as erro:
+        detalhe = f"{type(erro).__name__}: {erro}"
+        print(f"  [EXTRACAO-ERRO] {pedido_id} ? {detalhe}")
+        resumo = {
+            "status": "falhou", "produtos": 0, "categorias": 0,
+            "fonte": "site", "preco": "ausente", "imagens_substituidas": 0,
+            "observacoes": detalhe,
+        }
+        nome_base = re.sub(r"[^a-z0-9]+", "_", str(cliente).lower()).strip("_") or "cliente"
+        resumo_relativo = f"Arquivos Json/{nome_base}_poc.resumo.json"
+        resumo_path = atendimento.DESTINO_JSON / f"{nome_base}_poc.resumo.json"
+        try:
+            resumo_path.write_text(json.dumps({
+                "pedido_id": pedido_id, "status": "falhou",
+                "arquivo": resumo_relativo, "resumo": resumo,
+            }, ensure_ascii=False, indent=2), encoding="utf-8")
+        except OSError as escrita: 
+            print(f"  [EXTRACAO] nao consegui salvar resumo: {escrita}")
+        corpo = {
+            "pedido_id": pedido_id, "status": "falhou", "fase": "extracao",
+            "arquivo": resumo_relativo, "resumo": resumo,
+            "observacoes": detalhe, "erro": detalhe,
+        }
+        ok, callback = _callback_extracao(pedido, corpo, args)
+        print(f"  callback falha: {'entregue' if ok else 'NAO entregue'} ? {callback}")
+        if ok:
+            _mover_extracao(caminho, DIR_EXTRACAO_FALHA)
+            return True
+        return False
+
+
+def trabalhar_extracao(args):
+    """Consome a fila em disco; pedido s? sai ap?s callback confirmado."""
+    while True:
+        encontrou = False
+        for caminho in sorted(DIR_EXTRACAO.glob("*.json")) if DIR_EXTRACAO.exists() else []:
+            lock = _reivindicar_extracao(caminho)
+            if not lock:
+                continue
+            encontrou = True
+            pedido_id = caminho.stem
+            EXTRACAO_EM_CURSO.update(pedido_id=pedido_id, desde=time.time())
+            try:
+                _processar_extracao(caminho, args)
+            except Exception as erro:
+                print(f"  [ERRO] worker extracao {pedido_id}: {type(erro).__name__}: {erro}")
+            finally:
+                EXTRACAO_EM_CURSO.update(pedido_id=None, desde=None)
+                _liberar_extracao(lock)
+            break
+        if not encontrou:
+            time.sleep(2)
 
 
 def trabalhar(args):
@@ -493,6 +663,7 @@ class Manipulador(BaseHTTPRequestHandler):
                      "fila_banner": FILA_BANNER.qsize(),
                      "fila_previa": FILA_PREVIA.qsize(),
                      "fila_extracao": len(_extracoes_pendentes()),
+                     "extracao_criando": EXTRACAO_EM_CURSO["pedido_id"],
                      "criando": EM_CURSO["pedido_id"],
                      # O commit que ESTE processo carregou, capturado na
                      # subida. Comparado com o HEAD do disco, denuncia
@@ -501,6 +672,8 @@ class Manipulador(BaseHTTPRequestHandler):
                      "versao": VERSAO}
             if EM_CURSO["desde"]:
                 corpo["criando_ha_segundos"] = int(time.time() - EM_CURSO["desde"])
+            if EXTRACAO_EM_CURSO["desde"]:
+                corpo["extracao_criando_ha_segundos"] = int(time.time() - EXTRACAO_EM_CURSO["desde"])
             return self._responder(200, corpo)
         if self.path.startswith("/peca/"):
             return self.servir_peca()
@@ -599,6 +772,29 @@ class Manipulador(BaseHTTPRequestHandler):
                 "url": anterior.get("url"),
                 "observacoes": anterior.get("observacoes", "")})
 
+        # Idempotencia em voo (11/09/2026, Disflex): o Mitra reenviou o mesmo
+        # pedido_id 3x enquanto o primeiro ainda criava e cada copia virou um
+        # portal duplicado. `buscar` so pega o que JA concluiu; quem esta em
+        # EM_CURSO ou ainda na FILA precisa ser devolvido como duplicado tambem.
+        if EM_CURSO.get("pedido_id") == pedido_id:
+            print(f"  [DUPLICADO-EM-CURSO] {pedido_id} — ja criando, ignoro reenvio.")
+            return self._responder(200, {
+                "ok": True, "duplicado": True, "pedido_id": pedido_id,
+                "em_andamento": True,
+                "detalhe": "pedido ja esta sendo criado; aguarde o callback"})
+        try:
+            em_fila = any(
+                (item.get("pedido_id") == pedido_id)
+                if isinstance(item, dict) else False
+                for item in list(FILA.queue))
+        except Exception:
+            em_fila = False
+        if em_fila:
+            print(f"  [DUPLICADO-NA-FILA] {pedido_id} — ja enfileirado, ignoro reenvio.")
+            return self._responder(200, {
+                "ok": True, "duplicado": True, "pedido_id": pedido_id,
+                "em_andamento": True,
+                "detalhe": "pedido ja esta na fila; aguarde o callback"})
         FILA.put(pedido)
         print(f"  [ACEITO] {pedido_id} — {FILA.qsize()} na fila.")
         # 202: aceito, ainda nao feito. O resultado vai pelo callback.
@@ -954,6 +1150,7 @@ def main(argv=None):
 
     Manipulador.args = args
     threading.Thread(target=trabalhar, args=(args,), daemon=True).start()
+    threading.Thread(target=trabalhar_extracao, args=(args,), daemon=True).start()
     threading.Thread(target=trabalhar_banner, daemon=True).start()
     threading.Thread(target=trabalhar_previa, daemon=True).start()
 

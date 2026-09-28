@@ -1,0 +1,614 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-28 a partir de https://www.sottalimentos.com/ (vtex-varejo).",
+  "empresa": "Sott Alimentos",
+  "descricao_empresa": "Distribuição de pães, alimentos e produtos diversos para supermercados, padarias, pet shops e agropecuárias no Rio Grande do Sul.",
+  "gerado_em": "2026-09-28",
+  "setor": "Distribuição de Alimentos — Panificados, Snacks e Pet",
+  "portal_name": "Sott Alimentos POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Sott Alimentos",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Sott Alimentos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Pães e Bolos",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Pães e Bolos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Snacks e Salgadinhos",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Snacks e Salgadinhos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Pet Food",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Pet Food",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "SOT-001 — Pão de Forma Pullman Tradicional 480g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/397094/PaoPullman480gForma1.jpg",
+          "payload": {
+            "sku": "SOT-001",
+            "name": "Pão de Forma Pullman Tradicional 480g",
+            "description": "Pão de Forma Pullman Tradicional 480g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 8.99,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SOT-002 — Bisnaguito Pullman Tradicional 300g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/419802/BisnaguinhaPullman300g1.jpg",
+          "payload": {
+            "sku": "SOT-002",
+            "name": "Bisnaguito Pullman Tradicional 300g",
+            "description": "Bisnaguito Pullman Tradicional 300g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 7.99,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "SOT-003 — Pão Tortilha Rap10 Original 297g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/413024/PaoTortilhaPullman297gRap101.jpg",
+          "payload": {
+            "sku": "SOT-003",
+            "name": "Pão Tortilha Rap10 Original 297g",
+            "description": "Pão Tortilha Rap10 Original 297g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 13.95,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SOT-004 — Pão Tortilha Rap10 Fibras Integral 297g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/396997/PaodeTortilhaIntegralRap10297g1.jpg",
+          "payload": {
+            "sku": "SOT-004",
+            "name": "Pão Tortilha Rap10 Fibras Integral 297g",
+            "description": "Pão Tortilha Rap10 Fibras Integral 297g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 13.95,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "SOT-005 — Bolinho Ana Maria Chocolate 70g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/419806/BolinhoAnaMariaChocolate70g1.jpg",
+          "payload": {
+            "sku": "SOT-005",
+            "name": "Bolinho Ana Maria Chocolate 70g",
+            "description": "Bolinho Ana Maria Chocolate 70g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4.49,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "SOT-006 — Bolinho Ana Maria Baunilha 70g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/419813/BolinhoAnaMariaBaunilha70g1.jpg",
+          "payload": {
+            "sku": "SOT-006",
+            "name": "Bolinho Ana Maria Baunilha 70g",
+            "description": "Bolinho Ana Maria Baunilha 70g — Pães e Bolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4.49,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "SOT-007 — Salgadinho Takis Fuego 75g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/505928/SalgadinhoTakisFuego75g1.jpg",
+          "payload": {
+            "sku": "SOT-007",
+            "name": "Salgadinho Takis Fuego 75g",
+            "description": "Salgadinho Takis Fuego 75g — Snacks e Salgadinhos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 6.99,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SOT-008 — Crocantíssimo Original Queijo e Cebola 40g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/413577/SalgadinhoCrocantissimoOriginalde1.jpg",
+          "payload": {
+            "sku": "SOT-008",
+            "name": "Crocantíssimo Original Queijo e Cebola 40g",
+            "description": "Crocantíssimo Original Queijo e Cebola 40g — Snacks e Salgadinhos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 2.99,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "SOT-009 — Amendoim Japonês Elma Chips 60g",
+          "temp_image_url": "https://savegnagoio.vteximg.com.br/arquivos/ids/449028/AmendoimJaponesElmaChips60g1.jpg",
+          "payload": {
+            "sku": "SOT-009",
+            "name": "Amendoim Japonês Elma Chips 60g",
+            "description": "Amendoim Japonês Elma Chips 60g — Snacks e Salgadinhos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4.55,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "SOT-010 — Ração Monello Cães Filhotes Frango",
+          "temp_image_url": "https://cobasi.vteximg.com.br/arquivos/ids/1061857/MONELLO-CAES-FILHOTES-FRANGO.png",
+          "payload": {
+            "sku": "SOT-010",
+            "name": "Ração Monello Cães Filhotes Frango",
+            "description": "Ração Monello Cães Filhotes Frango — Pet Food.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 219.99,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "SOT-011 — Ração Select Gatos Adultos Castrados",
+          "temp_image_url": "https://cobasi.vteximg.com.br/arquivos/ids/1061896/SELECT-GATOS-ADULTOS-CASTRADOS.png",
+          "payload": {
+            "sku": "SOT-011",
+            "name": "Ração Select Gatos Adultos Castrados",
+            "description": "Ração Select Gatos Adultos Castrados — Pet Food.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 77.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "SOT-012 — Ração Select Gatos Mães e Filhotes",
+          "temp_image_url": "https://cobasi.vteximg.com.br/arquivos/ids/1061902/SELECT-MAES-E-FILHOS-GATOS.png",
+          "payload": {
+            "sku": "SOT-012",
+            "name": "Ração Select Gatos Mães e Filhotes",
+            "description": "Ração Select Gatos Mães e Filhotes — Pet Food.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 77.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Sott Alimentos",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Sott Alimentos — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Sott Alimentos",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Sott Alimentos — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pães e Bolos",
+          "salvar_id_como": "criteria_cat_paes_e_bolos_id",
+          "payload": {
+            "name": "Sott Alimentos — Pães e Bolos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Snacks e Salgadinhos",
+          "salvar_id_como": "criteria_cat_snacks_e_salgadinhos_id",
+          "payload": {
+            "name": "Sott Alimentos — Snacks e Salgadinhos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Pet Food",
+          "salvar_id_como": "criteria_cat_pet_food_id",
+          "payload": {
+            "name": "Sott Alimentos — Pet Food (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Sott Alimentos",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Sott Alimentos",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Sott Alimentos",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Sott Alimentos",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Sott Alimentos",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Sott Alimentos",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Sott Alimentos",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Sott Alimentos",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Sott Alimentos",
+                "criteria_id": "{{criteria_cat_paes_e_bolos_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Snacks e Salgadinhos | Sott Alimentos",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Sott Alimentos — Snacks e Salgadinhos",
+            "start_date": "2026-09-28",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Sott Alimentos",
+                "criteria_id": "{{criteria_cat_snacks_e_salgadinhos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

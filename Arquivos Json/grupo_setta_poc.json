@@ -1,0 +1,614 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-15 a partir de https://www.lojasetta.com/ (sitemap).",
+  "empresa": "Grupo Setta",
+  "descricao_empresa": "Grupo Setta: engenharia elétrica com fábrica de painéis, transformadores e eletrocentros, soluções de automação e rede de lojas de materiais elétricos (Loja Setta), atendendo indústria, agronegócio, mineração e construção há mais de 30 anos.",
+  "gerado_em": "2026-09-15",
+  "setor": "Suprimentos Industriais — Materiais e Equipamentos Elétricos",
+  "portal_name": "Grupo Setta POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Grupo Setta",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Grupo Setta",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Chaves de Partida e Comando",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Chaves de Partida e Comando",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Proteção e Correção de Fator de Potência",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Proteção e Correção de Fator de Potência",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Plugues, Tomadas e Conectores Industriais",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Plugues, Tomadas e Conectores Industriais",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "GRU-001 — Chave de Partida Soft-Starter SSW07 130A WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/chave_partida_soft_starter_ssw07_130a_47_1_9751c3dc534bbc477117110b6705fc58.jpg",
+          "payload": {
+            "sku": "GRU-001",
+            "name": "Chave de Partida Soft-Starter SSW07 130A WEG",
+            "description": "Chave de Partida Soft-Starter SSW07 130A WEG — Chaves de Partida e Comando.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 8313.19,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "GRU-002 — Chave Estrela-Triângulo 45A ET161 Lombard",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/chave_lombard_estrela_triangulo_et161_733_1_c485d8906d7d9805003e5a8e4cbb7a5e.jpg",
+          "payload": {
+            "sku": "GRU-002",
+            "name": "Chave Estrela-Triângulo 45A ET161 Lombard",
+            "description": "Chave Estrela-Triângulo 45A ET161 Lombard — Chaves de Partida e Comando.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 786.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "GRU-003 — Chave Trifásica Reversora 30A R10 Lombard",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/chave_lombard_trifasica_reversora_r10_30a_263_1_7d9460cda01621fa42cb34041464f692.jpg",
+          "payload": {
+            "sku": "GRU-003",
+            "name": "Chave Trifásica Reversora 30A R10 Lombard",
+            "description": "Chave Trifásica Reversora 30A R10 Lombard — Chaves de Partida e Comando.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 291.21,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "GRU-004 — Sinaleiro LED 110V Vermelho CEW-SM1 WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/sinaleiro_com_led_110v_vermelho_cew_sm1_weg_751_1_561ce9662456ce11c1addf40543eaf7f.jpg",
+          "payload": {
+            "sku": "GRU-004",
+            "name": "Sinaleiro LED 110V Vermelho CEW-SM1 WEG",
+            "description": "Sinaleiro LED 110V Vermelho CEW-SM1 WEG — Chaves de Partida e Comando.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 31.95,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "GRU-005 — Fusível NH Tamanho 01 125A FNH01-125U WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/fusivel_retardado_tipo_nh_tamanho_01_125a_fnh01_125u_weg_67_1_c8d8372cf83c817358147e7e91ac45e7.jpg",
+          "payload": {
+            "sku": "GRU-005",
+            "name": "Fusível NH Tamanho 01 125A FNH01-125U WEG",
+            "description": "Fusível NH Tamanho 01 125A FNH01-125U WEG — Proteção e Correção de Fator de Potência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 86.51,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          }
+        },
+        {
+          "label": "GRU-006 — Protetor de Surto VCL Slim 60kA 275V Clamper",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/protetor_de_surto_vcl_slim_60_ka_275v_583_1_263836a4f37c8e0b27b7315dfc85de2c.jpg",
+          "payload": {
+            "sku": "GRU-006",
+            "name": "Protetor de Surto VCL Slim 60kA 275V Clamper",
+            "description": "Protetor de Surto VCL Slim 60kA 275V Clamper — Proteção e Correção de Fator de Potência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 146.41,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GRU-007 — Unidade Capacitiva Trifásica 380V 5 kVAR WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/unid_cap_trif_380v_5_0_kvar_ucwt5v40_747_1_3fc819fa2e97126c0168567e3faf5089.jpg",
+          "payload": {
+            "sku": "GRU-007",
+            "name": "Unidade Capacitiva Trifásica 380V 5 kVAR WEG",
+            "description": "Unidade Capacitiva Trifásica 380V 5 kVAR WEG — Proteção e Correção de Fator de Potência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 259.44,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "GRU-008 — Unidade Capacitiva Trifásica 380V 20 kVAR WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/unid_cap_trif_380v_20_0_kvar_ucwt20v40_759_1_a0f2272f09274f2b260cfd370fd9e1d2.jpg",
+          "payload": {
+            "sku": "GRU-008",
+            "name": "Unidade Capacitiva Trifásica 380V 20 kVAR WEG",
+            "description": "Unidade Capacitiva Trifásica 380V 20 kVAR WEG — Proteção e Correção de Fator de Potência.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 780.54,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          }
+        },
+        {
+          "label": "GRU-009 — Plug Industrial 2P+T 32A 6h TLP32432 Metaltex",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/plug_industrial_220v_2p_t_32a_6h_tlp32432_561_1_5340a78288fe42e41f1c7fefe6ec21fa.jpg",
+          "payload": {
+            "sku": "GRU-009",
+            "name": "Plug Industrial 2P+T 32A 6h TLP32432 Metaltex",
+            "description": "Plug Industrial 2P+T 32A 6h TLP32432 Metaltex — Plugues, Tomadas e Conectores Industriais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 43.23,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "GRU-010 — Tomada Sobrepor 3P+T 32A 9h TLS32442 Metaltex",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/tomada_sobrepor_220v_3p_t_32a_9h_tls32442_703_1_ecfdf0407791dc0d6bde995d4ea0a434.jpg",
+          "payload": {
+            "sku": "GRU-010",
+            "name": "Tomada Sobrepor 3P+T 32A 9h TLS32442 Metaltex",
+            "description": "Tomada Sobrepor 3P+T 32A 9h TLS32442 Metaltex — Plugues, Tomadas e Conectores Industriais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 53.63,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "GRU-011 — Conector Bimetálico 16mm Intelli",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/conector_bimetalico_16mm_317_1_35beff9656e5a65aada9ea24565ef194.jpg",
+          "payload": {
+            "sku": "GRU-011",
+            "name": "Conector Bimetálico 16mm Intelli",
+            "description": "Conector Bimetálico 16mm Intelli — Plugues, Tomadas e Conectores Industriais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 18.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "GRU-012 — Conector Disjuntor-Motor e Contator ECCMP-32 WEG",
+          "temp_image_url": "https://images.tcdn.com.br/img/img_prod/1214158/conector_disjuntor_motor_e_contator_eccmp_32_weg_709_1_02e20c468bfba39d9cd7c5a8e4d66e66.jpg",
+          "payload": {
+            "sku": "GRU-012",
+            "name": "Conector Disjuntor-Motor e Contator ECCMP-32 WEG",
+            "description": "Conector Disjuntor-Motor e Contator ECCMP-32 WEG — Plugues, Tomadas e Conectores Industriais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.78,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Grupo Setta",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Grupo Setta — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Grupo Setta",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Grupo Setta — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Chaves de Partida e Comando",
+          "salvar_id_como": "criteria_cat_chaves_de_partida_e_comando_id",
+          "payload": {
+            "name": "Grupo Setta — Chaves de Partida e Comando (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Proteção e Correção de Fator de Potência",
+          "salvar_id_como": "criteria_cat_protecao_e_correcao_de_fator_de_potencia_id",
+          "payload": {
+            "name": "Grupo Setta — Proteção e Correção de Fator de Potência (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Plugues, Tomadas e Conectores Industriais",
+          "salvar_id_como": "criteria_cat_plugues_tomadas_e_conectores_industriais_id",
+          "payload": {
+            "name": "Grupo Setta — Plugues, Tomadas e Conectores Industriais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Grupo Setta",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Grupo Setta",
+            "start_date": "2026-09-15",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Grupo Setta",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Grupo Setta",
+            "start_date": "2026-09-15",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Grupo Setta",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Grupo Setta",
+            "start_date": "2026-09-15",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Grupo Setta",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Grupo Setta",
+            "start_date": "2026-09-15",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Grupo Setta",
+                "criteria_id": "{{criteria_cat_chaves_de_partida_e_comando_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Proteção e Correção de Fator de Potência | Grupo Setta",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Grupo Setta — Proteção e Correção de Fator de Potência",
+            "start_date": "2026-09-15",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Grupo Setta",
+                "criteria_id": "{{criteria_cat_protecao_e_correcao_de_fator_de_potencia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

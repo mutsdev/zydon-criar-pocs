@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-17 a partir de https://www.emtl.com.br/ (paginas-categoria).",
+  "empresa": "EMTL",
+  "descricao_empresa": "EMTL Distribuidora: notebooks, desktops, servidores, impressoras e automação comercial das marcas Dell, HP, Lenovo, Brother, Epson e Lexmark para revendas e empresas.",
+  "gerado_em": "2026-09-17",
+  "setor": "Tecnologia — Distribuição de Produtos de Informática",
+  "portal_name": "EMTL POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca EMTL",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "EMTL",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Notebooks e Desktops",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Notebooks e Desktops",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Servidores",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Servidores",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Impressoras e Multifuncionais",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Impressoras e Multifuncionais",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "EMT-001 — Notebook Dell Vostro 15 3000",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/notebooks/vostro-15-300.png",
+          "payload": {
+            "sku": "EMT-001",
+            "name": "Notebook Dell Vostro 15 3000",
+            "description": "Notebook Dell Vostro 15 3000 — Notebooks e Desktops.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 3890.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-002 — Notebook Dell Vostro 14 5000",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/notebooks/vostro-14-500.jpg",
+          "payload": {
+            "sku": "EMT-002",
+            "name": "Notebook Dell Vostro 14 5000",
+            "description": "Notebook Dell Vostro 14 5000 — Notebooks e Desktops.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 4990.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-003 — Notebook Dell Latitude 5400",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/notebooks/latitude-5400.jpg",
+          "payload": {
+            "sku": "EMT-003",
+            "name": "Notebook Dell Latitude 5400",
+            "description": "Notebook Dell Latitude 5400 — Notebooks e Desktops.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 6450.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-004 — Desktop Dell OptiPlex 3070 Micro",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/desktops/optiplex-3070-micro.png",
+          "payload": {
+            "sku": "EMT-004",
+            "name": "Desktop Dell OptiPlex 3070 Micro",
+            "description": "Desktop Dell OptiPlex 3070 Micro — Notebooks e Desktops.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 3290.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-005 — Desktop HP EliteDesk 800 Mini",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/desktops/desktop-hp-elitedesk-800-mini.jpg",
+          "payload": {
+            "sku": "EMT-005",
+            "name": "Desktop HP EliteDesk 800 Mini",
+            "description": "Desktop HP EliteDesk 800 Mini — Notebooks e Desktops.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4180.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-006 — Servidor Dell PowerEdge R240 Rack",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/servidores/servidor-rack-powerEdge-r240.png",
+          "payload": {
+            "sku": "EMT-006",
+            "name": "Servidor Dell PowerEdge R240 Rack",
+            "description": "Servidor Dell PowerEdge R240 Rack — Servidores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9800.0,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-007 — Servidor Dell PowerEdge T340 Torre",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/servidores/servidor-torre-powerEdge-t340.png",
+          "payload": {
+            "sku": "EMT-007",
+            "name": "Servidor Dell PowerEdge T340 Torre",
+            "description": "Servidor Dell PowerEdge T340 Torre — Servidores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 12900.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-008 — Servidor HPE ProLiant DL20 Gen10",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/servidores/servidor-hpe-proLiant-dL20-gen10.png",
+          "payload": {
+            "sku": "EMT-008",
+            "name": "Servidor HPE ProLiant DL20 Gen10",
+            "description": "Servidor HPE ProLiant DL20 Gen10 — Servidores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 8750.0,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-009 — Servidor HPE ProLiant ML30 Gen10",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/servidores/servidor-hpe-proLiant-ml30-gen10.jpg",
+          "payload": {
+            "sku": "EMT-009",
+            "name": "Servidor HPE ProLiant ML30 Gen10",
+            "description": "Servidor HPE ProLiant ML30 Gen10 — Servidores.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 7990.0,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-010 — Impressora Brother HL-L3210CW Laser Color",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/impressoras/brother-HL-L3210CW.jpg",
+          "payload": {
+            "sku": "EMT-010",
+            "name": "Impressora Brother HL-L3210CW Laser Color",
+            "description": "Impressora Brother HL-L3210CW Laser Color — Impressoras e Multifuncionais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1890.0,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-011 — Multifuncional Brother MFC-L8900CDW",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/impressoras/brother-MFC-L8900CDW.jpg",
+          "payload": {
+            "sku": "EMT-011",
+            "name": "Multifuncional Brother MFC-L8900CDW",
+            "description": "Multifuncional Brother MFC-L8900CDW — Impressoras e Multifuncionais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4690.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "EMT-012 — Impressora HP Smart Tank 517",
+          "temp_image_url": "https://www.emtl.com.br:443/template/pw-images/impressoras/hp-impressoras-smart-tank.jpg",
+          "payload": {
+            "sku": "EMT-012",
+            "name": "Impressora HP Smart Tank 517",
+            "description": "Impressora HP Smart Tank 517 — Impressoras e Multifuncionais.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1290.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - EMTL",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "EMTL — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - EMTL",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "EMTL — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Notebooks e Desktops",
+          "salvar_id_como": "criteria_cat_notebooks_e_desktops_id",
+          "payload": {
+            "name": "EMTL — Notebooks e Desktops (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Servidores",
+          "salvar_id_como": "criteria_cat_servidores_id",
+          "payload": {
+            "name": "EMTL — Servidores (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Impressoras e Multifuncionais",
+          "salvar_id_como": "criteria_cat_impressoras_e_multifuncionais_id",
+          "payload": {
+            "name": "EMTL — Impressoras e Multifuncionais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | EMTL",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | EMTL",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | EMTL",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | EMTL",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | EMTL",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | EMTL",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume EMTL",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | EMTL",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume EMTL",
+                "criteria_id": "{{criteria_cat_notebooks_e_desktops_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Servidores | EMTL",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF EMTL — Servidores",
+            "start_date": "2026-09-17",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF EMTL",
+                "criteria_id": "{{criteria_cat_servidores_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+ "site": "https://loja-bio-infinity.lojaintegrada.com.br/",
+ "gerador": "Loja Integrada",
+ "plataforma": "lojaintegrada",
+ "lojas_externas": [],
+ "total": 12,
+ "itens": [
+  {
+   "nome": "ELETROCARDIOGRAFO IMAC 120 PRO com DICOM - ZONCARE",
+   "preco": 18990.0,
+   "categoria": "Equipamentos de Diagnostico",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/184006709/img_3717-kxrn03yxsb.png",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/eletrocardiografo-com-zoncare",
+   "codigo": "ZE01",
+   "marca": "Zoncare",
+   "descricao": "Eletrocardiografo Zoncare IMAC 120 PRO com DICOM, 12 derivacoes simultaneas, 12 canais de impressao, tela touch de 10 polegadas, USB, SD CARD e LAN, armazenamento de ate 1.000 exames e bateria de litio com ate 8 horas de uso."
+  },
+  {
+   "nome": "MONITOR MULTIPARAMETRO M10 - BIOLIGHT",
+   "preco": null,
+   "categoria": "Equipamentos de Diagnostico",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/182909864/4bde669ef1.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/qswq3y6rs-monitor-multiparametro-alfamed-vita-i120-12ecg-spo2-resp-temp-pni-pi",
+   "codigo": "BLEM04-01",
+   "marca": "Biolight",
+   "descricao": "Monitor de sinais vitais Biolight M10 para pacientes adultos, pediatricos e neonatais. Mede SpO2, temperatura, NIBP, respiracao e ECG; possui tela de 10 polegadas, bateria recarregavel, Wi-Fi, HL7 e armazenamento de tendencias."
+  },
+  {
+   "nome": "OXIMETRO DE PULSO SP20 - CREATIVE - COM CARREGADOR",
+   "preco": null,
+   "categoria": "Equipamentos de Diagnostico",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/185261354/sp20-yflp2woqwg.png",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/oximetro-de-pulso-sp20",
+   "codigo": "CREO01",
+   "marca": "Criticare",
+   "descricao": "Oximetro de pulso portatil e de mesa SP-20 com monitoramento de SpO2, frequencia de pulso, indice de perfusao e curva pletismografica. Uso adulto, pediatrico e neonatal, alarmes ajustaveis, bateria de litio e armazenamento de dados."
+  },
+  {
+   "nome": "Carregador de Mesa para Oximetro de Pulso Sense 10 Alfamed",
+   "preco": 490.0,
+   "categoria": "Equipamentos de Diagnostico",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/185271221/17a376e072.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/oximetro-de-pulso-portatil-com-curva-sense-10-alfamed",
+   "codigo": "AMEO01-01",
+   "marca": "Alfamed",
+   "descricao": "Carregador de mesa para oximetro Sense 10 Alfamed, com design compacto e bivolt automatico de 100 a 240 Vac, 50/60 Hz. Nao inclui o oximetro Sense 10."
+  },
+  {
+   "nome": "CABO DE ECG 10 VIAS ZONCARE IMAC 120 PRO",
+   "preco": null,
+   "categoria": "Acessorios para Eletrocardiografia",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953328/bi310g-12--2--rojl7l9fgc.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/cabo-de-ecg-10-vias-zoncare-imac-120-pro",
+   "codigo": "BI310G-12",
+   "marca": "BY",
+   "descricao": "Cabo de ECG com 10 vias para eletrocardiografo Zoncare IMAC 120 PRO, terminais tipo garra, padrao de cores AHA, rabicho de 2 metros e comprimento total de 3,3 metros. Fabricado em TPU. Registro ANVISA 82205419006."
+  },
+  {
+   "nome": "CABO DE ECG 10 VIAS EDAN/SCHILLER/HP - KC210PA-014C",
+   "preco": null,
+   "categoria": "Acessorios para Eletrocardiografia",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953326/bi310g-05--1--r0tmyxbsb6.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/cabo-de-ecg-10-vias-edan-schiller-hp-kc210pa-014c",
+   "codigo": "BI310G-05",
+   "marca": "BY",
+   "descricao": "Cabo de ECG com 10 vias para equipamentos Edan, Schiller e HP, com terminais tipo garra, padrao de cores AHA, cabo de 3,3 metros e revestimento em poliuretano termoplastico. Registro ANVISA 82205419006."
+  },
+  {
+   "nome": "ADAPTADOR ECG 10 VIAS BANANA - GARRA - BY",
+   "preco": null,
+   "categoria": "Acessorios para Eletrocardiografia",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953267/bi310o-02--1--sc8psjzcuf.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/adaptador-ecg-10-vias-banana-garra-by",
+   "codigo": "BI310O-02",
+   "marca": "BY",
+   "descricao": "Adaptador para cabo de ECG de 10 vias, destinado a conexao do paciente e adaptacao de conector banana para conector garra. Registro ANVISA 82205419006."
+  },
+  {
+   "nome": "CABO DE ECG 10 VIAS - TIPO GARRA - PHILIPS - BY",
+   "preco": null,
+   "categoria": "Acessorios para Eletrocardiografia",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953324/bi310g-05--4--aqegjsyrxs.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/cabo-de-ecg-10-vias-tipo-garra-philips-by",
+   "codigo": "BI310G-05-PH",
+   "marca": "BY",
+   "descricao": "Cabo de ECG com 10 vias e terminais tipo garra para equipamentos Philips, indicado para monitoramento de curvas de ECG e frequencia cardiaca."
+  },
+  {
+   "nome": "VALVULA PEEP DE 2-10CMH2O, CONECTOR 30F, COR LARANJA REUTILIZAVEL - BY-BESMED",
+   "preco": null,
+   "categoria": "Oxigenoterapia e Reanimacao",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953633/o48-jktizg15gj.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/valvula-peep-de-2-10cmh2o-conector-30f-cor-laranja-reutilizavel-by-besmed",
+   "codigo": "B1S3V-05",
+   "marca": "BY / Besmed",
+   "descricao": "Valvula PEEP reutilizavel de 2 a 10 cmH2O, cor laranja, fabricada em polipropileno e policarbonato, com mola de aco inoxidavel e conector ID 30 mm. Livre de latex. Registro ANVISA 82205410009."
+  },
+  {
+   "nome": "PULMAO TESTE - 1000 ML - BY-BESMED",
+   "preco": null,
+   "categoria": "Oxigenoterapia e Reanimacao",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953469/o51-rn0td8ji7w.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/pulmao-teste-1000-ml-by-besmed",
+   "codigo": "B1VP-01",
+   "marca": "BY / Besmed",
+   "descricao": "Pulmao de teste de 1000 ml para ventilador mecanico, com balao de silicone, conector de policarbonato e volume tidal de 500 ml. Reutilizavel, livre de latex e destinado a verificacao do funcionamento do ventilador, nao ao uso direto em paciente."
+  },
+  {
+   "nome": "REANIMADOR PEDIATRICO COM BALAO DE 500ML E RESERVATORIO DE O2 DE 2500ML - BY-BESMED",
+   "preco": null,
+   "categoria": "Oxigenoterapia e Reanimacao",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953475/o30-htrx7sspvw.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/reanimador-pediatrico-com-balao-de-500ml-e-reservatorio-de-o2-de-2500ml-by-besmed",
+   "codigo": "B1S1P-02",
+   "marca": "BY / Besmed",
+   "descricao": "Reanimador manual de silicone pediatrico com balao de 500 ml e reservatorio de oxigenio de 2500 ml. Possui mascara, valvula PEEP, valvula de seguranca e componentes livres de latex. Registro ANVISA 82205410009."
+  },
+  {
+   "nome": "REANIMADOR ADULTO COM BALAO DE 1600ML E RESERVATORIO DE O2 DE 2500ML - BY-BESMED",
+   "preco": null,
+   "categoria": "Oxigenoterapia e Reanimacao",
+   "imagem": "https://cdn.awsli.com.br/500x500/2497/2497475/produto/313953472/o33-z3aznetkfs.jpg",
+   "url": "https://loja-bio-infinity.lojaintegrada.com.br/reanimador-adulto-com-balao-de-1600ml-e-reservatorio-de-o2-de-2500ml-by-besmed",
+   "codigo": "B1S1A-04",
+   "marca": "BY / Besmed",
+   "descricao": "Reanimador manual de silicone adulto com balao de 1600 ml e reservatorio de oxigenio de 2500 ml. Indicado como auxiliar artificial de respiracao e reanimacao cardiopulmonar; reutilizavel e livre de latex. Registro ANVISA 82205410009."
+  }
+ ]
+}

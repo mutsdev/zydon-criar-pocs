@@ -1,0 +1,626 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-14 a partir de https://www.curamedph.com.br/ (home).",
+  "empresa": "Curamed",
+  "descricao_empresa": "Distribuidora de produtos hospitalares e materiais médicos para clínicas, hospitais e farmácias.",
+  "gerado_em": "2026-09-14",
+  "setor": "Saúde — Distribuição de produtos hospitalares",
+  "portal_name": "Curamed POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Curamed",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Curamed",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Curativos e Fitas",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Curativos e Fitas",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Fios de Sutura e Descartáveis",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Fios de Sutura e Descartáveis",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Higienização e Resíduos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Higienização e Resíduos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "CUR-001 — Compressa de Gaze Estéril Cremer",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-88d0d16df9b748d9a33cf33de8bcfb19.png",
+          "payload": {
+            "sku": "CUR-001",
+            "name": "Compressa de Gaze Estéril Cremer",
+            "description": "Compressa de Gaze Estéril Cremer — Curativos e Fitas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 8.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-002 — Atadura de Crepe Cremer 13 fios",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-600d12f8e214017645ea078bdf69a036.png",
+          "payload": {
+            "sku": "CUR-002",
+            "name": "Atadura de Crepe Cremer 13 fios",
+            "description": "Atadura de Crepe Cremer 13 fios — Curativos e Fitas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 4.5,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-003 — Curativo Adesivo Medix cx 500",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-1bd6d209413a64880c149361f40f8022.png",
+          "payload": {
+            "sku": "CUR-003",
+            "name": "Curativo Adesivo Medix cx 500",
+            "description": "Curativo Adesivo Medix cx 500 — Curativos e Fitas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 39.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-004 — Fita Micropore 3M 25mm x 10m",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-c83d0838a35ab155afe315d9981a2039.png",
+          "payload": {
+            "sku": "CUR-004",
+            "name": "Fita Micropore 3M 25mm x 10m",
+            "description": "Fita Micropore 3M 25mm x 10m — Curativos e Fitas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.8,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-005 — Creme Barreira Cavilon 3M 92g",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-c806683ba216b7c3cae62304c48875f2.png",
+          "payload": {
+            "sku": "CUR-005",
+            "name": "Creme Barreira Cavilon 3M 92g",
+            "description": "Creme Barreira Cavilon 3M 92g — Curativos e Fitas.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 89.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-006 — Fio Categute Simples 3-0 c/ agulha",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-a1ebf707bdf516e08f2cbf44d4eed8c3.png",
+          "payload": {
+            "sku": "CUR-006",
+            "name": "Fio Categute Simples 3-0 c/ agulha",
+            "description": "Fio Categute Simples 3-0 c/ agulha — Fios de Sutura e Descartáveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 14.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-007 — Fio de Polipropileno 3-0 c/ agulha",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-76e2cb550c5b02a86e5c340c57fb943c.png",
+          "payload": {
+            "sku": "CUR-007",
+            "name": "Fio de Polipropileno 3-0 c/ agulha",
+            "description": "Fio de Polipropileno 3-0 c/ agulha — Fios de Sutura e Descartáveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 16.5,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-008 — Fio de Nylon 3-0 c/ agulha",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-9d39d395e58824b5964e48e09defc8f6.png",
+          "payload": {
+            "sku": "CUR-008",
+            "name": "Fio de Nylon 3-0 c/ agulha",
+            "description": "Fio de Nylon 3-0 c/ agulha — Fios de Sutura e Descartáveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 9.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-009 — Seringa Descartável 20ml c/ agulha",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-d2a7dbf79c5362a01c8e0d9e8f697fe3.png",
+          "payload": {
+            "sku": "CUR-009",
+            "name": "Seringa Descartável 20ml c/ agulha",
+            "description": "Seringa Descartável 20ml c/ agulha — Fios de Sutura e Descartáveis.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 1.45,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-010 — Saco para Lixo Infectante 120L",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-43aa83355039d4cd8218ad08ef7a57f5.png",
+          "payload": {
+            "sku": "CUR-010",
+            "name": "Saco para Lixo Infectante 120L",
+            "description": "Saco para Lixo Infectante 120L — Higienização e Resíduos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 59.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-011 — Detergente Enzimático Perox 1L",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-5e25ddc73aeb1c447c75126d3bfc8936.png",
+          "payload": {
+            "sku": "CUR-011",
+            "name": "Detergente Enzimático Perox 1L",
+            "description": "Detergente Enzimático Perox 1L — Higienização e Resíduos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 42.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "CUR-012 — Algodão Hidrófilo 500g",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-38e800d6b7083f54898cddae4f463157.png",
+          "payload": {
+            "sku": "CUR-012",
+            "name": "Algodão Hidrófilo 500g",
+            "description": "Algodão Hidrófilo 500g — Higienização e Resíduos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 18.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Curamed",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Curamed — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Curamed",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Curamed — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Curativos e Fitas",
+          "salvar_id_como": "criteria_cat_curativos_e_fitas_id",
+          "payload": {
+            "name": "Curamed — Curativos e Fitas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Fios de Sutura e Descartáveis",
+          "salvar_id_como": "criteria_cat_fios_de_sutura_e_descartaveis_id",
+          "payload": {
+            "name": "Curamed — Fios de Sutura e Descartáveis (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Higienização e Resíduos",
+          "salvar_id_como": "criteria_cat_higienizacao_e_residuos_id",
+          "payload": {
+            "name": "Curamed — Higienização e Resíduos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Curamed",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Curamed",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Curamed",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Curamed",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Curamed",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Curamed",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Curamed",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Curamed",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Curamed",
+                "criteria_id": "{{criteria_cat_curativos_e_fitas_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Fios de Sutura e Descartáveis | Curamed",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Curamed — Fios de Sutura e Descartáveis",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Curamed",
+                "criteria_id": "{{criteria_cat_fios_de_sutura_e_descartaveis_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

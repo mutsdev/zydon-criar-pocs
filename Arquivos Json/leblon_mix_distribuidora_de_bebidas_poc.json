@@ -1,0 +1,595 @@
+{
+  "descricao_empresa": "Distribuidora de bebidas com loja online em leblonmix.com.br: cervejas, destilados, vinhos e espumantes vendidos em fardos e caixas para bares, restaurantes e revendedores.",
+  "empresa": "Leblon Mix Distribuidora de Bebidas",
+  "etapas": [
+    {
+      "endpoint": "brands",
+      "nome": "1. MARCA",
+      "requests": [
+        {
+          "label": "Criar Marca Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Leblon Mix Distribuidora de Bebidas"
+          },
+          "salvar_id_como": "brand_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "categories",
+      "nome": "2. CATEGORIAS",
+      "requests": [
+        {
+          "label": "Categoria Cervejas",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Cervejas"
+          },
+          "salvar_id_como": "cat_ids_0"
+        },
+        {
+          "label": "Categoria Destilados",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Destilados"
+          },
+          "salvar_id_como": "cat_ids_1"
+        },
+        {
+          "label": "Categoria Vinhos e Espumantes",
+          "payload": {
+            "active": true,
+            "images": [],
+            "name": "Vinhos e Espumantes"
+          },
+          "salvar_id_como": "cat_ids_2"
+        }
+      ]
+    },
+    {
+      "endpoint": "products",
+      "nome": "3. PRODUTOS",
+      "requests": [
+        {
+          "label": "LBM-001 — Cerveja Heineken Lata 350ml Fd 12 Unid",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Cerveja Heineken lata 350ml em fardo com 12 unidades. Lager premium de venda garantida para bares e restaurantes.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 12,
+            "name": "Cerveja Heineken Lata 350ml Fd 12 Unid",
+            "price": 59.99,
+            "sku": "LBM-001",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-d9dc791159fe40fd937dc7ee39c889d3.png"
+        },
+        {
+          "label": "LBM-002 — Cerveja Budweiser Lata 350ml Pct c/ 12 Un",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Cerveja Budweiser lata 350ml em pacote com 12 unidades. American lager de alto giro para revenda.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 12,
+            "name": "Cerveja Budweiser Lata 350ml Pct c/ 12 Un",
+            "price": 45.99,
+            "sku": "LBM-002",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-49aa4ecb45ff45f98e7a65565e99a271.png"
+        },
+        {
+          "label": "LBM-003 — Cerveja Corona Lata 350ml Fd 8 Unid",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_0}}",
+            "description": "Cerveja Corona Extra lata 350ml em fardo com 8 unidades. Ideal para casas com público premium.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 8,
+            "minimum_stock": 0,
+            "multiple_for_sale": 8,
+            "name": "Cerveja Corona Lata 350ml Fd 8 Unid",
+            "price": 39.99,
+            "sku": "LBM-003",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-9870df19ad70459f96dba4657c8d4efd.png"
+        },
+        {
+          "label": "LBM-004 — Gin London Dry Bombay Sapphire Garrafa 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Gin London Dry Bombay Sapphire garrafa 750ml. Botânicos clássicos para coquetelaria e bares.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 6,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Gin London Dry Bombay Sapphire Garrafa 750ml",
+            "price": 89.99,
+            "sku": "LBM-004",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-e862d4d5211744f2b91f8950e43850b4.jpeg"
+        },
+        {
+          "label": "LBM-005 — Gin London Dry Tanqueray Garrafa 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Gin London Dry Tanqueray garrafa 750ml. Zimbro marcante, base de drinks clássicos como gin tônica.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 6,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Gin London Dry Tanqueray Garrafa 750ml",
+            "price": 99.99,
+            "sku": "LBM-005",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-ade28e74167743b4aa80dc4308fd8921.png"
+        },
+        {
+          "label": "LBM-006 — Vodka Smirnoff Ice 275ml Fd 24 Unid",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Smirnoff Ice 275ml em fardo com 24 unidades. Bebida pronta de alto giro para festas e conveniências.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 24,
+            "minimum_stock": 0,
+            "multiple_for_sale": 24,
+            "name": "Vodka Smirnoff Ice 275ml Fd 24 Unid",
+            "price": 139.99,
+            "sku": "LBM-006",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-ef9504c2b33746d683a61b007b7dd0ed.png"
+        },
+        {
+          "label": "LBM-007 — Aperitivo de Carvalho Black Stone Garrafa 1l",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Aperitivo de carvalho Black Stone garrafa 1l. Opção de entrada para doses e caipirinhas em bares.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 12,
+            "name": "Aperitivo de Carvalho Black Stone Garrafa 1l",
+            "price": 19.99,
+            "sku": "LBM-007",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-a78626f401334a2d9ba28f915a25a1a1.png"
+        },
+        {
+          "label": "LBM-008 — Conhaque Dreher 900ml Cx 12 Unid",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_1}}",
+            "description": "Conhaque Dreher 900ml em caixa com 12 unidades. Clássico brasileiro para bares e distribuidores.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 12,
+            "minimum_stock": 0,
+            "multiple_for_sale": 12,
+            "name": "Conhaque Dreher 900ml Cx 12 Unid",
+            "price": 219.99,
+            "sku": "LBM-008",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-c180d5b20a584a0c9df71b7033eaa7c1.png"
+        },
+        {
+          "label": "LBM-009 — Espumante Monte Paschoal Moscatel Rosé 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Espumante Monte Paschoal Moscatel Rosé 750ml. Doce e aromático, ótimo para eventos e fim de ano.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 6,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Espumante Monte Paschoal Moscatel Rosé 750ml",
+            "price": 49.99,
+            "sku": "LBM-009",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-116cdb8d10294778b17a83777e0e7e50.jpg"
+        },
+        {
+          "label": "LBM-010 — Espumante Chandon Rosé Brut 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Espumante brasileiro Chandon Rosé Brut 750ml. Rótulo premium para restaurantes e empórios.",
+            "ean_gtin": "",
+            "highlight": true,
+            "images": [],
+            "minimum_for_sale": 6,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Espumante Chandon Rosé Brut 750ml",
+            "price": 89.99,
+            "sku": "LBM-010",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-188aa602f9f64996b9d14069dcbdc600.jpeg"
+        },
+        {
+          "label": "LBM-011 — Vinho Chileno Gato Negro Cabernet Sauvignon 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Vinho chileno tinto Gato Negro Cabernet Sauvignon 750ml. Seco e encorpado, giro garantido no varejo.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 6,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Vinho Chileno Gato Negro Cabernet Sauvignon 750ml",
+            "price": 44.99,
+            "sku": "LBM-011",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-06863059e05a48f09efa01682b847310.png"
+        },
+        {
+          "label": "LBM-012 — Vinho Casa Rodrigues Tinto Suave 750ml",
+          "payload": {
+            "active": true,
+            "brand_id": "{{brand_id}}",
+            "category_id": "{{cat_ids_2}}",
+            "description": "Vinho brasileiro Casa Rodrigues tinto suave 750ml. Entrada acessível para restaurantes e mercadinhos.",
+            "ean_gtin": "",
+            "highlight": false,
+            "images": [],
+            "minimum_for_sale": 1,
+            "minimum_stock": 0,
+            "multiple_for_sale": 6,
+            "name": "Vinho Casa Rodrigues Tinto Suave 750ml",
+            "price": 14.99,
+            "sku": "LBM-012",
+            "standard_unit_id": 2,
+            "stock": 100,
+            "video_url": ""
+          },
+          "temp_image_url": "https://assets.ibecom.com.br/ib.item.image.medium/m-09ef5aee79bd403fa69d070927e7601e.jpeg"
+        }
+      ]
+    },
+    {
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Leblon Mix Distribuidora de Bebidas — Marca (Tabela de Preço)"
+          },
+          "salvar_id_como": "criteria_preco_id"
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Leblon Mix Distribuidora de Bebidas — Marca (Regra de Listagem)"
+          },
+          "salvar_id_como": "criteria_listagem_id"
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Cervejas",
+          "payload": {
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_0}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Leblon Mix Distribuidora de Bebidas — Cervejas (Desconto)"
+          },
+          "salvar_id_como": "criteria_cat_cervejas_id"
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Vinhos e Espumantes",
+          "payload": {
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_2}}"
+                ]
+              }
+            },
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "name": "Leblon Mix Distribuidora de Bebidas — Vinhos e Espumantes (Desconto)"
+          },
+          "salvar_id_como": "criteria_cat_vinhos_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "price-tables",
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "requests": [
+        {
+          "label": "Tabela 1 | Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 5,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 1 | Leblon Mix Distribuidora de Bebidas",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "start_date": "2026-09-10"
+          },
+          "salvar_id_como": "tp_1_id"
+        },
+        {
+          "label": "Tabela 2 | Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 15,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 2 | Leblon Mix Distribuidora de Bebidas",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "start_date": "2026-09-10"
+          },
+          "salvar_id_como": "tp_2_id"
+        },
+        {
+          "label": "Tabela 3 | Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "criteria_type": "FILTER",
+                "rate_type": "DECREASE",
+                "value": 30,
+                "value_type": "PERCENTAGE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_company_specific": false,
+            "is_partner_specific": false,
+            "is_payment_method_specific": false,
+            "is_profile_specific": true,
+            "name": "Tabela 3 | Leblon Mix Distribuidora de Bebidas",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "start_date": "2026-09-10"
+          },
+          "salvar_id_como": "tp_3_id"
+        }
+      ]
+    },
+    {
+      "endpoint": "discounts",
+      "nome": "6. DESCONTOS",
+      "requests": [
+        {
+          "label": "Desconto Progressivo a Volume Cervejas | Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_cat_cervejas_id}}",
+                "criteria_type": "FILTER",
+                "name": "Progressivo Volume Cervejas Leblon Mix",
+                "ranges": [
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5
+                  },
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 24,
+                    "type": "PERCENTAGE",
+                    "value": 9
+                  },
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 15
+                  }
+                ],
+                "type": "PROGRESSIVE"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_active": true,
+            "is_company": false,
+            "is_discount_over_discount": false,
+            "is_partner": false,
+            "is_payment_method": false,
+            "is_profile": true,
+            "name": "Progressivo Volume Cervejas | Leblon Mix Distribuidora de Bebidas",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "start_date": "2026-09-10"
+          },
+          "salvar_id_como": "desconto_progressivo_id"
+        },
+        {
+          "label": "Desconto Fixo 8% em Vinhos e Espumantes | Leblon Mix Distribuidora de Bebidas",
+          "payload": {
+            "companies": [],
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_cat_vinhos_id}}",
+                "criteria_type": "FILTER",
+                "name": "8% OFF Vinhos Leblon Mix",
+                "ranges": [
+                  {
+                    "is_product_value": false,
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8
+                  }
+                ],
+                "type": "FIXED"
+              }
+            ],
+            "end_date": "2060-01-01",
+            "is_active": true,
+            "is_company": false,
+            "is_discount_over_discount": false,
+            "is_partner": false,
+            "is_payment_method": false,
+            "is_profile": false,
+            "name": "8% OFF Leblon Mix — Vinhos e Espumantes",
+            "partners": [],
+            "payment_methods": [],
+            "profiles": [],
+            "start_date": "2026-09-10"
+          },
+          "salvar_id_como": "desconto_fixo_id"
+        }
+      ]
+    }
+  ],
+  "gerado_em": "2026-09-10",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "portal_name": "Leblon Mix Distribuidora de Bebidas POC",
+  "setor": "Distribuição de Bebidas — Atacado B2B"
+}

@@ -8,3 +8,5 @@ numpy
 # Logo em SVG: vetor e a melhor fonte, e sem estes o achar_logo nao o mede.
 svglib
 rlPyCairo
+
+beautifulsoup4

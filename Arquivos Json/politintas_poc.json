@@ -1,0 +1,2099 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-21 a partir de https://www.politintas.com.br/ (woocommerce).",
+  "empresa": "Politintas",
+  "descricao_empresa": "Loja de tintas e acessórios para pintura: Suvinil, Sherwin-Williams, Iquine, Elit e Montana para parede, madeira, metal e preparação.",
+  "gerado_em": "2026-09-21",
+  "setor": "Materiais de Construção — Tintas e Acessórios para Pintura",
+  "portal_name": "Politintas POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Politintas",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Politintas",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Tintas para Parede",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Tintas para Parede",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Esmaltes e Vernizes",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Esmaltes e Vernizes",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Preparação e Complementos",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Preparação e Complementos",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Cor",
+          "salvar_id_como": "variation_cor_id",
+          "payload": {
+            "name": "Cor",
+            "active": true,
+            "is_searchable": false,
+            "display_type": "COLOR",
+            "values": [
+              "Branco",
+              "Azul Claro",
+              "Preto",
+              "Marrom",
+              "Azul Marinho",
+              "Verde Militar",
+              "Off White",
+              "Bege",
+              "Areia",
+              "Caqui",
+              "Cinza Claro",
+              "Cinza",
+              "Grafite",
+              "Chumbo",
+              "Prata",
+              "Azul Royal",
+              "Azul Jeans",
+              "Verde",
+              "Verde Oliva",
+              "Vermelho",
+              "Vinho",
+              "Terracota",
+              "Laranja",
+              "Amarelo",
+              "Dourado",
+              "Rosa",
+              "Roxo",
+              "Branco Neve",
+              "Gelo",
+              "Palha",
+              "Pérola",
+              "Algodão Egípcio",
+              "Azul Celeste",
+              "Marfim",
+              "Camurça",
+              "Algodão Doce",
+              "Amarelo Vanilla",
+              "Amêndoa",
+              "Azul Sereno",
+              "Azul Ártico",
+              "Bambu",
+              "Blush",
+              "Cinza Nuvem",
+              "Cinza Urbano",
+              "Concreto",
+              "Creme",
+              "Erva Doce",
+              "Fendi",
+              "Lavanda",
+              "Menta",
+              "Mostarda",
+              "Pêssego",
+              "Rosa Quartzo",
+              "Salmão",
+              "Verde Sálvia"
+            ],
+            "variant_options": [
+              {
+                "name": "Branco",
+                "display_value": "#FFFFFF"
+              },
+              {
+                "name": "Azul Claro",
+                "display_value": "#A8C8E8"
+              },
+              {
+                "name": "Preto",
+                "display_value": "#000000"
+              },
+              {
+                "name": "Marrom",
+                "display_value": "#6B4A2F"
+              },
+              {
+                "name": "Azul Marinho",
+                "display_value": "#1B2A4A"
+              },
+              {
+                "name": "Verde Militar",
+                "display_value": "#4B5320"
+              },
+              {
+                "name": "Off White",
+                "display_value": "#F2EFE6"
+              },
+              {
+                "name": "Bege",
+                "display_value": "#D9C6A5"
+              },
+              {
+                "name": "Areia",
+                "display_value": "#E0D5C0"
+              },
+              {
+                "name": "Caqui",
+                "display_value": "#9C8A5F"
+              },
+              {
+                "name": "Cinza Claro",
+                "display_value": "#C0C0C0"
+              },
+              {
+                "name": "Cinza",
+                "display_value": "#808080"
+              },
+              {
+                "name": "Grafite",
+                "display_value": "#4A4A4A"
+              },
+              {
+                "name": "Chumbo",
+                "display_value": "#3A3F44"
+              },
+              {
+                "name": "Prata",
+                "display_value": "#BFC1C2"
+              },
+              {
+                "name": "Azul Royal",
+                "display_value": "#1F4FA3"
+              },
+              {
+                "name": "Azul Jeans",
+                "display_value": "#4A6D8C"
+              },
+              {
+                "name": "Verde",
+                "display_value": "#2E7D48"
+              },
+              {
+                "name": "Verde Oliva",
+                "display_value": "#6B7A3A"
+              },
+              {
+                "name": "Vermelho",
+                "display_value": "#C0272D"
+              },
+              {
+                "name": "Vinho",
+                "display_value": "#6E1423"
+              },
+              {
+                "name": "Terracota",
+                "display_value": "#B5533C"
+              },
+              {
+                "name": "Laranja",
+                "display_value": "#E8701A"
+              },
+              {
+                "name": "Amarelo",
+                "display_value": "#F2C230"
+              },
+              {
+                "name": "Dourado",
+                "display_value": "#C9A227"
+              },
+              {
+                "name": "Rosa",
+                "display_value": "#E8A0B4"
+              },
+              {
+                "name": "Roxo",
+                "display_value": "#5B3A8E"
+              },
+              {
+                "name": "Branco Neve",
+                "display_value": "#F8F8F6"
+              },
+              {
+                "name": "Gelo",
+                "display_value": "#EAE6DA"
+              },
+              {
+                "name": "Palha",
+                "display_value": "#E8DBB5"
+              },
+              {
+                "name": "Pérola",
+                "display_value": "#EDE6D6"
+              },
+              {
+                "name": "Algodão Egípcio",
+                "display_value": "#EFE9DC"
+              },
+              {
+                "name": "Azul Celeste",
+                "display_value": "#9CC5E4"
+              },
+              {
+                "name": "Marfim",
+                "display_value": "#F1E9D2"
+              },
+              {
+                "name": "Camurça",
+                "display_value": "#D2B48C"
+              },
+              {
+                "name": "Algodão Doce",
+                "display_value": "#F4D9E1"
+              },
+              {
+                "name": "Amarelo Vanilla",
+                "display_value": "#F5E6B8"
+              },
+              {
+                "name": "Amêndoa",
+                "display_value": "#D9C4A5"
+              },
+              {
+                "name": "Azul Sereno",
+                "display_value": "#A9C6D9"
+              },
+              {
+                "name": "Azul Ártico",
+                "display_value": "#CFE3EE"
+              },
+              {
+                "name": "Bambu",
+                "display_value": "#E2D8B8"
+              },
+              {
+                "name": "Blush",
+                "display_value": "#E8C8C0"
+              },
+              {
+                "name": "Cinza Nuvem",
+                "display_value": "#D3D4D6"
+              },
+              {
+                "name": "Cinza Urbano",
+                "display_value": "#8E9194"
+              },
+              {
+                "name": "Concreto",
+                "display_value": "#9DA3A6"
+              },
+              {
+                "name": "Creme",
+                "display_value": "#F3EBD3"
+              },
+              {
+                "name": "Erva Doce",
+                "display_value": "#C9D9B8"
+              },
+              {
+                "name": "Fendi",
+                "display_value": "#C4B5A1"
+              },
+              {
+                "name": "Lavanda",
+                "display_value": "#C9BEDA"
+              },
+              {
+                "name": "Menta",
+                "display_value": "#BFE3D0"
+              },
+              {
+                "name": "Mostarda",
+                "display_value": "#D9A93C"
+              },
+              {
+                "name": "Pêssego",
+                "display_value": "#F5C6A5"
+              },
+              {
+                "name": "Rosa Quartzo",
+                "display_value": "#E9BFC5"
+              },
+              {
+                "name": "Salmão",
+                "display_value": "#F2A48C"
+              },
+              {
+                "name": "Verde Sálvia",
+                "display_value": "#A9B89A"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "POL-001 — Tinta Acrílica Econômica Acrílico Pro Fosco 15L Argalit",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/09/tinta-acrilica-economica-acrilico-pro-15l-argalit.jpg",
+          "payload": {
+            "sku": "POL-001",
+            "name": "Tinta Acrílica Econômica Acrílico Pro Fosco 15L Argalit",
+            "description": "Tinta Acrílica Econômica Acrílico Pro Fosco 15L Argalit — Tintas para Parede.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 84.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "POL-002 — Tinta Acrílica Fosco Rende Muito Delanil 3,6L Iquine",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/03/7184-delanil-rende-muito-3-6-l-305090f2a9.png",
+          "payload": {
+            "sku": "POL-002",
+            "name": "Tinta Acrílica Fosco Rende Muito Delanil 3,6L Iquine",
+            "description": "Tinta Acrílica Fosco Rende Muito Delanil 3,6L Iquine — Tintas para Parede.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 54.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-003 — Tinta Acrílica Pintalit Econômico Fosco 18L Elit",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/168311_2-1.png",
+          "payload": {
+            "sku": "POL-003",
+            "name": "Tinta Acrílica Pintalit Econômico Fosco 18L Elit",
+            "description": "Tinta Acrílica Pintalit Econômico Fosco 18L Elit — Tintas para Parede.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 119.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "POL-003-BRANCO",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-GELO",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Gelo"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-AREIA",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Areia"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-PEROLA",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Pérola"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-ALGDOC",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Algodão Doce"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-AMAREL",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Amarelo Vanilla"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-AMENDO",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Amêndoa"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-AZULSE",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Sereno"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-AZULAR",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Ártico"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-BAMBU",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Bambu"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-BLUSH",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Blush"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-CINZAN",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza Nuvem"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-CINZAU",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza Urbano"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-CONCRE",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Concreto"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-CREME",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Creme"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-ERVADO",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Erva Doce"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-FENDI",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Fendi"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-LAVAND",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Lavanda"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-MENTA",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Menta"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-MOSTAR",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Mostarda"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-PESSEG",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Pêssego"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-ROSAQU",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa Quartzo"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-SALMAO",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Salmão"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-003-VERDES",
+                "price": 119.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Verde Sálvia"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "POL-004 — Tinta Acrílica Premium Toque Fosco Select 18L Suvinil",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/08/tinta-acrilica-premium-toque-fosco-select-18l-suvinil-450.png",
+          "payload": {
+            "sku": "POL-004",
+            "name": "Tinta Acrílica Premium Toque Fosco Select 18L Suvinil",
+            "description": "Tinta Acrílica Premium Toque Fosco Select 18L Suvinil — Tintas para Parede.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 449.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "variations": [
+              {
+                "sku": "POL-004-BRANCO",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco Neve"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-GELO",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Gelo"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-PALHA",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Palha"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-ALGODA",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Algodão Egípcio"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-ALGDOC",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Algodão Doce"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-AMAREL",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Amarelo Vanilla"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-AMENDO",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Amêndoa"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-AZULSE",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Sereno"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-AZULAR",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Ártico"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-BAMBU",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Bambu"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-BLUSH",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Blush"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-CINZAN",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza Nuvem"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-CINZAU",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza Urbano"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-CONCRE",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Concreto"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-CREME",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Creme"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-ERVADO",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Erva Doce"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-FENDI",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Fendi"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-LAVAND",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Lavanda"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-MENTA",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Menta"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-MOSTAR",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Mostarda"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-PESSEG",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Pêssego"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-ROSAQU",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Rosa Quartzo"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-SALMAO",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Salmão"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-004-VERDES",
+                "price": 449.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Verde Sálvia"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-005 — Tinta Acrílica Aquacryl Super Premium Fosco 18L Sherwin-Williams",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/169062_2-1.png",
+          "payload": {
+            "sku": "POL-005",
+            "name": "Tinta Acrílica Aquacryl Super Premium Fosco 18L Sherwin-Williams",
+            "description": "Tinta Acrílica Aquacryl Super Premium Fosco 18L Sherwin-Williams — Tintas para Parede.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 529.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-006 — Esmalte Topa Tudo Dialine Brilhante 900mL Iquine",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/167259_2-1.png",
+          "payload": {
+            "sku": "POL-006",
+            "name": "Esmalte Topa Tudo Dialine Brilhante 900mL Iquine",
+            "description": "Esmalte Topa Tudo Dialine Brilhante 900mL Iquine — Esmaltes e Vernizes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 31.99,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "variations": [
+              {
+                "sku": "POL-006-BRANCO",
+                "price": 31.99,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-006-PRETO",
+                "price": 31.99,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-006-CINZA",
+                "price": 31.99,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Cinza"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "POL-007 — Esmalte Sintético Brilhante 900mL Elit",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/169084_2-1.png",
+          "payload": {
+            "sku": "POL-007",
+            "name": "Esmalte Sintético Brilhante 900mL Elit",
+            "description": "Esmalte Sintético Brilhante 900mL Elit — Esmaltes e Vernizes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "POL-007-BRANCO",
+                "price": 39.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-007-PRETO",
+                "price": 39.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Preto"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-007-AZUL_C",
+                "price": 39.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Azul Celeste"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-007-VERMEL",
+                "price": 39.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Vermelho"
+                  }
+                ]
+              },
+              {
+                "sku": "POL-007-AMAREL",
+                "price": 39.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_cor_id}}",
+                    "name": "Cor",
+                    "value": "Amarelo"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-008 — Verniz Marítimo Brilhante 3,6L Montana",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/159632_2-1.jpeg",
+          "payload": {
+            "sku": "POL-008",
+            "name": "Verniz Marítimo Brilhante 3,6L Montana",
+            "description": "Verniz Marítimo Brilhante 3,6L Montana — Esmaltes e Vernizes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 129.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-009 — Verniz Solare Triplo Filtro Solar Acetinado 3,6L Montana",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2025/01/167505_2-1.jpeg",
+          "payload": {
+            "sku": "POL-009",
+            "name": "Verniz Solare Triplo Filtro Solar Acetinado 3,6L Montana",
+            "description": "Verniz Solare Triplo Filtro Solar Acetinado 3,6L Montana — Esmaltes e Vernizes.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 189.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "POL-010 — Selador Acrílico 3,6L Iquine",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/03/3605-selador-para-parede-3-6-l-3fdc1dbad4.png",
+          "payload": {
+            "sku": "POL-010",
+            "name": "Selador Acrílico 3,6L Iquine",
+            "description": "Selador Acrílico 3,6L Iquine — Preparação e Complementos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 32.97,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          }
+        },
+        {
+          "label": "POL-011 — Massa Corrida 5,4kg Iquine",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/03/3329-massa-corrida-balde-5-4kg-8556157306.png",
+          "payload": {
+            "sku": "POL-011",
+            "name": "Massa Corrida 5,4kg Iquine",
+            "description": "Massa Corrida 5,4kg Iquine — Preparação e Complementos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 25.11,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "POL-012 — Massa Acrílica 5,4kg Iquine",
+          "temp_image_url": "https://www.politintas.com.br/wp-content/uploads/2026/03/3508-massa-acrilica-5-4-78e1c09939.png",
+          "payload": {
+            "sku": "POL-012",
+            "name": "Massa Acrílica 5,4kg Iquine",
+            "description": "Massa Acrílica 5,4kg Iquine — Preparação e Complementos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 30.39,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Politintas",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Politintas — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Politintas",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Politintas — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Tintas para Parede",
+          "salvar_id_como": "criteria_cat_tintas_para_parede_id",
+          "payload": {
+            "name": "Politintas — Tintas para Parede (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Esmaltes e Vernizes",
+          "salvar_id_como": "criteria_cat_esmaltes_e_vernizes_id",
+          "payload": {
+            "name": "Politintas — Esmaltes e Vernizes (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Preparação e Complementos",
+          "salvar_id_como": "criteria_cat_preparacao_e_complementos_id",
+          "payload": {
+            "name": "Politintas — Preparação e Complementos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Politintas",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Politintas",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Politintas",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Politintas",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Politintas",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Politintas",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Politintas",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Politintas",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Politintas",
+                "criteria_id": "{{criteria_cat_tintas_para_parede_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Esmaltes e Vernizes | Politintas",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Politintas — Esmaltes e Vernizes",
+            "start_date": "2026-09-21",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Politintas",
+                "criteria_id": "{{criteria_cat_esmaltes_e_vernizes_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

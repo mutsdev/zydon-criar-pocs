@@ -1,0 +1,961 @@
+{
+  "_instrucoes": "Gerado por montar_poc.py em 2026-09-22 a partir de https://www.ourolux.com.br/loja/ (woocommerce).",
+  "empresa": "Ourolux",
+  "descricao_empresa": "Indústria brasileira de iluminação: lâmpadas LED, painéis, refletores, fitas, luminárias solares e linha de proteção elétrica para distribuidores e lojas de material elétrico.",
+  "gerado_em": "2026-09-22",
+  "setor": "Iluminação — Indústria de lâmpadas LED, luminárias e material elétrico",
+  "portal_name": "Ourolux POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Ourolux",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Ourolux",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Lâmpadas LED",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Lâmpadas LED",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Painéis e Luminárias",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Painéis e Luminárias",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Refletores e Fitas LED",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Refletores e Fitas LED",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. VARIACOES",
+      "endpoint": "variations",
+      "requests": [
+        {
+          "label": "Criar Variacao: Temperatura de Luz",
+          "salvar_id_como": "variation_temperatura_de_luz_id",
+          "payload": {
+            "name": "Temperatura de Luz",
+            "active": true,
+            "values": [
+              "3000K",
+              "4000K",
+              "6500K"
+            ]
+          }
+        },
+        {
+          "label": "Criar Variacao: Acabamento",
+          "salvar_id_como": "variation_acabamento_id",
+          "payload": {
+            "name": "Acabamento",
+            "active": true,
+            "values": [
+              "Branco",
+              "Preto"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "OUR-001 — Lâmpada LED Bulbo A60 9W E27 Bivolt",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/05463-scaled.png",
+          "payload": {
+            "sku": "OUR-001",
+            "name": "Lâmpada LED Bulbo A60 9W E27 Bivolt",
+            "description": "Lâmpada LED Bulbo A60 9W E27 Bivolt — Lâmpadas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 9.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "OUR-001-3000K",
+                "price": 9.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "3000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-001-4000K",
+                "price": 9.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "4000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-001-6500K",
+                "price": 9.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "6500K"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-002 — Lâmpada LED Tubular T5 18W G5 120cm",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/05529-scaled.jpg",
+          "payload": {
+            "sku": "OUR-002",
+            "name": "Lâmpada LED Tubular T5 18W G5 120cm",
+            "description": "Lâmpada LED Tubular T5 18W G5 120cm — Lâmpadas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 22.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "variations": [
+              {
+                "sku": "OUR-002-3000K",
+                "price": 22.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "3000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-002-4000K",
+                "price": 22.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "4000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-002-6500K",
+                "price": 22.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "6500K"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-003 — Lâmpada LED Alta Potência 100W E27 8000lm 6500K",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/20385.jpg",
+          "payload": {
+            "sku": "OUR-003",
+            "name": "Lâmpada LED Alta Potência 100W E27 8000lm 6500K",
+            "description": "Lâmpada LED Alta Potência 100W E27 8000lm 6500K — Lâmpadas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 69.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-004 — Lâmpada LED Bolinha S30 4W E14 6500K",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/20000.jpg",
+          "payload": {
+            "sku": "OUR-004",
+            "name": "Lâmpada LED Bolinha S30 4W E14 6500K",
+            "description": "Lâmpada LED Bolinha S30 4W E14 6500K — Lâmpadas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 7.5,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-005 — Painel LED de Embutir Quadrado 18W Bivolt",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/03207_18W.png",
+          "payload": {
+            "sku": "OUR-005",
+            "name": "Painel LED de Embutir Quadrado 18W Bivolt",
+            "description": "Painel LED de Embutir Quadrado 18W Bivolt — Painéis e Luminárias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "variations": [
+              {
+                "sku": "OUR-005-3000K",
+                "price": 29.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "3000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-005-4000K",
+                "price": 29.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "4000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-005-6500K",
+                "price": 29.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "6500K"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-006 — Painel LED Modular de Embutir 40W 60x60cm",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/0317320FRENTE.jpg",
+          "payload": {
+            "sku": "OUR-006",
+            "name": "Painel LED Modular de Embutir 40W 60x60cm",
+            "description": "Painel LED Modular de Embutir 40W 60x60cm — Painéis e Luminárias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 89.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-007 — Luminária High Bay LED UFO 300W IP65 6500K",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/High20Bay20UFO20Produto.png",
+          "payload": {
+            "sku": "OUR-007",
+            "name": "Luminária High Bay LED UFO 300W IP65 6500K",
+            "description": "Luminária High Bay LED UFO 300W IP65 6500K — Painéis e Luminárias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 349.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-008 — Spot para Trilho Eletrificado LED 10W",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/Spot20Branco-1.jpg",
+          "payload": {
+            "sku": "OUR-008",
+            "name": "Spot para Trilho Eletrificado LED 10W",
+            "description": "Spot para Trilho Eletrificado LED 10W — Painéis e Luminárias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "variations": [
+              {
+                "sku": "OUR-008-BRANCO",
+                "price": 44.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Branco"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-008-PRETO",
+                "price": 44.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_acabamento_id}}",
+                    "name": "Acabamento",
+                    "value": "Preto"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-009 — Refletor LED Slim 200W IP65 Bivolt 6500K",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/03269.jpg",
+          "payload": {
+            "sku": "OUR-009",
+            "name": "Refletor LED Slim 200W IP65 Bivolt 6500K",
+            "description": "Refletor LED Slim 200W IP65 Bivolt 6500K — Refletores e Fitas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 139.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-010 — Refletor Solar LED 200W com Placa e Controle 6500K",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/03298.jpg",
+          "payload": {
+            "sku": "OUR-010",
+            "name": "Refletor Solar LED 200W com Placa e Controle 6500K",
+            "description": "Refletor Solar LED 200W com Placa e Controle 6500K — Refletores e Fitas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 219.9,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-011 — Fita LED COB 320 LEDs/m 12V IP20 — Rolo 5m",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/05792.jpg",
+          "payload": {
+            "sku": "OUR-011",
+            "name": "Fita LED COB 320 LEDs/m 12V IP20 — Rolo 5m",
+            "description": "Fita LED COB 320 LEDs/m 12V IP20 — Rolo 5m — Refletores e Fitas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 59.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "variations": [
+              {
+                "sku": "OUR-011-3000K",
+                "price": 59.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "3000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-011-4000K",
+                "price": 59.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "4000K"
+                  }
+                ]
+              },
+              {
+                "sku": "OUR-011-6500K",
+                "price": 59.9,
+                "stock": 100,
+                "variation_weight": 0.5,
+                "variation_width": 20.0,
+                "variation_height": 10.0,
+                "variation_depth": 15.0,
+                "packaging_weight": 0.6,
+                "packaging_width": 22.0,
+                "packaging_height": 12.0,
+                "packaging_depth": 17.0,
+                "images": [],
+                "values": [
+                  {
+                    "variation_id": "{{variation_temperatura_de_luz_id}}",
+                    "name": "Temperatura de Luz",
+                    "value": "6500K"
+                  }
+                ]
+              }
+            ]
+          },
+          "_preco_estimado": true
+        },
+        {
+          "label": "OUR-012 — Perfil de Sobrepor para Fita LED 2m Branco",
+          "temp_image_url": "https://www.ourolux.com.br/wp-content/uploads/2026/07/05717.jpg",
+          "payload": {
+            "sku": "OUR-012",
+            "name": "Perfil de Sobrepor para Fita LED 2m Branco",
+            "description": "Perfil de Sobrepor para Fita LED 2m Branco — Refletores e Fitas LED.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 39.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          },
+          "_preco_estimado": true
+        }
+      ]
+    },
+    {
+      "nome": "5. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Ourolux",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Ourolux — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Ourolux",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Ourolux — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Lâmpadas LED",
+          "salvar_id_como": "criteria_cat_lampadas_led_id",
+          "payload": {
+            "name": "Ourolux — Lâmpadas LED (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Painéis e Luminárias",
+          "salvar_id_como": "criteria_cat_paineis_e_luminarias_id",
+          "payload": {
+            "name": "Ourolux — Painéis e Luminárias (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Refletores e Fitas LED",
+          "salvar_id_como": "criteria_cat_refletores_e_fitas_led_id",
+          "payload": {
+            "name": "Ourolux — Refletores e Fitas LED (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Ourolux",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Ourolux",
+            "start_date": "2026-09-22",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Ourolux",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Ourolux",
+            "start_date": "2026-09-22",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Ourolux",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Ourolux",
+            "start_date": "2026-09-22",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "7. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Ourolux",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Ourolux",
+            "start_date": "2026-09-22",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Ourolux",
+                "criteria_id": "{{criteria_cat_lampadas_led_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Painéis e Luminárias | Ourolux",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Ourolux — Painéis e Luminárias",
+            "start_date": "2026-09-22",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Ourolux",
+                "criteria_id": "{{criteria_cat_paineis_e_luminarias_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

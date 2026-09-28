@@ -402,4 +402,9 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import cronometro
+    # A pasta e saidas/<cliente>/<carimbo>: o cliente e o penultimo nivel.
+    _cliente = Path(cronometro.do_argv("--pasta", sys.argv, "?/?")).parent.name
+    with cronometro.etapa(_cliente, "Subir banners"):
+        codigo = main()
+    raise SystemExit(codigo)

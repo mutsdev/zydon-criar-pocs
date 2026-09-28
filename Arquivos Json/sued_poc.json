@@ -1,0 +1,561 @@
+{
+  "_instrucoes": "POC Distribuidora Sued. Fonte: Instagram (sem site). Preços ESTIMADOS. URLs de imagem do CDN do Instagram têm assinatura que expira (param oe=) — o runner baixa na hora de rodar.",
+  "empresa": "Distribuidora Sued",
+  "descricao_empresa": "Distribuidora de produtos de saúde — medicamentos e material hospitalar — especializada em atendimento offshore (Instagram @distribuidorasued_).",
+  "gerado_em": "2026-09-14",
+  "setor": "Saúde — Medicamentos e material hospitalar (distribuição, foco offshore)",
+  "portal_name": "Distribuidora Sued POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Distribuidora Sued",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Distribuidora Sued",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Monitoramento e Diagnóstico",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Monitoramento e Diagnóstico",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Glicemia e Diabetes",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Glicemia e Diabetes",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Cuidados e Terapia Respiratória",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Cuidados e Terapia Respiratória",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "SUED-TERM-001 — Termômetro Digital G-TECH",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/772676809_18069883148729868_8614663952893609425_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzk2MjA3MTExOTY4NjgzMTA1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=1Q0MXJ0dXYYQ7kNvwEuIg8N&_nc_oc=AdrALJO_pFUyIREQjF2Cv-Qpa7yZZWQw2kz7JL5HnL2CEykvOas-Zz7UYVdUjrMt7Bw&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=xEzAmP8mIUCKAKRgcD95yg&_nc_ss=7b689&oh=00_AQKynGV2IrwSxmVKfnZnri75Z7A8j95MtB07cd5cGVllBg&oe=6AAE17D2",
+          "payload": {
+            "name": "Termômetro Digital G-TECH",
+            "description": "Termômetro digital clínico G-TECH com medição rápida e precisa, memória da última leitura, aviso sonoro ao final da medição e desligamento automático. Embalagem individual.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 19.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "SUED-TERM-001"
+          }
+        },
+        {
+          "label": "SUED-THIG-002 — Termo-Higrômetro Digital Incoterm",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/773429863_18069883313729868_5122132961725108339_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzk2MjA3MTcyMjIzMjMxNDIwNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=LZ21ly2L8OUQ7kNvwH5GJ9T&_nc_oc=AdqLt2KDSmnb4Faj2zmWQo7xGL6Rk-nMOI7-0bzB29h_0YsmwP3S3X-QiOoiDpsPuxo&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=vrJHya7QFOkJFIlkoQoCIA&_nc_ss=7b689&oh=00_AQJ3NGNs09VOXAzVLD39aBPgUkLtq8GexFkoAgC_FAce-A&oe=6AAE04F1",
+          "payload": {
+            "name": "Termo-Higrômetro Digital Incoterm",
+            "description": "Termo-higrômetro digital Incoterm com sensor externo: monitora temperatura interna/externa e umidade interna com alta precisão. Indicado para farmácias, laboratórios e ambientes com controle ambiental.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 79.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "SUED-THIG-002"
+          }
+        },
+        {
+          "label": "SUED-THIG-003 — Termo-Higrômetro Digital HTC-2",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/772559946_18069883046729868_36801356600770226_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzk2MjA2OTgzMzYzNzg5NDAxMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UHZCebAMRy8Q7kNvwFxf7RX&_nc_oc=AdoCd3i_wPDKVDCRJGGuzcIrWJO7aiLuWr__Aj1BIwGGu3P-tT-mg9TDPLT-VZyXTSQ&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=6D7gf4oPRtUhQSb017CN_A&_nc_ss=7b689&oh=00_AQJTZyAsbgWcIbKoHAmWQVtv_HsJ3Bdm5ZB6vqmExqtPTA&oe=6AAE1421",
+          "payload": {
+            "name": "Termo-Higrômetro Digital HTC-2",
+            "description": "Termo-higrômetro HTC-2 com temperatura e umidade interna/externa, relógio, alarme e calendário. Display grande, ideal para clínicas, hospitais e almoxarifados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 49.9,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "SUED-THIG-003"
+          }
+        },
+        {
+          "label": "SUED-OXIM-004 — Oxímetro de Pulso Incoterm OX320",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/773677341_18069882566729868_6713126490304738775_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzk2MjA2ODQ2MzQ1OTI1MjIzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=oNqaPcepjuwQ7kNvwFUYnvU&_nc_oc=AdqIjd-TkkHecOC6O49cXjLPaTnRHjLFyo3Qhukxr0yv1Wb0nBB-pQxE5xDnOOEPc4s&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=F2Pe_tPNbX6aARNUGlZLzg&_nc_ss=7b689&oh=00_AQKU0Zq288MgNmuijCREJozaMUKgRSCoVqhvkL1Mmysdfw&oe=6AAE1B1B",
+          "payload": {
+            "name": "Oxímetro de Pulso Incoterm OX320",
+            "description": "Oxímetro de pulso portátil de dedo Incoterm OX320: saturação de oxigênio (SpO2) e frequência cardíaca com display OLED. Compacto e leve, com estojo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 129.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "SUED-OXIM-004"
+          }
+        },
+        {
+          "label": "SUED-LANC-005 — Auto Lanceta Mini G-TECH 28G c/ 100",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/773120670_18069882887729868_4089073211885905320_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzk2MjA2OTE5NTA4ODUyNDM4NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=wJ3uY6LaJUMQ7kNvwHJrPdE&_nc_oc=AdoaU5yR53vyBD7IyJ0pgvFwxpGgS943jUQAG0TORowuZ1wSXNoYh_xQ17j-TCOLWjw&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=dKbXhAf8h0C3E7Juwu_FcA&_nc_ss=7b689&oh=00_AQK2jx07rkE5MjgK-i-eGY_Rg1d4Btgtw8yQw1GgiK7iuA&oe=6AAE33D4",
+          "payload": {
+            "name": "Auto Lanceta Mini G-TECH 28G c/ 100",
+            "description": "Auto lanceta mini G-TECH com agulha ultrafina 28G, uso único e acionamento por pressão. Caixa com 100 unidades para monitoramento de glicemia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 24.9,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "SUED-LANC-005"
+          }
+        },
+        {
+          "label": "SUED-LANC-006 — Lancetas Accu-Chek Softclix c/ 200",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/759521879_18067712969729868_5110914077634000270_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzk1MTk5NDM0ODU4OTAyNTA2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=EnI04MzoXPUQ7kNvwEO6BNL&_nc_oc=Adr8GeGClqV6JnNXHAzWne4Gpjs6lZYBOhzUYElBI_0tvdELbdNCIz0dCAGfw4PrdSo&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=PudERsHvG_cz5qllPJg5sg&_nc_ss=7b689&oh=00_AQJvbrjidPKnkyf5ZjW1Bsd6y32vtwnOdg2WgzztT9DoIg&oe=6AAE3003",
+          "payload": {
+            "name": "Lancetas Accu-Chek Softclix c/ 200",
+            "description": "Lancetas Accu-Chek Softclix (Roche), estéreis, uso único, compatíveis com o lancetador Softclix. Caixa com 200 unidades.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 89.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "SUED-LANC-006"
+          }
+        },
+        {
+          "label": "SUED-NEBU-007 — Inalador e Nebulizador G-TECH NebCom V",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/772853767_18069882320729868_2630791360107704594_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzk2MjA2NzAwNzMxNDM2NjU3Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=NI4I2n_xswMQ7kNvwHsRvmX&_nc_oc=Adqr870CEWFqAEHUL6sVFfRHbpjYErCqkgkWuYM0G05MxIB2aw91NARVYm0phAv7Nuw&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=agWcyjbQeqdNlYNKBEBzTg&_nc_ss=7b689&oh=00_AQJrkM0EoTXWA_HmFO8cxx_urUwlCSln7EmtRVMmwo0iCQ&oe=6AAE354E",
+          "payload": {
+            "name": "Inalador e Nebulizador G-TECH NebCom V",
+            "description": "Inalador e nebulizador compressor G-TECH NebCom V com sistema SuperFlow Plus e máscaras adulto e infantil. Névoa fina para tratamento respiratório de toda a família.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 199.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "SUED-NEBU-007"
+          }
+        },
+        {
+          "label": "SUED-ALGO-008 — Algodão Hidrófilo em Rolo Polyfarma 50g",
+          "temp_image_url": "https://instagram.fudi5-1.fna.fbcdn.net/v/t51.82787-15/772155201_18069882179729868_4859329466496790329_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzk2MjA2NjIxNjE0Mjc3ODMwMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=v7sYkWZ5Ht0Q7kNvwHU7q6I&_nc_oc=AdpPn_W1hpPA1r1CXzfWMOFQ_fADdTkac6WDNKOGpuyU_aA9NzdSKh1AV_Rkaks_mfY&_nc_zt=23&_nc_ht=instagram.fudi5-1.fna&_nc_gid=Y4MMsvd2wVbst9l6VmMDpQ&_nc_ss=7b689&oh=00_AQJiFWlmmmml-eQ12RySEve92bTAoKwBgMuRSkx0_0z8KQ&oe=6AAE1C48",
+          "payload": {
+            "name": "Algodão Hidrófilo em Rolo Polyfarma 50g",
+            "description": "Algodão hidrófilo em rolo Polyfarma 100% puro algodão, macio e absorvente, 50g. Para higiene e cuidados com a pele em hospitais, clínicas e farmácias.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 4.9,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24,
+            "sku": "SUED-ALGO-008"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Distribuidora Sued",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Distribuidora Sued — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Distribuidora Sued",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Distribuidora Sued — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Monitoramento e Diagnóstico",
+          "salvar_id_como": "criteria_cat_monitoramento_id",
+          "payload": {
+            "name": "Distribuidora Sued — Monitoramento e Diagnóstico (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Glicemia e Diabetes",
+          "salvar_id_como": "criteria_cat_glicemia_id",
+          "payload": {
+            "name": "Distribuidora Sued — Glicemia e Diabetes (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Cuidados e Terapia Respiratória",
+          "salvar_id_como": "criteria_cat_respiratoria_id",
+          "payload": {
+            "name": "Distribuidora Sued — Cuidados e Terapia Respiratória (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Distribuidora Sued",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Distribuidora Sued",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Distribuidora Sued",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Distribuidora Sued",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Distribuidora Sued",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Distribuidora Sued",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Monitoramento e Diagnóstico | Distribuidora Sued",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Distribuidora Sued",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Distribuidora Sued",
+                "criteria_id": "{{criteria_cat_monitoramento_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Glicemia e Diabetes | Distribuidora Sued",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Distribuidora Sued — Glicemia e Diabetes",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Distribuidora Sued",
+                "criteria_id": "{{criteria_cat_glicemia_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 5% — Cuidados e Terapia Respiratória | Distribuidora Sued",
+          "salvar_id_como": "desconto_fixo_resp_id",
+          "payload": {
+            "name": "5% OFF Distribuidora Sued — Cuidados e Terapia Respiratória",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "5% OFF Distribuidora Sued Respiratória",
+                "criteria_id": "{{criteria_cat_respiratoria_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

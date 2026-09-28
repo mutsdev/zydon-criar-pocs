@@ -1,0 +1,613 @@
+{
+  "empresa": "Curamed",
+  "descricao_empresa": "Curamed: distribuidora de produtos e materiais hospitalares. Luvas, máscaras, descartáveis, equipamentos e mais. Qualidade, entrega rápida e preço justo. Compre online! Catálogo completo para clínicas, hospitais, veterinárias e lojas.",
+  "gerado_em": "2026-09-11",
+  "setor": "Curamed Distribuidora de Produtos Hospitalares",
+  "portal_name": "CURAMED POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Curamed",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Curamed",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Curativos E Gaze",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Curativos E Gaze",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Descartaveis E Coletores",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Descartaveis E Coletores",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Higiene E Desinfeccao",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Higiene E Desinfeccao",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "CURAMED-001 — Compressa de Gaze Hidrofila Esteril Cremer",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-88d0d16df9b748d9a33cf33de8bcfb19.png",
+          "payload": {
+            "name": "Compressa de Gaze Hidrofila Esteril Cremer",
+            "sku": "CURAMED-001",
+            "description": "Compressa de Gaze Hidrofila Esteril Cremer, item exibido na pagina publica da Curamed; marca Cremer.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 57.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "CURAMED-002 — Curativo Adesivo Bege Cremer 40 Unidades",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-600d12f8e214017645ea078bdf69a036.png",
+          "payload": {
+            "name": "Curativo Adesivo Bege Cremer 40 Unidades",
+            "sku": "CURAMED-002",
+            "description": "Curativo Adesivo Bege Cremer 40 Unidades, item exibido na pagina publica da Curamed; marca Cremer.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 74.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-003 — Fita Microporosa Hipoalergenica Cremer",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-2c3ed6d2ecef6afcae9e367c2bb39f4c.png",
+          "payload": {
+            "name": "Fita Microporosa Hipoalergenica Cremer",
+            "sku": "CURAMED-003",
+            "description": "Fita Microporosa Hipoalergenica Cremer, item exibido na pagina publica da Curamed; marca Cremer.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 92.4,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "CURAMED-004 — Fita Microporosa Hipoalergenica Extra Flex 10cm x 10m",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-ea6b70e05ba92590d9c0322e5b13b2d5.png",
+          "payload": {
+            "name": "Fita Microporosa Hipoalergenica Extra Flex 10cm x 10m",
+            "sku": "CURAMED-004",
+            "description": "Fita Microporosa Hipoalergenica Extra Flex 10cm x 10m, item exibido na pagina publica da Curamed; marca Missner.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 109.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-005 — Curativo Hidrocoloide 10 Unidades",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-344bca8b0846159da4901b0ef01d4970.png",
+          "payload": {
+            "name": "Curativo Hidrocoloide 10 Unidades",
+            "sku": "CURAMED-005",
+            "description": "Curativo Hidrocoloide 10 Unidades, item exibido na pagina publica da Curamed; marca Curamed.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 127.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "CURAMED-006 — Curativo Liquido Hemostatico 28ml",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-3ed757e5a5f7202e695d90357912518a.png",
+          "payload": {
+            "name": "Curativo Liquido Hemostatico 28ml",
+            "sku": "CURAMED-006",
+            "description": "Curativo Liquido Hemostatico 28ml, item exibido na pagina publica da Curamed; marca Curamed.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 144.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "CURAMED-007 — Coletor para Material Perfurocortante 7 13 e 20 Litros",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-b2ddcce529b4ce2b71404586b8229d5d.png",
+          "payload": {
+            "name": "Coletor para Material Perfurocortante 7 13 e 20 Litros",
+            "sku": "CURAMED-007",
+            "description": "Coletor para Material Perfurocortante 7 13 e 20 Litros, item exibido na pagina publica da Curamed; marca Descarbox.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 162.4,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-008 — Coletor para Material Infectante 15 30 e 50 Litros",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-39fcedcc6c22bbed5b392c36e4549f98.png",
+          "payload": {
+            "name": "Coletor para Material Infectante 15 30 e 50 Litros",
+            "sku": "CURAMED-008",
+            "description": "Coletor para Material Infectante 15 30 e 50 Litros, item exibido na pagina publica da Curamed; marca Descarbox.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 179.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-009 — Perax Rio Test Fitas para Acido Peracetico 30 Fitas",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-f5a3c4b5124eecabd2ff61df6259f42b.png",
+          "payload": {
+            "name": "Perax Rio Test Fitas para Acido Peracetico 30 Fitas",
+            "sku": "CURAMED-009",
+            "description": "Perax Rio Test Fitas para Acido Peracetico 30 Fitas, item exibido na pagina publica da Curamed; marca Rioquimica.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 197.4,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "CURAMED-010 — Curativo Adesivo para Puncao Venosa 500 Unidades",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-1bd6d209413a64880c149361f40f8022.png",
+          "payload": {
+            "name": "Curativo Adesivo para Puncao Venosa 500 Unidades",
+            "sku": "CURAMED-010",
+            "description": "Curativo Adesivo para Puncao Venosa 500 Unidades, item exibido na pagina publica da Curamed; marca Medix.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 214.9,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-011 — Algodao Torcido Fio de Sutura Absorvivel Esteril No 0",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-38e800d6b7083f54898cddae4f463157.png",
+          "payload": {
+            "name": "Algodao Torcido Fio de Sutura Absorvivel Esteril No 0",
+            "sku": "CURAMED-011",
+            "description": "Algodao Torcido Fio de Sutura Absorvivel Esteril No 0, item exibido na pagina publica da Curamed; marca Technofio.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 232.4,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10
+          }
+        },
+        {
+          "label": "CURAMED-012 — Cavilon Creme Barreira Duravel Hidratante 92g",
+          "temp_image_url": "https://files.greatpages.com.br/arquivos/paginas_editor/412675-c806683ba216b7c3cae62304c48875f2.png",
+          "payload": {
+            "name": "Cavilon Creme Barreira Duravel Hidratante 92g",
+            "sku": "CURAMED-012",
+            "description": "Cavilon Creme Barreira Duravel Hidratante 92g, item exibido na pagina publica da Curamed; marca Cavilon.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 249.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "endpoint": "criteria",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Curamed",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Curamed — Marca (TABELA DE PRECO)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Curamed",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Curamed — Marca (REGRA DE LISTAGEM)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "config": null,
+                "key": "this.CODIGOMARCA",
+                "type": "FIELD",
+                "values": [
+                  "{{brand_id}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Curativos E Gaze - Curamed",
+          "salvar_id_como": "criteria_cat_0_id",
+          "payload": {
+            "name": "Curamed — Categoria (DESCONTO) - Curativos E Gaze",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_0}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Descartaveis E Coletores - Curamed",
+          "salvar_id_como": "criteria_cat_1_id",
+          "payload": {
+            "name": "Curamed — Categoria (DESCONTO) - Descartaveis E Coletores",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_1}}"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Higiene E Desinfeccao - Curamed",
+          "salvar_id_como": "criteria_cat_2_id",
+          "payload": {
+            "name": "Curamed — Categoria (DESCONTO) - Higiene E Desinfeccao",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "config": null,
+                "key": "this.CODCATEGORIA",
+                "type": "FIELD",
+                "values": [
+                  "{{cat_ids_2}}"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Curamed",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Curamed",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Curamed",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Curamed",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 20
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Curamed",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Curamed",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 35
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Curativos E Gaze",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Curamed — Curativos E Gaze",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Curativos E Gaze",
+                "criteria_id": "{{criteria_cat_0_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 30,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 8% — Descartaveis E Coletores | Curamed",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "8% OFF Curamed — Descartaveis E Coletores",
+            "start_date": "2026-09-11",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "8% OFF Descartaveis E Coletores",
+                "criteria_id": "{{criteria_cat_1_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

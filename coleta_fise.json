@@ -1,0 +1,489 @@
+{
+ "site": "https://fise.com.br/",
+ "gerador": "All in One SEO (AIOSEO) 5.0.1.1",
+ "plataforma": "woocommerce",
+ "lojas_externas": [],
+ "total": 100,
+ "itens": [
+  {
+   "nome": "SUP390",
+   "preco": null,
+   "categoria": "Perfil - Chroma",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/FIT400-SITE.png",
+   "url": "https://fise.com.br/produto/sup390/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL821",
+   "preco": null,
+   "categoria": "CBA - Primora",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol821/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL820",
+   "preco": null,
+   "categoria": "CBA - Primora",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol820/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL373",
+   "preco": null,
+   "categoria": "CDA - Renoir 4.4",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol373/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL372",
+   "preco": null,
+   "categoria": "Perfil - Chroma",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol372/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL371",
+   "preco": null,
+   "categoria": "Olgacolor - Lock SL",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol371/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL370",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol370/",
+   "variantes": []
+  },
+  {
+   "nome": "MAC390",
+   "preco": null,
+   "categoria": "Perfil - Chroma",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/mac390/",
+   "variantes": []
+  },
+  {
+   "nome": "MAC382",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/mac382/",
+   "variantes": []
+  },
+  {
+   "nome": "MAC381",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/mac381/",
+   "variantes": []
+  },
+  {
+   "nome": "MAC380",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/mac380/",
+   "variantes": []
+  },
+  {
+   "nome": "MAC368",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/mac368/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA626",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra626/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA625",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra625/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA624",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra624/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA623",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra623/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA622",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra622/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA621",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra621/",
+   "variantes": []
+  },
+  {
+   "nome": "FRA390",
+   "preco": null,
+   "categoria": null,
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fra390/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC375",
+   "preco": null,
+   "categoria": "Hydro - Única",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec375/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC372",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec372/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC371",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec371/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC370",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec370/",
+   "variantes": []
+  },
+  {
+   "nome": "CON818",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con818/",
+   "variantes": []
+  },
+  {
+   "nome": "CON817",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con817/",
+   "variantes": []
+  },
+  {
+   "nome": "CON770",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con770/",
+   "variantes": []
+  },
+  {
+   "nome": "CON498",
+   "preco": null,
+   "categoria": "Olgacolor - Lock SL",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con498/",
+   "variantes": []
+  },
+  {
+   "nome": "CON491",
+   "preco": null,
+   "categoria": "CDA - Renoir",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con491/",
+   "variantes": []
+  },
+  {
+   "nome": "CON392",
+   "preco": null,
+   "categoria": "Perfil - Chroma",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con392/",
+   "variantes": []
+  },
+  {
+   "nome": "CON119",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/con119/",
+   "variantes": []
+  },
+  {
+   "nome": "CAL014",
+   "preco": null,
+   "categoria": "Olgacolor - Lock SL",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/cal014/",
+   "variantes": []
+  },
+  {
+   "nome": "BRA613",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/bra613/",
+   "variantes": []
+  },
+  {
+   "nome": "BRA612",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/bra612/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL843R",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol843r/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL833R",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol833r/",
+   "variantes": []
+  },
+  {
+   "nome": "PRE871",
+   "preco": null,
+   "categoria": null,
+   "imagem": null,
+   "url": "https://fise.com.br/produto/pre871/",
+   "variantes": []
+  },
+  {
+   "nome": "PIV770",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/piv770/",
+   "variantes": []
+  },
+  {
+   "nome": "NYL784",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/nyl784/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC609",
+   "preco": null,
+   "categoria": "Hydro - Gold",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec609/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC450",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec450/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC357",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec357/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC340",
+   "preco": null,
+   "categoria": "Hydro - Suprema",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec340/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC131",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec131-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC100",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/FEC100-SITE-1-scaled.png",
+   "url": "https://fise.com.br/produto/fec100-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC350",
+   "preco": null,
+   "categoria": "Asa - Mega 32",
+   "imagem": "https://fise.com.br/wp-content/uploads/2024/04/fec350.png",
+   "url": "https://fise.com.br/produto/fec350-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC152",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC152-SITE.png",
+   "url": "https://fise.com.br/produto/fec152-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC151",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC151-SITE.png",
+   "url": "https://fise.com.br/produto/fec151-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC142",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC142-SITE.png",
+   "url": "https://fise.com.br/produto/fec142-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC120",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec120-3/",
+   "variantes": []
+  },
+  {
+   "nome": "DOB856",
+   "preco": null,
+   "categoria": "Hydro - Fórmula",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/DOB856-SITE.png",
+   "url": "https://fise.com.br/produto/dob856-3/",
+   "variantes": []
+  },
+  {
+   "nome": "CON845",
+   "preco": null,
+   "categoria": "Linha Fachada",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/CON845-SITE.png",
+   "url": "https://fise.com.br/produto/con845-3/",
+   "variantes": []
+  },
+  {
+   "nome": "VED400",
+   "preco": null,
+   "categoria": "Linha Vertice",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/VED400-SITE.png",
+   "url": "https://fise.com.br/produto/ved400/",
+   "variantes": []
+  },
+  {
+   "nome": "TRA227",
+   "preco": null,
+   "categoria": "Asa - Mega 32",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/tra227-2/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL892",
+   "preco": null,
+   "categoria": "Linha Box",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol892-2/",
+   "variantes": []
+  },
+  {
+   "nome": "ROL843",
+   "preco": null,
+   "categoria": "Asa - Mega 25",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/rol843-2/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC211",
+   "preco": null,
+   "categoria": "Convencional - 16",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/fec210_fec211-site.png",
+   "url": "https://fise.com.br/produto/fec211-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC150",
+   "preco": null,
+   "categoria": "Hydro - Fórmula",
+   "imagem": "https://fise.com.br/wp-content/uploads/2023/12/FEC150.jpg",
+   "url": "https://fise.com.br/produto/fec150-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC140",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": null,
+   "url": "https://fise.com.br/produto/fec140-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC101",
+   "preco": null,
+   "categoria": "Asa - Mega 20",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/FEC101-SITE-scaled.png",
+   "url": "https://fise.com.br/produto/fec101-3/",
+   "variantes": []
+  },
+  {
+   "nome": "FEC508",
+   "preco": null,
+   "categoria": "Linha Ocean",
+   "imagem": "https://fise.com.br/wp-content/uploads/2025/06/FEC508.png",
+   "url": "https://fise.com.br/produto/fec508/",
+   "variantes": []
+  }
+ ]
+}

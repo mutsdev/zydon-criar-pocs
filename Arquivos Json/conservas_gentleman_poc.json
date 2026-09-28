@@ -1,0 +1,441 @@
+{
+  "empresa": "Conservas Gentleman",
+  "descricao_empresa": "Marca brasileira de conservas e compotas: picles, pepinos agridoces, palmitos, ovos de codorna, chucrute e frutas em calda, prontos para consumo.",
+  "gerado_em": "2026-09-10",
+  "setor": "Alimentos — Conservas e Compotas",
+  "portal_name": "Conservas Gentleman POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Conservas Gentleman",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Conservas Gentleman",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Picles e Pepinos",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Picles e Pepinos",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Palmitos e Ovos em Conserva",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Palmitos e Ovos em Conserva",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Doces em Calda",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Doces em Calda",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "GTM-PIC-001 — Picles Suave em Conserva 300g",
+          "temp_image_url": "https://m.media-amazon.com/images/I/612o0N3jmnL._AC_SL1200_.jpg",
+          "payload": {
+            "name": "Picles Suave em Conserva Gentleman 300g",
+            "sku": "GTM-PIC-001",
+            "description": "Picles agridoce suave em conserva, vidro de 300g. Pronto para consumo, ideal para lanches, sanduicheria e food service.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 16.15,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12
+          }
+        },
+        {
+          "label": "GTM-PIC-002 — Pepino Agridoce Fatiado em Conserva 300g",
+          "temp_image_url": "https://m.media-amazon.com/images/I/61X-wfbRvnL._AC_SL1200_.jpg",
+          "payload": {
+            "name": "Pepino Agridoce Fatiado em Conserva Gentleman 300g",
+            "sku": "GTM-PIC-002",
+            "description": "Pepino agridoce fatiado em conserva, vidro de 300g. Corte padronizado para hamburgueria, padaria e mesa de frios.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 20.1,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6
+          }
+        },
+        {
+          "label": "GTM-PLM-001 — Palmito de Pupunha Tolete 300g",
+          "temp_image_url": "https://m.media-amazon.com/images/I/61zutM5d4PL._AC_SL1200_.jpg",
+          "payload": {
+            "name": "Palmito de Pupunha Tolete Gentleman 300g",
+            "sku": "GTM-PLM-001",
+            "description": "Palmito de pupunha em tolete, vidro de 300g. Textura firme e sabor suave, para uso culinario e consumo direto.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 22.94,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1
+          }
+        },
+        {
+          "label": "GTM-OVO-001 — Ovos de Codorna em Conserva 295g",
+          "temp_image_url": "https://m.media-amazon.com/images/I/61p9W52tjFL._AC_SL1200_.jpg",
+          "payload": {
+            "name": "Ovos de Codorna em Conserva Gentleman 295g",
+            "sku": "GTM-OVO-001",
+            "description": "Ovos de codorna em conserva, vidro de 295g. Carro-chefe da marca, pronto para consumo em porcoes, petiscarias e bares.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 26.59,
+            "minimum_for_sale": 24,
+            "multiple_for_sale": 24
+          }
+        },
+        {
+          "label": "GTM-DOC-001 — Pessego em Calda Especial 350g",
+          "temp_image_url": "https://m.media-amazon.com/images/I/61zQw3cCvxL._AC_SL1200_.jpg",
+          "payload": {
+            "name": "Pessego em Calda Especial Gentleman 350g",
+            "sku": "GTM-DOC-001",
+            "description": "Pessego em calda especial, vidro de 350g. Fruta em metades para sobremesa, confeitaria e servico de mesa.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 26.28,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 6
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Conservas Gentleman",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Conservas Gentleman — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Conservas Gentleman",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Conservas Gentleman — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Picles e Pepinos",
+          "salvar_id_como": "criteria_cat_picles_id",
+          "payload": {
+            "name": "Conservas Gentleman — Picles e Pepinos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Palmitos e Ovos em Conserva",
+          "salvar_id_como": "criteria_cat_palmitos_id",
+          "payload": {
+            "name": "Conservas Gentleman — Palmitos e Ovos (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Conservas Gentleman",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Conservas Gentleman",
+            "start_date": "2026-09-10",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Conservas Gentleman",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Conservas Gentleman",
+            "start_date": "2026-09-10",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Conservas Gentleman",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Conservas Gentleman",
+            "start_date": "2026-09-10",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Conservas Gentleman",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Conservas Gentleman",
+            "start_date": "2026-09-10",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Conservas Gentleman",
+                "criteria_id": "{{criteria_cat_picles_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 24,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 60,
+                    "type": "PERCENTAGE",
+                    "value": 9,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 120,
+                    "type": "PERCENTAGE",
+                    "value": 14,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Palmitos e Ovos | Conservas Gentleman",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Conservas Gentleman — Palmitos e Ovos",
+            "start_date": "2026-09-10",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Conservas Gentleman",
+                "criteria_id": "{{criteria_cat_palmitos_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

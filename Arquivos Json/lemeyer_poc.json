@@ -1,0 +1,596 @@
+{
+  "_instrucoes": "POC Lemeyer — gerada a partir de https://www.lemeyer.com.br/ (Shopify, /products.json). Preços NÃO são públicos no site (0.00): valores ESTIMADOS.",
+  "empresa": "Lemeyer",
+  "descricao_empresa": "Distribuidora de perfumes importados e cosméticos para revenda no atacado — atende lojistas, farmácias e perfumarias.",
+  "gerado_em": "2026-09-14",
+  "setor": "Perfumaria e Cosméticos — Distribuição Atacado",
+  "portal_name": "Lemeyer POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Lemeyer",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Lemeyer",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Perfumes Importados",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Perfumes Importados",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Deo Colônia e Body Splash",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Deo Colônia e Body Splash",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Corpo e Banho",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Corpo e Banho",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "LRV-315-090 — La Rive 315 Prestige Black Masculino 90ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/315prestigeblack.png?v=1764615975",
+          "payload": {
+            "name": "La Rive 315 Prestige Black Masculino 90ML",
+            "description": "Eau de toilette masculina La Rive 315 Prestige Black, 90ml. Perfume importado para revenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 49.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "LRV-315-090"
+          }
+        },
+        {
+          "label": "LRV-HCH-100 — La Rive Her Choice Feminino 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/herchoice_903fdec1-c987-4fdd-abf6-0853d676c776.png?v=1764823800",
+          "payload": {
+            "name": "La Rive Her Choice Feminino 100ML",
+            "description": "Eau de parfum feminino La Rive Her Choice, 100ml. Perfume importado para revenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 54.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "LRV-HCH-100"
+          }
+        },
+        {
+          "label": "LRV-MDP-100 — La Rive Miss Dream Pink Feminino 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/missdreampink.png?v=1764616327",
+          "payload": {
+            "name": "La Rive Miss Dream Pink Feminino 100ML",
+            "description": "Eau de parfum feminino La Rive Miss Dream Pink, 100ml. Perfume importado para revenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 54.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "LRV-MDP-100"
+          }
+        },
+        {
+          "label": "PEL-BCR-100 — Paris Elysees Billion Cassino Royal Masculino 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/billioncasinoroyal.png?v=1764733035",
+          "payload": {
+            "name": "Paris Elysees Billion Cassino Royal Masculino 100ML",
+            "description": "Eau de toilette masculina Paris Elysees Billion Casino Royal, 100ml. Perfume importado para revenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 39.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "PEL-BCR-100"
+          }
+        },
+        {
+          "label": "ISC-FAN-100 — I Scents Fantasia Feminino 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/fantasia.png?v=1763601358",
+          "payload": {
+            "name": "I Scents Fantasia Feminino 100ML",
+            "description": "Eau de parfum feminino I Scents Fantasia, 100ml. Perfume importado para revenda.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 44.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "ISC-FAN-100"
+          }
+        },
+        {
+          "label": "KHD-AKR-100 — Khadlaj Aura Kiss of Rose Unissex 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/aurakissofrose.png?v=1764109518",
+          "payload": {
+            "name": "Khadlaj Aura Kiss of Rose Unissex 100ML",
+            "description": "Eau de parfum unissex Khadlaj Aura Kiss of Rose, 100ml. Perfumaria árabe importada.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 79.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "KHD-AKR-100"
+          }
+        },
+        {
+          "label": "CIC-HEL-100 — Ciclo Nah Hello Hello - Lata Deo Colônia 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/hellohellolata.png?v=1763401564",
+          "payload": {
+            "name": "Ciclo Nah Hello Hello - Lata Deo Colônia 100ML",
+            "description": "Deo colônia Ciclo Nah Hello Hello em lata, 100ml. Fragrância nacional, mais vendido.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 34.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "CIC-HEL-100"
+          }
+        },
+        {
+          "label": "CIC-JFL-100 — Ciclo Jardin Flor de Laranjeira - Deo Colônia 100ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/flordelaranjeira_2081fada-ddef-4e90-818b-3c13f8123fc7.png?v=1763403728",
+          "payload": {
+            "name": "Ciclo Jardin Flor de Laranjeira - Deo Colônia 100ML",
+            "description": "Deo colônia Ciclo Jardin Flor de Laranjeira, 100ml, com óleos essenciais e 95% de origem natural.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 29.9,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "CIC-JFL-100"
+          }
+        },
+        {
+          "label": "CIC-JOR-200 — Ciclo Jardin Orquídea - Body Splash 200ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/orquidea.png?v=1763403385",
+          "payload": {
+            "name": "Ciclo Jardin Orquídea - Body Splash 200ML",
+            "description": "Body splash Ciclo Jardin Orquídea, 200ml. Fragrância leve para o corpo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 24.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "CIC-JOR-200"
+          }
+        },
+        {
+          "label": "PKL-VAN-240 — Pokoloka Vanilla Hidratante Feminino 240ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/vanilla_c3377b1d-56cb-465d-bebf-fbc8846e668b.png?v=1764800312",
+          "payload": {
+            "name": "Pokoloka Vanilla Hidratante Feminino 240ML",
+            "description": "Hidratante corporal perfumado Pokoloka Vanilla, 240ml.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 19.9,
+            "minimum_for_sale": 12,
+            "multiple_for_sale": 12,
+            "sku": "PKL-VAN-240"
+          }
+        },
+        {
+          "label": "LFL-LAV-750 — La Florentina Lavanda - Gel de Banho 750ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/showergellavanda.png?v=1764571843",
+          "payload": {
+            "name": "La Florentina Lavanda - Gel de Banho 750ML",
+            "description": "Gel de banho La Florentina Lavanda, 750ml. Made in Italy.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 59.9,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "LFL-LAV-750"
+          }
+        },
+        {
+          "label": "LFL-ROM-750 — La Florentina Rose of May - Gel de Banho 750ML",
+          "temp_image_url": "https://cdn.shopify.com/s/files/1/0952/0899/7173/files/showergelroseofmay.png?v=1764572310",
+          "payload": {
+            "name": "La Florentina Rose of May - Gel de Banho 750ML",
+            "description": "Gel de banho La Florentina Rose of May, 750ml. Made in Italy.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 59.9,
+            "minimum_for_sale": 3,
+            "multiple_for_sale": 3,
+            "sku": "LFL-ROM-750"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Lemeyer",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Lemeyer — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Lemeyer",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Lemeyer — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Perfumes Importados",
+          "salvar_id_como": "criteria_cat_perfumes_id",
+          "payload": {
+            "name": "Lemeyer — Perfumes Importados (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Corpo e Banho",
+          "salvar_id_como": "criteria_cat_corpo_banho_id",
+          "payload": {
+            "name": "Lemeyer — Corpo e Banho (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Lemeyer",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Lemeyer",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Lemeyer",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Lemeyer",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Lemeyer",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Lemeyer",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Lemeyer",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume | Lemeyer",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Lemeyer",
+                "criteria_id": "{{criteria_cat_perfumes_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Corpo e Banho | Lemeyer",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Lemeyer — Corpo e Banho",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Lemeyer",
+                "criteria_id": "{{criteria_cat_corpo_banho_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

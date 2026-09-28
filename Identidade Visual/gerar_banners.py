@@ -638,4 +638,9 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.path.insert(0, str(AQUI.parent))
+    import cronometro
+    with cronometro.etapa(cronometro.do_argv("--nome", sys.argv),
+                          f"Banners ({sys.argv[1] if len(sys.argv) > 1 else '?'})"):
+        codigo = main()
+    raise SystemExit(codigo)

@@ -22,6 +22,7 @@ import argparse
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
@@ -51,6 +52,7 @@ mod_identidade._carregar_env()
 
 import credenciais  # noqa: E402
 import criar_poc  # noqa: E402  (o runner de 'Criar Portais', unico que existe)
+import cronometro  # noqa: E402
 import descobrir_url  # noqa: E402
 
 
@@ -129,6 +131,9 @@ def main(argv=None):
     # esconde o que mais importa saber nessa hora: o portal foi criado, o
     # catalogo esta la, e so falta a identidade — que se conserta sozinha, sem
     # recriar a POC. Um stack trace faz parecer que a execucao inteira falhou.
+    with open(args.arquivo, encoding="utf-8") as f:
+        empresa = json.load(f).get("empresa", args.nome or "?")
+    t_ident = time.perf_counter()
     try:
         codigo = mod_identidade.main(argv_identidade)
         estado = "gravada" if args.gravar and codigo == 0 else (
@@ -136,11 +141,14 @@ def main(argv=None):
     except Exception as e:
         codigo = 1
         estado = f"FALHOU — {type(e).__name__}: {e}"
+    cronometro.anotar(empresa, "Identidade visual", time.perf_counter() - t_ident,
+                      ok=codigo == 0)
 
     # O UUID nao serve para o executivo comercial — ele precisa do endereco, e
     # a API nao entrega dominio nenhum. Fica no fim de proposito: e a unica
     # etapa que depende do portal ja estar publicado.
     url_portal = "nao encontrada"
+    t_url = time.perf_counter()
     try:
         with open(args.arquivo, encoding="utf-8") as f:
             nome_portal = json.load(f).get("portal_name")
@@ -149,6 +157,8 @@ def main(argv=None):
             url_portal = achada or "nao encontrada (o portal pode levar minutos a publicar)"
     except Exception as e:
         url_portal = f"nao encontrada — {type(e).__name__}: {e}"
+    cronometro.anotar(empresa, "Descobrir URL", time.perf_counter() - t_url,
+                      ok=url_portal.startswith("http"))
 
     print("\n" + "=" * 62)
     print(f"  Portal     : {portal_id}")

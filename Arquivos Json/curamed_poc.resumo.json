@@ -1,0 +1,17 @@
+{
+  "pedido_id": "mitra-2026-09-11-002",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/curamed_poc.json",
+  "logo_url": null,
+  "logo_motivo": "nenhuma logo identificavel foi encontrada no HTML publico da landing page",
+  "resumo": {
+    "status": "concluido",
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 0,
+    "produtos_similares": false,
+    "observacoes": "Produtos identificados nas imagens e textos da landing page publica da Curamed; as imagens sao do proprio site e os precos nao estavam publicados."
+  }
+}

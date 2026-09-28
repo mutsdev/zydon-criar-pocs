@@ -1,0 +1,614 @@
+{
+  "_instrucoes": "TEMPLATE CANONICO (padrao vigente desde 2026-07-02). Copiar, trocar EMPRESA/datas/produtos e validar com: python validar_poc.py {empresa}_poc.json. Regras: 3 categorias, 9-15 produtos (MAXIMO 15; min/mult VARIADOS, ~30% em 1/1), 2 criterios separados, 3 TPs (segmentos 2/3/4, nomes genericos Tabela 1/2/3, maior desconto no segmento mais aderente ao core, spread AGRESSIVO tipo 5/15/30 — nunca valores proximos, diferenca >= 15 pontos entre menor e maior), descontos progressivo + fixo. price em REAIS decimais (ex.: 219.90 = R$ 219,90) — NUNCA centavos. Imagens: TODO produto com temp_image_url no nivel do request (site da marca > ML), NUNCA em payload.images.",
+  "empresa": "Bob Center",
+  "descricao_empresa": "Bob Center Bobinas e Etiquetas LTDA — distribuidora de bobinas de papel (térmicas, 1 e 2 vias), etiquetas adesivas (balança, gôndola, couché, para etiquetadoras) e etiquetadoras manuais, com sede em Sorocaba-SP.",
+  "gerado_em": "2026-09-14",
+  "setor": "Suprimentos para Comércio — Bobinas, Etiquetas e Etiquetadoras",
+  "portal_name": "Bob Center POC",
+  "portal_listing_rule_id": "{{criteria_listagem_id}}",
+  "etapas": [
+    {
+      "nome": "1. MARCA",
+      "endpoint": "brands",
+      "requests": [
+        {
+          "label": "Criar Marca Bob Center",
+          "salvar_id_como": "brand_id",
+          "payload": {
+            "name": "Bob Center",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "2. CATEGORIAS",
+      "endpoint": "categories",
+      "requests": [
+        {
+          "label": "Bobinas de Papel",
+          "salvar_id_como": "cat_ids_0",
+          "payload": {
+            "name": "Bobinas de Papel",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Etiquetas Adesivas",
+          "salvar_id_como": "cat_ids_1",
+          "payload": {
+            "name": "Etiquetas Adesivas",
+            "active": true,
+            "images": []
+          }
+        },
+        {
+          "label": "Etiquetadoras Manuais",
+          "salvar_id_como": "cat_ids_2",
+          "payload": {
+            "name": "Etiquetadoras Manuais",
+            "active": true,
+            "images": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "3. PRODUTOS",
+      "endpoint": "products",
+      "requests": [
+        {
+          "label": "BOB-TER-57X22-CX30 — Bobina Térmica 57x22 — Caixa c/ 30 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527460.png",
+          "payload": {
+            "name": "Bobina Térmica 57x22 — Caixa c/ 30 Rolos",
+            "description": "Papel térmico 48g/m² (Oji Termoscript KPH AF 48) para comprovantes de cartão, recibos de PDV, relógio de ponto e calculadoras. Largura 57 mm, 22 m por rolo, 660 m por caixa. Garantia de 5 anos de imagem.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 99.99,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BOB-TER-57X22-CX30"
+          }
+        },
+        {
+          "label": "BOB-TER-57X300-CX6 — Bobina Térmica 57x300 — Caixa c/ 6 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527458.png",
+          "payload": {
+            "name": "Bobina Térmica 57x300 — Caixa c/ 6 Rolos",
+            "description": "Papel térmico de alta sensibilidade para cupons fiscais, ingressos, controle de acesso e recibos de PDV. Largura 57 mm, 300 m por rolo. Caixa com 6 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 126.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BOB-TER-57X300-CX6"
+          }
+        },
+        {
+          "label": "BOB-TER-80X40-CX30 — Bobina Térmica 80x40 Branco 48g — Caixa c/ 30 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527454.png",
+          "payload": {
+            "name": "Bobina Térmica 80x40 Branco 48g — Caixa c/ 30 Rolos",
+            "description": "Papel térmico branco 48 g/m² para impressoras de cupom fiscal e PDV. Largura 80 mm, 40 m por rolo. Caixa com 30 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 110.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BOB-TER-80X40-CX30"
+          }
+        },
+        {
+          "label": "BOB-1V-76X30-CX30 — Bobina 1 Via 76x30 Branco — Caixa c/ 30 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527473.png",
+          "payload": {
+            "name": "Bobina 1 Via 76x30 Branco — Caixa c/ 30 Rolos",
+            "description": "Bobina de papel comum apergaminhado 56 g (off set) para máquinas de calcular, registradoras e impressoras matriciais. 76 mm x 30 m. Caixa com 30 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 70.0,
+            "minimum_for_sale": 2,
+            "multiple_for_sale": 2,
+            "sku": "BOB-1V-76X30-CX30"
+          }
+        },
+        {
+          "label": "BOB-2V-76X22-CX30 — Bobina 2 Vias 76x22 Branco — Caixa c/ 30 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527470.png",
+          "payload": {
+            "name": "Bobina 2 Vias 76x22 Branco — Caixa c/ 30 Rolos",
+            "description": "Bobina autocopiativa (carbonada) para impressão de qualidade nas duas vias em impressoras matriciais. 76 mm x 22 m. Caixa com 30 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_0}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 260.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "BOB-2V-76X22-CX30"
+          }
+        },
+        {
+          "label": "ETQ-BAL-40X40-CX50 — Etiqueta Adesiva Térmica 40x40 Balança — Caixa c/ 50 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4599418.png",
+          "payload": {
+            "name": "Etiqueta Adesiva Térmica 40x40 Balança — Caixa c/ 50 Rolos",
+            "description": "Etiqueta em papel auto adesivo térmico 40 x 40 mm para balanças Toledo, Filizola, Argox, Zebra e Elgin. Uso em açougues, padarias, supermercados e hortifrúti. Caixa com 50 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 250.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ETQ-BAL-40X40-CX50"
+          }
+        },
+        {
+          "label": "ETQ-GON-AMA-GAPC — Etiqueta de Gôndola Amarela Sem Adesivo — GAP Central",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4591390.png",
+          "payload": {
+            "name": "Etiqueta de Gôndola Amarela Sem Adesivo — GAP Central",
+            "description": "Etiqueta para gôndola com GAP (furo) central, cor amarela, para impressoras térmicas. Identificação, codificação e exibição de preços em supermercados, papelarias, açougues e mercearias. Rolo.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 30.0,
+            "minimum_for_sale": 5,
+            "multiple_for_sale": 5,
+            "sku": "ETQ-GON-AMA-GAPC"
+          }
+        },
+        {
+          "label": "ETQ-M14-BRA-PCT10 — Etiqueta Adesiva M14 / MX 5500 Branca — Pacote c/ 10 Rolos",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4527744.png",
+          "payload": {
+            "name": "Etiqueta Adesiva M14 / MX 5500 Branca — Pacote c/ 10 Rolos",
+            "description": "Etiqueta 21 x 12 mm em papel adesivo branco fosco para etiquetadoras MX-5500, MX-5500 Plus, M-14 e Jolly JH8. Precificação, codificação e identificação em lojas, confecções e atacadistas. Pacote com 10 rolos.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 23.0,
+            "minimum_for_sale": 10,
+            "multiple_for_sale": 10,
+            "sku": "ETQ-M14-BRA-PCT10"
+          }
+        },
+        {
+          "label": "ETQ-COU-33X22-3C — Etiqueta Couché 33x22mm 3 Carreiras — Rolo c/ 3.750",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4552851.png",
+          "payload": {
+            "name": "Etiqueta Couché 33x22mm 3 Carreiras — Rolo c/ 3.750",
+            "description": "Etiqueta adesiva em papel couché com cola acrílica 30 g, 33 x 22 mm, 3 colunas, aprox. 3.750 etiquetas por rolo. Sem impressão; usar ribbon de cera.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_1}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 30.0,
+            "minimum_for_sale": 4,
+            "multiple_for_sale": 4,
+            "sku": "ETQ-COU-33X22-3C"
+          }
+        },
+        {
+          "label": "ETQD-MX2816-2L — Etiquetadora MX2816 Fixxar — 2 Linhas de Impressão",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4428818.jpg",
+          "payload": {
+            "name": "Etiquetadora MX2816 Fixxar — 2 Linhas de Impressão",
+            "description": "Etiquetadora manual brasileira com 2 linhas de impressão e 10 dígitos por linha: preço + código, preço + data, à vista + a prazo, fabricação + validade. 1 ano de garantia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": true,
+            "price": 375.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ETQD-MX2816-2L"
+          }
+        },
+        {
+          "label": "ETQD-MX5500-1L — Etiquetadora MX5500 EOS Fixxar — 1 Linha de Impressão",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4428820.png",
+          "payload": {
+            "name": "Etiquetadora MX5500 EOS Fixxar — 1 Linha de Impressão",
+            "description": "Etiquetadora manual brasileira com 1 linha de impressão e 8 dígitos, operação precisa e suave. Usa etiquetas 21 x 12 mm modelo M14/MX. 1 ano de garantia.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 170.0,
+            "minimum_for_sale": 1,
+            "multiple_for_sale": 1,
+            "sku": "ETQD-MX5500-1L"
+          }
+        },
+        {
+          "label": "ETQD-TINT-M14 — Rolete / Tinteiro para Etiquetadoras M14 / M15 / MX",
+          "temp_image_url": "https://cdn2.solojavirtual.com/loja/arquivos_loja/18556/Fotos/thumbs3/produto_Foto1_4192607.png",
+          "payload": {
+            "name": "Rolete / Tinteiro para Etiquetadoras M14 / M15 / MX",
+            "description": "Rolete de tinta de reposição para etiquetadoras manuais M14, M15 e linha MX. Consumível de alta demanda para lojas e mercados.",
+            "active": true,
+            "stock": 100,
+            "minimum_stock": 0,
+            "standard_unit_id": 2,
+            "images": [],
+            "category_id": "{{cat_ids_2}}",
+            "brand_id": "{{brand_id}}",
+            "ean_gtin": "",
+            "video_url": "",
+            "highlight": false,
+            "price": 15.0,
+            "minimum_for_sale": 6,
+            "multiple_for_sale": 6,
+            "sku": "ETQD-TINT-M14"
+          }
+        }
+      ]
+    },
+    {
+      "nome": "4. CRITERIOS (separados: preco x listagem x desconto por categoria)",
+      "base_url": "https://api.zydon.com.br/api/database",
+      "endpoint": "criteria",
+      "requests": [
+        {
+          "label": "Criterio Marca (TABELA DE PRECO) - Bob Center",
+          "salvar_id_como": "criteria_preco_id",
+          "payload": {
+            "name": "Bob Center — Marca (Tabela de Preço)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Marca (REGRA DE LISTAGEM) - Bob Center",
+          "salvar_id_como": "criteria_listagem_id",
+          "payload": {
+            "name": "Bob Center — Marca (Regra de Listagem)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "brands": {
+                "key": "this.CODIGOMARCA",
+                "values": [
+                  "{{brand_id}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Bobinas de Papel",
+          "salvar_id_como": "criteria_cat_bobinas_id",
+          "payload": {
+            "name": "Bob Center — Bobinas de Papel (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_0}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Etiquetas Adesivas",
+          "salvar_id_como": "criteria_cat_etiquetas_id",
+          "payload": {
+            "name": "Bob Center — Etiquetas Adesivas (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_1}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        },
+        {
+          "label": "Criterio Categoria (DESCONTO) - Etiquetadoras Manuais",
+          "salvar_id_como": "criteria_cat_etiquetadoras_id",
+          "payload": {
+            "name": "Bob Center — Etiquetadoras Manuais (Desconto)",
+            "database_id": "5ba882ff-ba29-4599-b583-0bf9b8913b19",
+            "config": {
+              "categories": {
+                "key": "this.CODCATEGORIA",
+                "values": [
+                  "{{cat_ids_2}}"
+                ],
+                "type": "FIELD",
+                "config": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "5. TABELAS DE PRECO (usam o criterio de PRECO)",
+      "endpoint": "price-tables",
+      "requests": [
+        {
+          "label": "Tabela 1 | Bob Center",
+          "salvar_id_como": "tp_1_id",
+          "payload": {
+            "name": "Tabela 1 | Bob Center",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 5
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "2"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 2 | Bob Center",
+          "salvar_id_como": "tp_2_id",
+          "payload": {
+            "name": "Tabela 2 | Bob Center",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 15
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "3"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Tabela 3 | Bob Center",
+          "salvar_id_como": "tp_3_id",
+          "payload": {
+            "name": "Tabela 3 | Bob Center",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "criteria": [
+              {
+                "criteria_id": "{{criteria_preco_id}}",
+                "rate_type": "DECREASE",
+                "value_type": "PERCENTAGE",
+                "criteria_type": "FILTER",
+                "value": 30
+              }
+            ],
+            "is_profile_specific": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner_specific": false,
+            "partners": [],
+            "is_company_specific": false,
+            "companies": [],
+            "is_payment_method_specific": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    },
+    {
+      "nome": "6. DESCONTOS",
+      "endpoint": "discounts",
+      "requests": [
+        {
+          "label": "Desconto Progressivo — Volume Bobinas | Bob Center",
+          "salvar_id_como": "desconto_progressivo_id",
+          "payload": {
+            "name": "Progressivo Volume Bobinas | Bob Center",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "Progressivo Volume Bobinas Bob Center",
+                "criteria_id": "{{criteria_cat_bobinas_id}}",
+                "type": "PROGRESSIVE",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 10,
+                    "type": "PERCENTAGE",
+                    "value": 5,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 20,
+                    "type": "PERCENTAGE",
+                    "value": 8,
+                    "is_product_value": false
+                  },
+                  {
+                    "minimum_quantity": 50,
+                    "type": "PERCENTAGE",
+                    "value": 12,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": true,
+            "profiles": [
+              {
+                "profile_id": "4"
+              }
+            ],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        },
+        {
+          "label": "Desconto Fixo 7% — Etiquetas Adesivas | Bob Center",
+          "salvar_id_como": "desconto_fixo_id",
+          "payload": {
+            "name": "7% OFF Bob Center — Etiquetas Adesivas",
+            "start_date": "2026-09-14",
+            "end_date": "2060-01-01",
+            "is_discount_over_discount": false,
+            "is_active": true,
+            "criteria": [
+              {
+                "name": "7% OFF Bob Center Etiquetas",
+                "criteria_id": "{{criteria_cat_etiquetas_id}}",
+                "type": "FIXED",
+                "criteria_type": "FILTER",
+                "ranges": [
+                  {
+                    "minimum_quantity": 0,
+                    "type": "PERCENTAGE",
+                    "value": 7,
+                    "is_product_value": false
+                  }
+                ]
+              }
+            ],
+            "is_profile": false,
+            "profiles": [],
+            "is_partner": false,
+            "partners": [],
+            "is_company": false,
+            "companies": [],
+            "is_payment_method": false,
+            "payment_methods": []
+          }
+        }
+      ]
+    }
+  ]
+}

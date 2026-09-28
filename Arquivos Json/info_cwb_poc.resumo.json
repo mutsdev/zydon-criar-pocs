@@ -1,0 +1,15 @@
+{
+  "pedido_id": "mitra-2026-09-10-002",
+  "status": "concluido",
+  "arquivo": "Arquivos Json/info_cwb_poc.json",
+  "logo_url": null,
+  "resumo": {
+    "produtos": 12,
+    "categorias": 3,
+    "fonte": "site",
+    "preco": "estimado",
+    "imagens_substituidas": 0,
+    "observacoes": "Catalogo extraido de https://www.infocwb.com.br/; 0/12 produtos tinham preco publico.",
+    "status": "concluido"
+  }
+}
